@@ -1,0 +1,154 @@
+.parent{
+    width: 100%;height: auto;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(270px , 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+.item{
+    width: auto;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.imgParent{
+    width: 100%;
+    height: 200px;
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.imgParent img{
+    width: auto;
+    height: 100%;
+}
+.like_bookMark_parent{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+.like_bookMark_div{
+    width: auto;
+    height: 95px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px 7px;
+    align-items: center;
+    background-color: rgba(255, 66, 66, 0.11);
+    border-radius: 0 0 0 15px;
+    opacity: 0;
+}
+.item:hover .like_bookMark_div{
+    opacity: 1;
+}
+.like_bookMark_div div{
+    background-color: transparent;
+
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+.like_bookMark_div div:nth-child(1){
+    color: rgb(255, 0, 0);
+}
+
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
+.titleParent{
+    width: 100%;
+    font-family: iransansweb;
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+.describtion{
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+    margin-top: 10px;
+    font-family: iranyekanweb;
+    flex-direction: column;
+   align-items: flex-end;
+   font-size: 13px;
+   font-weight: 700;
+   line-height: 30px;
+}
+.describtion div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.describtion div img{
+    margin-left: 5px;
+}
+
+
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+.footer{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 20px;
+}
+.price{
+    background-color: rgb(255, 139, 139);
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: iransansweb;
+    font-size: 14px;
+}
+.price p:nth-child(1){
+    text-decoration: line-through;
+}
+.price p:nth-child(2){
+    background-color: white;
+    padding:0 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+.addToCartParent{
+    display: flex;
+    align-items: center;
+    color: rgb(179, 0, 0);
+
+}
+.addToCartParent p{
+    margin: 0 2px;
+    font-family: iransansweb;
+    color: black;
+    font-weight: bold;
+}
+.addToCartParent button{
+    padding: 7px 15px;
+    font-family: iransansweb;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(192, 56, 56);
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    box-shadow: 0 0 3px 0 rgb(0, 0, 0);
+}

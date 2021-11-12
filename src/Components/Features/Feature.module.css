@@ -1,0 +1,58 @@
+.parent{
+    width: 100%;
+    height: auto;
+   
+    /* display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(220px , 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.parent_features{
+    width: auto;
+    height: auto;
+    background-color:  rgb(255, 207, 207);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    
+}
+.imgParent{
+    width: 170px;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.imgParent img{
+    width: 100%;
+    height: auto;
+}
+.parent_features_text {
+    height: auto; text-align: center;
+}
+.parent_features_text p {
+    font-family: iransansweb;
+   
+    margin: 10px 0;
+
+}
+.parent_features_text span{
+    font-family: iranyekanweb;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+
+
