@@ -4,7 +4,6 @@ import Layout from '../Layout/Layout'
 import Routes from '../Routes/Routes';
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-import Home from '../Pages/Home/Home';
 function App() {
   
   return (

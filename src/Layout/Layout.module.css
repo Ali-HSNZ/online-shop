@@ -8,3 +8,11 @@
     max-width: 1600px;
     width: 100%;    margin-top: 70px;
 }
+@font-face {
+    font-family: iransansweb;
+    src: url(../font/iransans/iransans.ttf);
+}
+@font-face {
+    font-family: iranyekanweb;
+    src: url(../font/iranyekan/iranyekan.ttf);
+}
