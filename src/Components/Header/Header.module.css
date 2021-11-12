@@ -5,11 +5,6 @@
     display: flex;
     justify-content: space-around;
     padding: 0 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99999;
 }
 .header_right{
     width: 100%;

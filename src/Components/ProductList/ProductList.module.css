@@ -2,7 +2,7 @@
     width: 100%;height: auto;
     margin-bottom: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(270px , 1fr));
+    grid-template-columns: repeat(auto-fit , minmax(330px , 1fr));
     grid-column-gap: 10px;
     grid-row-gap: 10px;
 }
@@ -57,7 +57,7 @@
     color: rgb(0, 0, 0);
 }
 .like_bookMark_div div:nth-child(1){
-    color: rgb(255, 0, 0);
+    color: rgb(0, 0, 0);
 }
 
 

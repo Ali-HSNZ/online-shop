@@ -75,9 +75,9 @@ const ProductList = () => {
 
                 <div className={Styles.footer}>
                     <div className={Styles.addToCartParent}>
-                        <BiPlusCircle style={{cursor:'pointer'}} size="1.7em"/>
+                        <BiPlusCircle style={{cursor:'pointer'}} size="1.9em"/>
                         <p>1</p>
-                       <BiMinusCircle style={{cursor:'pointer'}}  size="1.7em"/>
+                       <BiMinusCircle style={{cursor:'pointer'}}  size="1.9em"/>
                     </div>
 
                     <div className={Styles.price}>
@@ -116,9 +116,9 @@ const ProductList = () => {
 
                 <div className={Styles.footer}>
                     <div className={Styles.addToCartParent}>
-                        <BiPlusCircle style={{cursor:'pointer'}} size="1.7em"/>
+                        <BiPlusCircle style={{cursor:'pointer'}} size="1.9em"/>
                         <p>1</p>
-                       <BiMinusCircle style={{cursor:'pointer'}}  size="1.7em"/>
+                       <BiMinusCircle style={{cursor:'pointer'}}  size="1.9em"/>
                     </div>
 
                     <div className={Styles.price}>
