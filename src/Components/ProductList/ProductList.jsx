@@ -30,6 +30,9 @@ const ProductList = () => {
         dispatch({type : "ADD_TO_CART" , payLoad : product})
     }
 
+    const deleteProduct = (product)=> {
+        dispatch({type : "DELETE_PRODUCT" , payLoad : product})
+    }
 
     return (  
         <div className={Styles.parent} dir="rtl">
@@ -72,27 +75,17 @@ const ProductList = () => {
                             <div className={Styles.footer}>
 
                                     <div className={Styles.addToCartParent}>
-
-                                        {/* <button onClick={()=>}>Click Me</button> */}
-                                    
-                                       {/* {checkProductInCart(cartState.cart,product) === true ? ( */}
-                                            {/* // <div> */}
-                                                {/* <button className={Styles.addToCartBtn}><BiPlusCircle style={{cursor:'pointer'}} size="2em"/></button> */}
-                                                    {/* <p>نمایش{cart.find(item => item.id === product.id )}</p> */}
-                                                    {/* <p>{giveQuantity(product.id && product.id)}</p> */}
-                                                {/* <button className={Styles.addToCartBtn}><BiMinusCircle style={{cursor:'pointer'}}  size="2em"/></button>  */}
-                                            {/* </div> */}
-                                            
-                                        {/* ) :  } */}
-                                            {checkProductInCart(cart , product) ?    <Link to="/cart">سبد خرید</Link> : <button onClick={()=>addToCartHandler(product)}>خرید محصول</button>}
-                                     
-                                           
-                                        
-                                        
-                                            {/* <button className={Styles.addToCartBtn}><BiPlusCircle style={{cursor:'pointer'}} size="2em"/></button>
-                                            <p>2</p>
-                                            <button className={Styles.addToCartBtn}><BiMinusCircle style={{cursor:'pointer'}}  size="2em"/></button> */}
-                                    
+                                            {checkProductInCart(cart , product) ?   
+                                                <> 
+                                                    <Link to="/cart">سبد خرید</Link>
+                                                    <button className={Styles.trashBtn} onClick={() => deleteProduct(product)}>
+                                                        <BiTrashAlt style={{cursor:'pointer'}}  size="2.1em"/>
+                                                    </button>
+                                                </> : 
+                                                <button className={Styles.addTodoBtn} onClick={()=>addToCartHandler(product)}>
+                                                    خرید محصول
+                                                </button>
+                                            }
                                     </div>
 
 
