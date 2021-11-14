@@ -11,7 +11,7 @@ const Feature = () => {
             
             <div className={Styles.parent_features} dir="rtl">
                 <div className={Styles.imgParent}>
-                    <img src={imageSrc}/>
+                    <img src={imageSrc} alt="پشتیبانی 24 ساعته"/>
                 </div>
                 <div className={Styles.parent_features_text}>
                     {/* <p >۷ روز ضمانت بازگشت کالا</p>
@@ -23,7 +23,7 @@ const Feature = () => {
             
             <div className={Styles.parent_features}>
                 <div className={Styles.imgParent}>
-                        <img src={guarantee}/>
+                        <img src={guarantee} alt="کالای سالم"/>
                     </div>
                     <div className={Styles.parent_features_text}>
                         <p>کالای سالم</p>
@@ -33,7 +33,7 @@ const Feature = () => {
 
             <div className={Styles.parent_features}>
                 <div className={Styles.imgParent}>
-                        <img src={payment_method}/>
+                        <img src={payment_method} alt="پرداخت در محل"/>
                 </div>
                 <div className={Styles.parent_features_text}>
                     <p>پرداخت در محل</p>
@@ -43,7 +43,7 @@ const Feature = () => {
 
             <div className={Styles.parent_features}>
                 <div className={Styles.imgParent}>
-                    <img src={replacement}/>
+                    <img src={replacement} alt="بازگشت کالا"/>
                 </div>
                 <div className={Styles.parent_features_text}>
                     <p>بازگشت کالا</p>
@@ -53,7 +53,7 @@ const Feature = () => {
 
             <div className={Styles.parent_features}>
             <div className={Styles.imgParent}>
-                    <img src={verification}/>
+                    <img src={verification} alt="بازگشت کالا"/>
                 </div>
                 <div className={Styles.parent_features_text}>
                     <p>بازگشت کالا</p>

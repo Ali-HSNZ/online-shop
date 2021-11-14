@@ -1,296 +1,112 @@
 import Styles from  "./ProductList.module.css"
 import image1 from '../../image/11.png'
-import { BiHeart , BiBookmark , BiPlusCircle  ,BiMinusCircle } from "react-icons/bi";
+import { BiHeart , BiBookmark, BiArrowToTop   } from "react-icons/bi";
 import check_mark from '../../image/check.png'
 import garanty from '../../image/badge.png'
 import delivery from '../../image/delivery.png'
+import {products} from '../../data/data'
+import {UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider'
+// console.log(products)
+import { BiTrashAlt , BiPlusCircle  ,BiMinusCircle } from "react-icons/bi";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+
+
+
 
 const ProductList = () => {
+    const dispatch = UseCartDispatch()
+    const {cart} = UseCart()
+
+
+    const checkProductInCart=  (state , product)=>{
+        const item = state.findIndex(item => item.id === product.id)
+        if(item < 0) {return false}else{return true}
+    }
+
+
+    const addToCartHandler = (product)=> {
+        dispatch({type : "ADD_TO_CART" , payLoad : product})
+    }
+
+
     return (  
         <div className={Styles.parent} dir="rtl">
 
+            {
+                products ? products.map((product,index) => {
+                    return(
+                        <div className={Styles.item} key={product.id} dir="ltr">
 
-            <div className={Styles.item} dir="ltr">
-                <div className={Styles.imgParent}>
-                    <img src={image1}/>
-                    <div className={Styles.like_bookMark_parent}>
-                        <div className={Styles.like_bookMark_div}>
-                            <div><BiHeart size="1.7em"/></div>
-                            <div><BiBookmark size="1.7em"/></div>
+                            <div className={Styles.imgParent}>
+                                <img src={product.image} alt={product.name}/>
+                                <div className={Styles.like_bookMark_parent}>
+                                    <div className={Styles.like_bookMark_div}>
+                                        <div><BiHeart size="1.7em"/></div>
+                                        <div><BiBookmark size="1.7em"/></div>
+                                    </div>
+                                </div>
+                            </div>
+        
+        
+                            <div className={Styles.titleParent}>
+                                <p className={Styles.title} dir="rtl">{product.name}</p>
+                            </div>
+        
+        
+                            <div className={Styles.describtion}>
+                                {product.description.map((productSupport , index) => {return (
+                                    <div key={index}>
+                                        <p>{productSupport.support}</p> 
+                                        <img src={
+                                            productSupport.support === "ارسال رایگان" && delivery ||
+                                            productSupport.support === "اورجینال" && check_mark ||
+                                            productSupport.support === "گارانتی مادام العمر" && garanty
+                                        } alt={product.name}/>
+                                    </div>
+                                )})}
+                            </div>
+        
+        
+                            <div className={Styles.footer}>
+
+                                    <div className={Styles.addToCartParent}>
+
+                                        {/* <button onClick={()=>}>Click Me</button> */}
+                                    
+                                       {/* {checkProductInCart(cartState.cart,product) === true ? ( */}
+                                            {/* // <div> */}
+                                                {/* <button className={Styles.addToCartBtn}><BiPlusCircle style={{cursor:'pointer'}} size="2em"/></button> */}
+                                                    {/* <p>نمایش{cart.find(item => item.id === product.id )}</p> */}
+                                                    {/* <p>{giveQuantity(product.id && product.id)}</p> */}
+                                                {/* <button className={Styles.addToCartBtn}><BiMinusCircle style={{cursor:'pointer'}}  size="2em"/></button>  */}
+                                            {/* </div> */}
+                                            
+                                        {/* ) :  } */}
+                                            {checkProductInCart(cart , product) ?    <Link to="/cart">سبد خرید</Link> : <button onClick={()=>addToCartHandler(product)}>خرید محصول</button>}
+                                     
+                                           
+                                        
+                                        
+                                            {/* <button className={Styles.addToCartBtn}><BiPlusCircle style={{cursor:'pointer'}} size="2em"/></button>
+                                            <p>2</p>
+                                            <button className={Styles.addToCartBtn}><BiMinusCircle style={{cursor:'pointer'}}  size="2em"/></button> */}
+                                    
+                                    </div>
+
+
+                                    
+                                    <div className={Styles.price}>
+                                        <p>${product.price}</p>
+                                        <p>${product.offPrice}</p>
+                                    </div>
+                            </div>
+        
                         </div>
-                    </div>
-                </div>
-
-
-                <div className={Styles.titleParent}>
-                    <p className={Styles.title} dir="rtl">گوشی سامسونگ مدل  A51</p>
-                </div>
-
-
-                <div className={Styles.describtion}>
-                    <div><p>گارانتی مادام العمر</p><img src={garanty}/></div>
-                    <div><p>اورجینال</p> <img src={check_mark}/></div>
-                    <div><p>ارسال رایگان</p> <img src={delivery}/></div>
-                </div>
-
-
-                <div className={Styles.footer}>
-                    <div className={Styles.addToCartParent}>
-                        <button>خرید محصول</button>
-                    </div>
-
-                    <div className={Styles.price}>
-                        <p>۲۱,۰۰۰,۰۰۰</p>
-                        <p>۲۰,۱۵۰,۰۰۰</p>
-                    </div>
-                    
-                </div>
-
-            </div>
-
-
-             <div className={Styles.item} dir="ltr">
-                <div className={Styles.imgParent}>
-                    <img src={image1}/>
-                    <div className={Styles.like_bookMark_parent}>
-                        <div className={Styles.like_bookMark_div}>
-                            <div><BiHeart size="1.7em"/></div>
-                            <div><BiBookmark size="1.7em"/></div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className={Styles.titleParent}>
-                    <p className={Styles.title} dir="rtl">گوشی سامسونگ مدل  A51</p>
-                </div>
-
-
-                <div className={Styles.describtion}>
-                    <div><p>گارانتی مادام العمر</p><img src={garanty}/></div>
-                    <div><p>اورجینال</p> <img src={check_mark}/></div>
-                    <div><p>ارسال رایگان</p> <img src={delivery}/></div>
-                </div>
-
-
-                <div className={Styles.footer}>
-                    <div className={Styles.addToCartParent}>
-                        <BiPlusCircle style={{cursor:'pointer'}} size="1.9em"/>
-                        <p>1</p>
-                       <BiMinusCircle style={{cursor:'pointer'}}  size="1.9em"/>
-                    </div>
-
-                    <div className={Styles.price}>
-                        <p>۲۱,۰۰۰,۰۰۰</p>
-                        <p>۲۰,۱۵۰,۰۰۰</p>
-                    </div>
-                    
-                </div>
-
-            </div>
-
-
-            <div className={Styles.item} dir="ltr">
-                <div className={Styles.imgParent}>
-                    <img src={image1}/>
-                    <div className={Styles.like_bookMark_parent}>
-                        <div className={Styles.like_bookMark_div}>
-                            <div><BiHeart size="1.7em"/></div>
-                            <div><BiBookmark size="1.7em"/></div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className={Styles.titleParent}>
-                    <p className={Styles.title} dir="rtl">گوشی سامسونگ مدل  A51</p>
-                </div>
-
-
-                <div className={Styles.describtion}>
-                    <div><p>گارانتی مادام العمر</p><img src={garanty}/></div>
-                    <div><p>اورجینال</p> <img src={check_mark}/></div>
-                    <div><p>ارسال رایگان</p> <img src={delivery}/></div>
-                </div>
-
-
-                <div className={Styles.footer}>
-                    <div className={Styles.addToCartParent}>
-                        <BiPlusCircle style={{cursor:'pointer'}} size="1.9em"/>
-                        <p>1</p>
-                       <BiMinusCircle style={{cursor:'pointer'}}  size="1.9em"/>
-                    </div>
-
-                    <div className={Styles.price}>
-                        <p>۲۱,۰۰۰,۰۰۰</p>
-                        <p>۲۰,۱۵۰,۰۰۰</p>
-                    </div>
-                    
-                </div>
-
-            </div>
-
-
-            <div className={Styles.item} dir="ltr">
-                <div className={Styles.imgParent}>
-                    <img src={image1}/>
-                    <div className={Styles.like_bookMark_parent}>
-                        <div className={Styles.like_bookMark_div}>
-                            <div><BiHeart size="1.7em"/></div>
-                            <div><BiBookmark size="1.7em"/></div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className={Styles.titleParent}>
-                    <p className={Styles.title} dir="rtl">گوشی سامسونگ مدل  A51</p>
-                </div>
-
-
-                <div className={Styles.describtion}>
-                    <div><p>گارانتی مادام العمر</p><img src={garanty}/></div>
-                    <div><p>اورجینال</p> <img src={check_mark}/></div>
-                    <div><p>ارسال رایگان</p> <img src={delivery}/></div>
-                </div>
-
-
-                <div className={Styles.footer}>
-                    <div className={Styles.addToCartParent}>
-                        <button>خرید محصول</button>
-                    </div>
-
-                    <div className={Styles.price}>
-                        <p>۲۱,۰۰۰,۰۰۰</p>
-                        <p>۲۰,۱۵۰,۰۰۰</p>
-                    </div>
-                    
-                </div>
-
-            </div>
-
-
-            <div className={Styles.item} dir="ltr">
-                <div className={Styles.imgParent}>
-                    <img src={image1}/>
-                    <div className={Styles.like_bookMark_parent}>
-                        <div className={Styles.like_bookMark_div}>
-                            <div><BiHeart size="1.7em"/></div>
-                            <div><BiBookmark size="1.7em"/></div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className={Styles.titleParent}>
-                    <p className={Styles.title} dir="rtl">گوشی سامسونگ مدل  A51</p>
-                </div>
-
-
-                <div className={Styles.describtion}>
-                    <div><p>گارانتی مادام العمر</p><img src={garanty}/></div>
-                    <div><p>اورجینال</p> <img src={check_mark}/></div>
-                    <div><p>ارسال رایگان</p> <img src={delivery}/></div>
-                </div>
-
-
-                <div className={Styles.footer}>
-                    <div className={Styles.addToCartParent}>
-                        <button>خرید محصول</button>
-                    </div>
-
-                    <div className={Styles.price}>
-                        <p>۲۱,۰۰۰,۰۰۰</p>
-                        <p>۲۰,۱۵۰,۰۰۰</p>
-                    </div>
-                    
-                </div>
-
-            </div>
-
-
-         {/*   <div className={Styles.item}>
-                <div className={Styles.imgParent}>
-                    <img src={image1}/>
-                    <div className={Styles.like_bookMark_parent}>
-                        <div className={Styles.like_bookMark_div}>
-                            <div><BiHeart size="1.7em"/></div>
-                            <div><BiBookmark size="1.7em"/></div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className={Styles.titleParent}>
-                    <p className={Styles.title} dir="rtl">گوشی سامسونگ مدل  A51</p>
-                </div>
-
-
-                <div className={Styles.describtion}>
-                    <div><p>گارانتی مادام العمر</p><img src={garanty}/></div>
-                    <div><p>اورجینال</p> <img src={check_mark}/></div>
-                    <div><p>ارسال رایگان</p> <img src={delivery}/></div>
-                </div>
-
-
-                <div className={Styles.footer}>
-                    <div className={Styles.addToCartParent}>
-                        <button>خرید محصول</button>
-                    </div>
-
-                    <div className={Styles.price}>
-                        <p>۲۱,۰۰۰,۰۰۰</p>
-                        <p>۲۰,۱۵۰,۰۰۰</p>
-                    </div>
-                    
-                </div>
-
-            </div>
-
-            <div className={Styles.item}>
-                <div className={Styles.imgParent}>
-                    <img src={image1}/>
-                    <div className={Styles.like_bookMark_parent}>
-                        <div className={Styles.like_bookMark_div}>
-                            <div><BiHeart size="1.7em"/></div>
-                            <div><BiBookmark size="1.7em"/></div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className={Styles.titleParent}>
-                    <p className={Styles.title} dir="rtl">گوشی سامسونگ مدل  A51</p>
-                </div>
-
-
-                <div className={Styles.describtion}>
-                    <div><p>گارانتی مادام العمر</p><img src={garanty}/></div>
-                    <div><p>اورجینال</p> <img src={check_mark}/></div>
-                    <div><p>ارسال رایگان</p> <img src={delivery}/></div>
-                </div>
-
-
-                <div className={Styles.footer}>
-                    <div className={Styles.addToCartParent}>
-                        <button>خرید محصول</button>
-                    </div>
-
-                    <div className={Styles.price}>
-                        <p>۲۱,۰۰۰,۰۰۰</p>
-                        <p>۲۰,۱۵۰,۰۰۰</p>
-                    </div>
-                    
-                </div>
-
-            </div> */}
-
-
-
-
-
-
-
+                    )
+                }) : <p>Loding...</p>
+            }
 
         </div>
     );

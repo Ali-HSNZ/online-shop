@@ -1,10 +1,10 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
 import {BiSearch , BiShoppingBag , BiUser } from "react-icons/bi";
-import { Link, NavLink } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
+import { UseCart } from '../../Context/cartContext/CartProvider';
 const Header = ( ) => {
-
+    const {cart} = UseCart()
     return (
         <>
             <div className={Styles.header}>
@@ -13,7 +13,7 @@ const Header = ( ) => {
 
                     <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}>
                         <BiShoppingBag className={Styles.iconStyle} size="1.7em"/>
-                        <p className={Styles.cartCount}>2</p>
+                        {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
                     <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to="/search">
@@ -29,7 +29,7 @@ const Header = ( ) => {
                 
                 <div className={Styles.header_right}>
                     <NavLink activeClassName={Styles.activeLink} to="/" exact>خانه</NavLink>
-                    <div className={Styles.logoParent}><img className={Styles.logoParent_Img} src={Logo}/></div>
+                    <div className={Styles.logoParent}><img className={Styles.logoParent_Img} alt="لوگو" src={Logo}/></div>
                 </div>
 
                

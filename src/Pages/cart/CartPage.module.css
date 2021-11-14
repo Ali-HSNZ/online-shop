@@ -36,7 +36,7 @@
     border-top:1px solid gray ;
     padding-top: 20px;
     text-align: center;
-    font-family: iranyekanweb;
+    font-family: iranyekanweb , iransansweb;
     margin-bottom: 20px;
 }
 .checkout_header{
@@ -101,17 +101,26 @@
 .productQuantityParent{
     display: flex;
     justify-content: space-between;
+}
+.productQuantityParent button{
     color: rgb(179, 0, 0);
+    border: none;
+    background-color: transparent;
+    opacity: 0;
+    outline: none;
 }
 .productQuantityParent p{
     color: black;
     font-weight: 700;
     margin: 0 5px;
 }
-.ProductDeleteParent{
+.ProductDeleteParent button{
     color: rgb(179, 0, 0);
+    outline: none;
+    border: none;
+    background-color: transparent;
     opacity: 0;
 }
-.cartItem:hover .ProductDeleteParent{
+.cartItem:hover .ProductDeleteParent button ,.cartItem:hover .productQuantityParent button{
     opacity: 1;
 }
