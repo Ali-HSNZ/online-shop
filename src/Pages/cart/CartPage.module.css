@@ -2,28 +2,41 @@
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 20px;
     margin-top: 20px;
 }
 .cartParent{
     width: 100%;
 }
-.checkoutParent{
-    width: 25%;
-    height: 100%;
 
+.checkoutParent{
+    width: 400px;
+    height: 100%;
+    position: relative;
     margin-left: 20px;
+    border-radius: 10px;
 
 }
-.checkout{
-    padding: 5px 20px;
+.checkOut_Relative{
+
+    padding: 15px 0 0 0;
+    width: 300px;
+    position: relative;
     background-color: rgb(255, 209, 209);
     border-radius: 5px;
-
+}
+.checkOut_Fixed{
+    padding: 15px 0 0 0;
+    width: 300px;
+    position: fixed;
+    top: 90px;
+    background-color: rgb(255, 209, 209);
+    border-radius: 5px;
 }
 .Allprice{
     margin: 20px 0;line-height: 35px;
+    padding: 0 20px;
     font-family: iransansweb;
     font-size: 14px;
 }
@@ -34,15 +47,15 @@
 }
 .price{
     border-top:1px solid gray ;
-    padding-top: 20px;
+    padding: 20px 0;
     text-align: center;
     font-family: iranyekanweb , iransansweb;
-    margin-bottom: 20px;
+    /* margin-top: 20px; */
 }
 .checkout_header{
     width: 100%;
     height: auto;
-    margin-top: 15px;
+    /* margin-top: 15px; */
     text-align: center;
     font-family: iranyekanweb;
 }
@@ -69,7 +82,8 @@
     background-color: brown;
     color: white;
     font-family: iranyekanweb;
-    margin-top: 10px;
+    position: absolute;
+    bottom: -50px;
     cursor: pointer;
 }
 .checkout_submit:hover{
@@ -78,49 +92,105 @@
 
 .cartItem{
     width: 100%;
-    height: 100px;
+    height: auto;
     background-color: rgba(165, 42, 42, 0.178);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 20px 20px;
     font-family: iransansweb;
     border-radius: 5px;
     margin-bottom: 10px;
 }
-.productImageParent{
-    width: auto;
+.ProductTitle{
+    margin-bottom: 10px;
+}
+.cartItem_center{
+    width: 100%;
     height: 100%;
-    padding: 10px;
+
+    padding: 0 20px 0 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+.ProductPrice {
+    margin-bottom:10px;
+    font-size: 14px;
+}
+.ProductPrice p:nth-child(1){
+    color:rgb(194, 19, 19);
+    font-size: 13px;
+    margin-bottom:10px ;
+  }
+.productImageParent{
+    width: 200px;
+    height: 100%;
+    /* padding: 10px; */
+    display: flex;
+    justify-content: center;
 }
 .productImageParent img{
-    width: auto;
-    height: 100%;
+    width: 160px;
+    height: 160px;
     border-radius: 5px;
 }
 .productQuantityParent{
+    border: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 5px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 3px 0 brown;
+    justify-content: space-between;    
+    margin-top: 10px;
 }
 .productQuantityParent button{
     color: rgb(179, 0, 0);
     border: none;
+    border-top: none;
+    border-bottom: none;
     background-color: transparent;
-    opacity: 0;
+    /* opacity: 0; */
+    padding: 5px;
     outline: none;
+
 }
 .productQuantityParent p{
     color: black;
-    font-weight: 700;
     margin: 0 5px;
 }
+
+
+.ProductDeleteParent{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
 .ProductDeleteParent button{
     color: rgb(179, 0, 0);
     outline: none;
     border: none;
     background-color: transparent;
-    opacity: 0;
+    font-family: iransansweb;
+    cursor: pointer;
+
 }
+
 .cartItem:hover .ProductDeleteParent button ,.cartItem:hover .productQuantityParent button{
     opacity: 1;
 }
+@media only screen and (min-width : 320px){}
+@media only screen and (min-width : 460px){}
+@media only screen and (min-width : 600px){}
+@media only screen and (min-width : 720px){}
+@media only screen and (min-width : 800px){}
+@media only screen and (min-width : 960px){}
+@media only screen and (min-width : 1080px){}
+@media only screen and (min-width : 1180px){}
+@media only screen and (min-width : 1260px){}
+@media only screen and (min-width : 1366px){}

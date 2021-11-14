@@ -2,7 +2,7 @@ export const products = [
 
     {
       id : 0,
-      name: "Winter body",
+      name: "ژل شستشو صورت کامان مدل Oily حجم 500 میلی لیتر",
       description: [
         { support: "گارانتی مادام العمر" },
         { support: "ارسال رایگان" },

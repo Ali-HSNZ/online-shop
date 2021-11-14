@@ -6,7 +6,8 @@ import { UseCart } from '../../Context/cartContext/CartProvider';
 const Header = ( ) => {
     const {cart} = UseCart()
     return (
-        <>
+        <div className={Styles.parent}>
+
             <div className={Styles.header}>
 
                 <div className={Styles.header_left}>
@@ -38,7 +39,7 @@ const Header = ( ) => {
 
             </div> 
           
-        </>
+        </div>
     );
   };
   

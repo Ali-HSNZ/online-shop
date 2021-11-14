@@ -8,7 +8,7 @@ import {products} from '../../data/data'
 import {UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider'
 // console.log(products)
 import { BiTrashAlt , BiPlusCircle  ,BiMinusCircle } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
@@ -16,8 +16,13 @@ import { Link } from "react-router-dom";
 
 
 const ProductList = () => {
+
+
+
+
     const dispatch = UseCartDispatch()
     const {cart} = UseCart()
+
 
 
     const checkProductInCart=  (state , product)=>{
@@ -54,7 +59,8 @@ const ProductList = () => {
         
         
                             <div className={Styles.titleParent}>
-                                <p className={Styles.title} dir="rtl">{product.name}</p>
+                                
+                                <p className={Styles.title} dir="rtl" title={product.name}>{product.name.length >= 27 ? product.name.substring(0,28)+'...' : product.name}</p>
                             </div>
         
         
