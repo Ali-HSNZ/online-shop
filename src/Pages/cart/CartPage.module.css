@@ -2,37 +2,31 @@
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding: 0 20px;
     margin-top: 20px;
 }
 .cartParent{
     width: 100%;
+    margin-right: 20px;
 }
 
 .checkoutParent{
-    width: 400px;
+    width: 420px;
     height: 100%;
     position: relative;
-    margin-left: 20px;
     border-radius: 10px;
-
-}
-.checkOut_Relative{
-
-    padding: 15px 0 0 0;
-    width: 300px;
-    position: relative;
-    background-color: rgb(255, 209, 209);
-    border-radius: 5px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    
 }
 .checkOut_Fixed{
     padding: 15px 0 0 0;
     width: 300px;
-    position: fixed;
-    top: 90px;
-    background-color: rgb(255, 209, 209);
+    background-color: rgb(255, 199, 199);
     border-radius: 5px;
+    position: fixed;
 }
 .Allprice{
     margin: 20px 0;line-height: 35px;
@@ -89,101 +83,164 @@
 .checkout_submit:hover{
     background-color: rgb(207, 60, 60);
 }
-
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 .cartItem{
     width: 100%;
     height: auto;
-    background-color: rgba(165, 42, 42, 0.178);
+    min-height: 120px;
+    background-color: rgb(252, 226, 226);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px;
-    font-family: iransansweb;
+    padding: 15px;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
-.ProductTitle{
-    margin-bottom: 10px;
-}
-.cartItem_center{
-    width: 100%;
+.imageParent{
+    width: 100px;
     height: 100%;
-
-    padding: 0 20px 0 0;
+}
+.imageParent img{
+    width: 100%;
+    height: auto;
+}
+.describrion{
+    width: 100%;
+    padding: 0 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     align-items: flex-start;
-    
 }
-.ProductPrice {
-    margin-bottom:10px;
-    font-size: 14px;
+.describrion_titile {
+    font-family: iransansweb;
+    font-size: 15px;
 }
-.ProductPrice p:nth-child(1){
-    color:rgb(194, 19, 19);
-    font-size: 13px;
-    margin-bottom:10px ;
-  }
-.productImageParent{
-    width: 200px;
-    height: 100%;
-    /* padding: 10px; */
+.describrion_offPriceParent{
     display: flex;
     justify-content: center;
-}
-.productImageParent img{
-    width: 160px;
-    height: 160px;
-    border-radius: 5px;
-}
-.productQuantityParent{
-    border: none;
-    border-right: none;
-    border-left: none;
-    border-radius: 5px;
-    display: flex;
     align-items: center;
-    box-shadow: 0 0 3px 0 brown;
-    justify-content: space-between;    
-    margin-top: 10px;
+    font-family:   iransansweb;
+    font-size: 14px;
+    margin: 10px 0;
 }
-.productQuantityParent button{
-    color: rgb(179, 0, 0);
-    border: none;
-    border-top: none;
-    border-bottom: none;
-    background-color: transparent;
-    /* opacity: 0; */
-    padding: 5px;
-    outline: none;
+.describrion_offPriceParent p:nth-child(1){
+    color: red;
+    
+    margin-left: 5px;
 
+    font-size: 13px;
 }
-.productQuantityParent p{
-    color: black;
-    margin: 0 5px;
+.describrion_offPriceParent p:nth-child(3){
+    color: red;
+    
+    margin-right: 5px;
+    font-size: 13px;
 }
 
-
-.ProductDeleteParent{
-    width: 100%;
-    text-align: left;
-    margin-bottom: 10px;
+.describrion_orginalPriceParent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:   iransansweb;
+    font-size: 14px;
+}
+.describrion_orginalPriceParent p:nth-child(2){
+    font-weight: 700;
+    
+}
+.describrion_orginalPriceParent p:nth-child(1){
+    margin-left: 5px;
+}
+.describrion_orginalPriceParent p:nth-child(3){
+    margin-right: 5px;
 }
 
-.ProductDeleteParent button{
-    color: rgb(179, 0, 0);
-    outline: none;
-    border: none;
-    background-color: transparent;
+.ProductAction{
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.addProductInCart{
+    display: flex;
+    box-shadow: 0 0 6px 0px rgb(255, 158, 158);
+    border:1px solid rgb(248, 154, 154); 
+    border-radius: 5px;
     font-family: iransansweb;
+    font-size: 14px;
+    align-items: center;
+
+}
+.addProductInCart button{
+    padding: 8px 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
     cursor: pointer;
 
 }
-
-.cartItem:hover .ProductDeleteParent button ,.cartItem:hover .productQuantityParent button{
-    opacity: 1;
+.addProductInCart p{
+    margin: 0 10px;
 }
+
+.deleteProductParent{
+    margin-top: 20px;
+
+
+}
+.deleteProductParent button{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-family: iransansweb;
+    color: red;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width : 320px){}
 @media only screen and (min-width : 460px){}
 @media only screen and (min-width : 600px){}

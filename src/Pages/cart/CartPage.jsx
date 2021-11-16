@@ -1,7 +1,7 @@
 import Styles from './CartPage.module.css'
 import image from '../../image/123.jpg'
 import image1 from '../../image/11.png'
-import { BiTrashAlt , BiPlusCircle  ,BiMinusCircle } from "react-icons/bi";
+import { BiTrash , BiMinus  ,BiPlus } from "react-icons/bi";
 import { UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider';
 
 import check_mark from '../../image/check.png'
@@ -52,41 +52,34 @@ const CartPage = () => {
                     <div className={Styles.cartParent}>
                         {productsInCart.cart.map(product => {return (
                             <div className={Styles.cartItem} dir="rtl">
-
-                                <div className={Styles.productImageParent}>
-                                    <img src={product.image} alt={product.name}/>
-                                </div>
-
-                                <div className={Styles.cartItem_center}>
-                                    <div className={Styles.ProductTitle}>
-                                        <p>نام محصول : {product.name}</p>
+                                    <div className={Styles.imageParent}>
+                                        <img src={product.image}/>
                                     </div>
 
-
-
-                                    <div className={Styles.ProductPrice}>
-                                        <p> تخفیف  : {product.price * product.quantity} تومان</p>
-                                        <p> قیمت محصول : {product.offPrice * product.quantity} تومان</p>
+                                    <div className={Styles.describrion}>
+                                        <p className={Styles.describrion_titile}>{product.name}</p>
+                                        <div className={Styles.describrion_offPriceParent}><p>تخفیف</p><p>{product.price * product.quantity}</p><p>تومان</p></div>
+                                        <div className={Styles.describrion_orginalPriceParent}><p>قیمت محصول :</p><p>{product.offPrice * product.quantity}</p><p>تومان</p></div>
                                     </div>
 
+                                    <div className={Styles.ProductAction}>
+                                    
+                                            <div className={Styles.addProductInCart}>
+                                                <button onClick={()=> AddQuantity(product)}><BiPlus/></button>
+                                                <p>{product.quantity}</p>
+                                                <button onClick={()=> DecrimentQuantity(product)}><BiMinus/></button>
+                                            </div>
+                                        
 
-                                    <div className={Styles.productQuantityParent}>
-                                        <button onClick={()=> AddQuantity(product)}><BiPlusCircle style={{cursor:'pointer'}} size="2em"/></button>
-                                        <p>{product.quantity}</p>
-                                        <button onClick={()=> DecrimentQuantity(product)}><BiMinusCircle style={{cursor:'pointer'}}  size="2em"/></button>
+                                            <div className={Styles.deleteProductParent}>
+                                               
+                                                <button onClick={()=> deleteProduct(product)}><BiTrash size="1rem"/> حذف محصول </button>
+                                            </div>
                                     </div>
-                                    <div className={Styles.ProductDeleteParent}>
-                                        <button onClick={()=> deleteProduct(product)}>حذف از سبد خرید</button>
-                                        {/* <BiTrashAlt style={{cursor:'pointer'}}  size="2em"/> */}
-                                    </div>
-                                </div>
-
 
                             </div>
                         )})}
                     </div>
-{/* checkOut_Relative */}
-{/* checkOut_Fixed */}
                     <div className={Styles.checkoutParent}>
                             <div className={Styles.checkOut_Fixed}>
                             {/* You Can Dinamic Position with code ====>>>>>|||| <div className={scrollPosition > 0 ? Styles.checkOut_Fixed : Styles.checkOut_Relative }> */}
