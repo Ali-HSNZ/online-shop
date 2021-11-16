@@ -21,7 +21,7 @@
         /* border: 1px solid red; */
         display: flex;
         justify-content: center;
-
+        margin-bottom: 70px;
         
     }
     .checkOut_Fixed{
@@ -30,6 +30,7 @@
         background-color: rgb(255, 199, 199);
         border-radius: 5px;
         position: relative;
+        
     }
     .Allprice{
         margin: 20px 0;line-height: 35px;
@@ -82,6 +83,7 @@
         position: absolute;
         bottom: -50px;
         cursor: pointer;
+        
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -2142,7 +2144,7 @@
         display: flex;
         justify-content: center;
         margin-right: 0px;
-
+     
         
     }
     .checkOut_Fixed{
