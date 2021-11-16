@@ -1,13 +1,8 @@
 import Styles from './CartPage.module.css'
-import image from '../../image/123.jpg'
-import image1 from '../../image/11.png'
 import { BiTrash , BiMinus  ,BiPlus } from "react-icons/bi";
 import { UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider';
-
-import check_mark from '../../image/check.png'
-import garanty from '../../image/badge.png'
-import delivery from '../../image/delivery.png'
 import { useEffect, useState } from 'react';
+
 
 
 

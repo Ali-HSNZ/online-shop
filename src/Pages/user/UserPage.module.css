@@ -59,8 +59,21 @@
     border-radius: 5px;
     font-family: iransansweb;
     color: white;
-    box-shadow: 0 0 3px 0 rgb(0, 0, 0);
-    background-color: brown;
+    box-shadow: 0 0 2px 0 rgb(0, 0, 0);
     margin-bottom: 20px;
     border: none;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.submitBtn:nth-child(1){
+   padding-left: 10px;
+}
+.submitBtn_disable{
+    background-color: rgb(75, 75, 75);
+    cursor: not-allowed;
+}
+.submitBtn_active{
+    background-color: brown;
+    cursor: pointer;
 }
