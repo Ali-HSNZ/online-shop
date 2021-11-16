@@ -1,0 +1,29 @@
+.parent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    left: 0;
+    padding-top: 70px;
+}
+.center{
+    background-color: rgb(252, 219, 219);
+    width: 400px;
+    height: 500px;
+    border-radius: 5px;
+}
+.header{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+.header p{
+    font-family: iranyekanweb;
+    font-weight: 500;
+}
+

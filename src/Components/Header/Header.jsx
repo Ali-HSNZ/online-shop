@@ -17,9 +17,9 @@ const Header = ( ) => {
                         {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
-                    <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to="/search">
+                    {/* <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to="/search">
                         <BiSearch  className={Styles.iconStyle} size="1.7em"/>
-                    </NavLink>
+                    </NavLink> */}
 
                     <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to="/user">
                         <BiUser  className={Styles.iconStyle} size="1.7em"/>
