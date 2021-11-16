@@ -20,7 +20,6 @@ const CartPage = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
 
 
-    console.log(scrollPosition)
 
     const AddQuantity = (product)=> {
         dispatch({type : "ADD_TO_CART" , payLoad : product})
@@ -67,13 +66,13 @@ const CartPage = () => {
                                             <div className={Styles.addProductInCart}>
                                                 <button onClick={()=> AddQuantity(product)}><BiPlus/></button>
                                                 <p>{product.quantity}</p>
-                                                <button onClick={()=> DecrimentQuantity(product)}><BiMinus/></button>
+                                                <button onClick={()=> DecrimentQuantity(product)}>{product.quantity === 1 ? <BiTrash size="1rem"/> : <BiMinus/> }</button>
                                             </div>
                                         
 
                                             <div className={Styles.deleteProductParent}>
                                                
-                                                <button onClick={()=> deleteProduct(product)}><BiTrash size="1rem"/> حذف محصول </button>
+                                                <button onClick={()=> deleteProduct(product)}><BiTrash size="1rem"/> حذف </button>
                                             </div>
                                     </div>
 
@@ -81,21 +80,7 @@ const CartPage = () => {
                         )})}
                     </div>
                     <div className={Styles.checkoutParent}>
-                            <div className={Styles.checkOut_Fixed}>
-                            {/* You Can Dinamic Position with code ====>>>>>|||| <div className={scrollPosition > 0 ? Styles.checkOut_Fixed : Styles.checkOut_Relative }> */}
-                                <div className={Styles.checkout_header}>
-                                    <p>خلاصه سبد خرید</p>
-                                </div>
-                                <div className={Styles.Allprice}>
-                                    <div> <p>2,000,000</p><p dir="rtl">قیمت کل   : </p></div>
-                                    <div> <p>1,568,000</p><p dir="rtl">قیمت با تخفیف : </p></div>
-                                
-                                </div>
-                                <div className={Styles.price}>
-                                    <p>جمع سبد خرید : 1,000,000</p>
-                                </div>
-                                <button className={Styles.checkout_submit}>پرداخت سبد خرید</button>
-                            </div>
+                           <Checkout cart ={productsInCart.cart} total={ productsInCart.total}/>
                     </div>
 
 
@@ -123,20 +108,34 @@ const CartPage = () => {
         return resualt
 
     }
-
-
-    return (  
-
-  
-            
-
-                
-<>
-                {
-                 renderProducts()
-                }
-  </>
-    );
+    return (  <> { renderProducts()} </>);
+    
 }
  
 export default CartPage;
+
+ const Checkout = ({cart,total})=>{
+
+    const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
+
+    console.log("originalTotalPrice : ",originalTotalPrice)
+    console.log("total : ",total)
+
+    return(
+        <div className={Styles.checkOut_Fixed}>
+    {/* You Can Dinamic Position with code ====>>>>>|||| <div className={scrollPosition > 0 ? Styles.checkOut_Fixed : Styles.checkOut_Relative }> */}
+        <div className={Styles.checkout_header}>
+            <p>خلاصه سبد خرید</p>
+        </div>
+        <div className={Styles.Allprice}>
+            <div> <p dir="rtl"> {originalTotalPrice} تومان  </p><p dir="rtl">قیمت کالاها  : </p></div>
+            <div> <p dir="rtl">{originalTotalPrice - total} تومان</p><p dir="rtl">تخفیف کالاها : </p></div>
+        
+        </div>
+        <div className={Styles.price}>
+            <p>جمع سبد خرید : {total} تومان</p>
+        </div>
+        <button className={Styles.checkout_submit}>پرداخت سبد خرید</button>
+    </div>
+    )
+}
