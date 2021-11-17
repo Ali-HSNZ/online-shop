@@ -14,7 +14,7 @@ function App() {
         <Router>
               <CartProvider>
                   <Layout>
-                        <ToastContainer  autoClose={6000} rtl={true} theme={"colored"}/>
+                        <ToastContainer  autoClose={6000} rtl={true} theme={"dark"}/>
                         <Switch>
                                 {Routes.map((route,index) =>  <Route key={index} {...route}/>)}
                         </Switch>
