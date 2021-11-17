@@ -1,6 +1,6 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
-import {BiSearch , BiShoppingBag , BiUser } from "react-icons/bi";
+import {BiSearch , BiShoppingBag , BiUser , BiUserPlus } from "react-icons/bi";
 import { NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';
 const Header = ( ) => {
@@ -21,7 +21,11 @@ const Header = ( ) => {
                         <BiSearch  className={Styles.iconStyle} size="1.7em"/>
                     </NavLink> */}
 
-                    <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to="/user">
+                    <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to="/user-signup">
+                        <BiUserPlus  className={Styles.iconStyle} size="1.7em"/>
+                    </NavLink>
+
+                    <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to="/user-login">
                         <BiUser  className={Styles.iconStyle} size="1.7em"/>
                     </NavLink>
                    

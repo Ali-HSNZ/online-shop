@@ -1,0 +1,22 @@
+###
+GET http://localhost:5000/api/product HTTP/1.1
+
+###
+
+POST http://localhost:5000/api/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "aliatrabygh@gmail.com",
+    "password": "Ali499021",
+    "name":"Ali Hassanzadeh",
+    "phoneNumber":"0h9302520508"
+}
+###
+POST http://localhost:5000/api/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "aliatraby@gmail.com",
+    "password": "Ali499021"
+}

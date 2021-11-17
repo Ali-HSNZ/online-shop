@@ -54,17 +54,18 @@
     box-shadow: 0 0 2px 0 brown;
 }
 .submitBtn{
-    margin-left: 20px;
+    /* margin-left: 20px; */
     padding: 5px 20px;
     border-radius: 5px;
     font-family: iransansweb;
     color: white;
     box-shadow: 0 0 2px 0 rgb(0, 0, 0);
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     border: none;
     display: flex;
     justify-content:center;
     align-items: center;
+    outline: none;
 }
 .submitBtn:nth-child(1){
    padding-left: 10px;
@@ -76,4 +77,22 @@
 .submitBtn_active{
     background-color: brown;
     cursor: pointer;
+}
+.submitBtnParent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 20px;
+
+}
+.loginLink{
+    color: green;
+    border-radius: 3px;
+    box-shadow: 0 0 3px 0 rgb(138, 137, 137);
+    font-family: iransansweb;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: rgb(255, 215, 215);
 }
