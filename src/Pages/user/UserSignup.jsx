@@ -6,17 +6,15 @@ import { FiAlertTriangle } from "react-icons/fi";
 import { signupUser } from '../../services/signupService';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import {useQuery} from '../../hooks/useQuery'
 import { toast } from 'react-toastify';
-
-
 const UserSignup = (props) => {
-
-     console.log(props)
      
-
-     const [error , setError] = useState(null)
-
+     
+     const query = useQuery()
+     
+     
+     const redirect =   "/user-login?redirect=checkout"
 
     const onSubmit = async(values) => {
 
@@ -24,9 +22,11 @@ const UserSignup = (props) => {
 
           const userData = {name , email ,  phoneNumber , password}
 
+          console.log("UserSignup : ",redirect)
+
           try {
               await signupUser(userData)
-              props.history.push("/user-login")
+              props.history.push(redirect)
 
           } catch (error) {
                toast.error()

@@ -2,6 +2,7 @@ import Styles from './CartPage.module.css'
 import { BiTrash , BiMinus  ,BiPlus } from "react-icons/bi";
 import { UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -130,7 +131,7 @@ export default CartPage;
         <div className={Styles.price}>
             <p>جمع سبد خرید : {total} تومان</p>
         </div>
-        <button className={Styles.checkout_submit}>پرداخت سبد خرید</button>
+        <Link className={Styles.checkout_submit} to="/user-login?redirect=checkout">پرداخت سبد خرید</Link>
     </div>
     )
 }

@@ -8,10 +8,17 @@ import { loginUser } from '../../services/loginService';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { UserDispatch , User } from '../../Context/userProvider/UserProvider';
-
+import {useQuery} from '../../hooks/useQuery'
 
 
 const UserSignup = (props) => {
+    
+    const query = useQuery()
+
+    const redirect = query.get("redirect") || "/"
+    
+    console.log("UserLogin : ",redirect)
+    
     const dispatchUser = UserDispatch()
 
     const [error , setError] = useState(null);
@@ -30,7 +37,7 @@ const UserSignup = (props) => {
             toast.success(`${name} خوش آمدید`)
 
             dispatchUser(data)
-            props.history.push("/")
+            props.history.push(redirect)
         } catch (error) {
             if(error.response && error.response.data.message){
                 // setError(error.response.data.message)
@@ -99,7 +106,7 @@ const UserSignup = (props) => {
                     {!formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                     </button>
 
-                    <Link to={"/user-signup"} className={Styles.loginLink}>!هنوز ثبت نام نکرده اید ؟</Link>
+                    <Link to={`/user-signup?redirect=${redirect}`}  className={Styles.loginLink}>!هنوز ثبت نام نکرده اید ؟</Link>
 
                 </div>
            </form>
