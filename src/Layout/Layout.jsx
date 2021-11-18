@@ -1,8 +1,15 @@
 
+import { useEffect } from "react";
 import Header from "../Components/Header/Header";
+import { UserDispatch } from "../Context/userProvider/UserProvider";
 import Styles from "./Layout.module.css";
 
+
 const Layout = ({children}) => {
+
+
+
+
   return (
     <div className={Styles.parent}>
           <div className={Styles.parentCenter}>

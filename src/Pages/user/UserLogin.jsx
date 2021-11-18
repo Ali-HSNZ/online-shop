@@ -5,12 +5,17 @@ import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
 import { useState } from 'react';
 import { loginUser } from '../../services/loginService';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { UserDispatch , User } from '../../Context/userProvider/UserProvider';
 
 
 
-const UserSignup = () => {
+const UserSignup = (props) => {
+    const dispatchUser = UserDispatch()
 
-        const [error , setError] = useState(null);
+    const [error , setError] = useState(null);
+
 
     const onSubmit = async(values) => {
         const {email , password} = values
@@ -18,11 +23,18 @@ const UserSignup = () => {
         const userData = {email , password}
 
         try {
-            await loginUser(userData)     
+            const {data} = await loginUser(userData)     
             setError(null)        
+            // localStorage.setItem('user',JSON.stringify(data))
+            const {name} = data
+            toast.success(`${name} خوش آمدید`)
+
+            dispatchUser(data)
+            props.history.push("/")
         } catch (error) {
             if(error.response && error.response.data.message){
-                setError(error.response.data.message)
+                // setError(error.response.data.message)
+                toast.error(error.response.data.message)
            }
         }
 
@@ -39,7 +51,7 @@ const UserSignup = () => {
 
     const nameRegExp = /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ]{3,15}$/
     const phoneRegExp = /^(?:98|\+98|0098|0)?9[0-9]{9}$/
-    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/
+    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6})/
 
     const validationSchema = Yup.object({
         // name : Yup.string().required("نام را وارد کنید").matches(nameRegExp,"نام را به فارسی وارد کنید (3 تا 15 حرف)"),
@@ -61,7 +73,7 @@ const UserSignup = () => {
     return (  
         <div className={Styles.parent}>
            <form className={Styles.center} onSubmit={formik.handleSubmit}>
-               <div className={Styles.header}><p>  ورود کاربر</p></div>
+               <div className={Styles.header}><p>ورود  به سایت</p></div>
                
                <div className={Styles.group}>
                     <p dir="rtl">ایمیل : </p>
@@ -78,17 +90,18 @@ const UserSignup = () => {
                </div>
 
 
+               <div className={Styles.submitBtnParent}>
+                <button 
+                        type="submit" 
+                        disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
+                        className={`${Styles.submitBtn} ${formik.isValid === true ? Styles.submitBtn_active : Styles.submitBtn_disable}`}>
+                        ورود
+                    {!formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
+                    </button>
 
-               <button 
-                    type="submit" 
-                    disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
-                    className={`${Styles.submitBtn} ${formik.isValid === true ? Styles.submitBtn_active : Styles.submitBtn_disable}`}>
-                    ثبت نام
-                   {!formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
-                </button>
-                {error && <p style={{color:'red' , textAlign:'center' , fontFamily:'iransansweb'}}>{error}</p>}
+                    <Link to={"/user-signup"} className={Styles.loginLink}>!هنوز ثبت نام نکرده اید ؟</Link>
 
-
+                </div>
            </form>
         </div>
     );

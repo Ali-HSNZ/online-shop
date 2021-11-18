@@ -10,7 +10,10 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
-const UserSignup = () => {
+const UserSignup = (props) => {
+
+     console.log(props)
+     
 
      const [error , setError] = useState(null)
 
@@ -22,9 +25,8 @@ const UserSignup = () => {
           const userData = {name , email ,  phoneNumber , password}
 
           try {
-              const {data}= await signupUser(userData)
-              setError(null)        
-              
+              await signupUser(userData)
+              props.history.push("/user-login")
 
           } catch (error) {
                toast.error()
@@ -43,6 +45,7 @@ const UserSignup = () => {
           password : '',
           rePassword : '',
      }
+
 
 
     const userNameRegExp = /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ]{6,30}$/
@@ -114,7 +117,7 @@ const UserSignup = () => {
                     {!formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                     </button>
 
-                    <Link className={Styles.loginLink}>!قبلا ثبت نام کرده اید ؟</Link>
+                    <Link to={"/user-login"} className={Styles.loginLink}>!قبلا ثبت نام کرده اید ؟</Link>
                </div>
 
                {/* {error && <p style={{color:'red' , textAlign:'center' , fontFamily:'iransansweb'}}>{error}</p>} */}
