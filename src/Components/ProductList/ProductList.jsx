@@ -123,7 +123,7 @@ const ProductList = () => {
 
             <div>
                 {
-                    category&&category.map(category => {
+                    category ? category.map(category => {
                         const filterd = products&&products.filter( e => e.category === category)
                        
                         return(
@@ -135,18 +135,18 @@ const ProductList = () => {
                                         </div>
                                     </div>
                                 ) }
-                                {filterd && filterd.map(e =>{return(
+                                {filterd ? filterd.map(e =>{return(
                                      <div className={Styles.item} dir="ltr">
                                      <div className={Styles.describtion}>
                                         <p>{e.title}</p>
                                      </div>
                                  </div>
-                                )})}
+                                )}) : <p>Loding...</p>}
                             </div>
                         )
                           
                         
-                    })
+                    }) : <p>Loding...</p>
                 }
             </div>
 
