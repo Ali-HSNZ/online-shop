@@ -109,25 +109,17 @@ const ProductList = () => {
     // } 
 
 
-    const returnValue = (category,filterd)=>{
-        return (
-          <>
-                <p>{category}</p>
-                <p>{filterd}</p>
-          </>
-        )
-    }
-
+  
     return (  
         <div className={Styles.parent} dir="rtl">
 
             <div>
                 {
-                    category ? category.map(category => {
+                    category ? category.map((category,index) => {
                         const filterd = products&&products.filter( e => e.category === category)
                        
                         return(
-                             <div dir="rtl">
+                             <div dir="rtl" key={index}>
                                 {category && (
                                      <div className={Styles.item} dir="ltr">
                                         <div>
@@ -135,12 +127,12 @@ const ProductList = () => {
                                         </div>
                                     </div>
                                 ) }
-                                {filterd ? filterd.map(e =>{return(
-                                     <div className={Styles.item} dir="ltr">
-                                     <div className={Styles.describtion}>
-                                        <p>{e.title}</p>
-                                     </div>
-                                 </div>
+                                {filterd ? filterd.map((e,index) =>{return(
+                                     <div className={Styles.item} dir="ltr" key={index}>
+                                        <div className={Styles.describtion}>
+                                            <p>{e.title}</p>
+                                        </div>
+                                    </div>
                                 )}) : <p>Loding...</p>}
                             </div>
                         )
