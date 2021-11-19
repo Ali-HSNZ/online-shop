@@ -29,12 +29,24 @@ const ProductList = () => {
 
 
     const [products , setProducts] = useState(null)
+    const [category , setCategory] = useState(null)
+    const [productsCategore , setProductsCategore ] = useState(null)    
+
+
+
+    const exportCategorie = (categorieName)=>{
+        const categorie =  products && products.filter(element => element.category === categorieName);
+        return categorie
+    }
+
+
+
 
     useEffect(()=>{
         const getAllProducts = async()=>{
             try {
                 const {data} = axios.get('https://fakestoreapi.com/products').then(products =>{
-                    console.log(products.data)
+                    
                     setProducts(products.data)
                 }).catch();
                
@@ -43,6 +55,12 @@ const ProductList = () => {
                 setProducts(null)
             }
         }
+        const getAllCategorie = async()=>{
+            axios.get("http://fakestoreapi.com/products/categories").then((categore)=>{
+                setCategory(categore.data)
+            }).catch()
+        }
+        getAllCategorie()
         getAllProducts()
     },[])
 
@@ -67,11 +85,60 @@ const ProductList = () => {
         dispatch({type : "DELETE_PRODUCT" , payLoad : product})
     }
 
+    console.log()
+
+    // const returnComponent = (category)=>{
+        // const productCategore =products&& products.filter(item => item.category === category);
+
+        // productCategore && productCategore.map(e => console.log(e))
+
+        // console.log(category)
+
+        // return(
+        //     <div>
+        //         {productCategore && productCategore.map(e => {return (
+        //            <>
+        //             <p>{e.title}</p>
+        //             <p style={{color:'red' , fontWeight:'700',fontFamily:'iransansweb'}}>{category}</p>
+        //             </>
+        //         )} )}
+        //      </div>
+        //  )
+
+         
+    // } 
+
+
+    const returnValue = (category,filterd)=>{
+        return (
+          <>
+                <p>{category}</p>
+                <p>{filterd}</p>
+          </>
+        )
+    }
 
     return (  
         <div className={Styles.parent} dir="rtl">
 
-            {
+            <div>
+                {
+                    category&&category.map(category => {
+                        const filterd = products&&products.filter( e => e.category === category)
+                       
+                        return(
+                             <div dir="rtl">
+                                {category && <p style={{color:'red'}}>{category}</p>}
+                                {filterd && filterd.map(e => <p>{e.title}</p>)}
+                            </div>
+                        )
+                          
+                        
+                    })
+                }
+            </div>
+
+            {/* {
                 products ? products.map((product) => {
                     return(
                         <div className={Styles.item} key={product.id} dir="ltr">
@@ -108,7 +175,7 @@ const ProductList = () => {
                                         } alt={product.name}/>
                                     </div>
                                 )})}
-                            </div> */}
+                            </div>
         
         
                             <div className={Styles.footer}>
@@ -130,7 +197,7 @@ const ProductList = () => {
 
                                     
                                     <div className={Styles.price}>
-                                        {/* <p>${product.price}</p> */}
+                                        {/* <p>${product.price}</p> 
                                         <p>${product.price}</p>
                                     </div>
                             </div>
@@ -138,7 +205,7 @@ const ProductList = () => {
                         </div>
                     )
                 }) : <p>در حال بارگیری داده ها...</p>
-            }
+            } */}
 
         </div>
     );

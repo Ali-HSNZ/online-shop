@@ -42,9 +42,9 @@
     justify-content: center;
     flex-direction: row;
     padding: 5px 12px;
-    background-color: rgb(255, 230, 230);
+    background-color: rgb(255, 240, 240);
     border-radius: 0 0 0 15px;
-    opacity: 0;
+    opacity: 1;
     font-family: iransansweb;
     font-size: 14px;
 }
