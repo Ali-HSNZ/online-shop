@@ -4,19 +4,47 @@ import { BiHeart , BiBookmark, BiArrowToTop   } from "react-icons/bi";
 import check_mark from '../../image/check.png'
 import garanty from '../../image/badge.png'
 import delivery from '../../image/delivery.png'
-import {products} from '../../data/data'
+// import {products} from '../../data/data'
 import {UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider'
 // console.log(products)
 import { BiTrashAlt , BiPlusCircle  ,BiMinusCircle } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
+
+//  get All Categorie ===>     https://fakestoreapi.com/products/categories
+//  get all products ====> /products 
+//  get specific product based on id =====>     /products/1
+// /products?limit=5 (limit return results )
+// /products?sort=desc (asc|desc get products in ascending or descending orders (default to asc))
+// /products/products/categories (get all categories)
+// /products/category/jewelery (get all products in specific category)
+// /products/category/jewelery?sort=desc (asc|desc get products in ascending or descending orders (default to asc))
 
 
 
 
 const ProductList = () => {
 
+
+    const [products , setProducts] = useState(null)
+
+    useEffect(()=>{
+        const getAllProducts = async()=>{
+            try {
+                const {data} = axios.get('https://fakestoreapi.com/products').then(products =>{
+                    console.log(products.data)
+                    setProducts(products.data)
+                }).catch();
+               
+                
+            } catch (error) {
+                setProducts(null)
+            }
+        }
+        getAllProducts()
+    },[])
 
 
 
@@ -39,20 +67,25 @@ const ProductList = () => {
         dispatch({type : "DELETE_PRODUCT" , payLoad : product})
     }
 
+
     return (  
         <div className={Styles.parent} dir="rtl">
 
             {
-                products ? products.map((product,index) => {
+                products ? products.map((product) => {
                     return(
                         <div className={Styles.item} key={product.id} dir="ltr">
 
                             <div className={Styles.imgParent}>
-                                <img src={product.image} alt={product.name}/>
+                                <img src={product.image} alt={product.title}/>
                                 <div className={Styles.like_bookMark_parent}>
-                                    <div className={Styles.like_bookMark_div}>
-                                        <div><BiHeart size="1.7em"/></div>
-                                        <div><BiBookmark size="1.7em"/></div>
+
+                                    <div className={Styles.likeParent}>
+                                           <BiHeart size="1.3em" style={{color:'red'}}/>
+                                            <p>{product.rating.rate}</p>
+                                            <span>({product.rating.count})</span>
+                                        
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -60,11 +93,11 @@ const ProductList = () => {
         
                             <div className={Styles.titleParent}>
                                 
-                                <p className={Styles.title} dir="rtl" title={product.name}>{product.name.length >= 27 ? product.name.substring(0,28)+'...' : product.name}</p>
+                                <p className={Styles.title} dir="rtl" title={product.title}>{product.title.length >= 20 ? product.title.substring(0,20)+'...' : product.title}</p>
                             </div>
         
         
-                            <div className={Styles.describtion}>
+                            {/* <div className={Styles.describtion}>
                                 {product.description.map((productSupport , index) => {return (
                                     <div key={index}>
                                         <p>{productSupport.support}</p> 
@@ -75,7 +108,7 @@ const ProductList = () => {
                                         } alt={product.name}/>
                                     </div>
                                 )})}
-                            </div>
+                            </div> */}
         
         
                             <div className={Styles.footer}>
@@ -97,14 +130,14 @@ const ProductList = () => {
 
                                     
                                     <div className={Styles.price}>
+                                        {/* <p>${product.price}</p> */}
                                         <p>${product.price}</p>
-                                        <p>${product.offPrice}</p>
                                     </div>
                             </div>
         
                         </div>
                     )
-                }) : <p>Loding...</p>
+                }) : <p>در حال بارگیری داده ها...</p>
             }
 
         </div>

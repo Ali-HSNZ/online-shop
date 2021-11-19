@@ -3,7 +3,7 @@ import Styles from './UserSignup.module.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { loginUser } from '../../services/loginService';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
@@ -11,18 +11,22 @@ import { UserDispatch , User } from '../../Context/userProvider/UserProvider';
 import {useQuery} from '../../hooks/useQuery'
 
 
-const UserSignup = (props) => {
-    
-    const query = useQuery()
-
-    const redirect = query.get("redirect") || "/"
-    
-    console.log("UserLogin : ",redirect)
-    
+const UserLogin = (props) => {
     const dispatchUser = UserDispatch()
 
     const [error , setError] = useState(null);
 
+    const userData = User()
+    
+    const query = useQuery()
+    const redirect = query.get('redirect') || "/";
+    const changeRedirectAddress = redirect === "Home" ? "/" : redirect
+    console.log("UserLogin : ",redirect)
+
+    useEffect(()=>{
+        if(userData) props.history.push(changeRedirectAddress)
+    },[redirect , userData])
+    
 
     const onSubmit = async(values) => {
         const {email , password} = values
@@ -37,7 +41,9 @@ const UserSignup = (props) => {
             toast.success(`${name} خوش آمدید`)
 
             dispatchUser(data)
-            props.history.push(redirect)
+           
+
+            props.history.push(changeRedirectAddress)
         } catch (error) {
             if(error.response && error.response.data.message){
                 // setError(error.response.data.message)
@@ -58,13 +64,13 @@ const UserSignup = (props) => {
 
     const nameRegExp = /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ]{3,15}$/
     const phoneRegExp = /^(?:98|\+98|0098|0)?9[0-9]{9}$/
-    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6})/
+    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8})/
 
     const validationSchema = Yup.object({
         // name : Yup.string().required("نام را وارد کنید").matches(nameRegExp,"نام را به فارسی وارد کنید (3 تا 15 حرف)"),
         email: Yup.string().email("ایمیل را به درستی وارد کنید").required("ایمیل را وارد کنید"),
         // phoneNumber : Yup.string().required("شماره موبایل وارد کنید").matches(phoneRegExp , "شماره موبایل معتبر نیست"),
-        password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 6 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد)"),
+        password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد)"),
         // rePassword: Yup.string().required("از رمز عبور خود مطمئن شوید").oneOf([Yup.ref('password'), null], 'رمزعبور باید مطابقت داشته باشد')
         
     })
@@ -114,4 +120,4 @@ const UserSignup = (props) => {
     );
 }
  
-export default UserSignup;
+export default UserLogin;

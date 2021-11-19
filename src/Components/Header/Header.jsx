@@ -28,7 +28,7 @@ const Header = ( ) => {
                         <BiUserPlus  className={Styles.iconStyle} size="1.7em"/>
                     </NavLink> */}
 
-                    <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to={`${user ? "/user-profile" : "/user-login"}`}>
+                    <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to={`${user ? "/user-profile" : "/user-login?redirect=Home"}`}>
                         {user ? <FaUserCheck className={Styles.iconStyle} size="1.7em"/> :  <BiUser  className={Styles.iconStyle} size="1.7em"/>}
                        
                     </NavLink>

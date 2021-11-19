@@ -10,11 +10,11 @@ import {useQuery} from '../../hooks/useQuery'
 import { toast } from 'react-toastify';
 const UserSignup = (props) => {
      
-     
      const query = useQuery()
-     
-     
-     const redirect =   "/user-login?redirect=checkout"
+     const redirect = query.get('redirect') || "Home";
+ 
+     console.log("UserLogin : ",redirect)
+ 
 
     const onSubmit = async(values) => {
 
@@ -26,13 +26,11 @@ const UserSignup = (props) => {
 
           try {
               await signupUser(userData)
-              props.history.push(redirect)
+              const changeRedirectAddress = redirect === "Home" ? "/user-login?redirect=Home":`/user-login?redirect=${redirect}`
+              props.history.push(changeRedirectAddress)
 
           } catch (error) {
-               toast.error()
-               // console.log("error : ",error.response.data.message)
                if(error.response && error.response.data.message){
-                    // setError(error.response.data.message)
                     toast.error(error.response.data.message)
                }
           }
@@ -50,13 +48,13 @@ const UserSignup = (props) => {
 
     const userNameRegExp = /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ]{6,30}$/
     const phoneRegExp = /^(?:98|\+98|0098|0)?9[0-9]{9}$/
-    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/
+    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/
 
      const validationSchema = Yup.object({
           name : Yup.string().required("نام را وارد کنید").matches(userNameRegExp,"نام را به فارسی وارد کنید (6 تا 15 حرف)"),
           email: Yup.string().email("ایمیل را به درستی وارد کنید").required("ایمیل را وارد کنید"),
           phoneNumber : Yup.string().required("شماره موبایل وارد کنید").matches(phoneRegExp , "شماره موبایل معتبر نیست"),
-          password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 6 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد)"),
+          password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد)"),
           rePassword: Yup.string().required("از رمز عبور خود مطمئن شوید").oneOf([Yup.ref('password'), null], 'رمزعبور باید مطابقت داشته باشد')
           
      })
@@ -117,7 +115,7 @@ const UserSignup = (props) => {
                     {!formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                     </button>
 
-                    <Link to={"/user-login"} className={Styles.loginLink}>!قبلا ثبت نام کرده اید ؟</Link>
+                    <Link to={`/user-login?redirect=${redirect}`} className={Styles.loginLink}>!قبلا ثبت نام کرده اید ؟</Link>
                </div>
 
                {/* {error && <p style={{color:'red' , textAlign:'center' , fontFamily:'iransansweb'}}>{error}</p>} */}

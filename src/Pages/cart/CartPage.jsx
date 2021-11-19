@@ -24,7 +24,6 @@ const CartPage = () => {
         dispatch({type : "DECRIMENT_TO_CART" , payLoad : product})
     }
     const deleteProduct = (product)=>{
-        
         dispatch({type : "DELETE_PRODUCT" , payLoad : product})
     }
 
