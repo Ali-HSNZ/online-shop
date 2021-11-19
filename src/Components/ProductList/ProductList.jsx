@@ -128,8 +128,20 @@ const ProductList = () => {
                        
                         return(
                              <div dir="rtl">
-                                {category && <p style={{color:'red'}}>{category}</p>}
-                                {filterd && filterd.map(e => <p>{e.title}</p>)}
+                                {category && (
+                                     <div className={Styles.item} dir="ltr">
+                                        <div>
+                                            <p style={{color:'red'}}>{category}</p>
+                                        </div>
+                                    </div>
+                                ) }
+                                {filterd && filterd.map(e =>{return(
+                                     <div className={Styles.item} dir="ltr">
+                                     <div className={Styles.describtion}>
+                                        <p>{e.title}</p>
+                                     </div>
+                                 </div>
+                                )})}
                             </div>
                         )
                           
