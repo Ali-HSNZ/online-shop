@@ -56,7 +56,7 @@ const ProductList = () => {
             }
         }
         const getAllCategorie = async()=>{
-            axios.get("http://fakestoreapi.com/products/categories").then((categore)=>{
+            axios.get("https://fakestoreapi.com/products/categories").then((categore)=>{
                 setCategory(categore.data)
             }).catch()
         }
