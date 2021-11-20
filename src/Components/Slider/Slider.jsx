@@ -6,11 +6,13 @@ import { BsFillCaretLeftFill } from "react-icons/bs";
 const Slider = () => {
 
 const slide = [
-        {id : 1 , dot:false , title : " 1 سلام زندگی" ,  imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/119ea8f18b5660c6d4e8e4a73f72130a8beda82a_1637149599.jpg" },
-        {id : 2 , dot:false , title : " 2 سلام زندگی" ,  imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/0f496bd8c34877e25032e7e708f2e29c88b607c2_1637063652.jpg" },
-        {id : 3 , dot:false , title : " 3 سلام زندگی" ,  imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/a16e123de6ba49e02bdaa9e2813826e27aad74d0_1637262761.jpg" },
+        {id : 1 , imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/119ea8f18b5660c6d4e8e4a73f72130a8beda82a_1637149599.jpg" },
+        {id : 2 , imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/0f496bd8c34877e25032e7e708f2e29c88b607c2_1637063652.jpg" },
+        {id : 3 , imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/a16e123de6ba49e02bdaa9e2813826e27aad74d0_1637262761.jpg" },
+        {id : 3 , imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/9b98cc60ad706f5d6685dce079535ba790c0c507_1637237224.jpg" },
 
     ]
+    
     
     const responsive = {
         superLargeDesktop: {

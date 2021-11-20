@@ -13,6 +13,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { BsFillCaretLeftFill } from "react-icons/bs";
+import ProductListItem from "../../common/ProductList Item/ProductListItem";
 
 //  get All Categorie ===>     https://fakestoreapi.com/products/categories
 //  get all products ====> /products 
@@ -28,20 +30,9 @@ import "react-multi-carousel/lib/styles.css";
 
 const ProductList = () => {
 
-
     const [products , setProducts] = useState(null)
     const [category , setCategory] = useState(null)
     const [productsCategore , setProductsCategore ] = useState(null)    
-
-
-
-    const exportCategorie = (categorieName)=>{
-        const categorie =  products && products.filter(element => element.category === categorieName);
-        return categorie
-    }
-
-
-
 
     useEffect(()=>{
         const getAllProducts = async()=>{
@@ -66,48 +57,6 @@ const ProductList = () => {
     },[])
 
 
-
-    const dispatch = UseCartDispatch()
-    const {cart} = UseCart()
-
-
-
-    const checkProductInCart=  (state , product)=>{
-        const item = state.findIndex(item => item.id === product.id)
-        if(item < 0) {return false}else{return true}
-    }
-
-
-    const addToCartHandler = (product)=> {
-        dispatch({type : "ADD_TO_CART" , payLoad : product})
-    }
-
-    const deleteProduct = (product)=> {
-        dispatch({type : "DELETE_PRODUCT" , payLoad : product})
-    }
-
-    // const returnComponent = (category)=>{
-        // const productCategore =products&& products.filter(item => item.category === category);
-
-        // productCategore && productCategore.map(e => console.log(e))
-
-        // console.log(category)
-
-        // return(
-        //     <div>
-        //         {productCategore && productCategore.map(e => {return (
-        //            <>
-        //             <p>{e.title}</p>
-        //             <p style={{color:'red' , fontWeight:'700',fontFamily:'iransansweb'}}>{category}</p>
-        //             </>
-        //         )} )}
-        //      </div>
-        //  )
-
-         
-    // } 
-
-
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -128,14 +77,17 @@ const ProductList = () => {
         }
     };
 
+    const newCategory = category&&category.slice(0,1)
 
-  
+
+    console.log("newCategory : ",newCategory)
     return (  
         <div className={Styles.parent} dir="rtl">
 
             <div>
                 {
-                    category ? category.map((category,index) => {
+                   
+                    category ? newCategory.map((category,index) => {
                         const filterd = products&&products.filter( e => e.category === category)
                             
                             return(
@@ -143,59 +95,15 @@ const ProductList = () => {
                                    
                                     {category && (
                                             <div className={Styles.Slider_categoryParent}>
-                                                <Link to={`/category?name=${category}`} style={{color:'red',textDecoration:'none'}}>نمایش همه محصولات : {category} {">"}</Link>
+                                                <Link to={`/category?name=${category}`} className={Styles.Slider_categoryLink}>نمایش همه محصولات : {category} <BsFillCaretLeftFill/></Link>
                                             </div>
                                     ) }
                                     
                                     <div  className={Styles.item} dir="ltr" key={index}>
                                         <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
                                             {filterd ? filterd.map( item=>{return(
-                                                <div className={Styles.item} key={item.id} dir="ltr">
+                                                <ProductListItem item = {item}/>
 
-
-                                                    <div className={Styles.imgParent}>
-                                                        <img src={item.image} alt={item.title}/>
-                                                        <div className={Styles.like_bookMark_parent}>
-
-                                                            <div className={Styles.likeParent}>
-                                                                <BiHeart size="1.3em" style={{color:'red'}}/>
-                                                                    <p>{item.rating.rate}</p>
-                                                                    <span>({item.rating.count})</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className={Styles.titleParent}>
-                                                        <p className={Styles.title} title={item.title}>{item.title.length >= 20 ? item.title.substring(0,20)+'...' : item.title}</p>
-                                                    </div>
-
-
-
-                                                    <div className={Styles.footer}>
-
-                                                        <div className={Styles.addToCartParent}>
-                                                                {checkProductInCart(cart , item) ?   
-                                                                    <> 
-                                                                        <Link to="/cart">سبد خرید</Link>
-                                                                        <button className={Styles.trashBtn} onClick={() => deleteProduct(item)}>
-                                                                            <BiTrashAlt style={{cursor:'pointer'}}  size="2.1em"/>
-                                                                        </button>
-                                                                    </> : 
-                                                                    <button className={Styles.addTodoBtn} onClick={()=>addToCartHandler(item)}>
-                                                                        خرید محصول
-                                                                    </button>
-                                                                }
-                                                        </div>
-                                    
-                                                        <div className={Styles.price}>
-                                                            <p>${item.price}</p> 
-                                                            <p>${item.price}</p>
-                                                        </div>
-                                                    </div>
-
-
-
-                                                </div>
                                             )}) : <p>Loding...</p>}
                                         </Carousel>
                                     </div>
@@ -206,76 +114,6 @@ const ProductList = () => {
                     }) : <p>Loding...</p>
                 }
             </div>
-
-            {/* {
-                products ? products.map((product) => {
-                    return(
-                        <div className={Styles.item} key={product.id} dir="ltr">
-
-                            <div className={Styles.imgParent}>
-                                <img src={product.image} alt={product.title}/>
-                                <div className={Styles.like_bookMark_parent}>
-
-                                    <div className={Styles.likeParent}>
-                                           <BiHeart size="1.3em" style={{color:'red'}}/>
-                                            <p>{product.rating.rate}</p>
-                                            <span>({product.rating.count})</span>
-                                        
-                                       
-                                    </div>
-                                </div>
-                            </div>
-        
-        
-                            <div className={Styles.titleParent}>
-                                
-                                <p className={Styles.title} dir="rtl" title={product.title}>{product.title.length >= 20 ? product.title.substring(0,20)+'...' : product.title}</p>
-                            </div>
-        
-        
-                            {/* <div className={Styles.describtion}>
-                                {product.description.map((productSupport , index) => {return (
-                                    <div key={index}>
-                                        <p>{productSupport.support}</p> 
-                                        <img src={
-                                            productSupport.support === "ارسال رایگان" && delivery ||
-                                            productSupport.support === "اورجینال" && check_mark ||
-                                            productSupport.support === "گارانتی مادام العمر" && garanty
-                                        } alt={product.name}/>
-                                    </div>
-                                )})}
-                            </div>
-        
-        
-                            <div className={Styles.footer}>
-
-                                    <div className={Styles.addToCartParent}>
-                                            {checkProductInCart(cart , product) ?   
-                                                <> 
-                                                    <Link to="/cart">سبد خرید</Link>
-                                                    <button className={Styles.trashBtn} onClick={() => deleteProduct(product)}>
-                                                        <BiTrashAlt style={{cursor:'pointer'}}  size="2.1em"/>
-                                                    </button>
-                                                </> : 
-                                                <button className={Styles.addTodoBtn} onClick={()=>addToCartHandler(product)}>
-                                                    خرید محصول
-                                                </button>
-                                            }
-                                    </div>
-
-
-                                    
-                                    <div className={Styles.price}>
-                                        {/* <p>${product.price}</p> 
-                                        <p>${product.price}</p>
-                                    </div>
-                            </div>
-        
-                        </div>
-                    )
-                }) : <p>در حال بارگیری داده ها...</p>
-            } */}
-
         </div>
     );
 }
