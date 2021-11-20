@@ -5,6 +5,7 @@ import UserSignup from '../Pages/user/UserSignup'
 import UserLogin from '../Pages/user/UserLogin'
 import Profile from '../Pages/user/profile/Profile'
 import Checkout from '../Pages/chackout/Checkout'
+import CategoryPage from '../Pages/ProductsCategory/CategoryPage'
 
 // UserLogin
  const Routes = [
@@ -14,5 +15,6 @@ import Checkout from '../Pages/chackout/Checkout'
     {path : "/user-login",  component : UserLogin ,exact : true},
     {path : "/user-profile",  component : Profile ,exact : true},
     {path : "/checkout",  component : Checkout ,exact : true},
+    {path : "/category",  component : CategoryPage ,exact : true},
 ] 
 export default Routes

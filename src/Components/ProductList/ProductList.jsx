@@ -86,8 +86,6 @@ const ProductList = () => {
         dispatch({type : "DELETE_PRODUCT" , payLoad : product})
     }
 
-    console.log()
-
     // const returnComponent = (category)=>{
         // const productCategore =products&& products.filter(item => item.category === category);
 
@@ -110,25 +108,25 @@ const ProductList = () => {
     // } 
 
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
-};
+    const responsive = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 3000 },
+            items: 5
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 5
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
+        }
+    };
 
 
   
@@ -141,17 +139,17 @@ const responsive = {
                         const filterd = products&&products.filter( e => e.category === category)
                             
                             return(
-                                <div dir="rtl" style={{marginBottom:'30px'}} key={index}>
+                                <div dir="rtl" className={Styles.sliderParent} key={index}>
                                    
                                     {category && (
                                             <div className={Styles.Slider_categoryParent}>
-                                                <Link to={`/categori?name=${category}`} style={{color:'red',textDecoration:'none'}}>نمایش همه محصولات : {category} {">"}</Link>
+                                                <Link to={`/category?name=${category}`} style={{color:'red',textDecoration:'none'}}>نمایش همه محصولات : {category} {">"}</Link>
                                             </div>
                                     ) }
                                     
                                     <div  className={Styles.item} dir="ltr" key={index}>
                                         <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
-                                            {filterd ? filterd.map((item,index) =>{return(
+                                            {filterd ? filterd.map( item=>{return(
                                                 <div className={Styles.item} key={item.id} dir="ltr">
 
 

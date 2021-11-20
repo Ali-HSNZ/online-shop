@@ -1,6 +1,6 @@
-import Styles from './Slide.module.css'
+import Styles from './AboutUs.module.css'
 import imageSrc from '../../image/slide.png'
-const Slide = () => {
+const AboutUs = () => {
     return (
         <div className={Styles.box}>
 
@@ -45,4 +45,4 @@ const Slide = () => {
     );
 }
  
-export default Slide;
+export default AboutUs;

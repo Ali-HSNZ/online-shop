@@ -1,15 +1,17 @@
 import Feature from "../../Components/Features/Feature";
 import ProductList from "../../Components/ProductList/ProductList";
-import Slide from "../../Components/Slide/Slide"
 import Styles from './Home.module.css'
+import Slider from '../../Components/Slider/Slider'
+import AboutUs from "../../Components/About Us/AboutUs";
 const Home = () => {
   
     return (
         <div className={Styles.parent}>
             <div className={Styles.parentProduct}>
+                <Slider/>
                 <ProductList/>
                 <Feature/>
-                <Slide/>
+                <AboutUs/>
             </div>
         </div>
     );
