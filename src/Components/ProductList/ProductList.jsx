@@ -145,7 +145,7 @@ const responsive = {
                                    
                                     {category && (
                                             <div className={Styles.Slider_categoryParent}>
-                                                <Link to={`/categori?name=${category}`} style={{color:'red',textDecoration:'none'}}>نمایش همه محصولات : {category}</Link>
+                                                <Link to={`/categori?name=${category}`} style={{color:'red',textDecoration:'none'}}>نمایش همه محصولات : {category} {">"}</Link>
                                             </div>
                                     ) }
                                     

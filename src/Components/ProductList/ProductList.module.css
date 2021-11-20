@@ -192,21 +192,24 @@
     opacity: 1;
 }
 .sliders button:nth-child(2){
-    background-image: none;
     position: absolute;
-    left: 0; opacity: 0;
+    left: 0; opacity: 1;
     border-radius: 0 10px 10px 0;
-    padding: 20px 0;
-    background-color:rgb(177, 0, 0);
+    padding: 30px 0;
+    background-color:rgb(230, 230, 230);
+    border: 1px solid rgb(173, 173, 173);
     color: black;
 }
 .sliders button:nth-child(3){
-    background-image: none;
     position: absolute;
-    right: 0; opacity: 0;
+    right: 0; opacity: 1;
     border-radius: 10px 0 0 10px;
-    padding: 20px 0;
-    background-color:rgb(177, 0, 0);
+    padding: 30px 0;
+    background-color:rgb(230, 230, 230);
+    border: 1px solid rgb(173, 173, 173);
+    color: black;
+}
+.sliders button:nth-child(3)::before,.sliders button:nth-child(2)::before{
     color: black;
 }
 
