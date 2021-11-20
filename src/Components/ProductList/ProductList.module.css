@@ -188,13 +188,13 @@
 
 }
 
-.sliders{
+.sliders:hover button:nth-child(2),.sliders:hover button:nth-child(3){
+    opacity: 1;
 }
-
 .sliders button:nth-child(2){
     background-image: none;
     position: absolute;
-    left: 0;
+    left: 0; opacity: 0;
     border-radius: 0 10px 10px 0;
     padding: 20px 0;
     background-color:rgb(177, 0, 0);
@@ -203,7 +203,7 @@
 .sliders button:nth-child(3){
     background-image: none;
     position: absolute;
-    right: 0;
+    right: 0; opacity: 0;
     border-radius: 10px 0 0 10px;
     padding: 20px 0;
     background-color:rgb(177, 0, 0);
@@ -211,8 +211,8 @@
 }
 
 .Slider_categoryParent{
-    text-align: left;
+    text-align: right;
     font-family: iransansweb;
-    padding: 0 20px;
+    padding: 0;
     margin-bottom: 5px;
 }

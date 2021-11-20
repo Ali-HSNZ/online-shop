@@ -145,11 +145,11 @@ const responsive = {
                                    
                                     {category && (
                                             <div className={Styles.Slider_categoryParent}>
-                                                <p style={{color:'red'}}>{category}</p>
+                                                <Link to={`/categori?name=${category}`} style={{color:'red',textDecoration:'none'}}>نمایش همه محصولات : {category}</Link>
                                             </div>
                                     ) }
                                     
-                                        <div  className={Styles.item} dir="ltr" key={index}>
+                                    <div  className={Styles.item} dir="ltr" key={index}>
                                         <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
                                             {filterd ? filterd.map((item,index) =>{return(
                                                 <div className={Styles.item} key={item.id} dir="ltr">
@@ -173,36 +173,33 @@ const responsive = {
 
 
 
-<div className={Styles.footer}>
+                                                    <div className={Styles.footer}>
 
-                                    <div className={Styles.addToCartParent}>
-                                            {checkProductInCart(cart , item) ?   
-                                                <> 
-                                                    <Link to="/cart">سبد خرید</Link>
-                                                    <button className={Styles.trashBtn} onClick={() => deleteProduct(item)}>
-                                                        <BiTrashAlt style={{cursor:'pointer'}}  size="2.1em"/>
-                                                    </button>
-                                                </> : 
-                                                <button className={Styles.addTodoBtn} onClick={()=>addToCartHandler(item)}>
-                                                    خرید محصول
-                                                </button>
-                                            }
-                                    </div>
-
-
+                                                        <div className={Styles.addToCartParent}>
+                                                                {checkProductInCart(cart , item) ?   
+                                                                    <> 
+                                                                        <Link to="/cart">سبد خرید</Link>
+                                                                        <button className={Styles.trashBtn} onClick={() => deleteProduct(item)}>
+                                                                            <BiTrashAlt style={{cursor:'pointer'}}  size="2.1em"/>
+                                                                        </button>
+                                                                    </> : 
+                                                                    <button className={Styles.addTodoBtn} onClick={()=>addToCartHandler(item)}>
+                                                                        خرید محصول
+                                                                    </button>
+                                                                }
+                                                        </div>
                                     
-                                    <div className={Styles.price}>
-                                         <p>${item.price}</p> 
-                                        <p>${item.price}</p>
-                                    </div>
-                            </div>
+                                                        <div className={Styles.price}>
+                                                            <p>${item.price}</p> 
+                                                            <p>${item.price}</p>
+                                                        </div>
+                                                    </div>
 
 
 
                                                 </div>
                                             )}) : <p>Loding...</p>}
                                         </Carousel>
-
                                     </div>
                                 </div>
                             )
