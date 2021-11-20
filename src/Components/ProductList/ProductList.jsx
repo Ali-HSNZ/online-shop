@@ -15,6 +15,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
+import Category from "../Category/Category";
 
 //  get All Categorie ===>     https://fakestoreapi.com/products/categories
 //  get all products ====> /products 
@@ -77,7 +78,7 @@ const ProductList = () => {
         }
     };
 
-    const newCategory = category&&category.slice(0,1)
+    const newCategory = category&&category.slice(0,2)
 
 
     console.log("newCategory : ",newCategory)
@@ -86,31 +87,32 @@ const ProductList = () => {
 
             <div>
                 {
-                   
-                    category ? newCategory.map((category,index) => {
+                    category ? category.map((category,index) => {
                         const filterd = products&&products.filter( e => e.category === category)
                             
                             return(
-                                <div dir="rtl" className={Styles.sliderParent} key={index}>
-                                   
-                                    {category && (
+                                <div>
+                                   <div dir="rtl" className={Styles.sliderParent} key={index}>
+                                    
+                                        {category && (
                                             <div className={Styles.Slider_categoryParent}>
                                                 <Link to={`/category?name=${category}`} className={Styles.Slider_categoryLink}>نمایش همه محصولات : {category} <BsFillCaretLeftFill/></Link>
                                             </div>
-                                    ) }
-                                    
-                                    <div  className={Styles.item} dir="ltr" key={index}>
-                                        <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
-                                            {filterd ? filterd.map( item=>{return(
-                                                <ProductListItem item = {item}/>
+                                        ) }
+                                        <div  className={Styles.item} dir="ltr" key={index}>
+                                            <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
+                                                {filterd ? filterd.map( (item)=>{return(
+                                                    <ProductListItem item = {item}/>
+                                                )}) : <p>Loding...</p>}
+                                            </Carousel>
+                                            {/* <Category/> */}
+                                        </div>
 
-                                            )}) : <p>Loding...</p>}
-                                        </Carousel>
+
                                     </div>
+                                        {index === 1 && <Category/>}
                                 </div>
                             )
-                          
-                        
                     }) : <p>Loding...</p>
                 }
             </div>
