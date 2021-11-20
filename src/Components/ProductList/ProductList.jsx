@@ -11,7 +11,8 @@ import { BiTrashAlt , BiPlusCircle  ,BiMinusCircle } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 //  get All Categorie ===>     https://fakestoreapi.com/products/categories
 //  get all products ====> /products 
@@ -109,6 +110,27 @@ const ProductList = () => {
     // } 
 
 
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1
+  }
+};
+
+
   
     return (  
         <div className={Styles.parent} dir="rtl">
@@ -117,25 +139,73 @@ const ProductList = () => {
                 {
                     category ? category.map((category,index) => {
                         const filterd = products&&products.filter( e => e.category === category)
-                       
-                        return(
-                             <div dir="rtl" key={index}>
-                                {category && (
-                                     <div className={Styles.item} dir="ltr">
-                                        <div>
-                                            <p style={{color:'red'}}>{category}</p>
-                                        </div>
+                            
+                            return(
+                                <div dir="rtl" style={{marginBottom:'30px'}} key={index}>
+                                   
+                                    {category && (
+                                            <div className={Styles.Slider_categoryParent}>
+                                                <p style={{color:'red'}}>{category}</p>
+                                            </div>
+                                    ) }
+                                    
+                                        <div  className={Styles.item} dir="ltr" key={index}>
+                                        <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
+                                            {filterd ? filterd.map((item,index) =>{return(
+                                                <div className={Styles.item} key={item.id} dir="ltr">
+
+
+                                                    <div className={Styles.imgParent}>
+                                                        <img src={item.image} alt={item.title}/>
+                                                        <div className={Styles.like_bookMark_parent}>
+
+                                                            <div className={Styles.likeParent}>
+                                                                <BiHeart size="1.3em" style={{color:'red'}}/>
+                                                                    <p>{item.rating.rate}</p>
+                                                                    <span>({item.rating.count})</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className={Styles.titleParent}>
+                                                        <p className={Styles.title} title={item.title}>{item.title.length >= 20 ? item.title.substring(0,20)+'...' : item.title}</p>
+                                                    </div>
+
+
+
+<div className={Styles.footer}>
+
+                                    <div className={Styles.addToCartParent}>
+                                            {checkProductInCart(cart , item) ?   
+                                                <> 
+                                                    <Link to="/cart">سبد خرید</Link>
+                                                    <button className={Styles.trashBtn} onClick={() => deleteProduct(item)}>
+                                                        <BiTrashAlt style={{cursor:'pointer'}}  size="2.1em"/>
+                                                    </button>
+                                                </> : 
+                                                <button className={Styles.addTodoBtn} onClick={()=>addToCartHandler(item)}>
+                                                    خرید محصول
+                                                </button>
+                                            }
                                     </div>
-                                ) }
-                                {filterd ? filterd.map((e,index) =>{return(
-                                     <div className={Styles.item} dir="ltr" key={index}>
-                                        <div className={Styles.describtion}>
-                                            <p>{e.title}</p>
-                                        </div>
+
+
+                                    
+                                    <div className={Styles.price}>
+                                         <p>${item.price}</p> 
+                                        <p>${item.price}</p>
                                     </div>
-                                )}) : <p>Loding...</p>}
                             </div>
-                        )
+
+
+
+                                                </div>
+                                            )}) : <p>Loding...</p>}
+                                        </Carousel>
+
+                                    </div>
+                                </div>
+                            )
                           
                         
                     }) : <p>Loding...</p>
