@@ -1,6 +1,26 @@
 import Styles from './AboutUs.module.css'
 import imageSrc from '../../image/slide.png'
+import { useState } from 'react'
+import axios from 'axios'
+import { useEffect } from 'react'
 const AboutUs = () => {
+
+    const [data,setData] = useState(null)
+
+    useEffect(() => {
+        axios({
+            method: 'GET',
+            baseURL: 'https://api.fakeshop-api.com',
+            url: '/products/getAllProducts',
+          })
+            .then(({ data }) => {
+              setData(data)
+            })
+            .catch(err => console.dir(err))
+    }, [])
+
+    console.log("data : ",data)
+
     return (
         <div className={Styles.box}>
 

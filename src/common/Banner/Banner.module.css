@@ -1,0 +1,71 @@
+.parent{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+
+}
+.parent img{
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+}
+@media only screen and (min-width : 320px){
+    .parent img{
+        width: 100%;
+        height: 140px;
+    }
+}
+@media only screen and (min-width : 460px){
+    .parent img{
+        width: 100%;
+        height: 180px;
+    }
+}
+@media only screen and (min-width : 600px){
+    .parent img{
+        width: 100%;
+        height: 200px;
+    }
+}
+@media only screen and (min-width : 720px){
+    .parent img{
+        width: 100%;
+        height: 250px;
+    }
+}
+@media only screen and (min-width : 800px){
+    .parent img{
+        width: 100%;
+        height: 270px;
+    }
+}
+@media only screen and (min-width : 960px){
+    .parent img{
+        width: 100%;
+        height: 270px;
+    }
+}
+@media only screen and (min-width : 1080px){
+    .parent img{
+        width: 100%;
+        height: 270px;
+    }
+}
+@media only screen and (min-width : 1180px){
+    .parent img{
+        width: 100%;
+        height: 270px;
+    }
+}
+@media only screen and (min-width : 1260px){
+    .parent img{
+        width: 100%;
+        height: 270px;
+    }
+}
+@media only screen and (min-width : 1366px){
+    .parent img{
+        width: 100%;
+        height: 300px;
+    }
+}

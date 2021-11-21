@@ -15,7 +15,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
-import Category from "../Category/Category";
+import Banner from "../../common/Banner/Banner";
 
 //  get All Categorie ===>     https://fakestoreapi.com/products/categories
 //  get all products ====> /products 
@@ -77,18 +77,13 @@ const ProductList = () => {
             items: 1
         }
     };
-
-    const newCategory = category&&category.slice(0,2)
-
-
-    console.log("newCategory : ",newCategory)
     return (  
         <div className={Styles.parent} dir="rtl">
 
             <div>
                 {
-                    category ? category.map((category,index) => {
-                        const filterd = products&&products.filter( e => e.category === category)
+                    category ? category.map((mapOnCategory,index) => {
+                        const filterd = products&&products.filter( e => e.category === mapOnCategory)
                             
                             return(
                                 <div>
@@ -96,7 +91,7 @@ const ProductList = () => {
                                     
                                         {category && (
                                             <div className={Styles.Slider_categoryParent}>
-                                                <Link to={`/category?name=${category}`} className={Styles.Slider_categoryLink}>نمایش همه محصولات : {category} <BsFillCaretLeftFill/></Link>
+                                                <Link to={`/category?name=${mapOnCategory}`} className={Styles.Slider_categoryLink}>نمایش همه محصولات : {mapOnCategory} <BsFillCaretLeftFill/></Link>
                                             </div>
                                         ) }
                                         <div  className={Styles.item} dir="ltr" key={index}>
@@ -110,7 +105,7 @@ const ProductList = () => {
 
 
                                     </div>
-                                        {index === 1 && <Category/>}
+                                        {index === 1 && <Banner/>}
                                 </div>
                             )
                     }) : <p>Loding...</p>
