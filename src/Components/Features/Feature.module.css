@@ -1,14 +1,11 @@
 .parent{
     width: 100%;
     height: auto;
-   
-    /* display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap; */
     display: grid;
     grid-template-columns: repeat(auto-fit , minmax(220px , 1fr));
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin-top: 20px;
 }
 
 .parent_features{
@@ -20,7 +17,6 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    margin-bottom: 20px;
     
 }
 .imgParent{
@@ -42,9 +38,7 @@
 }
 .parent_features_text p {
     font-family: iransansweb;
-   
     margin: 10px 0;
-
 }
 .parent_features_text span{
     font-family: iranyekanweb;
