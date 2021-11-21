@@ -86,7 +86,10 @@ const ProductList = () => {
                         const filterd = products&&products.filter( e => e.category === mapOnCategory)
                             
                             return(
-                                <div>
+                            <div>
+                                {mapOnCategory === "jewelery" && <Banner category={mapOnCategory}/> || mapOnCategory === "women's clothing" ? <Banner category={mapOnCategory}/> : 
+
+                                
                                    <div dir="rtl" className={Styles.sliderParent} key={index}>
                                     
                                         {category && (
@@ -105,7 +108,8 @@ const ProductList = () => {
 
 
                                     </div>
-                                        {index === 1 && <Banner/>}
+                                    
+                                        }
                                 </div>
                             )
                     }) : <p>Loding...</p>
