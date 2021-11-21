@@ -37,9 +37,12 @@ const ProductListItem = ({item}) => {
                         {checkProductInCart(cart , item) ?   
                             <> 
                                 <Link to="/cart">سبد خرید</Link>
-                                <button className={Styles.trashBtn} onClick={() => deleteProduct(item)}>
-                                    <BiTrashAlt style={{cursor:'pointer'}}  size="2.1em"/>
-                                </button>
+
+                                <section className={Styles.trashBtn} onClick={() => deleteProduct(item)}>
+                                    حذف
+                                    <BiTrashAlt style={{cursor:'pointer'}}  size="1.3em"/> 
+
+                                </section>
                             </> : 
                             <button className={Styles.addTodoBtn} onClick={()=>addToCartHandler(item)}>
                                 خرید محصول
