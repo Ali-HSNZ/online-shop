@@ -49,9 +49,9 @@ const CartPage = () => {
                                     </div>
 
                                     <div className={Styles.describrion}>
-                                        <p className={Styles.describrion_titile}>{product.name}</p>
-                                        <div className={Styles.describrion_offPriceParent}><p>تخفیف</p><p>{product.price * product.quantity}</p><p>تومان</p></div>
-                                        <div className={Styles.describrion_orginalPriceParent}><p>قیمت محصول :</p><p>{product.offPrice * product.quantity}</p><p>تومان</p></div>
+                                        <p className={Styles.describrion_titile}>{product.title}</p>
+                                        {/* <div className={Styles.describrion_offPriceParent}><p>تخفیف</p><p>{product.price * product.quantity}</p><p>تومان</p></div> */}
+                                        <div className={Styles.describrion_orginalPriceParent}><p>قیمت محصول :</p><p>{product.price * product.quantity}</p><p>تومان</p></div>
                                     </div>
 
                                     <div className={Styles.ProductAction}>
@@ -64,7 +64,6 @@ const CartPage = () => {
                                         
 
                                             <div className={Styles.deleteProductParent}>
-                                               
                                                 <button onClick={()=> deleteProduct(product)}><BiTrash size="1rem"/> حذف </button>
                                             </div>
                                     </div>

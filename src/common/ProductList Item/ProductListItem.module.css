@@ -97,9 +97,6 @@
     font-family: iransansweb;
     font-size: 14px;
 }
-.price p:nth-child(1){
-    text-decoration: line-through;
-}
 .price p:nth-child(2){
     background-color: white;
     padding:0 5px;

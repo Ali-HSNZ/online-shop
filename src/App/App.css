@@ -1,5 +1,4 @@
 :root {
     --toastify-font-family: 'iransansweb';
-    --toastify-font-size : '10px'
   }
-  .Toastify__toast-body { font-family: 'iransansweb'; font-size: 14px;}
+  .Toastify__toast-body { font-family: 'iransansweb'; font-size: 13px; }
