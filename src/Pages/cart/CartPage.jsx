@@ -110,8 +110,6 @@ export default CartPage;
 
     const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
 
-    console.log("originalTotalPrice : ",originalTotalPrice)
-    console.log("total : ",total)
 
     return(
         <div className={Styles.checkOut_Fixed}>
@@ -121,11 +119,11 @@ export default CartPage;
         </div>
         <div className={Styles.Allprice}>
             <div> <p dir="rtl"> {originalTotalPrice} تومان  </p><p dir="rtl">قیمت کالاها  : </p></div>
-            <div> <p dir="rtl">{originalTotalPrice - total} تومان</p><p dir="rtl">تخفیف کالاها : </p></div>
+            <div> <p dir="rtl">0 تومان</p><p dir="rtl">تخفیف کالاها : </p></div>
         
         </div>
         <div className={Styles.price}>
-            <p>جمع سبد خرید : {total} تومان</p>
+            <p>جمع سبد خرید : {originalTotalPrice} تومان</p>
         </div>
         <Link className={Styles.checkout_submit} to="/user-login?redirect=checkout">پرداخت سبد خرید</Link>
     </div>

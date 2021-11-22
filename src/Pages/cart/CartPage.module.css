@@ -120,8 +120,9 @@
     }
     .describrion_titile {
         font-family: iransansweb;
-        font-size: 15px;
-        margin-top: 20px;
+        font-size: 13px;
+        margin: 20px 0;
+
     }
     .describrion_offPriceParent{
         display: flex;
@@ -336,8 +337,9 @@
     }
     .describrion_titile {
         font-family: iransansweb;
-        font-size: 15px;
-        margin-top: 20px;
+        font-size: 13px;
+        margin: 20px 0;
+
 
     }
     .describrion_offPriceParent{
@@ -551,8 +553,9 @@
     }
     .describrion_titile {
         font-family: iransansweb;
-        font-size: 15px;
-        margin-top: 20px;
+        font-size: 14px;
+        margin: 20px 0;
+
 
     }
     .describrion_offPriceParent{
@@ -766,8 +769,8 @@
     }
     .describrion_titile {
         font-family: iransansweb;
-        font-size: 15px;
-        margin-top: 20px;
+        font-size: 14px;
+        margin: 20px 0;
 
     }
     .describrion_offPriceParent{
@@ -980,7 +983,8 @@
     .describrion_titile {
         font-family: iransansweb;
         font-size: 15px;
-        margin-top: 0px;
+        margin-bottom: 20px;
+
 
     }
     .describrion_offPriceParent{
@@ -1192,7 +1196,8 @@
     .describrion_titile {
         font-family: iransansweb;
         font-size: 15px;
-        margin-top: 0px;
+        margin-bottom: 20px;
+
 
     }
     .describrion_offPriceParent{
@@ -1404,7 +1409,8 @@
     .describrion_titile {
         font-family: iransansweb;
         font-size: 15px;
-        margin-top: 0px;
+        margin-bottom: 20px;
+
     }
     .describrion_offPriceParent{
         display: flex;
@@ -1613,7 +1619,9 @@
     .describrion_titile {
         font-family: iransansweb;
         font-size: 15px;
-        margin-top: 0px;
+        margin-bottom: 20px;
+
+
     }
     .describrion_offPriceParent{
         display: flex;
@@ -1822,7 +1830,8 @@
     .describrion_titile {
         font-family: iransansweb;
         font-size: 15px;
-        margin-top: 0px;
+        margin-bottom: 20px;
+
     }
     .describrion_offPriceParent{
         display: flex;
@@ -1935,7 +1944,9 @@
         /* border: 1px solid red; */
         display: flex;
         justify-content: center;
-        margin-right: 0;
+        margin-right: 0px;
+     
+        
     }
     .checkOut_Fixed{
         padding: 15px 0 0 0;
@@ -2003,17 +2014,16 @@
     .cartItem{
         width: 100%;
         height: auto;
-        min-height: 120px;
         background-color: rgb(252, 226, 226);
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 15px;
+        padding: 0 15px;
         border-radius: 5px;
         margin-bottom: 20px;
     }
     .imageParent{
-        width: 100px;
+        width: 80px;
         height: 100%;
     }
     .imageParent img{
@@ -2031,7 +2041,7 @@
     .describrion_titile {
         font-family: iransansweb;
         font-size: 15px;
-        margin-top: 0px;
+        margin-bottom: 20px;
     }
     .describrion_offPriceParent{
         display: flex;
@@ -2039,7 +2049,7 @@
         align-items: center;
         font-family:   iransansweb;
         font-size: 14px;
-        margin: 10px 0;
+        margin: 0 0;
     }
     .describrion_offPriceParent p:nth-child(1){
         color: red;
@@ -2077,9 +2087,10 @@
         width: auto;
         height: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
+        margin: 0;
     }
     
     .addProductInCart{
@@ -2105,9 +2116,9 @@
     }
     
     .deleteProductParent{
-        margin-top: 20px;
     
-    
+        margin: 0 20px 0 0;
+
     }
     .deleteProductParent button{
         border: none;
