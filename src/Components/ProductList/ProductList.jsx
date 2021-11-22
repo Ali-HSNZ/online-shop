@@ -33,17 +33,15 @@ const ProductList = () => {
 
     const [products , setProducts] = useState(null)
     const [category , setCategory] = useState(null)
+    const [cart , setCart] = useState(null)
     const [productsCategore , setProductsCategore ] = useState(null)    
 
     useEffect(()=>{
         const getAllProducts = async()=>{
             try {
-                const {data} = axios.get('https://fakestoreapi.com/products').then(products =>{
-                    
+                axios.get('https://fakestoreapi.com/products').then(products =>{
                     setProducts(products.data)
                 }).catch();
-               
-                
             } catch (error) {
                 setProducts(null)
             }
@@ -51,12 +49,15 @@ const ProductList = () => {
         const getAllCategorie = async()=>{
             axios.get("https://fakestoreapi.com/products/categories").then((categore)=>{
                 setCategory(categore.data)
-            }).catch()
+            }).catch(
+                setCategory(null)
+            )
         }
         getAllCategorie()
         getAllProducts()
     },[])
 
+    console.log(cart)
 
     const responsive = {
         superLargeDesktop: {
@@ -86,30 +87,29 @@ const ProductList = () => {
                         const filterd = products&&products.filter( e => e.category === mapOnCategory)
                             
                             return(
-                            <div>
-                                {mapOnCategory === "jewelery" && <Banner category={mapOnCategory}/> || mapOnCategory === "women's clothing" ? <Banner category={mapOnCategory}/> : 
+                                <div>
+                                    {mapOnCategory === "jewelery" && <Banner category={mapOnCategory}/> || mapOnCategory === "women's clothing" ? <Banner category={mapOnCategory}/> : 
 
-                                
-                                   <div dir="rtl" className={Styles.sliderParent} key={index}>
                                     
-                                        {category && (
-                                            <div className={Styles.Slider_categoryParent}>
-                                                <Link to={`/category?name=${mapOnCategory}`} className={Styles.Slider_categoryLink}>نمایش همه محصولات : {mapOnCategory} <BsFillCaretLeftFill/></Link>
+                                        <div dir="rtl" className={Styles.sliderParent} key={index}>
+                                            
+                                            {category && (
+                                                <div className={Styles.Slider_categoryParent}>
+                                                    <Link to={`/category?name=${mapOnCategory}`} className={Styles.Slider_categoryLink}>نمایش همه محصولات : {mapOnCategory} <BsFillCaretLeftFill/></Link>
+                                                </div>
+                                            ) }
+                                            <div  className={Styles.item} dir="ltr" key={index}>
+                                                <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
+                                                    {filterd ? filterd.map( (item)=>{return(
+                                                        <ProductListItem item = {item}/>
+                                                    )}) : <p>Loding...</p>}
+                                                </Carousel>
                                             </div>
-                                        ) }
-                                        <div  className={Styles.item} dir="ltr" key={index}>
-                                            <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
-                                                {filterd ? filterd.map( (item)=>{return(
-                                                    <ProductListItem item = {item}/>
-                                                )}) : <p>Loding...</p>}
-                                            </Carousel>
-                                            {/* <Category/> */}
+
+
                                         </div>
-
-
-                                    </div>
-                                    
-                                        }
+                                        
+                                    }
                                 </div>
                             )
                     }) : <p>Loding...</p>

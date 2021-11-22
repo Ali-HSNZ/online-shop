@@ -149,6 +149,8 @@
     color: rgb(179, 0, 0);
 }
 .trashBtn{
+    width: 65px;
+    height: auto;
     border:none;
     background-color: transparent;
     outline: none;
@@ -160,7 +162,7 @@
     font-family: iransansweb;
     font-size: 14px;
     position: absolute;
-    top: 5px;
+    top: 15px;
     left: 5px;
     border: 1px solid red;
     background-color: rgb(255, 237, 237);

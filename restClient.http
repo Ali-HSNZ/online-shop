@@ -20,4 +20,12 @@ content-type: application/json
     "email": "aliatraby@gmail.com",
     "password": "Ali499021"
 }
+###
+GET  https://fakestoreapi.com/carts HTTP/1.1
+###
+POST https://fakestoreapi.com/carts HTTP/1.1
 
+            userId:5,
+            date:'1120-02-03',
+            products:[{productId:3,quantity:1}]
+       

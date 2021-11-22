@@ -3,6 +3,8 @@ import { BiHeart} from "react-icons/bi";
 import {UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider'
 import { BiTrashAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const ProductListItem = ({item}) => {
     const dispatch = UseCartDispatch()
@@ -11,12 +13,18 @@ const ProductListItem = ({item}) => {
         const item = state.findIndex(item => item.id === product.id)
         if(item < 0) {return false}else{return true}
     }
+    
+    // console.log("Number : ",Number('2020_02_03'))
+    
     const addToCartHandler = (product)=> {
         dispatch({type : "ADD_TO_CART" , payLoad : product})
     }
+
+
     const deleteProduct = (product)=> {
         dispatch({type : "DELETE_PRODUCT" , payLoad : product})
     }
+
     return (  
         <div className={Styles.item} key={item.id} dir="ltr">
             <div className={Styles.imgParent}>
@@ -40,7 +48,7 @@ const ProductListItem = ({item}) => {
 
                                 <section className={Styles.trashBtn} onClick={() => deleteProduct(item)}>
                                     حذف
-                                    <BiTrashAlt style={{cursor:'pointer'}}  size="1.3em"/> 
+                                    <BiTrashAlt style={{cursor:'pointer'}}  size="1 em"/> 
 
                                 </section>
                             </> : 

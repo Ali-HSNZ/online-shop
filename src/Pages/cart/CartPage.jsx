@@ -3,6 +3,7 @@ import { BiTrash , BiMinus  ,BiPlus } from "react-icons/bi";
 import { UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -14,7 +15,6 @@ const CartPage = () => {
 
     const dispatch = UseCartDispatch()
     const [scrollPosition, setScrollPosition] = useState(0);
-
 
 
     const AddQuantity = (product)=> {
@@ -32,9 +32,7 @@ const CartPage = () => {
         setScrollPosition(position);
     };
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll, { passive: true });
-    }, []);
+
 
     const renderProducts = ()=> {
         var resualt
