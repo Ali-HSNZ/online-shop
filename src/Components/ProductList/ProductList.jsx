@@ -101,7 +101,7 @@ const ProductList = () => {
                                                 <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
                                                     {filterd ? filterd.map( (item)=>{return(
                                                         <ProductListItem key={item.id} item = {item}/>
-                                                    )}) : <> در حال دانلود داده ها{Container()}</>}
+                                                    )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}> در حال دانلود داده ها...</p>}
                                                 </Carousel>
                                             </div>
 
