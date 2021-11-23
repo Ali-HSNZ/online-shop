@@ -10,7 +10,25 @@
     .cartParent{
         width: 100%;
         margin-right: 20px;
-
+    }
+    .alert_product{
+        width: 100%;
+        height: auto;
+        font-family: iransansweb;
+        background-color: rgb(255, 188, 188);
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .alert_product a {
+        text-decoration: none;
+        color: rgb(196, 0, 0);
+        font-weight: 700;
+    }
+    .alert_product p{
+        margin: 0 5px;
     }
     
     .checkoutParent{

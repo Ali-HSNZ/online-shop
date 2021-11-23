@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from 'react-toastify';
 import { User ,UserDispatch} from "../../../Context/userProvider/UserProvider";
-
+import Styles from "./Profile.module.css"
 
 
 
@@ -19,10 +19,11 @@ const Profile = (props) => {
 
 
     return (  
-        // <div className={Styles.parent}>
-            <button onClick={()=>logOutHandler()} style={{padding:'20px 40px' , margin:'50px',cursor:'pointer'}}><h1>log Out</h1></button>
-
-        // </div>
+        <div className={Styles.parent}>
+            <button onClick={()=>logOutHandler()}>
+                خروج از حساب کاربری
+            </button>
+        </div>
     );
 }
  

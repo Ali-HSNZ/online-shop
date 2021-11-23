@@ -26,6 +26,7 @@ import Banner from "../../common/Banner/Banner";
 // /products/category/jewelery (get all products in specific category)
 // /products/category/jewelery?sort=desc (asc|desc get products in ascending or descending orders (default to asc))
 
+import Container from '../../common/Loding/Loding'
 
 
 
@@ -100,7 +101,7 @@ const ProductList = () => {
                                                 <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
                                                     {filterd ? filterd.map( (item)=>{return(
                                                         <ProductListItem key={item.id} item = {item}/>
-                                                    )}) : <p>Loding...</p>}
+                                                    )}) : <> در حال دانلود داده ها{Container()}</>}
                                                 </Carousel>
                                             </div>
 
@@ -110,7 +111,7 @@ const ProductList = () => {
                                     }
                                 </div>
                             )
-                    }) : <p>Loding...</p>
+                    }) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}> در حال دانلود داده ها...</p>
                 }
             </div>
         </div>

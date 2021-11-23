@@ -4,7 +4,7 @@ import { useQuery } from "../../hooks/useQuery";
 import Styles from './CategoryPage.module.css'
 import {UseCartDispatch } from '../../Context/cartContext/CartProvider'
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
-
+import Container from '../../common/Loding/Loding'
 const CategoryPage = () => {
     const [products,setProducts] = useState(null)
     const query = useQuery().get('name');
@@ -23,7 +23,7 @@ const CategoryPage = () => {
         <div className={Styles.parent}>
             {products ? products.map((item,index) =>{return(
                <ProductListItem item={item}/>
-            )}) : <p>Loding...</p>}
+            )}) : Container()}
         </div>
     );
 }

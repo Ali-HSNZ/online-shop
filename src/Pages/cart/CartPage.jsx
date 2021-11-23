@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CartItems from '../../common/Cart Item/CartItems';
 
+import { BsFillCaretLeftFill } from "react-icons/bs";
 
 
 
@@ -19,10 +20,10 @@ const CartPage = () => {
 
 
 
-    // const handleScroll = () => {
-    //     const position = window.pageYOffset;
-    //     setScrollPosition(position);
-    // };
+    const handleScroll = () => {
+        const position = window.pageYOffset;
+        setScrollPosition(position);
+    };
 
 
 
@@ -45,22 +46,16 @@ const CartPage = () => {
 
                 </div>
         }else{
-            resualt= <p style={{
-                width:"100%" ,
-                height:'60px' ,
-                background:'red' ,
-                textAlign:'center' ,
-                display : "flex" ,
-                justifyContent : "center",
-                alignItems:'center',
-                color:'white',
-                fontFamily:'iransansweb',
-                borderRadius:"0px",
-                marginTop:'10px'
-                }}
-            >
-                سبد خرید شما خالی است
-            </p>
+            resualt= <div className={Styles.alert_product}>
+                <p>میرم</p>
+                <Link to="/">فروشگاه</Link>
+                <p>به</p>
+                <BsFillCaretLeftFill/>
+               <p> سبد خرید شما خالی است</p>
+            </div>
+            
+                
+            
         }
 
 
@@ -92,8 +87,7 @@ export default CartPage;
         <div className={Styles.price}>
             <p>جمع سبد خرید : {originalTotalPrice} تومان</p>
         </div>
-        {/* <Link className={Styles.checkout_submit} to="/user-login?redirect=checkout">پرداخت سبد خرید</Link> */}
-        <Link className={Styles.checkout_submit} to="/checkout">پرداخت سبد خرید</Link>
+        <Link className={Styles.checkout_submit} to="/user-login?redirect=checkout">پرداخت سبد خرید</Link>
     </div>
     )
 }

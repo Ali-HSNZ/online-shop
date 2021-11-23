@@ -6,7 +6,7 @@ import CartItems from '../../common/Cart Item/CartItems'
 
 
 const Checkout = () => {
-    const user =" User"
+    const user = User()
     const {cart} = UseCart()
 
 
