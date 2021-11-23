@@ -4,9 +4,6 @@ import { BiTrash , BiMinus  ,BiPlus } from "react-icons/bi";
 
 const CartItems = ({product , checkout}) => {
 
-
-    console.log("checkout : ",checkout)
-
     const dispatch = UseCartDispatch()
 
     const AddQuantity = (product)=> {
@@ -27,7 +24,7 @@ const CartItems = ({product , checkout}) => {
                 <img src={product.image}/>
             </div>
 
-            <div className={`${!checkout ? Styles.describrion : Styles.describrion_route_checkout}`}>
+            <div className={checkout ? Styles.describrion_route_checkout :  Styles.describrion }>
                 <p className={Styles.describrion_titile}>{product.title}</p>
                 <div className={Styles.describrion_orginalPriceParent}><p>قیمت محصول :</p><p>{product.price * product.quantity}</p><p>تومان</p></div>
             </div>

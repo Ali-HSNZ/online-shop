@@ -48,7 +48,7 @@ const ProductListItem = ({item}) => {
 
                                 <section className={Styles.trashBtn} onClick={() => deleteProduct(item)}>
                                     حذف
-                                    <BiTrashAlt style={{cursor:'pointer'}}  size="1 em"/> 
+                                    <BiTrashAlt style={{cursor:'pointer'}}  size="1em"/> 
 
                                 </section>
                             </> : 

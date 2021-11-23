@@ -8,26 +8,52 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {useQuery} from '../../hooks/useQuery'
 import { toast } from 'react-toastify';
+import axios from 'axios'
 const UserSignup = (props) => {
      
      const query = useQuery()
      const redirect = query.get('redirect') || "Home";
  
-     console.log("UserLogin : ",redirect)
- 
 
-    const onSubmit = async(values) => {
+    const onSubmit = (values) => {
 
-          const {name , email ,  phoneNumber , password} = values;
+          const {name , email , password} = values;
 
-          const userData = {name , email ,  phoneNumber , password}
+          // const userData = {name , email  , password}
 
-          console.log("UserSignup : ",redirect)
+
+          const dataServer = axios.post("https://fakestoreapi.com/users", {
+               email:email,
+               username:name,
+               password:password,
+               name:{
+                   firstname:'John',
+                   lastname:'Doe'
+               },
+               address:{
+                   city:'kilcoole',
+                   street:'7835 new road',
+                   number:3,
+                   zipcode:'12926-3874',
+                   geolocation:{
+                       lat:'-37.3159',
+                       long:'81.1496'
+                   }
+               },
+               phone:'1-570-236-7033'
+           })
+               const changeRedirectAddress = redirect === "Home" ? "/user-login?redirect=Home":`/user-login?redirect=${redirect}`
+               props.history.push(changeRedirectAddress)
+               console.log("data in UserSignup : ",dataServer)
+         
 
           try {
-              await signupUser(userData)
-              const changeRedirectAddress = redirect === "Home" ? "/user-login?redirect=Home":`/user-login?redirect=${redirect}`
-              props.history.push(changeRedirectAddress)
+          //     await signupUser(userData)
+
+               
+
+              
+           
 
           } catch (error) {
                if(error.response && error.response.data.message){
@@ -37,23 +63,23 @@ const UserSignup = (props) => {
     }
 
      const initialValues = {
-          name : '',
+          username : '',
           email : '',
-          phoneNumber : '',
+          // phoneNumber : '',
           password : '',
           rePassword : '',
      }
 
 
 
-    const userNameRegExp = /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ]{6,30}$/
+//     const userNameRegExp = /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ]{6,30}$/
     const phoneRegExp = /^(?:98|\+98|0098|0)?9[0-9]{9}$/
     const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/
 
      const validationSchema = Yup.object({
-          name : Yup.string().required("نام را وارد کنید").matches(userNameRegExp,"نام را به فارسی وارد کنید (6 تا 15 حرف)"),
+          // name : Yup.string().required("نام را وارد کنید").matches("نام را به فارسی وارد کنید (6 تا 15 حرف)"),
           email: Yup.string().email("ایمیل را به درستی وارد کنید").required("ایمیل را وارد کنید"),
-          phoneNumber : Yup.string().required("شماره موبایل وارد کنید").matches(phoneRegExp , "شماره موبایل معتبر نیست"),
+          // phoneNumber : Yup.string().required("شماره موبایل وارد کنید").matches(phoneRegExp , "شماره موبایل معتبر نیست"),
           password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد)"),
           rePassword: Yup.string().required("از رمز عبور خود مطمئن شوید").oneOf([Yup.ref('password'), null], 'رمزعبور باید مطابقت داشته باشد')
           
@@ -74,9 +100,9 @@ const UserSignup = (props) => {
                
                <div className={Styles.group}>
                     <p dir="rtl">نام کاربری : </p>
-                    <input onChange={formik.handleChange} onBlur={formik.handleBlur} name='name' type="text"  placeholder="نام کاربری خود را فارسی وارد کنید"/>
+                    <input onChange={formik.handleChange} onBlur={formik.handleBlur} name='username' type="text"  placeholder="نام کاربری خود را فارسی وارد کنید"/>
                     {/* <span>نام کاربری شما اشتباه است</span> */}
-                    {formik.errors.name && formik.touched.name && <span>{formik.errors.name}</span>}
+                    {formik.errors.username && formik.touched.username && <span>{formik.errors.username}</span>}
 
                </div>
 
@@ -86,11 +112,11 @@ const UserSignup = (props) => {
                     {formik.errors.email && formik.touched.email && <span>{formik.errors.email}</span>}
                </div>
 
-               <div className={Styles.group}>
+               {/* <div className={Styles.group}>
                     <p dir="rtl">شماره تماس : </p>
                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} name='phoneNumber' type="tel" placeholder="شماره همراه خود را وارد کنید"/>
                     {formik.errors.phoneNumber && formik.touched.phoneNumber && <span>{formik.errors.phoneNumber}</span>}
-               </div>
+               </div> */}
 
                <div className={Styles.group}>
                     <p dir="rtl">رمز عبور : </p>

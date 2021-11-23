@@ -6,8 +6,11 @@ import CartItems from '../../common/Cart Item/CartItems'
 
 
 const Checkout = () => {
-    const user = User()
+    const user =" User"
     const {cart} = UseCart()
+
+
+    console.log(user)
 
     return (  
         <div className={Styles.parent}>
@@ -15,26 +18,23 @@ const Checkout = () => {
         {user ? (
             <>
                 <div className={Styles.userInfo}>
+
+                  <div className={Styles.userInfo_fixed}>
                     <div className={Styles.userInfo_item}><p>{user.name}</p><p> : نام</p></div>
-                    <div className={Styles.userInfo_item}><p>{user.phoneNumber}</p><p>: شماره همراه  </p></div>
-                    <div className={Styles.userInfo_item}><p>{user.email}</p><p> : ایمیل </p></div> 
-                         
-                    <div className={Styles.cartTotalPrice}><CheckPrice cart={cart}/></div>
-                    <button className={Styles.cartBtn}>نهایی سازی خرید</button>
+                        <div className={Styles.userInfo_item}><p>{user.phoneNumber}</p><p>: شماره همراه  </p></div>
+                        <div className={Styles.userInfo_item}><p>{user.email}</p><p> : ایمیل </p></div> 
+                            
+                        <div className={Styles.cartTotalPrice}><CheckPrice cart={cart}/></div>
+                        <button className={Styles.cartBtn}>نهایی سازی خرید</button>
+                  </div>
                    
                 </div>
+
                 <div className={Styles.cartInfo}>
-                        {cart ? cart.map(product => {
-                            return (
-                                <>
-                                <CartItems checkout={true} product={product}/>
-                                
-                                </>
-                            )
-                        }) : <p>محصولی در سبد خرید شما نیست</p>}
+                        {cart.length ? cart.map(product =>  <CartItems checkout={true} product={product}/> ) : <p>محصولی در سبد خرید شما نیست</p>}
                 </div>
             </>
-        ) : <h1>please Login to the Site to see Cart</h1>}
+        ) : <h1>لطفا ثبت نام | ورود به سایت را انجام دهید تا صفحه چک اوت نمایش داده شود</h1>}
         </div>
     );
 }

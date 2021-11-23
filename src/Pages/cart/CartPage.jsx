@@ -92,7 +92,8 @@ export default CartPage;
         <div className={Styles.price}>
             <p>جمع سبد خرید : {originalTotalPrice} تومان</p>
         </div>
-        <Link className={Styles.checkout_submit} to="/user-login?redirect=checkout">پرداخت سبد خرید</Link>
+        {/* <Link className={Styles.checkout_submit} to="/user-login?redirect=checkout">پرداخت سبد خرید</Link> */}
+        <Link className={Styles.checkout_submit} to="/checkout">پرداخت سبد خرید</Link>
     </div>
     )
 }

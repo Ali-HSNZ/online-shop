@@ -156,14 +156,7 @@
     flex-direction: column;
     align-items: flex-start;
 }
-.describrion_route_checkout{
-    width: 100%;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-}
+
 .describrion_titile {
     font-family: iransansweb;
     font-size: 13px;
@@ -640,7 +633,15 @@
     font-size: 12px;
 }
 
-}
+.describrion_route_checkout{
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}}
 @media only screen and (min-width : 800px){
 .cartItem{
     width: 100%;
@@ -766,7 +767,15 @@
 }
 
 
-}
+.describrion_route_checkout{
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}}
 @media only screen and (min-width : 960px){
 .cartItem{
     width: 100%;
@@ -889,7 +898,15 @@
     align-items: center;
     font-size: 12px;
 }
-}
+.describrion_route_checkout{
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}}
 @media only screen and (min-width : 1080px){
 .cartItem{
     width: 100%;
@@ -1012,6 +1029,15 @@
     display: flex;
     align-items: center;
     font-size: 12px;
+}
+.describrion_route_checkout{
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
 }
 }
 @media only screen and (min-width : 1180px){
@@ -1136,6 +1162,18 @@
     align-items: center;
     font-size: 12px;
 }
+
+.describrion_route_checkout{
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
 }
 @media only screen and (min-width : 1260px){
 .cartItem{
@@ -1258,126 +1296,144 @@
     align-items: center;
     font-size: 12px;
 }
-}
-@media only screen and (min-width : 1366px){
-.cartItem{
-    width: 100%;
-    height: auto;
-    background-color: rgb(252, 226, 226);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-.imageParent{
-    width: 80px;
-    height: 100%;
-}
-.imageParent img{
-    width: 100%;
-    height: auto;
-}
-.describrion{
+.describrion_route_checkout{
     width: 100%;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.describrion_titile {
-    font-family: iransansweb;
-    font-size: 15px;
-    margin-bottom: 20px;
-}
-.describrion_offPriceParent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family:   iransansweb;
-    font-size: 14px;
-    margin: 0 0;
-}
-.describrion_offPriceParent p:nth-child(1){
-    color: red;
-    
-    margin-left: 5px;
-
-    font-size: 13px;
-}
-.describrion_offPriceParent p:nth-child(3){
-    color: red;
-    
-    margin-right: 5px;
-    font-size: 13px;
-}
-
-.describrion_orginalPriceParent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family:   iransansweb;
-    font-size: 14px;
-}
-.describrion_orginalPriceParent p:nth-child(2){
-    font-weight: 700;
-    
-}
-.describrion_orginalPriceParent p:nth-child(1){
-    margin-left: 5px;
-}
-.describrion_orginalPriceParent p:nth-child(3){
-    margin-right: 5px;
-}
-
-.ProductAction{
-    width: auto;
-    height: 100%;
-    display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    margin: 0;
+    flex-wrap: wrap;
 }
-
-.addProductInCart{
-    display: flex;
-    box-shadow: 0 0 6px 0px rgb(255, 158, 158);
-    border:1px solid rgb(248, 154, 154); 
-    border-radius: 5px;
-    font-family: iransansweb;
-    font-size: 14px;
-    align-items: center;
-
 }
-.addProductInCart button{
-    padding: 8px 10px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
+@media only screen and (min-width : 1366px){
+    .cartItem{
+        width: 100%;
+        height: auto;
+        background-color: rgb(252, 226, 226);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    .imageParent{
+        width: 80px;
+        height: 50%;
+    }
+    .imageParent img{
+        width: 100%;
+        height: auto;
+    }
+    .describrion{
+        width: 100%;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .describrion_titile {
+        font-family: iransansweb;
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    .describrion_offPriceParent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:   iransansweb;
+        font-size: 14px;
+        margin: 0 0;
+    }
+    .describrion_offPriceParent p:nth-child(1){
+        color: red;
+        
+        margin-left: 5px;
 
-}
-.addProductInCart p{
-    margin: 0 10px;
-}
+        font-size: 13px;
+    }
+    .describrion_offPriceParent p:nth-child(3){
+        color: red;
+        
+        margin-right: 5px;
+        font-size: 13px;
+    }
 
-.deleteProductParent{
+    .describrion_orginalPriceParent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:   iransansweb;
+        font-size: 14px;
+    }
+    .describrion_orginalPriceParent p:nth-child(2){
+        font-weight: 700;
+        
+    }
+    .describrion_orginalPriceParent p:nth-child(1){
+        margin-left: 5px;
+    }
+    .describrion_orginalPriceParent p:nth-child(3){
+        margin-right: 5px;
+    }
 
-    margin: 0 20px 0 0;
+    .ProductAction{
+        width: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+    }
 
-}
-.deleteProductParent button{
-    border: none;
-    background-color: transparent;
-    outline: none;
-    font-family: iransansweb;
-    color: red;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-}
+    .addProductInCart{
+        display: flex;
+        box-shadow: 0 0 6px 0px rgb(255, 158, 158);
+        border:1px solid rgb(248, 154, 154); 
+        border-radius: 5px;
+        font-family: iransansweb;
+        font-size: 14px;
+        align-items: center;
+
+    }
+    .addProductInCart button{
+        padding: 8px 10px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+    }
+    .addProductInCart p{
+        margin: 0 10px;
+    }
+
+    .deleteProductParent{
+
+        margin: 0 20px 0 0;
+
+    }
+    .deleteProductParent button{
+        border: none;
+        background-color: transparent;
+        outline: none;
+        font-family: iransansweb;
+        color: red;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+    }
+    .describrion_route_checkout{
+        width: 100%;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 }

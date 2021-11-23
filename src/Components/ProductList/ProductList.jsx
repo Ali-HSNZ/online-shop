@@ -57,8 +57,6 @@ const ProductList = () => {
         getAllProducts()
     },[])
 
-    console.log(cart)
-
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -87,7 +85,7 @@ const ProductList = () => {
                         const filterd = products&&products.filter( e => e.category === mapOnCategory)
                             
                             return(
-                                <div>
+                                <div key={index}>
                                     {mapOnCategory === "jewelery" && <Banner category={mapOnCategory}/> || mapOnCategory === "women's clothing" ? <Banner category={mapOnCategory}/> : 
 
                                     
@@ -101,7 +99,7 @@ const ProductList = () => {
                                             <div  className={Styles.item} dir="ltr" key={index}>
                                                 <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
                                                     {filterd ? filterd.map( (item)=>{return(
-                                                        <ProductListItem item = {item}/>
+                                                        <ProductListItem key={item.id} item = {item}/>
                                                     )}) : <p>Loding...</p>}
                                                 </Carousel>
                                             </div>
