@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {useQuery} from '../../hooks/useQuery'
 import { toast } from 'react-toastify';
+import axios from 'axios';
 const UserSignup = (props) => {
      
      const query = useQuery()
@@ -22,16 +23,27 @@ const UserSignup = (props) => {
 
           const userData = {name , email ,  phoneNumber , password}
 
-          try {
-              await signupUser(userData)
-              const changeRedirectAddress = redirect === "Home" ? "/user-login?redirect=Home":`/user-login?redirect=${redirect}`
-              props.history.push(changeRedirectAddress)
+          // try {
+          //     await signupUser(userData)
+          //     const changeRedirectAddress = redirect === "Home" ? "/user-login?redirect=Home":`/user-login?redirect=${redirect}`
+          //     props.history.push(changeRedirectAddress)
 
-          } catch (error) {
-               if(error.response && error.response.data.message){
-                    toast.error(error.response.data.message)
-               }
-          }
+          // } catch (error) {
+          //      if(error.response && error.response.data.message){
+          //           toast.error(error.response.data.message)
+          //      }
+          // }
+
+     axios.post("https://api.freerealapi.com/auth/register",{
+          name,
+          email,
+          password,
+     }).then(e => {
+          const changeRedirectAddress = redirect === "Home" ? "/user-login?redirect=Home":`/user-login?redirect=${redirect}`
+          props.history.push(changeRedirectAddress)
+     }).catch()
+
+
     }
 
      const initialValues = {
@@ -51,9 +63,9 @@ const UserSignup = (props) => {
      const validationSchema = Yup.object({
           name : Yup.string().required("نام را وارد کنید").matches(userNameRegExp,"نام را به فارسی وارد کنید (6 تا 15 حرف)"),
           email: Yup.string().email("ایمیل را به درستی وارد کنید").required("ایمیل را وارد کنید"),
-          phoneNumber : Yup.string().required("شماره موبایل وارد کنید").matches(phoneRegExp , "شماره موبایل معتبر نیست"),
+          // phoneNumber : Yup.string().required("شماره موبایل وارد کنید").matches(phoneRegExp , "شماره موبایل معتبر نیست"),
           password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد)"),
-          rePassword: Yup.string().required("از رمز عبور خود مطمئن شوید").oneOf([Yup.ref('password'), null], 'رمزعبور باید مطابقت داشته باشد')
+          // rePassword: Yup.string().required("از رمز عبور خود مطمئن شوید").oneOf([Yup.ref('password'), null], 'رمزعبور باید مطابقت داشته باشد')
           
      })
 
@@ -84,11 +96,11 @@ const UserSignup = (props) => {
                     {formik.errors.email && formik.touched.email && <span>{formik.errors.email}</span>}
                </div>
 
-               <div className={Styles.group}>
+               {/* <div className={Styles.group}>
                     <p dir="rtl">شماره تماس : </p>
                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} name='phoneNumber' type="tel" placeholder="شماره همراه خود را وارد کنید"/>
                     {formik.errors.phoneNumber && formik.touched.phoneNumber && <span>{formik.errors.phoneNumber}</span>}
-               </div>
+               </div> */}
 
                <div className={Styles.group}>
                     <p dir="rtl">رمز عبور : </p>
@@ -96,12 +108,12 @@ const UserSignup = (props) => {
                     {formik.errors.password && formik.touched.password && <span>{formik.errors.password}</span>}
                </div>
 
-
+{/* 
                <div className={Styles.group}>
                     <p dir="rtl"> تکرار رمز عبور : </p>
                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} name='rePassword' type="password" placeholder="رمز عبور خود را تکرار کنید"/>
                     {formik.errors.rePassword && formik.touched.rePassword && <span>{formik.errors.rePassword}</span>}
-               </div>
+               </div> */}
 
 
                <div className={Styles.submitBtnParent}>

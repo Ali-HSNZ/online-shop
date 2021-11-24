@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { UserDispatch , User } from '../../Context/userProvider/UserProvider';
 import {useQuery} from '../../hooks/useQuery'
+import axios from 'axios';
 
 
 const UserLogin = (props) => {
@@ -33,17 +34,32 @@ const UserLogin = (props) => {
 
         const userData = {email , password}
 
-        try {
-            const {data} = await loginUser(userData)     
-            setError(null)        
-            // localStorage.setItem('user',JSON.stringify(data))
-            const {name} = data
-            toast.success(`${name} خوش آمدید`)
 
-            dispatchUser(data)
+        axios.post("https://api.freerealapi.com/auth/login",{
+            email,
+            password
+        }).then(e =>{
+            dispatchUser(e.data)
+            props.history.push("/")
+
+            console.log("login Success => ",e)
+        }).catch(e =>  console.log("login Error => ",e))
+
+
+
+        try {
+            // const {data} = await loginUser(userData)     
+            // setError(null)        
+            // // localStorage.setItem('user',JSON.stringify(data))
+            // const {name} = data
+            // toast.success(`${name} خوش آمدید`)
+
+            // dispatchUser(data)
            
 
-            props.history.push(changeRedirectAddress)
+
+
+            // props.history.push(changeRedirectAddress)
         } catch (error) {
             if(error.response && error.response.data.message){
                 // setError(error.response.data.message)

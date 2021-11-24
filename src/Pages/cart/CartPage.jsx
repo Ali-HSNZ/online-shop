@@ -70,7 +70,7 @@ export default CartPage;
 
  const Checkout = ({cart,total})=>{
 
-    const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
+    const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return (acc + product.quantity * product.price)} , 0) : 0
 
 
     return(
@@ -85,7 +85,7 @@ export default CartPage;
         
         </div>
         <div className={Styles.price}>
-            <p>جمع سبد خرید : {originalTotalPrice} تومان</p>
+            <p>جمع سبد خرید : {Number(originalTotalPrice)} تومان</p>
         </div>
         <Link className={Styles.checkout_submit} to="/user-login?redirect=checkout">پرداخت سبد خرید</Link>
     </div>
