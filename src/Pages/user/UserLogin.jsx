@@ -50,25 +50,14 @@ const UserLogin = (props) => {
     }
 
     const initialValues = {
-        // name : '',
         email : '',
-        // phoneNumber : '',
         password : '',
-        // rePassword : '',
     }
-
-
-    const nameRegExp = /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ]{3,15}$/
-    const phoneRegExp = /^(?:98|\+98|0098|0)?9[0-9]{9}$/
     const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8})/
 
     const validationSchema = Yup.object({
-        // name : Yup.string().required("نام را وارد کنید").matches(nameRegExp,"نام را به فارسی وارد کنید (3 تا 15 حرف)"),
         email: Yup.string().email("ایمیل را به درستی وارد کنید").required("ایمیل را وارد کنید"),
-        // phoneNumber : Yup.string().required("شماره موبایل وارد کنید").matches(phoneRegExp , "شماره موبایل معتبر نیست"),
         password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد)"),
-        // rePassword: Yup.string().required("از رمز عبور خود مطمئن شوید").oneOf([Yup.ref('password'), null], 'رمزعبور باید مطابقت داشته باشد')
-        
     })
 
 
@@ -87,7 +76,6 @@ const UserLogin = (props) => {
                <div className={Styles.group}>
                     <p dir="rtl">ایمیل : </p>
                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} name='email' type="text"  placeholder="ایمیل خود را وارد کنید"/>
-                    {/* <span>نام کاربری شما اشتباه است</span> */}
                     {formik.errors.email && formik.touched.email && <span>{formik.errors.email}</span>}
 
                </div>

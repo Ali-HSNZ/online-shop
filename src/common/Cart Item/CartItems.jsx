@@ -1,5 +1,5 @@
 import Styles from './CartItems.module.css'
-import { UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider';
+import {UseCartDispatch } from '../../Context/cartContext/CartProvider';
 import { BiTrash , BiMinus  ,BiPlus } from "react-icons/bi";
 
 const CartItems = ({product , checkout}) => {

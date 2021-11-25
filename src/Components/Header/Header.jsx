@@ -1,6 +1,6 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
-import {BiSearch , BiShoppingBag , BiUser , BiUserCheck } from "react-icons/bi";
+import {BiShoppingBag , BiUser} from "react-icons/bi";
 import { FaUserCheck } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';

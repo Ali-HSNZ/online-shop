@@ -1,8 +1,5 @@
 import Styles from './AboutUs.module.css'
 import imageSrc from '../../image/slide.png'
-import { useState } from 'react'
-import axios from 'axios'
-import { useEffect } from 'react'
 const AboutUs = () => {
 
     return (

@@ -1,46 +1,17 @@
 import Styles from  "./ProductList.module.css"
-import image1 from '../../image/11.png'
-import { BiHeart , BiBookmark, BiArrowToTop   } from "react-icons/bi";
-import check_mark from '../../image/check.png'
-import garanty from '../../image/badge.png'
-import delivery from '../../image/delivery.png'
-// import {products} from '../../data/data'
-import {UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider'
-// console.log(products)
-import { BiTrashAlt , BiPlusCircle  ,BiMinusCircle } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { User } from "../../Context/userProvider/UserProvider";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Banner from "../../common/Banner/Banner";
 
-//  get All Categorie ===>     https://fakestoreapi.com/products/categories
-//  get all products ====> /products 
-//  get specific product based on id =====>     /products/1
-// /products?limit=5 (limit return results )
-// /products?sort=desc (asc|desc get products in ascending or descending orders (default to asc))
-// /products/products/categories (get all categories)
-// /products/category/jewelery (get all products in specific category)
-// /products/category/jewelery?sort=desc (asc|desc get products in ascending or descending orders (default to asc))
-
-import Container from '../../common/Loding/Loding'
-
-
-
 const ProductList = () => {
-
-    const user = User()
-
-    console.log('user => ',user)
 
     const [products , setProducts] = useState(null)
     const [category , setCategory] = useState(null)
-    const [cart , setCart] = useState(null)
-    const [productsCategore , setProductsCategore ] = useState(null)    
 
     useEffect(()=>{
         const getAllProducts = async()=>{
