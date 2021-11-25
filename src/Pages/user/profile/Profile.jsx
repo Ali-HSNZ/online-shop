@@ -13,7 +13,7 @@ const Profile = (props) => {
 
     const logOutHandler =()=>{
         dispatch(null)
-        toast.warning("از سیستم خارج شده اید")
+        toast.warning("از حساب خود خارج شده اید")
         props.history.push("/")
     } 
 

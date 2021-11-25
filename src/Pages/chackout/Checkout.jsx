@@ -42,6 +42,8 @@ const Checkout = () => {
 export default Checkout;
 
 const CheckPrice = ({cart})=> {
-    const originalTotalPrice =cart.reduce((acc , product)=> acc + product.quantity * product.price , 0) 
+    const originalTotalPrice =cart.reduce((acc , product)=> acc + product.quantity * product.price , 0).toFixed(2)
+    // const numToString = "sc"
+    
     return <p>قیمت نهایی  : {originalTotalPrice}</p>
 }
