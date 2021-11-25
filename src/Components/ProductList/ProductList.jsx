@@ -106,7 +106,7 @@ const ProductList = () => {
                                                 <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
                                                     {filterd ? filterd.map( (item)=>{return(
                                                         <ProductListItem key={item.id} item = {item}/>
-                                                    )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}> در حال دانلود داده ها...</p>}
+                                                    )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                                                 </Carousel>
                                             </div>
 
@@ -116,7 +116,7 @@ const ProductList = () => {
                                     }
                                 </div>
                             )
-                    }) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}> در حال دانلود داده ها...</p>
+                    }) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}> در حال بارگیری دسته بندی ها و محصولات ...</p>
                 }
             </div>
         </div>
