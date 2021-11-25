@@ -20,8 +20,8 @@ const Checkout = () => {
                 <div className={Styles.userInfo}>
 
                   <div className={Styles.userInfo_fixed}>
-                    <div className={Styles.userInfo_item}><p>{user.name}</p><p> : نام</p></div>
-                        <div className={Styles.userInfo_item}><p>{user.phoneNumber}</p><p>: شماره همراه  </p></div>
+                    {/* <div className={Styles.userInfo_item}><p>{user.name}</p><p> : نام</p></div> */}
+                        {/* <div className={Styles.userInfo_item}><p>{user.phoneNumber}</p><p>: شماره همراه  </p></div> */}
                         <div className={Styles.userInfo_item}><p>{user.email}</p><p> : ایمیل </p></div> 
                             
                         <div className={Styles.cartTotalPrice}><CheckPrice cart={cart}/></div>

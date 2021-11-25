@@ -4,25 +4,24 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
 import { useEffect, useState } from 'react';
-import { loginUser } from '../../services/loginService';
+import { userLogin } from '../../services/loginService';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { UserDispatch , User } from '../../Context/userProvider/UserProvider';
 import {useQuery} from '../../hooks/useQuery'
 import axios from 'axios';
-
+import SmallLoading from '../../common/small Loding/SmallLoading'
 
 const UserLogin = (props) => {
     const dispatchUser = UserDispatch()
 
-    const [error , setError] = useState(null);
+    const [isLoading , setIsLoading] = useState(false)
 
     const userData = User()
     
     const query = useQuery()
     const redirect = query.get('redirect') || "/";
     const changeRedirectAddress = redirect === "Home" ? "/" : redirect
-    console.log("UserLogin : ",redirect)
 
     useEffect(()=>{
         if(userData) props.history.push(changeRedirectAddress)
@@ -33,39 +32,20 @@ const UserLogin = (props) => {
         const {email , password} = values
 
         const userData = {email , password}
-
-
-        axios.post("https://api.freerealapi.com/auth/login",{
-            email,
-            password
-        }).then(e =>{
-            dispatchUser(e.data)
-            props.history.push("/")
-
-            console.log("login Success => ",e)
-        }).catch(e =>  console.log("login Error => ",e))
-
-
-
-        try {
-            // const {data} = await loginUser(userData)     
-            // setError(null)        
-            // // localStorage.setItem('user',JSON.stringify(data))
-            // const {name} = data
-            // toast.success(`${name} خوش آمدید`)
-
-            // dispatchUser(data)
-           
-
-
-
-            // props.history.push(changeRedirectAddress)
-        } catch (error) {
-            if(error.response && error.response.data.message){
-                // setError(error.response.data.message)
-                toast.error(error.response.data.message)
-           }
-        }
+        setIsLoading(true)
+       
+            try {
+                const data = await userLogin(userData)     
+                setIsLoading(false)
+                toast.success("با موفقیت وارد شدید")
+                dispatchUser(JSON.parse( data.config.data))
+                props.history.push(changeRedirectAddress)
+            } catch (e) {
+                toast.error(e.response.data.message)
+                setIsLoading(false)
+            }
+        
+      
 
     }
 
@@ -103,7 +83,7 @@ const UserLogin = (props) => {
         <div className={Styles.parent}>
            <form className={Styles.center} onSubmit={formik.handleSubmit}>
                <div className={Styles.header}><p>ورود  به سایت</p></div>
-               
+              
                <div className={Styles.group}>
                     <p dir="rtl">ایمیل : </p>
                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} name='email' type="text"  placeholder="ایمیل خود را وارد کنید"/>
@@ -124,8 +104,10 @@ const UserLogin = (props) => {
                         type="submit" 
                         disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
                         className={`${Styles.submitBtn} ${formik.isValid === true ? Styles.submitBtn_active : Styles.submitBtn_disable}`}>
-                        ورود
-                    {!formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
+                        {isLoading ? <SmallLoading/> : "ورود"}
+        
+                        
+                    {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                     </button>
 
                     <Link to={`/user-signup?redirect=${redirect}`}  className={Styles.loginLink}>!هنوز ثبت نام نکرده اید ؟</Link>

@@ -11,6 +11,7 @@ import { BiTrashAlt , BiPlusCircle  ,BiMinusCircle } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { User } from "../../Context/userProvider/UserProvider";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { BsFillCaretLeftFill } from "react-icons/bs";
@@ -31,6 +32,10 @@ import Container from '../../common/Loding/Loding'
 
 
 const ProductList = () => {
+
+    const user = User()
+
+    console.log('user => ',user)
 
     const [products , setProducts] = useState(null)
     const [category , setCategory] = useState(null)

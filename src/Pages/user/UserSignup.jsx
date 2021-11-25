@@ -3,48 +3,37 @@ import Styles from './UserSignup.module.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
-import { signupUser } from '../../services/signupService';
+import { userSignup } from '../../services/signupService';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {useQuery} from '../../hooks/useQuery'
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import SmallLoading from '../../common/small Loding/SmallLoading';
 const UserSignup = (props) => {
      
      const query = useQuery()
      const redirect = query.get('redirect') || "Home";
- 
-     console.log("UserLogin : ",redirect)
- 
-
-    const onSubmit = async(values) => {
-
-          const {name , email ,  phoneNumber , password} = values;
-
-          const userData = {name , email ,  phoneNumber , password}
-
-          // try {
-          //     await signupUser(userData)
-          //     const changeRedirectAddress = redirect === "Home" ? "/user-login?redirect=Home":`/user-login?redirect=${redirect}`
-          //     props.history.push(changeRedirectAddress)
-
-          // } catch (error) {
-          //      if(error.response && error.response.data.message){
-          //           toast.error(error.response.data.message)
-          //      }
-          // }
-
-     axios.post("https://api.freerealapi.com/auth/register",{
-          name,
-          email,
-          password,
-     }).then(e => {
-          const changeRedirectAddress = redirect === "Home" ? "/user-login?redirect=Home":`/user-login?redirect=${redirect}`
-          props.history.push(changeRedirectAddress)
-     }).catch()
+     const [isLoading , setIsLoading] = useState(false)
 
 
-    }
+     const changeRedirectAddress = redirect === "Home" ? "/user-login?redirect=Home":`/user-login?redirect=${redirect}`
+
+
+     const onSubmit = async(values) => {
+          setIsLoading(true)
+          const {name , email , password} = values;
+          const userData = {name , email , password}
+          try {
+               await userSignup(userData)
+               props.history.push(changeRedirectAddress)
+               toast.success('ثبت نام شما با موفقیت انجام شد')
+               setIsLoading(false)
+          } catch (error) {
+               setIsLoading(false)
+               toast.error(error.response.data.message)
+          }
+     }
 
      const initialValues = {
           name : '',
@@ -121,7 +110,7 @@ const UserSignup = (props) => {
                          type="submit" 
                          disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
                          className={`${Styles.submitBtn} ${formik.isValid === true ? Styles.submitBtn_active : Styles.submitBtn_disable}`}>
-                         ثبت نام
+                         {isLoading ? <SmallLoading/> : "ثبت نام"} 
                     {!formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                     </button>
 

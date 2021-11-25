@@ -1,5 +1,6 @@
 import http from "./http";
 
-export const signupUser = (data)=>{
-    return http.post('/user/register' , data)
+export const userSignup = (data)=>{
+    const { name , email, password} =  data
+    return http.post('https://api.freerealapi.com/auth/register' , {name , email, password})
 }
