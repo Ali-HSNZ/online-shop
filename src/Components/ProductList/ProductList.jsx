@@ -75,7 +75,8 @@ const ProductList = () => {
                                             ) }
                                             <div  className={Styles.item} dir="ltr" key={index}>
                                                 <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
-                                                    {filterd ? filterd.map( (item)=>{return(
+                                                    {filterd ? filterd.map(
+                                                        item=>{return(
                                                         <ProductListItem key={item.id} item = {item}/>
                                                     )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                                                 </Carousel>

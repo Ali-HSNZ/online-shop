@@ -65,7 +65,7 @@ const UserSignup = (props) => {
     return (  
         <div className={Styles.parent}>
            <form className={Styles.center} onSubmit={formik.handleSubmit}>
-               <div className={Styles.header}><p> ثبت نام کاربر</p></div>
+               <div className={Styles.header}><p> ثبت نام در سایت</p></div>
                
                <div className={Styles.group}>
                     <p dir="rtl">نام کاربری : </p>

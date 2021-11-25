@@ -5,7 +5,7 @@ import CartItems from '../../common/Cart Item/CartItems'
 
 
 
-const Checkout = () => {
+const Checkout = (props) => {
     const user = User()
     const {cart} = UseCart()
     return (  
@@ -28,7 +28,8 @@ const Checkout = () => {
                         {cart.length ? cart.map(product =>  <CartItems checkout={true} product={product}/> ) : <p>محصولی در سبد خرید شما نیست</p>}
                 </div>
             </>
-        ) : <h1>لطفا ثبت نام | ورود به سایت را انجام دهید تا صفحه چک اوت نمایش داده شود</h1>}
+        // ) : <h1>لطفا ثبت نام | ورود به سایت را انجام دهید تا صفحه چک اوت نمایش داده شود</h1>}
+        ) : props.history.push("/")}
         </div>
     );
 }
