@@ -21,7 +21,7 @@ const CartItems = ({product , checkout}) => {
     return (  
         <div className={Styles.cartItem} dir="rtl">
             <div className={Styles.imageParent}>
-                <img src={product.image}/>
+                <img src={product.image} alt="product img"/>
             </div>
 
             <div className={checkout ? Styles.describrion_route_checkout :  Styles.describrion }>

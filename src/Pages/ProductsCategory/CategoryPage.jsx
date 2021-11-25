@@ -18,7 +18,7 @@ const CategoryPage = () => {
             }
         }
         getProducts()
-    },[])
+    },[query])
     return ( 
         <div className={Styles.parent}>
             {products ? products.map((item,index) =>{return(

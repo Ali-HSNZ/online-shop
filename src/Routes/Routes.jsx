@@ -7,7 +7,6 @@ import Profile from '../Pages/user/profile/Profile'
 import Checkout from '../Pages/chackout/Checkout'
 import CategoryPage from '../Pages/ProductsCategory/CategoryPage'
 
-// UserLogin
  const Routes = [
     {path : "/" , component : Home , exact : true},
     {path : "/cart",  component : CartPage},

@@ -6,15 +6,11 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import CartProvider from '../Context/cartContext/CartProvider';
 import './App.css'
-import UserProvider, { UserDispatch } from '../Context/userProvider/UserProvider';
-import { useEffect } from 'react';
-
+import UserProvider from '../Context/userProvider/UserProvider';
 function App() {
 
 
-
       return (
-
             <Router>
                   <UserProvider>
                         <CartProvider>

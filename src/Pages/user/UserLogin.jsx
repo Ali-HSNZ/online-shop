@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { UserDispatch , User } from '../../Context/userProvider/UserProvider';
 import {useQuery} from '../../hooks/useQuery'
-import axios from 'axios';
 import SmallLoading from '../../common/small Loding/SmallLoading'
 
 const UserLogin = (props) => {
@@ -25,7 +24,7 @@ const UserLogin = (props) => {
 
     useEffect(()=>{
         if(userData) props.history.push(changeRedirectAddress)
-    },[redirect , userData])
+    },[changeRedirectAddress , userData , props.history])
     
 
     const onSubmit = async(values) => {

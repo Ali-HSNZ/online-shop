@@ -24,7 +24,7 @@ const cartReducer = (state , action) =>{
                 cloneState[findItem_index] = cloneItem;
             
             }else{
-                const filtredState = cloneState.filter(product => product.id != action.payLoad.id)
+                const filtredState = cloneState.filter(product => product.id !== action.payLoad.id)
                 return {...state , cart : filtredState}
             }
             return {...state , cart : cloneState , total : action.payLoad.price}
@@ -32,7 +32,7 @@ const cartReducer = (state , action) =>{
         case "DELETE_PRODUCT" :{
             const cloneState = [...state.cart] 
 
-            const filterdProduct = cloneState.filter(product => product.id != action.payLoad.id)
+            const filterdProduct = cloneState.filter(product => product.id !== action.payLoad.id)
             return {...state , cart : filterdProduct , total : action.payLoad.price}
         }
             
