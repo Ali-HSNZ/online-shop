@@ -1,13 +1,20 @@
+.itemParent{
+    margin: 0 7px;
+    position: relative;
+}
 .item{
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(221, 221, 221);
-    position: relative;
+    overflow: hidden;
+    /* position: relative; */
+    border-bottom-left-radius: 60px 20px;
+    border-bottom-right-radius: 60px 20px;
+    margin-top: 20px;
 }
 
 .imgParent{
     width: 100%;
     height: 200px;
-    position: relative; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,14 +25,29 @@
     height: 70%;
     pointer-events: none;
 }
-.like_bookMark_parent{
-    position: absolute;
-    top: 0;
+.item_header{
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-
+    justify-content: 
+    flex-end;
 }
+.header_offPrice{
+    width: 120px;
+    height: 20px;
+    background-color: rgb(190, 36, 36);
+   color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: iransansweb;
+   font-size: 13px;
+   /* border-radius: 20px 20px 0 0; */
+   border-top-right-radius: 60px 11px;
+   border-top-left-radius: 60px 11px;
+   position: absolute;
+    top: -20px;
+}
+
 .likeParent{
     width: auto;
     height: auto;
@@ -60,149 +82,62 @@
 .likeParent div:nth-child(1){
     color: rgb(0, 0, 0);
 }
-
-
-/* -------------------------------------------------------------------------------------------------------------------------- */
-
 .titleParent{
     width: 100%;
     font-family: iransansweb;
     margin-top: 10px;
     padding: 0 20px;
 }
-
-
-/* -------------------------------------------------------------------------------------------------------------------------- */
-
-
-
-/* -------------------------------------------------------------------------------------------------------------------------- */
-
-
-
-
-
-.footer{
-    margin: 20px 0;
+.item_footer{
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid rgb(255, 141, 141);
+    margin: 20px  0;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    padding: 0 20px;
-}
-.price{
-    background-color: rgb(255, 211, 211);
-    padding: 5px 10px;
-    border-radius: 10px;
-    text-align: center;
-    font-family: iransansweb;
+    font-family: iranyekanweb , iransansweb;
     font-size: 14px;
-}
-.price p:nth-child(2){
-    background-color: white;
-    padding:0 5px;
-    margin: 5px 0;
-    border-radius: 5px;
-}
-.addToCartParent{
-    display: flex;
-    align-items: center;
-    color: rgb(179, 0, 0);
-
-}
-.addToCartParent p{
-    margin: 0 2px;
-    font-family: iransansweb;
-    color: black;
-    font-weight: bold;
-}
-.addTodoBtn{
-    padding: 7px 15px;
-    font-family: iransansweb;
-    border-radius: 5px;
-    border: none;
-    background-color: rgb(192, 56, 56);
-    color: white;
-    cursor: pointer;
-    font-size: 13px;
-    box-shadow: 0 0 3px 0 rgb(0, 0, 0);
-}
-.addToCartParent  a{
-    padding: 7px 15px;
-    font-family: iransansweb;
-    border-radius: 5px;
-    background-color: rgb(23, 82, 0);
-    color: white;
-    cursor: pointer;
-    font-size: 13px;
-    text-decoration: none;
     
-    box-shadow: 0 0 3px 0 rgb(0, 0, 0);
 }
-
-.addToCartBtn {
-    outline: none;
-    background-color: transparent;
-    border: none; 
-    color: rgb(179, 0, 0);
+.itemOffPrice{
+    color: red;
 }
-.trashBtn{
-    width: 65px;
+.itemActionParent{
+    width: 100%;
     height: auto;
-    border:none;
-    background-color: transparent;
+    background-color: rgb(236, 235, 235);
+}
+.itemAcrion{
+    width: 100%;
     outline: none;
-    margin-left: 10px;
-    color: rgb(179, 0, 0);
+    border: none;
+    background-color: brown;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
     font-family: iransansweb;
-    font-size: 14px;
-    position: absolute;
-    top: 15px;
-    left: 5px;
-    border: 1px solid red;
-    background-color: rgb(255, 237, 237);
-    padding: 4px 8px;
-    border-radius: 10px;
+    padding: 9px 0;
+    font-size: 13px;
     cursor: pointer;
+    margin-top: 0px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.itemAcrionActive{
+    background-color: rgb(0, 83, 4);
+    font-size: 13px;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 9px 0;
+    font-family: iransansweb;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.itemAcrion p{
+    margin-right: 5px;
+}
 
