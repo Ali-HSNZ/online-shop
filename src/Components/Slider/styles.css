@@ -8,10 +8,18 @@
     border-radius: 10px;
   }
   .swiper-button-next ,  .swiper-button-prev{
-    background-color: rgb(133, 0, 0);
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.445);
+    width: 40px;
+    height: 70px;
+
+  }
+  .swiper-button-next {
+    right: 0;
+    border-radius: 10px 0 0 10px;
+  }
+  .swiper-button-prev {
+    left: 0;
+    border-radius: 0 10px 10px 0px;
   }
   .swiper-button-next::after,  .swiper-button-prev::after { 
     font-size: 17px;
