@@ -6,48 +6,73 @@
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     margin-top: 20px;
+    background-color: rgb(238, 236, 236);
+    border-radius: 3px;
+    padding: 15px 0;
+    position: relative;
 }
 
 .parent_features{
     width: auto;
-    height: auto;
-    background-color:  rgb(255, 207, 207);
+    height: 100%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    
+    padding: 0;
+    font-family: iransansweb;
+    /* padding: 20px; */
+}
+.parent_features p{
+    margin-top: 10px;
+    font-size: 13px;
+    pointer-events: none;
 }
 .imgParent{
-    width: 170px;
+    width: 45px;
+    height: 100%;
     display: flex;
     justify-content: center;
-    height: auto;
-    padding: 20px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    overflow: hidden;
+    align-items: center;
 }
 .imgParent img{
     width: 100%;
     height: auto;
-}
-.parent_features_text {
-    height: auto; text-align: center;
-}
-.parent_features_text p {
-    font-family: iransansweb;
-    margin: 10px 0;
-}
-.parent_features_text span{
-    font-family: iranyekanweb;
-    line-height: 25px;
-    font-size: 13px;
-    font-weight: 700;
-    color: rgb(92, 92, 92);
+    pointer-events: none;
+
 }
 
 
 
 
+/* ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+.sliders button:nth-child(2){
+    /* left: -13px;  opacity: 1;
+    border-radius: 6px;
+    background-color:rgb(167, 0, 0);
+    color: rgb(255, 255, 255); */
+    display: none;
+
+}
+.sliders button:nth-child(3){
+    /* right: -13px;  opacity: 1;
+    border-radius: 6px;
+    background-color:rgb(167, 0, 0);
+    
+    color: rgb(255, 255, 255); */
+    display: none;
+}
+/* 
+.sliders button:nth-child(3)::before{
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    width: 30px;
+    right:  0px;
+}
+.sliders button:nth-child(2)::before{
+    color: rgb(255, 255, 255);
+    left: 5px;
+    font-size: 14px;
+} */

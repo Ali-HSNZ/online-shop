@@ -9,9 +9,8 @@ const Home = () => {
         <div className={Styles.parent}>
             <div className={Styles.parentProduct}>
                 <Slider/>
-                <ProductList/>
                 <Feature/>
-                {/* <AboutUs/> */}
+                <ProductList/>
             </div>
         </div>
     );
