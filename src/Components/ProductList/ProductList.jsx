@@ -8,6 +8,7 @@ import { BsFillCaretLeftFill } from "react-icons/bs";
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Banner from "../../common/Banner/Banner";
 
+
 const ProductList = () => {
 
     const [products , setProducts] = useState(null)
@@ -53,13 +54,28 @@ const ProductList = () => {
             items: 1
         }
     };
+
+    const discountProducts = 11;
+    
+
+    if(products){
+        for(var i = 0 ; i <= discountProducts ; i++){
+            var index = Math.floor(Math.random()*discountProducts);
+            products[index].offPrice = Math.floor(Math.random()*50) + 2
+            products[index].discount = Math.floor(Math.random()*200) + 2
+        }
+    }
+
+
     return (  
         <div className={Styles.parent} dir="rtl">
 
             <div>
                 {
+               
                     category ? category.map((mapOnCategory,index) => {
                         const filterd = products&&products.filter( e => e.category === mapOnCategory)
+
                             
                             return(
                                 <div key={index}>
@@ -70,14 +86,18 @@ const ProductList = () => {
                                             
                                             {category && (
                                                 <div className={Styles.Slider_categoryParent}>
-                                                    <Link to={`/category?name=${mapOnCategory}`} className={Styles.Slider_categoryLink}>نمایش همه محصولات : {mapOnCategory} <BsFillCaretLeftFill/></Link>
+                                                    <Link to={`/category?name=${mapOnCategory}`} className={Styles.Slider_categoryLink}>{mapOnCategory} <BsFillCaretLeftFill/></Link>
+                                                    <div className={Styles.categoryLine_parent}>
+                                                        <div></div>     <div></div>     <div></div>     <div></div>
+                                                    </div>
                                                 </div>
                                             ) }
                                             <div  className={Styles.item} dir="ltr" key={index}>
                                                 <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
                                                     {filterd ? filterd.map(
                                                         item=>{return(
-                                                        <ProductListItem key={item.id} item = {item}/>
+                                                        
+                                                        <ProductListItem key={item.id} item = {item} offPrice={item.offPrice}/>
                                                     )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                                                 </Carousel>
                                             </div>

@@ -5,29 +5,32 @@
     grid-column-gap: 10px;
     grid-row-gap: 10px;
 }
+/* -------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------- */
 
-.sliders:hover button:nth-child(2),.sliders:hover button:nth-child(3){
-    opacity: 1;
+.categoryLine_parent{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 7px;
+    margin-bottom: 20px;
 }
-.sliders button:nth-child(2){
-    left: 0;  opacity: 1;
-    border-radius: 0 10px 10px 0;
-    padding: 30px 0;
-    background-color:rgb(230, 230, 230);
-    border: 1px solid rgb(173, 173, 173);
-    color: black;
+.categoryLine_parent div{
+    background-color:  red;
+    height: 5px;
+    width: 5px;
+    border-radius: 100%;
+    margin-left: 5px;
 }
-.sliders button:nth-child(3){
-    right: 0; opacity: 1; 
-    border-radius: 10px 0 0 10px;
-    padding: 30px 0;
-    background-color:rgb(230, 230, 230);
-    border: 1px solid rgb(173, 173, 173);
-    color: black;
+.categoryLine_parent div:last-child{
+    background-color:  red;
+    height: 5px;
+    width: 70px;
+    border-radius: 100px;
+    margin-left: 5px;
 }
-.sliders button:nth-child(3)::before,.sliders button:nth-child(2)::before{
-    color: black;
-} .Slider_categoryParent{
+
+ .Slider_categoryParent{
     text-align: right;
     font-family: iransansweb;
     padding: 0;
@@ -37,7 +40,6 @@
     margin-top: 20px;
     padding: 20px;
     border-radius: 5px;
-    background-color: rgba(255, 81, 81, 0.082);
 }
 .Slider_categoryLink{
     display: flex;
@@ -45,148 +47,31 @@
     text-decoration: none;
     color: rgb(226, 43, 43);
     font-size: 15px;
-    margin-bottom: 15px;
 } 
-
-
-.sliders:hover button:nth-child(2),.sliders:hover button:nth-child(3){
-    opacity: 1;
-}
-.sliders button:nth-child(2) , .sliders button:nth-child(3){
-    padding: 30px 0;
-}
 .sliders button:nth-child(2){
-    left: -10px;  opacity: 1;
-    border-radius: 0 10px 10px 0;
-    background-color:rgb(230, 230, 230);
-    border: 1px solid rgb(173, 173, 173);
-    color: black;
+    top: 40%; left: 0px;  opacity: 1;
+    border-radius: 6px;
+    background-color:rgb(167, 0, 0);
+    color: rgb(255, 255, 255);
 }
 .sliders button:nth-child(3){
-    right: -10px; opacity: 1; 
-    border-radius: 10px 0 0 10px;
-    background-color:rgb(230, 230, 230);
-    border: 1px solid rgb(173, 173, 173);
-    color: black;
+    top: 40%; right: 0px;  opacity: 1;
+    border-radius: 6px;
+    background-color:rgb(167, 0, 0);
+    color: rgb(255, 255, 255);
 }
+
 .sliders button:nth-child(3)::before{
-    color: black;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
     width: 30px;
-}
-.sliders button:nth-child(2)::before{
-    color: black;
-    position: relative;
     left: 5px;
 }
-@media only screen and (min-width : 320px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 15px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -14px;
-    }
-    .sliders button:nth-child(3){
-        right: -14px;
-    }
+.sliders button:nth-child(2)::before{
+    color: rgb(255, 255, 255);
+    left: 0px;
+    font-size: 14px;
 }
-@media only screen and (min-width : 460px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 22px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -12px;
-    }
-    .sliders button:nth-child(3){
-        right: -12px;
-
-    }
+.react-multi-carousel-list{
+    overflow: unset;
 }
-@media only screen and (min-width : 600px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 22px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -12px;
-    }
-    .sliders button:nth-child(3){
-        right: -12px;
-
-    }
-}
-@media only screen and (min-width : 720px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 22px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -12px;
-    }
-    .sliders button:nth-child(3){
-        right: -12px;
-    }
-}
-@media only screen and (min-width : 800px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 22px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -12px;
-    }
-    .sliders button:nth-child(3){
-        right: -12px;
-    }
-}
-@media only screen and (min-width : 960px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 26px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -10px;
-    }
-    .sliders button:nth-child(3){
-        right: -10px;
-    }
-}
-@media only screen and (min-width : 1080px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 30px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -10px;
-    }
-    .sliders button:nth-child(3){
-        right: -10px;
-    }
-}
-@media only screen and (min-width : 1180px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 30px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -10px;
-    }
-    .sliders button:nth-child(3){
-        right: -10px;
-    }
-}
-@media only screen and (min-width : 1260px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 30px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -10px;
-    }
-    .sliders button:nth-child(3){
-        right: -10px;
-    }
-}
-@media only screen and (min-width : 1366px){
-    .sliders button:nth-child(2) , .sliders button:nth-child(3){
-        padding: 30px 0;
-    }
-    .sliders button:nth-child(2){
-        left: -10px;
-    }
-    .sliders button:nth-child(3){
-        right: -10px;
-    }
-} 
