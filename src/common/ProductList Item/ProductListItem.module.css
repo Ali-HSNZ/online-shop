@@ -88,10 +88,17 @@
     margin-top: 10px;
     padding: 0 20px;
 }
+.parent img{
+    pointer-events: none;
+}
+.parent a {
+    width: 100%;
+    height: 100%;
+}
 .item_footer{
     width: 100%;
     height: 50px;
-    border-top: 1px solid rgb(255, 141, 141);
+    border-top: 1px solid rgba(172, 106, 106, 0.233);
     margin: 20px  0;
     padding: 20px;
     display: flex;

@@ -57,12 +57,12 @@ const ProductList = () => {
 
     const discountProducts = 11;
     
-
+//  set discount & offPrice
     if(products){
-        for(var i = 0 ; i <= discountProducts ; i++){
-            var index = Math.floor(Math.random()*discountProducts);
-            products[index].offPrice = Math.floor(Math.random()*50) + 2
-            products[index].discount = Math.floor(Math.random()*200) + 2
+        for(let i = 0 ; i <= discountProducts ; i++){
+            const index = Math.floor(Math.random()*discountProducts);
+            products[index].offPrice = Math.floor(Math.random()*50) + 1
+            products[index].discount = Math.floor(Math.random()*200) + 1
         }
     }
 

@@ -1,67 +1,48 @@
-import Styles from './Slider.module.css'
-import Carousel from "react-multi-carousel";
-import { Link } from 'react-router-dom';
-import { BsFillCaretLeftFill } from "react-icons/bs";
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {Link} from 'react-router-dom'
+import SwiperCore ,{Navigation , Pagination}from 'swiper'
+import 'swiper/swiper-bundle.css'
+import 'swiper/components/pagination/pagination.scss'
+import './styles.css'
+
+
+SwiperCore.use([Navigation , Pagination])
 
 const Slider = () => {
 
-const slide = [
-        {id : 1 , category : "electronics", imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/119ea8f18b5660c6d4e8e4a73f72130a8beda82a_1637149599.jpg" },
-        {id : 2 , category : "jewelery", imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/0f496bd8c34877e25032e7e708f2e29c88b607c2_1637063652.jpg" },
-        {id : 3 , category : "men's clothing", imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/a16e123de6ba49e02bdaa9e2813826e27aad74d0_1637262761.jpg" },
-        {id : 3 , category : "women's clothing" , imageSrc : "https://dkstatics-public.digikala.com/digikala-adservice-banners/9b98cc60ad706f5d6685dce079535ba790c0c507_1637237224.jpg" },
+  return (  
+          <div>
+                  <Swiper navigation pagination pagination={{ "dynamicBullets": true}} tag="section" wrapperTag="div" style={{borderRadius:'5px'}} spaceBetween={0} slidesPerView={1}>
 
-    ]
-    
-    
-    const responsive = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
-            items: 1
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 1
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 1
-        },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1
-        }
-    };
+                        <SwiperSlide>
+                              <Link to="https://swiperjs.com/get-started#swiper-css-styles-size">
+                                    <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/02bfa74f0678ff037e7b72c32f00a41420050a9f_1638022430.jpg"/>
+                              </Link>
+                        </SwiperSlide>
 
+                        <SwiperSlide>
+                              <Link to="https://swiperjs.com/get-started#swiper-css-styles-size">
+                                    <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/02bfa74f0678ff037e7b72c32f00a41420050a9f_1638022430.jpg"/>
+                              </Link>
+                        </SwiperSlide>
 
-    const returnComponent = ()=> {
-        var returnValue;
+                        <SwiperSlide>
+                              <Link to="https://swiperjs.com/get-started#swiper-css-styles-size">
+                                    <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/02bfa74f0678ff037e7b72c32f00a41420050a9f_1638022430.jpg"/>
+                              </Link>
+                        </SwiperSlide>
 
-        returnValue = slide ?
-            <div className={Styles.parent}>
-                <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
-                    {slide.map((e , index) => {
-                        return (
-                            <div className={Styles.item} key={index}>
-                                    <img src={e.imageSrc}  alt={e.imageSrc} className={Styles.imgParent_imgActive}/>
-                                    <Link to={`/category?name=${e.category}`} className={Styles.linkBtn}><BsFillCaretLeftFill style={{marginRight:"5px"}}/>دیدن محصول </Link>
-                              
-                            </div>
-                            )
-                    })}
-                </Carousel>
-            </div>
+                        <SwiperSlide>
+                              <Link to="https://swiperjs.com/get-started#swiper-css-styles-size">
+                                    <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/02bfa74f0678ff037e7b72c32f00a41420050a9f_1638022430.jpg"/>
+                              </Link>
+                        </SwiperSlide>
 
-        : <h1>Loding</h1>
-
-        return returnValue
-    }
-
-    return (
-        <>{returnComponent()}</>
-    );
-    
+                  </Swiper>
+          </div>
+  );
 }
  
 export default Slider;
+

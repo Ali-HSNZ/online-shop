@@ -1,8 +1,7 @@
 import Feature from "../../Components/Features/Feature";
 import ProductList from "../../Components/ProductList/ProductList";
 import Styles from './Home.module.css'
-import Slider from '../../Components/Slider/Slider'
-// import AboutUs from "../../Components/About Us/AboutUs";
+import Slider from "../../Components/Slider/Slider";
 const Home = () => {
   
     return (
