@@ -9,6 +9,7 @@ import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Banner from "../../common/Banner/Banner";
 
 
+
 const ProductList = () => {
 
     const [products , setProducts] = useState(null)
@@ -56,6 +57,8 @@ const ProductList = () => {
     };
 
     const discountProducts = 11;
+
+
     
 //  set discount & offPrice
     if(products){
@@ -96,9 +99,12 @@ const ProductList = () => {
                                                 <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
                                                     {filterd ? filterd.map(
                                                         item=>{return(
-                                                        
-                                                        <ProductListItem key={item.id} item = {item} offPrice={item.offPrice}/>
+                                                         
+                                                                <ProductListItem key={item.id} item = {item} offPrice={item.offPrice}/>
+                                                           
                                                     )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
+                                                    
+                                               
                                                 </Carousel>
                                             </div>
 
