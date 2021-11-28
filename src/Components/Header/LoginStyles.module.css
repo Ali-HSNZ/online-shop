@@ -1,0 +1,87 @@
+.parent{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.404);
+    z-index: 9999;
+}
+.main{
+    width: 300px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    z-index: 99999;
+    position: fixed;
+    top: 70px;
+    left: 40px;
+    border-radius: 0 0 15px 15px;
+    padding: 0 20px 20px 20px;
+
+}
+.arrow{
+    height: 0;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    position: relative;
+    top:-22px
+}
+.title{
+    width: 100%;
+    font-family: iranyekanweb;
+    text-align: center;
+    margin-top: 15px;
+}
+.group{
+    margin-top: 15px;
+}
+.group p {
+    font-size: 14px;
+    text-align: right;
+    font-family: iranyekanweb;
+}
+.group input{
+    width: 100%;
+    height: 30px;
+    outline: none;
+    padding: 0 10px;
+    font-family: iransansweb;
+    font-size: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid brown;
+}
+.errorText{
+    font-size: 12px;
+    text-align: right;
+    color: red;
+    margin-top: 10px;
+}
+.submitBtn{
+    /* margin-left: 20px; */
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-family: iransansweb;
+    color: white;
+    box-shadow: 0 0 2px 0 rgb(0, 0, 0);
+    /* margin-bottom: 20px; */
+    border: none;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    outline: none;
+    margin-top: 20px;
+}
+.submitBtn_active{
+    background-color: brown;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
