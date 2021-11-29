@@ -27,7 +27,7 @@ const Header = (props ) => {
                 </div>
 
                 <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
-                    <NewUserLogin/>
+                    <NewUserLogin setIsUserLogin={setIsUserLogin}/>
                 </div>
             </div>
         )

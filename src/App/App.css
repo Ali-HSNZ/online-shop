@@ -5,3 +5,8 @@
     margin-top: 70px;
   }
   .Toastify__toast-body { font-family: 'iransansweb'; font-size: 13px; }
+
+  .Toastify {
+    position: absolute;
+    z-index: 999999999;
+}

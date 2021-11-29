@@ -3,7 +3,7 @@ import  LoginStyles from '../Header/LoginStyles.module.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { userLogin } from '../../services/loginService';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
@@ -11,14 +11,16 @@ import { UserDispatch , User } from '../../Context/userProvider/UserProvider';
 import {useQuery} from '../../hooks/useQuery'
 import SmallLoading from '../../common/small Loding/SmallLoading'
 
-import {BiUser , BiHide} from "react-icons/bi";
+import {BiUser , BiHide , BiShow} from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 
-const NewUserLogin = (props) => {
+const NewUserLogin = ({setIsUserLogin}) => {
 
     const dispatchUser = UserDispatch()
 
     const [isLoading , setIsLoading] = useState(false)
+
+    const [isShowPass , setIsShowPass] =  useState(false)
 
 
     const initialValues = {
@@ -34,6 +36,7 @@ const NewUserLogin = (props) => {
     })
 
 
+    const inputRef = useRef()
 
 
 
@@ -48,12 +51,15 @@ const NewUserLogin = (props) => {
                 setIsLoading(false)
                 toast.success("با موفقیت وارد شدید")
                 dispatchUser(JSON.parse( data.config.data))
+                if(data.config.data){
+                    setIsUserLogin(false)
+                }
             } catch (e) {
                 toast.error(e.response.data.message)
                 setIsLoading(false)
+
             }
     }
-
 
 
 
@@ -102,8 +108,12 @@ const NewUserLogin = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <input type="text" onChange={formik.handleChange} name='password' type="password" placeholder="رمز ورود خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl"/>
-                        <button className={`${LoginStyles.inputIcon} ${LoginStyles.inputIcon_btn} `}> <BiHide size="1.4em"/></button>
+                        <input type={isShowPass ? "text" : "password"} ref={inputRef} onChange={formik.handleChange} name='password'  placeholder="رمز ورود خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl"/>
+                        
+                        <a className={`${LoginStyles.inputIcon} ${LoginStyles.inputIcon_btn} `} onClick={()=>setIsShowPass(!isShowPass)}>                          
+                            {isShowPass ? <BiShow size="1.4em"/> :  <BiHide size="1.4em"/>}
+                        </a>
+
                         {formik.errors.password && formik.touched.password && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.password}</p>}
                     </div>
                     
@@ -111,12 +121,14 @@ const NewUserLogin = (props) => {
                     <div>
                     <button 
                         type="submit" 
-                        // disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
-                        className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>
-                         ورود
-        
+                        disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
+                        className={`${LoginStyles.submitBtn} ${formik.isValid ? LoginStyles.submitBtn_active : LoginStyles.submitBtn_notActive}`}>
                         
-                     {/* <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/> */}
+                        {isLoading ? <SmallLoading/> : "ورود"}
+                        {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
+                        
+                        
+                     {/* {!formik.isValid && <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>} */}
                     </button>
                     </div>
             </form>
