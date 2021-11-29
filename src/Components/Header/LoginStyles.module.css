@@ -17,6 +17,17 @@
     left: 40px;
     border-radius: 0 0 15px 15px;
     padding: 0 20px 20px 20px;
+    border: 1px solid #a71e34;
+    box-shadow: 0 1px 3px 0 rgb(82, 82, 82);
+
+}
+
+@media only screen and (max-width:499px){
+    .main{
+        left: 9px;
+        
+
+    }
 
 }
 .arrow{
@@ -31,35 +42,114 @@
     font-family: iranyekanweb;
     text-align: center;
     margin-top: 15px;
+    border-bottom: 1px solid rgba(160, 31, 31, 0.384);
+    padding-bottom: 15px;
 }
 .group{
     margin-top: 15px;
+    position: relative;
 }
-.group p {
-    font-size: 14px;
+.groupName{
     text-align: right;
     font-family: iranyekanweb;
+    font-size: 14px;
 }
+
 .group input{
     width: 100%;
-    height: 30px;
+    height: 35px;
     outline: none;
-    padding: 0 10px;
+    padding: 0 10px 0 32px;
     font-family: iransansweb;
     font-size: 12px;
     margin-top: 10px;
     border-radius: 5px;
     border: 1px solid brown;
 }
+.inputName{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.infoTextParent{
+    width: 200px;
+    right: 0;
+    background-color: rgb(161, 175, 255);
+    border-radius: 8px;
+    position: absolute;
+    padding: 10px;
+    display: none;
+  
+}
+.infoText{
+    font-size: 13px;
+    font-family:  iransansweb;
+}
+.iconArrow{
+    position: absolute;
+    left: -14px;
+    top: 32%;
+    color: rgb(161, 175, 255);
+}
+.infoParent{
+    width: 20px;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 100%;
+}
+.info{
+    color: rgb(0, 0, 194);
+    border-radius: 100%;
+}
+.infoParent:hover .infoTextParent{
+    display: block;
+    cursor: pointer;
+
+}
+.inputIcon{
+    position: absolute;
+    top: 37px;
+    left: 10px;
+    color: gray;
+    display: flex;
+    align-items: center;
+}
+.inputIcon_btn{
+    outline: none;
+    border: none;
+    background-color: transparent;
+
+}
+.inputIcon_btn button{
+    
+    outline: none;
+    border: none;
+    background-color:transparent;
+    box-shadow: 0 0 2px 0 rgb(155, 154, 154);
+    border-radius: 100%;
+    padding: 1px;
+    color: gray;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
 .errorText{
     font-size: 12px;
     text-align: right;
     color: red;
     margin-top: 10px;
+    line-height: 20px;
+    font-family: iransansweb;
+
 }
 .submitBtn{
     /* margin-left: 20px; */
-    padding: 5px 20px;
+    width: 100%;
+    padding: 10px 20px;
     border-radius: 5px;
     font-family: iransansweb;
     color: white;

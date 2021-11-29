@@ -1,6 +1,6 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
-import {BiShoppingBag , BiUser , BiSearch , BiHeart} from "react-icons/bi";
+import {BiShoppingBag , BiUser , BiSearch , BiHeart , BiDotsVerticalRounded} from "react-icons/bi";
 import  LoginStyles from'./LoginStyles.module.css'
 import { Link, NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';
@@ -17,22 +17,23 @@ const Header = (props ) => {
     const user = User()
     const {cart} = UseCart()
     const [isUserLogin , setIsUserLogin] = useState(false)
+    const [isMenu , setIsMenu] = useState(false)
 
 
     const UserLogin = ()=>{
         return(
             <div>
-
                 <div className={LoginStyles.parent} onClick={(e)=>setIsUserLogin(false)}>
                 </div>
 
                 <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
                     <NewUserLogin/>
                 </div>
-                
             </div>
         )
     }
+
+    
 
 
     return (
@@ -40,6 +41,7 @@ const Header = (props ) => {
         <div className={Styles.parent}>
 
             <div className={Styles.header}>
+                <button className={Styles.menu} onClick={()=>setIsMenu(true)}> <BiDotsVerticalRounded size='1.7em'/></button>
 
                 <div className={Styles.header_left}>
 
@@ -48,11 +50,10 @@ const Header = (props ) => {
                         {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
-
-                    <NavLink activeClassName={Styles.activeLink} className={Styles.iconParent} to={`/user-like`} exact  onClick={(e)=>setIsUserLogin(false)}>
-                       <BiHeart className={Styles.iconStyle} size="1.7em"/>            
+                    <NavLink activeClassName={Styles.activeLink} className={`${Styles.iconParent} ${Styles.iconParent_like}`} to={`/user-like`} exact  onClick={(e)=>setIsUserLogin(false)}>
+                        <BiHeart className={Styles.iconStyle} size="1.7em"/>            
                     </NavLink>
-
+                    
                     {/* <button className={Styles.iconParent} to={`${user ? "/user-profile" : "/user-login?redirect=Home"}`}> */}
                     <button className={Styles.iconParent_Button} onClick={()=> setIsUserLogin(true)}>
                         {/* {user ? <FaUserCheck className={Styles.iconStyle} size="1.7em"/> :  <BiUser  className={Styles.iconStyle} size="1.7em"/>}               */}

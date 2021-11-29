@@ -11,6 +11,7 @@
     background-color: #a71e34;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 0 20px;
 }
 .header_right{
@@ -79,6 +80,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .header_right p {
     font-family: iransansweb;
 }
@@ -100,16 +102,44 @@
     font-family: iransansweb;
 }
 .menu{
-    height: 50px;
     display: flex;
-    justify-content: flex-end;
-    background-color: #C71F37;
-    font-family:iransansweb;
+    justify-content:center;
     align-items: center;
-    padding: 0 20px;
     color: white;
-    list-style: none;
+
+    outline: none;
+    border: none;
+    background-color: #a71e34;
+    
+
+    padding: 10px 17px;
+    border-radius: 5px;
 }
-.menu li{
-    margin: 0 0 0 20px;
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width:500px){
+    .menu{
+        display: none;
+    }
+ }
+
+@media only screen and (max-width:499px){
+    .logoParent{display: none}
+    .header_right a {
+        margin-right: 0px;
+    }
+    .header{
+        padding: 0 20px 0 0;
+    }
+    .iconParent_like{
+        display: none;
+    }
+
 }
