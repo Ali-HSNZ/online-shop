@@ -8,7 +8,7 @@ import { User } from '../../Context/userProvider/UserProvider';
 import { withRouter } from 'react-router';
 import { useState } from 'react';
 import { FiAlertTriangle } from "react-icons/fi";
-import NewUserLogin from '../newUserLogin/NewUserLogin';
+import Login from '../Login/Login';
 
 
 const Header = (props ) => {
@@ -23,11 +23,11 @@ const Header = (props ) => {
     const UserLogin = ()=>{
         return(
             <div>
-                <div className={LoginStyles.parent} onClick={(e)=>setIsUserLogin(false)}>
+                <div className={LoginStyles.parent} onClick={()=>setIsUserLogin(false)}>
                 </div>
 
                 <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
-                    <NewUserLogin setIsUserLogin={setIsUserLogin}/>
+                    <Login setIsUserLogin={setIsUserLogin}/>
                 </div>
             </div>
         )
