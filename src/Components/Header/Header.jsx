@@ -9,6 +9,7 @@ import { withRouter } from 'react-router';
 import { useState } from 'react';
 import { FiAlertTriangle } from "react-icons/fi";
 import Login from '../Login/Login';
+import Signup from '../Signup/Signup';
 
 
 const Header = (props ) => {
@@ -17,6 +18,7 @@ const Header = (props ) => {
     const user = User()
     const {cart} = UseCart()
     const [isUserLogin , setIsUserLogin] = useState(false)
+    const [isUserSignup , seIsUserSignup] = useState(false)
     const [isMenu , setIsMenu] = useState(false)
 
 
@@ -27,7 +29,12 @@ const Header = (props ) => {
                 </div>
 
                 <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
-                    <Login setIsUserLogin={setIsUserLogin}/>
+                   
+                    {isUserLogin === true && isUserSignup === false ?(
+                        <Login setIsUserLogin={setIsUserLogin} seIsUserSignup={seIsUserSignup}/> 
+                    ) : (
+                        <Signup seIsUserSignup={seIsUserSignup} setIsUserLogin={setIsUserLogin}/>
+                    )}
                 </div>
             </div>
         )
@@ -79,7 +86,8 @@ const Header = (props ) => {
                 </div>
             </div> 
         </div>
-          {isUserLogin &&   <UserLogin/>}
+          {isUserLogin=== true && <UserLogin />}
+         
           </>
     );
   };

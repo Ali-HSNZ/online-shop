@@ -8,15 +8,16 @@ import { userLogin } from '../../services/loginService';
 import { toast } from 'react-toastify';
 import { UserDispatch} from '../../Context/userProvider/UserProvider';
 import SmallLoading from '../../common/small Loding/SmallLoading'
-import {BiHide , BiShow , BiX } from "react-icons/bi";
+import {BiHide , BiShow , BiX , BiUser} from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 
 
-const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
-
+const Signup = ({setIsUserLogin , seIsUserSignup}) => {
+   
+   
     const dispatchUser = UserDispatch()
 
     const [isLoading , setIsLoading] = useState(false)
@@ -25,24 +26,28 @@ const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
 
 
     const initialValues = {
+        name : '',
         email : '',
         password : '',
     }
 
-    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8})/
+    const nameRegExp = /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ]{6,30}$/
+    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/
 
-    const validationSchema = Yup.object({
-        email: Yup.string().email("ایمیل را به درستی وارد کنید").required("ایمیل را وارد کنید"),
-        password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد )"),
-    })
+     const validationSchema = Yup.object({
+          name : Yup.string().required("نام را وارد کنید").matches(nameRegExp,"نام را به فارسی وارد کنید (6 تا 15 حرف)"),
+          email: Yup.string().email("ایمیل را به درستی وارد کنید").required("ایمیل را وارد کنید"),
+          password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد)"),
+     })
+
 
 
     const onSubmit = async(values) => {
-        // const {email , password} = values
+        const {email , password} = values
 
         const userData = {
-            email:values.email ,
-            password:values.password
+            email,
+            password
         }
 
         setIsLoading(true)
@@ -71,8 +76,8 @@ const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
         validationSchema,
         validateOnMount : true
     })
-
-    return (  
+   
+    return (
         <form  onSubmit={formik.handleSubmit}>
 
             <div className={LoginStyles.arrow}>
@@ -83,8 +88,25 @@ const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
                 <button onMouseUp={()=>setIsUserLogin(false)}>
                     <BiX size="2em"/>
                 </button>
-                <p className={LoginStyles.title}>ورود به سایت</p>   
+                <p className={LoginStyles.title}>ثبت نام در سایت</p>   
             </div> 
+
+            <div className={LoginStyles.group}>
+                <div className={LoginStyles.inputName} dir="rtl">
+                    <p className={LoginStyles.groupName} dir="rtl">نام کاربری : </p> 
+                    <div className={LoginStyles.infoParent}>
+                        <BsInfoCircleFill className={LoginStyles.info} size="1.1em"/>
+                        <div className={LoginStyles.infoTextParent}>
+                            <p className={LoginStyles.infoText} >نام را به فارسی وارد کنید (6 تا 15 حرف) </p>
+                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow}/>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" style={formik.errors.name ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='name' type='text' placeholder="نام کاربری خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
+                <div className={LoginStyles.inputIcon}> <BiUser size="1.2em"/> </div>
+                {formik.errors.name && formik.touched.name && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.name}</p>}
+            </div>
+
 
             <div className={LoginStyles.group}>
                 <div className={LoginStyles.inputName} dir="rtl">
@@ -101,6 +123,7 @@ const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
                 <div className={LoginStyles.inputIcon}> <IoAt size="1.2em"/> </div>
                 {formik.errors.email && formik.touched.email && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.email}</p>}
             </div>
+
 
             <div className={LoginStyles.group}>
                 <div className={LoginStyles.inputName} dir="rtl">
@@ -133,13 +156,9 @@ const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
                     {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                 </button>
             </div>
-           <button onClick={()=> seIsUserSignup(true)}>ثبت نام در سایت</button>
-               
-                
-               
-          
+           <button onClick={()=> seIsUserSignup(false)}>ورود به سایت</button>
         </form>
     );
 }
  
-export default NewUserLogin;
+export default Signup;
