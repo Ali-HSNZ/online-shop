@@ -15,13 +15,11 @@
 .parent_features{
     width: auto;
     height: 100%;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0;
     font-family: iransansweb;
-    /* padding: 20px; */
 }
 .parent_features p{
     margin-top: 10px;
@@ -29,7 +27,7 @@
     pointer-events: none;
 }
 .imgParent{
-    width: 45px;
+    width: 40px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -39,40 +37,23 @@
     width: 100%;
     height: auto;
     pointer-events: none;
-
 }
 
+.sliders button:nth-child(2){display: none;}
+.sliders button:nth-child(3){display: none;}
 
 
-
-/* ---------------------------------------------------------------------------------------------------------------------------------------- */
-
-
-.sliders button:nth-child(2){
-    /* left: -13px;  opacity: 1;
-    border-radius: 6px;
-    background-color:rgb(167, 0, 0);
-    color: rgb(255, 255, 255); */
-    display: none;
-
+@media only screen and (max-width : 460px ){
+    .parent_features p{
+        margin-top: 10px;
+        font-size: 12px;
+        pointer-events: none;
+    }
+    .imgParent{
+        width: 35px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
-.sliders button:nth-child(3){
-    /* right: -13px;  opacity: 1;
-    border-radius: 6px;
-    background-color:rgb(167, 0, 0);
-    
-    color: rgb(255, 255, 255); */
-    display: none;
-}
-/* 
-.sliders button:nth-child(3)::before{
-    color: rgb(255, 255, 255);
-    font-size: 14px;
-    width: 30px;
-    right:  0px;
-}
-.sliders button:nth-child(2)::before{
-    color: rgb(255, 255, 255);
-    left: 5px;
-    font-size: 14px;
-} */

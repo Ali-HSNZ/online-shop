@@ -1,42 +1,81 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
-import {BiShoppingBag , BiUser , BiSearch , BiHeart , BiDotsVerticalRounded} from "react-icons/bi";
+import {BiShoppingBag , BiX , BiUser , BiSearch , BiHeart , BiDotsVerticalRounded} from "react-icons/bi";
 import  LoginStyles from'./LoginStyles.module.css'
 import { Link, NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';
-import { User } from '../../Context/userProvider/UserProvider';
+import { User , UserDispatch} from '../../Context/userProvider/UserProvider';
 import { withRouter } from 'react-router';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FiAlertTriangle } from "react-icons/fi";
 import Login from '../Login/Login';
 import Signup from '../Signup/Signup';
+import { FaUserCheck } from "react-icons/fa";
+import { AiFillCaretUp ,AiFillCaretLeft} from "react-icons/ai";
+import { toast } from 'react-toastify';
 
 
 const Header = (props ) => {
 
 
     const user = User()
+    const userDispatch = UserDispatch()
     const {cart} = UseCart()
     const [isUserLogin , setIsUserLogin] = useState(false)
     const [isUserSignup , setIsUserSignup] = useState(false)
     const [isMenu , setIsMenu] = useState(false)
+    const [isUserProfile , setIsUserProfile] = useState(false)
 
 
-    const UserLogin = ()=>{
+
+    const UserPanel = ()=>{
         return(
-            <div>
-                <div className={LoginStyles.parent} onClick={()=>setIsUserLogin(false)}>
-                </div>
-
+            <React.Fragment>
+                <div className={LoginStyles.parent} onClick={()=>setIsUserLogin(false)}></div>
+                
                 <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
-                   
+
+                    <div className={LoginStyles.arrow}>
+                        <AiFillCaretUp size="2em"/>
+                    </div>
+
                     {isUserLogin === true && isUserSignup === false ?(
                         <Login setIsUserLogin={setIsUserLogin} setIsUserSignup={setIsUserSignup}/> 
                     ) : (
                         <Signup setIsUserSignup={setIsUserSignup} setIsUserLogin={setIsUserLogin}/>
                     )}
                 </div>
-            </div>
+            </React.Fragment>
+        )
+    }
+
+    const UserProfile = ()=> {
+        return(
+            <React.Fragment>
+                <div className={LoginStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
+                <div className={`${LoginStyles.main} ${LoginStyles.main_userProfile}`}>
+
+                    <div className={LoginStyles.arrow}>
+                        <AiFillCaretUp size="2em"/>
+                    </div>
+
+                    <div className={LoginStyles.header}>
+                        <button onClick={()=>setIsUserProfile(false)}>
+                            <BiX size="2em"/>
+                        </button>
+                        <p className={LoginStyles.title}>پنل کاربری</p>   
+                    </div> 
+
+                    <div className={LoginStyles.userProfile_userDetails}>
+                        <p className={LoginStyles.userDetails_details}>{user.email}</p>
+                        <p className={LoginStyles.userDetails_title}>ایمیل</p>
+                    </div>
+
+                <button onClick={()=> {return userDispatch(null) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>خروج از حساب کابری</button>
+
+
+                </div>
+            </React.Fragment>
         )
     }
 
@@ -60,12 +99,10 @@ const Header = (props ) => {
                     <NavLink activeClassName={Styles.activeLink} className={`${Styles.iconParent} ${Styles.iconParent_like}`} to={`/user-like`} exact  onClick={(e)=>setIsUserLogin(false)}>
                         <BiHeart className={Styles.iconStyle} size="1.7em"/>            
                     </NavLink>
+                    {/* setIsUserProfile */}
                     
-                    {/* <button className={Styles.iconParent} to={`${user ? "/user-profile" : "/user-login?redirect=Home"}`}> */}
-                    <button className={Styles.iconParent_Button} onClick={()=> setIsUserLogin(true)}>
-                        {/* {user ? <FaUserCheck className={Styles.iconStyle} size="1.7em"/> :  <BiUser  className={Styles.iconStyle} size="1.7em"/>}               */}
-                        <BiUser  className={Styles.iconStyle} size="2em"/>            
-                       
+                    <button className={Styles.iconParent_Button} onClick={()=> user ?  setIsUserProfile(true) :  setIsUserLogin(true)}>
+                        {user ? <FaUserCheck className={Styles.iconStyle} size="2em"/> :  <BiUser  className={Styles.iconStyle} size="2em"/>}
                     </button>
 
 
@@ -86,8 +123,8 @@ const Header = (props ) => {
                 </div>
             </div> 
         </div>
-          {isUserLogin=== true && <UserLogin />}
-         
+            {isUserLogin=== true && <UserPanel />}
+            {isUserProfile === true && <UserProfile/>}
           </>
     );
   };

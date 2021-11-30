@@ -74,11 +74,7 @@ const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
 
     return (  
         <form  onSubmit={formik.handleSubmit}>
-
-            <div className={LoginStyles.arrow}>
-                <AiFillCaretUp size="2em"/>
-            </div>
-
+            
             <div className={LoginStyles.header}>
                 <button onMouseUp={()=>setIsUserLogin(false)}>
                     <BiX size="2em"/>
