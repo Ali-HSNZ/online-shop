@@ -18,7 +18,7 @@ const Header = (props ) => {
     const user = User()
     const {cart} = UseCart()
     const [isUserLogin , setIsUserLogin] = useState(false)
-    const [isUserSignup , seIsUserSignup] = useState(false)
+    const [isUserSignup , setIsUserSignup] = useState(false)
     const [isMenu , setIsMenu] = useState(false)
 
 
@@ -31,9 +31,9 @@ const Header = (props ) => {
                 <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
                    
                     {isUserLogin === true && isUserSignup === false ?(
-                        <Login setIsUserLogin={setIsUserLogin} seIsUserSignup={seIsUserSignup}/> 
+                        <Login setIsUserLogin={setIsUserLogin} setIsUserSignup={setIsUserSignup}/> 
                     ) : (
-                        <Signup seIsUserSignup={seIsUserSignup} setIsUserLogin={setIsUserLogin}/>
+                        <Signup setIsUserSignup={setIsUserSignup} setIsUserLogin={setIsUserLogin}/>
                     )}
                 </div>
             </div>

@@ -12,10 +12,11 @@ import {BiHide , BiShow , BiX , BiUser} from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { userSignup } from "../../services/signupService";
 
 
 
-const Signup = ({setIsUserLogin , seIsUserSignup}) => {
+const Signup = ({setIsUserLogin , setIsUserSignup}) => {
    
    
     const dispatchUser = UserDispatch()
@@ -42,31 +43,27 @@ const Signup = ({setIsUserLogin , seIsUserSignup}) => {
 
 
 
-    const onSubmit = async(values) => {
-        const {email , password} = values
-
-        const userData = {
-            email,
-            password
-        }
-
+     const onSubmit = async(values) => {
         setIsLoading(true)
-       
-            try {
-                const data = await userLogin(userData)     
-                setIsLoading(false)
-                toast.success("با موفقیت وارد شدید")
-                dispatchUser(JSON.parse( data.config.data))
-                if(data.config.data){
-                    setIsUserLogin(false)
-                }
-            } catch (e) {
-                toast.error(e.response.data.message)
-                console.log(e.response)
-                setIsLoading(false)
+        const {name , email , password} = values;
+        const userData = {name , email , password}
+        try {
+            const data = await userSignup(userData)
+            setIsLoading(false)
+             toast.success('ثبت نام شما با موفقیت انجام شد')
+             dispatchUser(JSON.parse( data.config.data))
+             if(data){
+                setIsUserSignup(false)
+                setIsUserLogin(false)
+             }
+        } catch (error) {
+             setIsLoading(false)
+             toast.error(error.response.data.message)
+            console.log("Faild data =>",error)
 
-            }
-    }
+        }
+   }
+
 
 
 
@@ -132,7 +129,7 @@ const Signup = ({setIsUserLogin , seIsUserSignup}) => {
                         <BsInfoCircleFill className={LoginStyles.info} size="1.1em"/>
                         <div className={LoginStyles.infoTextParent}>
                             <p className={LoginStyles.infoText} >رمز ورود باید بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، حرف بزرگ و عدد)</p>
-                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow}/>
+                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow_pass}/>
                         </div>
                     </div>
                 </div>
@@ -152,11 +149,11 @@ const Signup = ({setIsUserLogin , seIsUserSignup}) => {
                     disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
                     className={`${LoginStyles.submitBtn} ${formik.isValid ? LoginStyles.submitBtn_active : LoginStyles.submitBtn_notActive}`}>
                     
-                    {isLoading ? <SmallLoading/> : "ورود"}
+                    {isLoading ? <SmallLoading/> : "ثبت نام"}
                     {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                 </button>
             </div>
-           <button onClick={()=> seIsUserSignup(false)}>ورود به سایت</button>
+           <button onClick={()=> setIsUserSignup(false)} className={LoginStyles.linkToSignup}>!از قبل ثبت نام کرده اید؟</button>
         </form>
     );
 }

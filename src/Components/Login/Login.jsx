@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 
 
-const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
+const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
 
     const dispatchUser = UserDispatch()
 
@@ -29,7 +29,7 @@ const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
         password : '',
     }
 
-    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8})/
+    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,16}$)/
 
     const validationSchema = Yup.object({
         email: Yup.string().email("ایمیل را به درستی وارد کنید").required("ایمیل را وارد کنید"),
@@ -57,7 +57,7 @@ const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
                 }
             } catch (e) {
                 toast.error(e.response.data.message)
-                console.log(e.response)
+                console.log(e.response.data)
                 setIsLoading(false)
 
             }
@@ -109,15 +109,15 @@ const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
                         <BsInfoCircleFill className={LoginStyles.info} size="1.1em"/>
                         <div className={LoginStyles.infoTextParent}>
                             <p className={LoginStyles.infoText} >رمز ورود باید بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، حرف بزرگ و عدد)</p>
-                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow}/>
+                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow_pass}/>
                         </div>
                     </div>
                 </div>
                 <input type={isShowPass ? "text" : "password"} style={formik.errors.password ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='password'  placeholder="رمز ورود خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl"/>
                 
-                <a className={`${LoginStyles.inputIcon} ${LoginStyles.inputIcon_btn} `} onClick={()=>setIsShowPass(!isShowPass)}>                          
+                <button className={`${LoginStyles.inputIcon} ${LoginStyles.inputIcon_btn} `} onMouseUp={()=>setIsShowPass(!isShowPass)}>                          
                     {isShowPass ? <BiShow size="1.4em"/> :  <BiHide size="1.4em"/>}
-                </a>
+                </button>
 
                 {formik.errors.password && formik.touched.password && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.password}</p>}
             </div>
@@ -133,10 +133,8 @@ const NewUserLogin = ({setIsUserLogin , seIsUserSignup}) => {
                     {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                 </button>
             </div>
-           <button onClick={()=> seIsUserSignup(true)}>ثبت نام در سایت</button>
-               
-                
-               
+                <button onClick={()=> setIsUserSignup(true)} className={LoginStyles.linkToSignup}>!ثبت نام نکرده اید؟</button>
+           
           
         </form>
     );
