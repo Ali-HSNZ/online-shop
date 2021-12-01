@@ -27,7 +27,7 @@ const UserProfile = ({setIsUserProfile})=> {
 
                 <div className={LoginStyles.userProfile_userDetails}>
                     <p className={LoginStyles.userDetails_details}>{user.email}</p>
-                    <p className={LoginStyles.userDetails_title}>ایمیل</p>
+                    <p className={LoginStyles.userDetails_title}> : ایمیل</p>
                 </div>
 
             <button onClick={()=> {return userDispatch(null) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>خروج از حساب کاربری</button>

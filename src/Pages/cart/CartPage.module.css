@@ -39,7 +39,7 @@
         /* border: 1px solid red; */
         display: flex;
         justify-content: center;
-        margin-bottom: 70px;
+        margin-bottom: 80px;
         
     }
     .checkOut_Fixed{
@@ -91,17 +91,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
-        
+        border: none;
+        font-size: 12px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -181,17 +181,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
+        padding: 13px 10px;
+        outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
-        text-decoration: none;
-        text-align: center;
-        font-size: 14px;
+        border: none;
+        font-size: 13px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -272,16 +272,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
+        border: none;
+        font-size: 14px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -363,16 +364,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
+        border: none;
+        font-size: 14px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -452,16 +454,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
+        border: none;
+        font-size: 14px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -542,16 +545,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
+        border: none;
+        font-size: 14px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -631,16 +635,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
+        border: none;
+        font-size: 14px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -720,16 +725,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
+        border: none;
+        font-size: 14px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -809,16 +815,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
+        border: none;
+        font-size: 14px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -900,16 +907,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
+        border: none;
+        font-size: 14px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
@@ -991,16 +999,17 @@
     
     .checkout_submit{
         width: 100%;
-        padding: 7px 10px;
-        border: 1px solid gray;
+        padding: 13px 10px;
         outline: none;
         border-radius: 5px;
         background-color: brown;
         color: white;
         font-family: iranyekanweb;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         cursor: pointer;
+        border: none;
+        font-size: 14px;
     }
     .checkout_submit:hover{
         background-color: rgb(207, 60, 60);
