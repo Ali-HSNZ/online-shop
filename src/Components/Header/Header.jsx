@@ -1,5 +1,6 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
+import logoBrown from '../../image/logoBrown.png'
 import {BiShoppingBag , BiX , BiUser , BiSearch , BiHeart , BiDotsVerticalRounded} from "react-icons/bi";
 import  LoginStyles from'../user/LoginStyles.module.css'
 import { Link, NavLink } from 'react-router-dom';
@@ -12,11 +13,15 @@ import Login from '../user/Login/Login';
 import Signup from '../user/Signup/Signup';
 import { FaUserCheck } from "react-icons/fa";
 import { AiFillCaretUp ,AiFillCaretLeft} from "react-icons/ai";
-import { toast } from 'react-toastify';
+import MenuStyles from '../MenuStyles.module.css'
 import UserProfile from '../user/panel/Panel'
+import axios from 'axios';
+
+
+
+
 
 const Header = (props) => {
-
 
     const user = User()
     const userDispatch = UserDispatch()
@@ -24,10 +29,23 @@ const Header = (props) => {
     const [isUserSignup , setIsUserSignup] = useState(false)
     const [isMenu , setIsMenu] = useState(false)
     const [isUserProfile , setIsUserProfile] = useState(false)
-
-
     const setIsUserLogin = IsCalledUserLoginDispatch()
     const isUserLogin = IsCalledUserLogin()
+    const [closeMenu , setCloseMenu] = useState(false)
+
+    const [categories , setCategories] = useState(null)
+
+    const filteredCategories = categories&&categories.filter( e => e !== "men's clothing")
+
+
+    console.log('filteredCategories => ',filteredCategories)
+    useEffect(()=>{
+        axios.get("https://fakestoreapi.com/products/categories")
+        .then(e => setCategories(e.data))
+        .catch()
+    },[])
+
+
 
 
     const UserPanel = ()=>{
@@ -50,6 +68,37 @@ const Header = (props) => {
 
 
 
+    const Menu = () => {
+        return (
+           <>
+                <div className={LoginStyles.parent} onClick={()=>setIsMenu(false)}></div>
+                <div className={MenuStyles.main} onClick={()=>setIsMenu(true)}>
+
+                    <div className={MenuStyles.logoParent}>
+                        <img className={MenuStyles.logoParent_Img} alt="لوگو" src={logoBrown}/>
+                    </div>
+
+                    <div className={MenuStyles.likeParent} >
+                        <NavLink to={`/`} className={MenuStyles.likeParent_link} onClick={()=> setCloseMenu(true)}>
+                            <BiHeart className={MenuStyles.iconStyle} size="1.7em"/> 
+                            پسندیده ها         
+                        </NavLink>
+                    </div>
+
+                    <div className={MenuStyles.categoryParent}>
+                        <p dir="rtl" className={MenuStyles.categoryTitle}>دسته بندی ها : </p>
+                        {filteredCategories && filteredCategories.map(categories => (
+                            <Link to={`/category?name=${categories}`}  onClick={()=> setCloseMenu(true)} className={MenuStyles.category}>{categories}</Link>
+                        ))}
+                    </div>
+
+                   
+
+
+                </div>
+           </>
+        )
+    }
     
 
 
@@ -58,21 +107,20 @@ const Header = (props) => {
         <div className={Styles.parent}>
 
             <div className={Styles.header}>
-                <button className={Styles.menu} onClick={()=>setIsMenu(true)}> <BiDotsVerticalRounded size='1.7em'/></button>
+                <button className={Styles.menu} onClick={()=>{return setIsMenu(true) ,setCloseMenu(false) , setIsUserProfile(false) ,setIsUserLogin(false)}}> <BiDotsVerticalRounded size='1.7em'/></button>
 
                 <div className={Styles.header_left}>
 
-                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>setIsUserLogin(false)}>
+                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false) ,setIsUserLogin(false) , setIsMenu(false)}}>
                         <BiShoppingBag className={Styles.iconStyle} size="1.7em"/>
                         {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
-                    <NavLink activeClassName={Styles.activeLink} className={`${Styles.iconParent} ${Styles.iconParent_like}`} to={`/user-like`} exact  onClick={(e)=>setIsUserLogin(false)}>
+                    <NavLink activeClassName={Styles.activeLink} className={`${Styles.iconParent} ${Styles.iconParent_like}`} to={`/user-like`} exact   onClick={(e)=>{return setIsUserProfile(false) ,setIsUserLogin(false) , setIsMenu(false)}}>
                         <BiHeart className={Styles.iconStyle} size="1.7em"/>            
                     </NavLink>
-                    {/* setIsUserProfile */}
                     
-                    <button className={Styles.iconParent_Button} onClick={()=> user ?  setIsUserProfile(true) :  setIsUserLogin(true)}>
+                    <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true) :  setIsUserLogin(true) ,  setIsMenu(false)}}>
                         {user ? <FaUserCheck className={Styles.iconStyle} size="2em"/> :  <BiUser  className={Styles.iconStyle} size="2em"/>}
                     </button>
 
@@ -85,7 +133,7 @@ const Header = (props) => {
 
                 
                 <div className={Styles.header_right}>
-                    <NavLink activeClassName={Styles.activeLink} to="/" exact>خانه</NavLink>
+                    <NavLink activeClassName={Styles.activeLink} to="/" exact   onClick={(e)=>{return setIsUserProfile(false) ,setIsUserLogin(false) , setIsMenu(false)}} >خانه</NavLink>
                     <div className={Styles.logoParent}>
                         <Link to="/" className={Styles.link_Logo}>
                             <img className={Styles.logoParent_Img} alt="لوگو" src={Logo}/>
@@ -98,6 +146,7 @@ const Header = (props) => {
         </div>
             {isUserLogin=== true && <UserPanel />}
             {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
+            {isMenu === true && !closeMenu && <Menu/>}
           </>
     );
   };
