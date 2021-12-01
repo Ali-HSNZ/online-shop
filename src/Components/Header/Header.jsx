@@ -1,44 +1,43 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
 import {BiShoppingBag , BiX , BiUser , BiSearch , BiHeart , BiDotsVerticalRounded} from "react-icons/bi";
-import  LoginStyles from'./LoginStyles.module.css'
+import  LoginStyles from'../user/LoginStyles.module.css'
 import { Link, NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';
-import { User , UserDispatch} from '../../Context/userProvider/UserProvider';
+import { User , UserDispatch , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../Context/userProvider/UserProvider';
 import { withRouter } from 'react-router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiAlertTriangle } from "react-icons/fi";
-import Login from '../Login/Login';
-import Signup from '../Signup/Signup';
+import Login from '../user/Login/Login';
+import Signup from '../user/Signup/Signup';
 import { FaUserCheck } from "react-icons/fa";
 import { AiFillCaretUp ,AiFillCaretLeft} from "react-icons/ai";
 import { toast } from 'react-toastify';
+import UserProfile from '../user/panel/Panel'
 
-
-const Header = (props ) => {
+const Header = (props) => {
 
 
     const user = User()
     const userDispatch = UserDispatch()
     const {cart} = UseCart()
-    const [isUserLogin , setIsUserLogin] = useState(false)
     const [isUserSignup , setIsUserSignup] = useState(false)
     const [isMenu , setIsMenu] = useState(false)
     const [isUserProfile , setIsUserProfile] = useState(false)
 
+
+    const setIsUserLogin = IsCalledUserLoginDispatch()
+    const isUserLogin = IsCalledUserLogin()
 
 
     const UserPanel = ()=>{
         return(
             <React.Fragment>
                 <div className={LoginStyles.parent} onClick={()=>setIsUserLogin(false)}></div>
-                
                 <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
-
                     <div className={LoginStyles.arrow}>
                         <AiFillCaretUp size="2em"/>
                     </div>
-
                     {isUserLogin === true && isUserSignup === false ?(
                         <Login setIsUserLogin={setIsUserLogin} setIsUserSignup={setIsUserSignup}/> 
                     ) : (
@@ -49,35 +48,7 @@ const Header = (props ) => {
         )
     }
 
-    const UserProfile = ()=> {
-        return(
-            <React.Fragment>
-                <div className={LoginStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
-                <div className={`${LoginStyles.main} ${LoginStyles.main_userProfile}`}>
 
-                    <div className={LoginStyles.arrow}>
-                        <AiFillCaretUp size="2em"/>
-                    </div>
-
-                    <div className={LoginStyles.header}>
-                        <button onClick={()=>setIsUserProfile(false)}>
-                            <BiX size="2em"/>
-                        </button>
-                        <p className={LoginStyles.title}>پنل کاربری</p>   
-                    </div> 
-
-                    <div className={LoginStyles.userProfile_userDetails}>
-                        <p className={LoginStyles.userDetails_details}>{user.email}</p>
-                        <p className={LoginStyles.userDetails_title}>ایمیل</p>
-                    </div>
-
-                <button onClick={()=> {return userDispatch(null) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>خروج از حساب کابری</button>
-
-
-                </div>
-            </React.Fragment>
-        )
-    }
 
     
 
@@ -121,10 +92,12 @@ const Header = (props ) => {
                         </Link>
                     </div>
                 </div>
+
+
             </div> 
         </div>
             {isUserLogin=== true && <UserPanel />}
-            {isUserProfile === true && <UserProfile/>}
+            {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
           </>
     );
   };

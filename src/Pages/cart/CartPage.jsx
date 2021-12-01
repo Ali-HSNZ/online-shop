@@ -3,11 +3,15 @@ import { UseCart } from '../../Context/cartContext/CartProvider';
 import { Link } from 'react-router-dom';
 import CartItems from '../../common/Cart Item/CartItems';
 import { BsFillCaretLeftFill } from "react-icons/bs";
+import Header from '../../Components/Header/Header';
+import { User ,IsCalledUserLoginDispatch} from '../../Context/userProvider/UserProvider';
+import { useEffect } from 'react';
 
 
 
 const CartPage = () => {
     const productsInCart = UseCart()
+   
 
     const renderProducts = ()=> {
         var resualt
@@ -46,8 +50,11 @@ const CartPage = () => {
 export default CartPage;
 
  const Checkout = ({cart})=>{
-
+    const setIsUserLogin =  IsCalledUserLoginDispatch()
+    const user = User()
     const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
+
+
 
 
     return(
@@ -63,7 +70,23 @@ export default CartPage;
         <div className={Styles.price}>
             <p dir="rtl">جمع سبد خرید : {originalTotalPrice.toFixed(2)}$ </p>
         </div>
-        <Link className={Styles.checkout_submit} to="/user-login?redirect=checkout">پرداخت سبد خرید</Link>
+
+        {/* <button onClick={()=>!user && checkUser(true)}  className={Styles.checkout_submit}>
+            پرداخت سبد خرید
+        </button> */}
+            {user ? (
+                <Link className={Styles.checkout_submit} to="/checkout"> پرداخت سبد خرید</Link>
+            ) : (
+                <button onClick={()=> setIsUserLogin(true)} className={Styles.checkout_submit}> پرداخت سبد خرید</button>
+            )}
+          
+        
+
+
+        
+        
+        {/* {user ? :  } */}
+
     </div>
     )
 }
