@@ -1,6 +1,5 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
-import logoBrown from '../../image/logoBrown.png'
 import {BiShoppingBag , BiX , BiUser , BiSearch , BiHeart , BiDotsVerticalRounded} from "react-icons/bi";
 import  LoginStyles from'../user/LoginStyles.module.css'
 import { Link, NavLink } from 'react-router-dom';
@@ -13,11 +12,11 @@ import Login from '../user/Login/Login';
 import Signup from '../user/Signup/Signup';
 import { FaUserCheck } from "react-icons/fa";
 import { AiFillCaretUp ,AiFillCaretLeft , AiFillStar} from "react-icons/ai";
-import MenuStyles from '../MenuStyles.module.css'
+// import MenuStyles from '../MenuStyles.module.css'
 import UserProfile from '../user/panel/Panel'
 import axios from 'axios';
 import SmallLoading from '../../common/small Loding/SmallLoading';
-
+import Menu from '../Menu/Menu'
 
 
 
@@ -70,48 +69,7 @@ const Header = (props) => {
 
 
 
-    const Menu = () => {
-        return (
-           <>
-                <div className={LoginStyles.parent} onClick={()=>setIsMenu(false)}></div>
-                <div className={MenuStyles.main} onClick={()=>setIsMenu(true)}>
 
-                    <div className={MenuStyles.logoParent}>
-                        <NavLink to={'/'} onClick={()=> setCloseMenu(true)}>
-                            <img className={MenuStyles.logoParent_Img} alt="لوگو" src={logoBrown}/>
-                        </NavLink>
-                    </div>
-
-                    <div className={MenuStyles.likeParent} >
-                        <NavLink to={`/`} className={MenuStyles.likeParent_link} onClick={()=> setCloseMenu(true)}>
-                            <BiHeart className={MenuStyles.iconStyle} size="1.7em"/> 
-                            پسندیده ها         
-                        </NavLink>
-                    </div>
-
-                    <div className={MenuStyles.categoryParent}>
-                        <div className={MenuStyles.categoryParent_title}>
-                             {!filteredCategories && <SmallLoading color='red'/>}
-                           <p dir="rtl" className={MenuStyles.categoryTitle}>دسته بندی ها : </p>
-                        </div>
-                        {filteredCategories && filteredCategories.map(categories => (
-                            <Link to={`/category?name=${categories}`}  onClick={()=> setCloseMenu(true)} className={MenuStyles.category}>{categories}</Link>
-                        )) }
-                    </div>
-
-                    <div className={MenuStyles.specialSaleParent}>
-                        
-                        <Link to={{pathname : `/category` , search:"name=men's clothing" , name:"specialSale"}}  onClick={()=> setCloseMenu(true)} className={MenuStyles.specialSale}>
-                            <AiFillStar className={MenuStyles.specialSaleIcon} size="1.5em"/> 
-                            محصولات ویژه
-                        </Link>
-                    </div>
-
-
-                </div>
-           </>
-        )
-    }
     
 
 
@@ -159,7 +117,7 @@ const Header = (props) => {
         </div>
             {isUserLogin=== true && <UserPanel />}
             {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
-            {isMenu === true && !closeMenu && <Menu/>}
+            {isMenu === true && !closeMenu && <Menu categories={categories} setIsMenu={setIsMenu} setCloseMenu={setCloseMenu}/>}
           </>
     );
   };
