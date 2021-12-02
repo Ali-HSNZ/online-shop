@@ -1,0 +1,27 @@
+.parent{
+    width: 100%;
+    /* border: 1px solid red; */
+    margin-top:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px 0 0 0;
+    background-color: rgb(255, 212, 212);
+    position: relative;
+}
+.parent div{
+    border: 1px  dashed rgba(161, 0, 0, 0.473);
+    width: 100%;
+    position: absolute;
+    top: 28px;
+}
+.parent p{
+    position: relative;
+    top: -14px;
+    font-size: 14px;
+    background-color: rgb(252, 226, 226);
+    padding: 5px 10px;
+    font-family: iransansweb;
+    border-radius: 5px;
+} 

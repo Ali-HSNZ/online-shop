@@ -12,16 +12,19 @@ import { FiAlertTriangle } from "react-icons/fi";
 import Login from '../user/Login/Login';
 import Signup from '../user/Signup/Signup';
 import { FaUserCheck } from "react-icons/fa";
-import { AiFillCaretUp ,AiFillCaretLeft} from "react-icons/ai";
+import { AiFillCaretUp ,AiFillCaretLeft , AiFillStar} from "react-icons/ai";
 import MenuStyles from '../MenuStyles.module.css'
 import UserProfile from '../user/panel/Panel'
 import axios from 'axios';
+import SmallLoading from '../../common/small Loding/SmallLoading';
 
 
 
 
 
 const Header = (props) => {
+
+
 
     const user = User()
     const userDispatch = UserDispatch()
@@ -38,7 +41,6 @@ const Header = (props) => {
     const filteredCategories = categories&&categories.filter( e => e !== "men's clothing")
 
 
-    console.log('filteredCategories => ',filteredCategories)
     useEffect(()=>{
         axios.get("https://fakestoreapi.com/products/categories")
         .then(e => setCategories(e.data))
@@ -75,7 +77,9 @@ const Header = (props) => {
                 <div className={MenuStyles.main} onClick={()=>setIsMenu(true)}>
 
                     <div className={MenuStyles.logoParent}>
-                        <img className={MenuStyles.logoParent_Img} alt="لوگو" src={logoBrown}/>
+                        <NavLink to={'/'} onClick={()=> setCloseMenu(true)}>
+                            <img className={MenuStyles.logoParent_Img} alt="لوگو" src={logoBrown}/>
+                        </NavLink>
                     </div>
 
                     <div className={MenuStyles.likeParent} >
@@ -86,13 +90,22 @@ const Header = (props) => {
                     </div>
 
                     <div className={MenuStyles.categoryParent}>
-                        <p dir="rtl" className={MenuStyles.categoryTitle}>دسته بندی ها : </p>
+                        <div className={MenuStyles.categoryParent_title}>
+                             {!filteredCategories && <SmallLoading color='red'/>}
+                           <p dir="rtl" className={MenuStyles.categoryTitle}>دسته بندی ها : </p>
+                        </div>
                         {filteredCategories && filteredCategories.map(categories => (
                             <Link to={`/category?name=${categories}`}  onClick={()=> setCloseMenu(true)} className={MenuStyles.category}>{categories}</Link>
-                        ))}
+                        )) }
                     </div>
 
-                   
+                    <div className={MenuStyles.specialSaleParent}>
+                        
+                        <Link to={{pathname : `/category` , search:"name=men's clothing" , name:"specialSale"}}  onClick={()=> setCloseMenu(true)} className={MenuStyles.specialSale}>
+                            <AiFillStar className={MenuStyles.specialSaleIcon} size="1.5em"/> 
+                            فروش ویژه
+                        </Link>
+                    </div>
 
 
                 </div>
@@ -116,9 +129,9 @@ const Header = (props) => {
                         {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
-                    <NavLink activeClassName={Styles.activeLink} className={`${Styles.iconParent} ${Styles.iconParent_like}`} to={`/user-like`} exact   onClick={(e)=>{return setIsUserProfile(false) ,setIsUserLogin(false) , setIsMenu(false)}}>
+                    {/* <NavLink activeClassName={Styles.activeLink} className={`${Styles.iconParent} ${Styles.iconParent_like}`} to={`/user-like`} exact   onClick={(e)=>{return setIsUserProfile(false) ,setIsUserLogin(false) , setIsMenu(false)}}>
                         <BiHeart className={Styles.iconStyle} size="1.7em"/>            
-                    </NavLink>
+                    </NavLink> */}
                     
                     <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true) :  setIsUserLogin(true) ,  setIsMenu(false)}}>
                         {user ? <FaUserCheck className={Styles.iconStyle} size="2em"/> :  <BiUser  className={Styles.iconStyle} size="2em"/>}

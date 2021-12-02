@@ -49,6 +49,7 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
         try {
             const data = await userSignup(userData)
             setIsLoading(false)
+            console.log(data)
              toast.success('ثبت نام شما با موفقیت انجام شد')
              dispatchUser(JSON.parse( data.config.data))
              if(data){
@@ -58,7 +59,6 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
         } catch (error) {
              setIsLoading(false)
              toast.error(error.response.data.message)
-            console.log("Faild data =>",error)
 
         }
    }

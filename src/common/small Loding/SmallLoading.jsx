@@ -1,8 +1,11 @@
 import Styles from './SmallLoading.module.css'
-const SmallLoading = () => {
+
+const SmallLoading = ({color}) => {
+
+
     return (  
-        <div className={Styles.loader_wrapper}>
-            <div className={Styles.loader}></div>
+        <div className={Styles.loader_wrapper} >
+            <div className={`${color && `${Styles["loader"+color]}` } ${ Styles.loader}`} ></div>
         </div>
     );
 }

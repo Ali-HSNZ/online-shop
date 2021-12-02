@@ -4,7 +4,6 @@
     height: auto;
     position: relative;
 }
-
 .loader:before {
     content: '';
     box-sizing: border-box;
@@ -19,6 +18,10 @@
     border-top: 3px solid rgb(255, 255, 255);
     border-right: 3px solid transparent;
     animation: spinner .6s linear infinite;
+}
+.loaderred:before{
+    border-top: 3px solid rgb(190, 0, 0);
+
 }
 @keyframes spinner {
     to {transform: rotate(360deg);}

@@ -3,15 +3,11 @@
     margin-bottom: 20px;
     display: grid;
     padding: 20px;
-    grid-template-columns: repeat(auto-fit , minmax(250px , 1fr));
+    grid-template-columns: repeat(auto-fit , minmax(270px , 1fr));
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-}
-.item{
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(221, 221, 221);
-}
 
+}
 .imgParent{
     width: 100%;
     height: 200px;
@@ -68,9 +64,6 @@
     color: rgb(0, 0, 0);
 }
 
-
-/* -------------------------------------------------------------------------------------------------------------------------- */
-
 .titleParent{
     width: 100%;
     font-family: iransansweb;
@@ -78,25 +71,6 @@
     padding: 0 20px;
 }
 
-
-/* -------------------------------------------------------------------------------------------------------------------------- */
-
-
-
-
-/* .describtion{
-    width: 100%;
-    height: 92px;
-    display: flex;
-    padding: 0 20px;
-    margin-top: 10px;
-    font-family: iranyekanweb;
-    flex-direction: column;
-   align-items: flex-end;
-   font-size: 13px;
-   font-weight: 700;
-   line-height: 30px;
-} */
 .describtion div{
     display: flex;
     justify-content: center;
@@ -105,14 +79,6 @@
 .describtion div img{
     margin-left: 5px;
 }
-
-
-
-/* -------------------------------------------------------------------------------------------------------------------------- */
-
-
-
-
 
 .footer{
     margin: 20px 0;
@@ -187,4 +153,35 @@
     margin-left: 10px;
     color: rgb(179, 0, 0);
 
+}
+.categoryStyle{
+    text-align: right;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+.categoryStyle{
+    font-family: iransansweb;
+    font-size: 14px;
+
+}
+.categoryLine_parent{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 7px;
+    padding: 0 ;
+
+}
+.categoryLine_parent div{
+    background-color:  red;
+    height: 5px;
+    width: 5px;
+    border-radius: 100%;
+    margin-left: 5px;
+}
+.categoryLine_parent div:last-child{
+    background-color:  red;
+    height: 5px;
+    width: 70px;
+    border-radius: 100px;
+    margin-left: 5px;
 }

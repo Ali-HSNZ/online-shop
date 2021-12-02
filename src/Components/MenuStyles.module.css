@@ -70,9 +70,37 @@
     color: black;
 }
 
+.specialSaleParent{
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+.specialSale{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    text-decoration: none;
+    font-family: iransansweb;
+    padding: 10px 15px;
+    background-color: rgb(179, 0, 0);
+    border-radius: 5px;
 
+    font-size: 13px;
+    color: white;
+}
+.specialSaleIcon{
+    color: white;
 
-
+}
+.categoryParent_title{
+    display: flex;
+    justify-content: space-between;
+}
+.categoryParent_title p{
+    margin-left: 10px;
+}
 
 
 
