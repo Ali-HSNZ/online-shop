@@ -32,7 +32,7 @@ const CategoryPage = (props) => {
     useEffect(()=>{
         const getProducts = async() => {
             if(query !== "" && query.length >0){
-                axios.get(`https://fakestoreapi.com/products/category/${query}`).then(products => {
+                await axios.get(`https://fakestoreapi.com/products/category/${query}`).then(products => {
                     return products.data.length > 0 ? setProducts(products.data) :  setProducts('')
                 }).catch()
             }else{
@@ -55,7 +55,8 @@ const CategoryPage = (props) => {
         }else if(products === null){
             resualt = Container()
 
-        }            if(products === ""){
+        }            
+        if(products === ""){
             resualt = <p>محصولی در این دسته بندی ثبت نشده است</p>
         }
 

@@ -6,7 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';
 import { User , UserDispatch , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../Context/userProvider/UserProvider';
 import { withRouter } from 'react-router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FiAlertTriangle } from "react-icons/fi";
 import Login from '../user/Login/Login';
 import Signup from '../user/Signup/Signup';
@@ -33,6 +33,7 @@ const Header = (props) => {
     const isUserLogin = IsCalledUserLogin()
     const setIsUserLogin = IsCalledUserLoginDispatch()
     const [closeMenu , setCloseMenu] = useState(false)
+    const [closeSearch , setCloseSearch] = useState(false)
     const [categories , setCategories] = useState(null)
 
 
@@ -41,10 +42,12 @@ const Header = (props) => {
     const [isUserProfile , setIsUserProfile] = useState(false)
     const [isSearch , setIsSearch] = useState(false)
 
+
+ 
+
+
     useEffect(()=>{
-        axios.get("https://fakestoreapi.com/products/categories")
-        .then(e => setCategories(e.data))
-        .catch()
+        axios.get("https://fakestoreapi.com/products/categories").then(e => setCategories(e.data)).catch();
     },[])
 
 
@@ -70,6 +73,18 @@ const Header = (props) => {
 
 
     const SearchComponent = ()=>{
+
+        const searchInputRef = useRef()
+
+
+        const [searchValue , setSearchValue] = useState(null)
+
+
+        useEffect(()=>{
+            searchInputRef.current.focus()
+
+        },[])
+
         return(
             <>
                 <div className={LoginStyles.parent} onClick={()=>setIsSearch(false)}></div>
@@ -97,16 +112,12 @@ const Header = (props) => {
                         </div>
                     </div>
                 </div>
-                <input type="text" style={{border:'1px solid gray'}} name='email' type='text'  placeholder="جستجو محصول..." dir="rtl" />
+                <input type="text" ref={searchInputRef} style={{border:'1px solid gray'}} value={searchValue} placeholder="جستجو محصول..." dir="rtl" onChange={ e => setSearchValue(e.target.value)}/>
                 <div className={LoginStyles.inputIcon}> <BiSearch size="1.2em"/> </div>
             </div>
 
-            <button 
-                type="submit" 
-                className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>   
-                جستجو
-            </button>
-
+            <NavLink to={`/search?productName=${searchValue}`} className={Styles.submitSearchBtn} onClick={()=> setCloseSearch(true)}>جستجو</NavLink>
+            
                 </div>
             </>
         )
@@ -137,7 +148,7 @@ const Header = (props) => {
                     </button>
 
 
-                    <button className={Styles.iconParent_Button} onClick={()=> {return setIsSearch(true) , setCloseMenu(false) , setIsUserProfile(false),setIsUserLogin(false) , setIsMenu(false)} }>
+                    <button className={Styles.iconParent_Button} onClick={()=> {return setIsSearch(true) , setCloseMenu(false) ,setIsMenu(false), setIsUserProfile(false),setIsUserLogin(false) ,setCloseSearch(false)} }>
                        <BiSearch className={Styles.iconStyle} size="2em"/>            
                     </button>
 
@@ -159,7 +170,7 @@ const Header = (props) => {
             {isUserLogin=== true && <UserPanel />}
             {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
             {isMenu === true && !closeMenu && <Menu categories={categories} setIsMenu={setIsMenu} setCloseMenu={setCloseMenu}/>}
-            {isSearch === true && <SearchComponent/>}
+            {isSearch === true && !closeSearch && <SearchComponent/>}
           </>
     );
   };
