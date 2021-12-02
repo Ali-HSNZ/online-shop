@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useQuery } from "../../hooks/useQuery";
 import Styles from './CategoryPage.module.css'
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
@@ -9,8 +9,10 @@ import Line from "../../common/line/Line";
 const CategoryPage = (props) => {
     const [products,setProducts] = useState(null)
     const query = useQuery().get('name');
-    const isSpecialSale = props.location.name === "specialSale"
+    const isSpecialSale = props.location.name === "specialSale";
+    
 
+    
     
     if(query === "men's clothing" && isSpecialSale){
         if(products&&products.length>0){
@@ -43,6 +45,8 @@ const CategoryPage = (props) => {
     },[query])
 
 
+
+
     const renderProducts = ()=>{
         let resualt = null;
 
@@ -63,7 +67,17 @@ const CategoryPage = (props) => {
         return resualt;
     }
 
+    const BigFilter = ()=>{
 
+    }
+    const smallFilter = ()=>{
+
+    }
+    var searchValue = "";
+    const changeSearchInputHandler = (e)=>{
+        searchValue = e.target.value
+    }
+    console.log("searchValue ===> ",searchValue)
     return ( 
         <>
         {query=== "men's clothing" && isSpecialSale ? (
@@ -92,6 +106,19 @@ const CategoryPage = (props) => {
         
         }
         
+            <div className={Styles.filterParent}>
+                <button className={Styles.shegefthAngiz}> محصولات شگفت انگیز</button>
+                <button className={Styles.shegefthAngiz}>بیشترین تخفیف</button>
+                <div>
+                    <button onClick={BigFilter}>بیشترین</button>
+                    <button onClick={smallFilter}>کمترین</button>
+                    <p> : فیلتر قیمت</p>
+                </div>
+                <div className={Styles.searchParent}>
+                    <input placeholder=" جستجو بین محصولات"  dir='rtl' onChange={(e) => changeSearchInputHandler(e)}/>
+                    <p className={Styles.searchText}> : جستجو</p>
+                </div>
+            </div>
             <div className={Styles.parent}>
                 {
                    renderProducts()
@@ -101,4 +128,4 @@ const CategoryPage = (props) => {
     );
 }
  
-export default CategoryPage;
+export default memo(CategoryPage);

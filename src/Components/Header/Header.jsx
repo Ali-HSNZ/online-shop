@@ -57,16 +57,19 @@ const Header = (props) => {
         return(
             <React.Fragment>
                 <div className={LoginStyles.parent} onClick={()=>setIsUserLogin(false)}></div>
-                <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
-                    <div className={LoginStyles.arrow}>
-                        <AiFillCaretUp size="2em"/>
-                    </div>
-                    {isUserLogin === true && isUserSignup === false ?(
-                        <Login setIsUserLogin={setIsUserLogin} setIsUserSignup={setIsUserSignup}/> 
-                    ) : (
-                        <Signup setIsUserSignup={setIsUserSignup} setIsUserLogin={setIsUserLogin}/>
-                    )}
-                </div>
+                        <div className={LoginStyles.center}>
+                            <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
+                                    <div className={LoginStyles.arrow}>
+                                        <AiFillCaretUp size="2em"/>
+                                    </div>
+                                    {isUserLogin === true && isUserSignup === false ?(
+                                        <Login setIsUserLogin={setIsUserLogin} setIsUserSignup={setIsUserSignup}/> 
+                                    ) : (
+                                        <Signup setIsUserSignup={setIsUserSignup} setIsUserLogin={setIsUserLogin}/>
+                                    )}
+                            </div>
+                       
+                   </div>
             </React.Fragment>
         )
     }
@@ -88,6 +91,7 @@ const Header = (props) => {
         return(
             <>
                 <div className={LoginStyles.parent} onClick={()=>setIsSearch(false)}></div>
+                <div className={Styles.center}>
                 <div className={Styles.main} onClick={()=>setIsSearch(true)}>
 
                 <div className={LoginStyles.arrow}>
@@ -119,6 +123,7 @@ const Header = (props) => {
             <NavLink to={`/search?productName=${searchValue}`} className={Styles.submitSearchBtn} onClick={()=> setCloseSearch(true)}>جستجو</NavLink>
             
                 </div>
+            </div>
             </>
         )
     }

@@ -7,15 +7,17 @@
     background-color: rgba(0, 0, 0, 0.438);
     z-index: 9999;    
 }
-
+.center{
+    width: 100%;
+    z-index: 99999;
+    position: relative;
+    left: 7px;
+}
 .main{
     width: 300px;
     height: auto;
     background-color: rgb(255, 255, 255);
-    z-index: 99999;
-    position: fixed;
-    top: 70px;
-    left: 9px;
+
     border-radius: 0 0 15px 15px;
     padding: 0 20px 20px 20px;
     border: 2px solid #a71e34;
@@ -24,6 +26,8 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+
+    position: fixed;
 }
 .main_userProfile{
     display: flex;
