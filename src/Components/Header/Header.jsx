@@ -1,6 +1,6 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
-import {BiShoppingBag , BiX , BiUser , BiSearch , BiHeart , BiDotsVerticalRounded} from "react-icons/bi";
+import {BiShoppingBag , BiX , BiUser , BiSearch , BiDotsVerticalRounded} from "react-icons/bi";
 import  LoginStyles from'../user/LoginStyles.module.css'
 import { Link, NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';
@@ -18,6 +18,7 @@ import axios from 'axios';
 import SmallLoading from '../../common/small Loding/SmallLoading';
 import Menu from '../Menu/Menu'
 
+import { BsInfoCircleFill } from "react-icons/bs";
 
 
 
@@ -28,17 +29,17 @@ const Header = (props) => {
     const user = User()
     const userDispatch = UserDispatch()
     const {cart} = UseCart()
+
+    const isUserLogin = IsCalledUserLogin()
+    const setIsUserLogin = IsCalledUserLoginDispatch()
+    const [closeMenu , setCloseMenu] = useState(false)
+    const [categories , setCategories] = useState(null)
+
+
     const [isUserSignup , setIsUserSignup] = useState(false)
     const [isMenu , setIsMenu] = useState(false)
     const [isUserProfile , setIsUserProfile] = useState(false)
-    const setIsUserLogin = IsCalledUserLoginDispatch()
-    const isUserLogin = IsCalledUserLogin()
-    const [closeMenu , setCloseMenu] = useState(false)
-
-    const [categories , setCategories] = useState(null)
-
-    const filteredCategories = categories&&categories.filter( e => e !== "men's clothing")
-
+    const [isSearch , setIsSearch] = useState(false)
 
     useEffect(()=>{
         axios.get("https://fakestoreapi.com/products/categories")
@@ -68,21 +69,61 @@ const Header = (props) => {
     }
 
 
+    const SearchComponent = ()=>{
+        return(
+            <>
+                <div className={LoginStyles.parent} onClick={()=>setIsSearch(false)}></div>
+                <div className={Styles.main} onClick={()=>setIsSearch(true)}>
 
+                <div className={LoginStyles.arrow}>
+                    <AiFillCaretUp size="2em"/>
+                </div>
+
+                    <div className={LoginStyles.header}>
+                        <button onMouseUp={()=>setIsSearch(false)}>
+                            <BiX size="2em"/>
+                        </button>
+                        <p className={LoginStyles.title}>جستجو محصول</p>   
+                    </div> 
+
+            <div className={LoginStyles.group}>
+                <div className={LoginStyles.inputName} dir="rtl">
+                    <p className={LoginStyles.groupName} dir="rtl">نام محصول : </p> 
+                    <div className={LoginStyles.infoParent}>
+                        <BsInfoCircleFill className={LoginStyles.info} size="1.1em"/>
+                        <div className={LoginStyles.infoTextParent}>
+                            <p className={LoginStyles.infoText} >نام محصولی که دنبال آن میگردید را وارد کنید. </p>
+                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow}/>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" style={{border:'1px solid gray'}} name='email' type='text'  placeholder="جستجو محصول..." dir="rtl" />
+                <div className={LoginStyles.inputIcon}> <BiSearch size="1.2em"/> </div>
+            </div>
+
+            <button 
+                type="submit" 
+                className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>   
+                جستجو
+            </button>
+
+                </div>
+            </>
+        )
+    }
 
     
-
 
     return (
         <>
         <div className={Styles.parent}>
 
             <div className={Styles.header}>
-                <button className={Styles.menu} onClick={()=>{return setIsMenu(true) ,setCloseMenu(false) , setIsUserProfile(false) ,setIsUserLogin(false)}}> <BiDotsVerticalRounded size='1.7em'/></button>
+                <button className={Styles.menu} onClick={()=>{return setIsMenu(true) ,setCloseMenu(false) , setIsSearch(false) , setIsUserProfile(false) ,setIsUserLogin(false)}}> <BiDotsVerticalRounded size='1.7em'/></button>
 
                 <div className={Styles.header_left}>
 
-                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false) ,setIsUserLogin(false) , setIsMenu(false)}}>
+                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false), setIsSearch(false) ,setIsUserLogin(false) , setIsMenu(false)}}>
                         <BiShoppingBag className={Styles.iconStyle} size="1.7em"/>
                         {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
@@ -91,12 +132,12 @@ const Header = (props) => {
                         <BiHeart className={Styles.iconStyle} size="1.7em"/>            
                     </NavLink> */}
                     
-                    <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true) :  setIsUserLogin(true) ,  setIsMenu(false)}}>
+                    <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true) :  setIsUserLogin(true) ,   setIsSearch(false) ,setIsMenu(false)}}>
                         {user ? <FaUserCheck className={Styles.iconStyle} size="2em"/> :  <BiUser  className={Styles.iconStyle} size="2em"/>}
                     </button>
 
 
-                    <button className={Styles.iconParent_Button} >
+                    <button className={Styles.iconParent_Button} onClick={()=> {return setIsSearch(true) , setCloseMenu(false) , setIsUserProfile(false),setIsUserLogin(false) , setIsMenu(false)} }>
                        <BiSearch className={Styles.iconStyle} size="2em"/>            
                     </button>
 
@@ -104,7 +145,7 @@ const Header = (props) => {
 
                 
                 <div className={Styles.header_right}>
-                    <NavLink activeClassName={Styles.activeLink} to="/" exact   onClick={(e)=>{return setIsUserProfile(false) ,setIsUserLogin(false) , setIsMenu(false)}} >خانه</NavLink>
+                    <NavLink activeClassName={Styles.activeLink} to="/" exact   onClick={(e)=>{return setIsUserProfile(false),  setIsSearch(false) ,setIsUserLogin(false) , setIsMenu(false)}} >خانه</NavLink>
                     <div className={Styles.logoParent}>
                         <Link to="/" className={Styles.link_Logo}>
                             <img className={Styles.logoParent_Img} alt="لوگو" src={Logo}/>
@@ -118,6 +159,7 @@ const Header = (props) => {
             {isUserLogin=== true && <UserPanel />}
             {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
             {isMenu === true && !closeMenu && <Menu categories={categories} setIsMenu={setIsMenu} setCloseMenu={setCloseMenu}/>}
+            {isSearch === true && <SearchComponent/>}
           </>
     );
   };

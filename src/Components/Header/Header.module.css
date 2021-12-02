@@ -118,17 +118,28 @@
 
 
 
+.main{
+    width: 300px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    z-index: 99999;
+    position: fixed;
+    top: 70px;
+    left: 77px;
+    border-radius: 0 0 15px 15px;
+    padding: 0 20px 20px 20px;
+    border: 2px solid #a71e34;
+    border-top: none;
+    box-shadow: 0 1px 3px 0 rgb(82, 82, 82);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
 
 
 
 
 
-
-@media only screen and (min-width:500px){
-    .menu{
-        /* display: none; */
-    }
- }
 
 @media only screen and (max-width:499px){
     .logoParent{display: none}
