@@ -103,7 +103,7 @@ const Header = (props) => {
                         
                         <Link to={{pathname : `/category` , search:"name=men's clothing" , name:"specialSale"}}  onClick={()=> setCloseMenu(true)} className={MenuStyles.specialSale}>
                             <AiFillStar className={MenuStyles.specialSaleIcon} size="1.5em"/> 
-                            فروش ویژه
+                            محصولات ویژه
                         </Link>
                     </div>
 
