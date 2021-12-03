@@ -12,6 +12,7 @@ const UserProfile = ({setIsUserProfile})=> {
     return(
         <React.Fragment>
             <div className={LoginStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
+            <div className={LoginStyles.center}>
             <div className={`${LoginStyles.main} ${LoginStyles.main_userProfile}`}>
 
                 <div className={LoginStyles.arrow}>
@@ -34,6 +35,7 @@ const UserProfile = ({setIsUserProfile})=> {
 
 
             </div>
+        </div>
         </React.Fragment>
     )
 }
