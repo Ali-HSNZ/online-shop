@@ -27,13 +27,13 @@ const ProductListItem = ({item}) => {
             <div className={Styles.itemParent_center}>
 
                 <div className={Styles.item}>
-                    {item.offPrice && <div className={Styles.header_offPrice}>{item.offPrice}%</div>}
+                    {item.offPrice >=1 ? <div className={Styles.header_offPrice}>{item.offPrice}%</div> : ""}
 
                     <div className={Styles.item_header}>
                         <div className={Styles.likeParent}>
                             <BiHeart size="1.3em" style={{color:'red'}}/>
                                 <p>{item.rating.rate}</p>
-                                <span>({item.rating.count})</span>
+                                <span>{item.rating.count}</span>
                         </div>
                     </div>
 
@@ -47,7 +47,7 @@ const ProductListItem = ({item}) => {
 
                     <div className={Styles.item_footer} dir="rtl">
                         <p dir="rtl">قیمت محصول : {item.price}$</p>
-                        {item.discount && <p className={Styles.itemOffPrice} dir="rtl">تخفیف : {item.discount}$</p>}
+                        {item.discount >= 1 ? <p className={Styles.itemOffPrice} dir="rtl">تخفیف : {item.discount}$</p> : ""}
                     </div>
 
 

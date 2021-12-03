@@ -70,6 +70,7 @@ const ProductList = () => {
     }
 
 
+
     return (  
         <div className={Styles.parent} dir="rtl">
 
