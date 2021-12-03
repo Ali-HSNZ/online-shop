@@ -3,7 +3,7 @@
     margin-bottom: 20px;
     display: grid;
     padding: 20px;
-    grid-template-columns: repeat(auto-fit , minmax(270px , 1fr));
+    grid-template-columns: repeat(auto-fill , minmax(270px , 1fr));
     grid-column-gap: 20px;
     grid-row-gap: 20px;
 
@@ -236,7 +236,7 @@
     border-radius: 100%;
     margin-left: 5px;
 }
-.categoryLine_parent div:last-child{
+.categoryLine_parent div:first-child{
     background-color:  red;
     height: 5px;
     width: 70px;

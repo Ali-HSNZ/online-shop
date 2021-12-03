@@ -15,8 +15,6 @@ const ProductList = () => {
     const [products , setProducts] = useState(null)
     const [category , setCategory] = useState(null)
 
-    console.log(category)
-
     useEffect(()=>{
         const getAllProducts = async()=>{
             try {
