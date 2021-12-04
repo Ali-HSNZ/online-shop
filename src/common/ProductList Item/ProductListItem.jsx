@@ -3,10 +3,15 @@ import { BiHeart} from "react-icons/bi";
 import {UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider'
 import { BiTrashAlt , BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import {AiFillStar} from "react-icons/ai";
+import { useEffect, useState } from 'react';
+
 
 const ProductListItem = ({item}) => {
     const dispatch = UseCartDispatch()
     const {cart} = UseCart()
+
+    const [isClickedOnProducts , setIsClickedOnProducts] = useState(false)
 
     const checkProductInCart=  (state , product)=>{
         const item = state.findIndex(item => item.id === product.id)
@@ -22,12 +27,23 @@ const ProductListItem = ({item}) => {
         dispatch({type : "DELETE_PRODUCT" , payLoad : product})
     }
 
+    useEffect(()=>{
+        if(isClickedOnProducts===true){
+            console.log("true")
+        }
+    },[isClickedOnProducts])
+
     return (  
         <div className={Styles.itemParent}>
             <div className={Styles.itemParent_center}>
 
-                <div className={Styles.item}>
-                    {item.offPrice >=1 ? <div className={Styles.header_offPrice}>{item.offPrice}%</div> : ""}
+                <div className={Styles.item} >
+                    {item.offPrice >=1 ? <div className={`${Styles.header_offPrice} ${Styles.header_offPrice_gold}`}>
+                        {item.offPrice >=10  && <AiFillStar/>}
+                        <p>{item.offPrice}</p>
+                        %
+                    </div> : ""}
+                    
 
                     <div className={Styles.item_header}>
                         <div className={Styles.likeParent}>
@@ -37,7 +53,7 @@ const ProductListItem = ({item}) => {
                         </div>
                     </div>
 
-                    <div className={Styles.imgParent}>
+                    <div className={Styles.imgParent} onClick={()=> setIsClickedOnProducts(true)}>
                         <img src={item.image} alt={item.title}/>
                     </div>
 

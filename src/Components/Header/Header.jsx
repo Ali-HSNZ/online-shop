@@ -92,7 +92,7 @@ const Header = (props) => {
             <>
                 <div className={LoginStyles.parent} onClick={()=>setIsSearch(false)}></div>
                 <div className={Styles.center}>
-                <div className={Styles.main} onClick={()=>setIsSearch(true)}>
+                <div className={`${Styles.main} ${Styles.main_search}`} onClick={()=>setIsSearch(true)}>
 
                 <div className={LoginStyles.arrow}>
                     <AiFillCaretUp size="2em"/>
