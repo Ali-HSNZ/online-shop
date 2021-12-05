@@ -24,11 +24,25 @@ const ProductList = () => {
     const [products , setProducts] = useState(null)
     const [category , setCategory] = useState(null)
 
+    const [itemClickData , setItemClickData] = useState(null)
+    const [isItemClick , setIsItemClick] = useState(false)
+
+    console.log('setIsItemClick => ',isItemClick)
+
     useEffect(()=>{
         const getAllProducts = async()=>{
             try {
                 axios.get('https://fakestoreapi.com/products').then(products =>{
-                    setProducts(products.data)
+                    if(products.data){
+                        const cloneProducts = [...products.data]
+                        for(let i = 0 ; i <= Math.floor(cloneProducts.length/3) ; i++){
+                            const index = Math.floor(Math.random()*cloneProducts.length);
+                            cloneProducts[index].offPrice = Math.floor(Math.random()*50) + 1
+                            cloneProducts[index].discount = Math.floor(Math.random()*200) + 1
+                        }
+                        setProducts(cloneProducts)
+                    }
+
                 }).catch();
             } catch (error) {
                 setProducts(null)
@@ -41,25 +55,24 @@ const ProductList = () => {
                 setCategory(null)
             )
         }
+
+
+
         getAllCategorie()
         getAllProducts()
     },[])
 
-
-    if(products){
-        for(let i = 0 ; i <= Math.floor(products.length/3) ; i++){
-            const index = Math.floor(Math.random()*products.length);
-            products[index].offPrice = Math.floor(Math.random()*50) + 1
-            products[index].discount = Math.floor(Math.random()*200) + 1
-        }
+    const itemClickHandler = (productData) =>{
+        setItemClickData(productData)
     }
 
 
 
     return (  
         <div className={Styles.parent} dir="rtl">
-
             <div>
+            {isItemClick === true &&<div>{itemClickData.title}</div>}
+
                 {
                
                     category ? category.map((mapOnCategory,index) => {
@@ -82,27 +95,27 @@ const ProductList = () => {
                                                 </div>
                                             ) }
                                             <div className='swiperParent' dir="ltr" key={index}>
-                                            <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
-                                                  breakpoints= {{
-                                                    0: {
-                                                      slidesPerView: 1,
-                                                    },
-                                                    630: {
-                                                      slidesPerView: 2,
-                                                    },
-                                                    900: {
-                                                      slidesPerView: 3,
-                                                    },
-                                                    1260: {
-                                                        slidesPerView: 4,
-                                                    }
-                                                  }}
-                                            >
+                                                <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
+                                                    breakpoints= {{
+                                                        0: {
+                                                        slidesPerView: 1,
+                                                        },
+                                                        630: {
+                                                        slidesPerView: 2,
+                                                        },
+                                                        900: {
+                                                        slidesPerView: 3,
+                                                        },
+                                                        1260: {
+                                                            slidesPerView: 4,
+                                                        }
+                                                    }}>
+                                            
 
                                                     {filterd ? filterd.map(
                                                         item=>{return(
                                                             <SwiperSlide>
-                                                                <ProductListItem key={item.id} item = {item} offPrice={item.offPrice}/>
+                                                                <ProductListItem key={item.id} setIsItemClick={setIsItemClick} itemClick={ e =>itemClickHandler(e)} item = {item} offPrice={item.offPrice}/>
                                                             </SwiperSlide>
                                                     )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                                                     

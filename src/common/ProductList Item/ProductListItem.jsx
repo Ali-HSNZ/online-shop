@@ -7,7 +7,7 @@ import {AiFillStar} from "react-icons/ai";
 import { useEffect, useState } from 'react';
 
 
-const ProductListItem = ({item}) => {
+const ProductListItem = ({item , itemClick , setIsItemClick}) => {
     const dispatch = UseCartDispatch()
     const {cart} = UseCart()
 
@@ -52,7 +52,7 @@ const ProductListItem = ({item}) => {
                         </div>
                     </div>
 
-                    <div className={Styles.imgParent} >
+                    <div className={Styles.imgParent} onClick={()=>{return itemClick(item) ,  setIsItemClick(true)}}>
                         <img src={item.image} alt={item.title}/>
                     </div>
 
@@ -72,7 +72,7 @@ const ProductListItem = ({item}) => {
                     {checkProductInCart(cart , item) === true ? (
                         <Link to="/cart" className={Styles.itemAcrionActive}>سبد خرید</Link>
                     ) : (
-                        <button className={Styles.itemAcrion} onClick={()=> addToCartHandler(item)}>
+                        <button className={Styles.itemAcrion} onClick={()=> {return addToCartHandler(item)}}>
                             <p>خرید محصول</p>
                             <BiShoppingBag size="1.5em"/>
                         </button>
