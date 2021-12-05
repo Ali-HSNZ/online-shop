@@ -120,6 +120,7 @@ const ProductPage = () => {
                         },
                         1260: {
                             slidesPerView: 4,
+                            
                         }
                     }}>
                     {products ? products.slice(Math.floor(5+Math.random()*10)).map(
