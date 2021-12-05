@@ -37,8 +37,7 @@
     margin-bottom: 15px;
 }
 .sliderParent{
-    /* margin-top: 20px; */
-    padding: 20px;
+     margin-top: 20px; 
     border-radius: 5px;
 }
 .Slider_categoryLink{
@@ -48,30 +47,3 @@
     color: rgb(226, 43, 43);
     font-size: 15px;
 } 
-.sliders button:nth-child(2){
-    top: 40%; left: 0px;  opacity: 1;
-    border-radius: 6px;
-    background-color:rgb(167, 0, 0);
-    color: rgb(255, 255, 255);
-}
-.sliders button:nth-child(3){
-    top: 40%; right: 0px;  opacity: 1;
-    border-radius: 6px;
-    background-color:rgb(167, 0, 0);
-    color: rgb(255, 255, 255);
-}
-
-.sliders button:nth-child(3)::before{
-    color: rgb(255, 255, 255);
-    font-size: 14px;
-    width: 30px;
-    left: 5px;
-}
-.sliders button:nth-child(2)::before{
-    color: rgb(255, 255, 255);
-    left: 0px;
-    font-size: 14px;
-}
-.react-multi-carousel-list{
-    overflow: unset;
-}

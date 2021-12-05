@@ -1,0 +1,42 @@
+
+.swiperParent {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: unset;
+  }
+  .swiperParent .swiper-wrapper{
+    overflow: unset;
+    border-radius: 10px;
+
+  }
+  .swiperParent .swiper-button-next ,  .swiperParent  .swiper-button-prev{
+    width: 45px;
+    height: 45px; opacity: 1;
+    border-radius: 6px;
+    background-color:rgb(167, 0, 0);
+    color: rgb(255, 255, 255);
+}
+  
+  .swiperParent .swiper-button-next {
+    right: 0px;
+  }
+  .swiperParent .swiper-button-prev {
+    left: 0px;
+  }
+ .swiperParent .swiper-button-next::after, .swiperParent  .swiper-button-prev::after { 
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+   }
+
+ .swiperParent .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    height: auto;
+  }
+  
+  .swiperParent .swiper-slide img {
+    width: auto;
+    height: 75%;
+  } 
+

@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {Link} from 'react-router-dom'
 import SwiperCore ,{Navigation , Pagination}from 'swiper'
@@ -15,7 +14,7 @@ const Slider = () => {
   return ( 
       
     
-          <div>
+          <div className='sliderSwiperParent'>
                   <Swiper loop={true} navigation  pagination={{ "dynamicBullets": true}} tag="div" wrapperTag="div" style={{borderRadius:'5px'}} spaceBetween={0} slidesPerView={1}>
 
                         <SwiperSlide>
@@ -48,4 +47,3 @@ const Slider = () => {
 }
  
 export default Slider;
-

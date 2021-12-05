@@ -2,13 +2,22 @@ import Styles from  "./ProductList.module.css"
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Banner from "../../common/Banner/Banner";
 
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import SwiperCore ,{Navigation , Pagination}from 'swiper'
+import 'swiper/swiper-bundle.css'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/navigation/navigation.scss'
+import './sliderStyles.css'
+
+
+SwiperCore.use([Navigation , Pagination])
 
 const ProductList = () => {
 
@@ -36,34 +45,10 @@ const ProductList = () => {
         getAllProducts()
     },[])
 
-    const responsive = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 1220 },
-            items: 4
-        },
-        desktop: {
-            breakpoint: { max: 1220, min: 1024 },
-            items: 3
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 2
-        },
-        mobile: {
-            breakpoint: { max: 600, min: 0 },
-            items: 1
-        }
-    };
 
-    const discountProducts = 11;
-
-
-    
-//  set discount & offPrice
     if(products){
-        for(let i = 0 ; i <= discountProducts ; i++){
-            const index = Math.floor(Math.random()*discountProducts);
+        for(let i = 0 ; i <= Math.floor(products.length/3) ; i++){
+            const index = Math.floor(Math.random()*products.length);
             products[index].offPrice = Math.floor(Math.random()*50) + 1
             products[index].discount = Math.floor(Math.random()*200) + 1
         }
@@ -96,17 +81,33 @@ const ProductList = () => {
                                                     </div>
                                                 </div>
                                             ) }
-                                            <div  className={Styles.item} dir="ltr" key={index}>
-                                                <Carousel infinite={true} className={Styles.sliders} responsive={responsive}>
+                                            <div className='swiperParent' dir="ltr" key={index}>
+                                            <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
+                                                  breakpoints= {{
+                                                    0: {
+                                                      slidesPerView: 1,
+                                                    },
+                                                    630: {
+                                                      slidesPerView: 2,
+                                                    },
+                                                    900: {
+                                                      slidesPerView: 3,
+                                                    },
+                                                    1260: {
+                                                        slidesPerView: 4,
+                                                    }
+                                                  }}
+                                            >
+
                                                     {filterd ? filterd.map(
                                                         item=>{return(
-                                                         
+                                                            <SwiperSlide>
                                                                 <ProductListItem key={item.id} item = {item} offPrice={item.offPrice}/>
-                                                           
+                                                            </SwiperSlide>
                                                     )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                                                     
                                                
-                                                </Carousel>
+                                                </Swiper>
                                             </div>
 
 

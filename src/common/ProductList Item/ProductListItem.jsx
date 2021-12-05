@@ -22,22 +22,21 @@ const ProductListItem = ({item}) => {
         dispatch({type : "ADD_TO_CART" , payLoad : product})
     }
 
-
     const deleteProduct = (product)=> {
         dispatch({type : "DELETE_PRODUCT" , payLoad : product})
     }
 
-    useEffect(()=>{
-        if(isClickedOnProducts===true){
-            console.log("true")
-        }
-    },[isClickedOnProducts])
+    // useEffect(()=>{
+    //     if(isClickedOnProducts===true){
+    //         console.log("true")
+    //     }
+    // },[isClickedOnProducts])
 
     return (  
         <div className={Styles.itemParent}>
-            <div className={Styles.itemParent_center}>
+            {/* <div className={Styles.itemParent_center}> */}
 
-                <div className={Styles.item} >
+                <div className={Styles.item} dir="ltr">
                     {item.offPrice >=1 ? <div className={`${Styles.header_offPrice} ${Styles.header_offPrice_gold}`}>
                         {item.offPrice >=10  && <AiFillStar/>}
                         <p>{item.offPrice}</p>
@@ -53,16 +52,18 @@ const ProductListItem = ({item}) => {
                         </div>
                     </div>
 
-                    <div className={Styles.imgParent} onClick={()=> setIsClickedOnProducts(true)}>
+                    <div className={Styles.imgParent} >
                         <img src={item.image} alt={item.title}/>
                     </div>
+
+                    
 
                     <div className={Styles.titleParent}>
                         <p className={Styles.title} title={item.title}>{item.title.length >= 20 ? item.title.substring(0,20)+'...' : item.title}</p>
                     </div>
 
                     <div className={Styles.item_footer} dir="rtl">
-                        <p dir="rtl">قیمت محصول : {item.price}$</p>
+                        <p dir="rtl">قیمت : {item.price}$</p>
                         {item.discount >= 1 ? <p className={Styles.itemOffPrice} dir="rtl">تخفیف : {item.discount}$</p> : ""}
                     </div>
 
@@ -80,8 +81,17 @@ const ProductListItem = ({item}) => {
 
                     
                 </div>
-            </div>
-        </div>
+
+
+            
+            
+            
+            
+            
+            
+                </div>
+
+        {/* </div> */}
     </div>
       
     );
