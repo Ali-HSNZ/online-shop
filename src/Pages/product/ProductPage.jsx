@@ -19,12 +19,17 @@ import 'swiper/components/navigation/navigation.scss'
 import './sliderStyles.css'
 
 import {useQuery} from '../../hooks/useQuery'
+import cartReducer from '../../Context/cartContext/CartReducer';
+import { UseCartDispatch , UseCart } from '../../Context/cartContext/CartProvider';
+import { Link } from 'react-router-dom';
 SwiperCore.use([Navigation , Pagination])
 
 
 
 const ProductPage = (props) => {
 
+    const cartDispatch = UseCartDispatch()
+    const {cart} = UseCart()
 
     const query = useQuery().get('id');
     const queryDiscount = useQuery().get('discount');
@@ -34,12 +39,17 @@ const ProductPage = (props) => {
     const [products , setProducts] = useState(null)
     const [product , setProduct] = useState(null)
 
+    const [isLoading , setIsLoading] = useState(false)
 
 
 
-
+    const checkProductInCart = (cart , product)=>{
+        return cart&&cart.find(item => item.id === product.id)
+    }
  
     useEffect(()=>{
+
+
         const getAllProducts = async()=>{
             try {
                 axios.get('https://fakestoreapi.com/products').then(products =>{
@@ -51,6 +61,9 @@ const ProductPage = (props) => {
                             cloneProducts[index].discount = Math.floor(Math.random()*200) + 1
                         }
                         setProducts(cloneProducts)
+                        if(product){
+                            checkProductInCart(cart , product)
+                        }
                     }
                 }).catch();
             } catch (error) {
@@ -66,23 +79,39 @@ const ProductPage = (props) => {
               top: 0, 
               behavior: 'smooth'
             });
+            setIsLoading(true)
+
 
         const getOneProducts = async()=>{
+
             try {
                 axios.get(`https://fakestoreapi.com/products/${query}`).then(products =>{
                     if(products.data){
                         setProduct(products.data)
+
+                        checkProductInCart(cart , products.data)
+                        setIsLoading(false)
                     }
                 }).catch();
-            } catch (error) {
-            }
+
+            
+        } catch (error) {setIsLoading(false)}
+            
         }
         getOneProducts()
     },[query])
 
 
+
+    const addToCart = (product)=>{
+        cartDispatch({type : 'ADD_TO_CART' , payLoad : product})
+    }
+
+
+
     return (  
         <>
+         {isLoading === true && Container()}
             {product ? (
                 <div className={Styles.parent}>
 
@@ -123,7 +152,12 @@ const ProductPage = (props) => {
                         </div>
                         
                         <div className={Styles.buyProductParent}>
-                            <button classNames={Styles.buyProduct_btn}>خرید محصول</button>
+                            {checkProductInCart(cart , product)? (
+                                <Link className={`${Styles.buyProduct_btn} ${Styles.buyProduct_Link}`} to='/cart'>سبد خرید</Link>
+                                ) : (
+                                    <button className={`${Styles.buyProduct_btn} ${Styles.buyProduct_buy}`} onClick={()=>addToCart(product)}>خرید محصول</button>
+                            
+                            )}
                         </div>
                     </div>
         
@@ -174,6 +208,8 @@ const ProductPage = (props) => {
         
                 </div>
             ) : (Container())}
+
+           
         </>
     );
 }

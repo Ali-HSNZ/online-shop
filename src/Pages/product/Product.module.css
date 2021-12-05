@@ -148,16 +148,26 @@
     height: auto;
     margin-top: 0px;
 }
-.buyProductParent button{
-    padding: 9px 25px;
+.buyProduct_btn{
+    width: 150px;
+    height: 40px;
     outline: none;
     border: none;
-    background-color: rgb(182, 2, 2);
     font-family: iransansweb;
     border-radius: 5px;
     color: white;
     cursor: pointer;
-
+    font-size: 13px;
+    text-decoration: none;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+.buyProduct_buy{
+    background-color: rgb(182, 2, 2);
+}
+.buyProduct_Link{
+    background-color: rgb(0, 112, 0);
 }
 
 
@@ -371,16 +381,26 @@
         height: auto;
         margin-top: 0px;
     }
-    .buyProductParent button{
-        padding: 9px 25px;
+    .buyProduct_btn{
+        width: 150px;
+        height: 40px;
         outline: none;
         border: none;
-        background-color: rgb(182, 2, 2);
         font-family: iransansweb;
         border-radius: 5px;
         color: white;
         cursor: pointer;
-    
+        font-size: 13px;
+        text-decoration: none;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+    }
+    .buyProduct_buy{
+        background-color: rgb(182, 2, 2);
+    }
+    .buyProduct_Link{
+        background-color: rgb(0, 112, 0);
     }
     
     
@@ -594,18 +614,27 @@
         height: auto;
         margin-top: 0px;
     }
-    .buyProductParent button{
-        padding: 9px 25px;
+    .buyProduct_btn{
+        width: 150px;
+        height: 40px;
         outline: none;
         border: none;
-        background-color: rgb(182, 2, 2);
         font-family: iransansweb;
         border-radius: 5px;
         color: white;
         cursor: pointer;
-    
+        font-size: 13px;
+        text-decoration: none;
+        display: flex;
+        align-items:center;
+        justify-content: center;
     }
-    
+    .buyProduct_buy{
+        background-color: rgb(182, 2, 2);
+    }
+    .buyProduct_Link{
+        background-color: rgb(0, 112, 0);
+    }
     
     
     .productDescribtion{
@@ -818,16 +847,26 @@
         height: auto;
         margin-top: 0px;
     }
-    .buyProductParent button{
-        padding: 9px 25px;
+    .buyProduct_btn{
+        width: 150px;
+        height: 40px;
         outline: none;
         border: none;
-        background-color: rgb(182, 2, 2);
         font-family: iransansweb;
         border-radius: 5px;
         color: white;
         cursor: pointer;
-    
+        font-size: 13px;
+        text-decoration: none;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+    }
+    .buyProduct_buy{
+        background-color: rgb(182, 2, 2);
+    }
+    .buyProduct_Link{
+        background-color: rgb(0, 112, 0);
     }
     
     
@@ -1042,18 +1081,27 @@
         height: auto;
         margin-top: 0px;
     }
-    .buyProductParent button{
-        padding: 9px 25px;
+    .buyProduct_btn{
+        width: 150px;
+        height: 40px;
         outline: none;
         border: none;
-        background-color: rgb(182, 2, 2);
         font-family: iransansweb;
         border-radius: 5px;
         color: white;
         cursor: pointer;
-    
+        font-size: 13px;
+        text-decoration: none;
+        display: flex;
+        align-items:center;
+        justify-content: center;
     }
-    
+    .buyProduct_buy{
+        background-color: rgb(182, 2, 2);
+    }
+    .buyProduct_Link{
+        background-color: rgb(0, 112, 0);
+    }
     
     
     .productDescribtion{
@@ -1245,18 +1293,27 @@
         width: 100%;
         height: auto;
     }
-    .buyProductParent button{
-        padding: 11px 35px;
+    .buyProduct_btn{
+        width: 150px;
+        height: 40px;
         outline: none;
         border: none;
-        background-color: rgb(182, 2, 2);
         font-family: iransansweb;
         border-radius: 5px;
         color: white;
         cursor: pointer;
-    
+        font-size: 13px;
+        text-decoration: none;
+        display: flex;
+        align-items:center;
+        justify-content: center;
     }
-    
+    .buyProduct_buy{
+        background-color: rgb(182, 2, 2);
+    }
+    .buyProduct_Link{
+        background-color: rgb(0, 112, 0);
+    }
     
     
     .productDescribtion{
@@ -1449,19 +1506,27 @@
         width: 100%;
         height: auto;
     }
-    .buyProductParent button{
-        padding: 11px 35px;
+    .buyProduct_btn{
+        width: 150px;
+        height: 40px;
         outline: none;
         border: none;
-        background-color: rgb(182, 2, 2);
         font-family: iransansweb;
         border-radius: 5px;
         color: white;
         cursor: pointer;
-    
+        font-size: 13px;
+        text-decoration: none;
+        display: flex;
+        align-items:center;
+        justify-content: center;
     }
-    
-    
+    .buyProduct_buy{
+        background-color: rgb(182, 2, 2);
+    }
+    .buyProduct_Link{
+        background-color: rgb(0, 112, 0);
+    }
     
     .productDescribtion{
         width: 100%;
