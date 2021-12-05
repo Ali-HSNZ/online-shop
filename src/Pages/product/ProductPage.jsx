@@ -25,18 +25,20 @@ SwiperCore.use([Navigation , Pagination])
 
 const ProductPage = (props) => {
 
-    console.log(props)
 
     const query = useQuery().get('id');
     const queryDiscount = useQuery().get('discount');
     const queryOffPrice = useQuery().get('offPrice');
 
-    console.log("queryDiscount => ",queryDiscount)
 
     const [products , setProducts] = useState(null)
     const [product , setProduct] = useState(null)
 
 
+
+
+
+ 
     useEffect(()=>{
         const getAllProducts = async()=>{
             try {
@@ -55,21 +57,28 @@ const ProductPage = (props) => {
                 setProducts(null)
             }
         }
+
+        getAllProducts()
+    },[])
+
+    useEffect(()=>{
+            window.scrollTo({
+              top: 0, 
+              behavior: 'smooth'
+            });
+
         const getOneProducts = async()=>{
             try {
                 axios.get(`https://fakestoreapi.com/products/${query}`).then(products =>{
                     if(products.data){
-                      
                         setProduct(products.data)
                     }
                 }).catch();
             } catch (error) {
-                setProducts(null)
             }
         }
         getOneProducts()
-        getAllProducts()
-    },[])
+    },[query])
 
 
     return (  
@@ -157,7 +166,7 @@ const ProductPage = (props) => {
                             {products ? products.slice(Math.floor(5+Math.random()*10)).map(
                                 item=>{return(
                                     <SwiperSlide>
-                                        <ProductListItem key={item.id} isLink={false} item = {item} offPrice={item.offPrice}/>
+                                        <ProductListItem key={item.id} isLink={true} item={item} offPrice={item.offPrice}/>
                                     </SwiperSlide>
                             )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                         </Swiper>

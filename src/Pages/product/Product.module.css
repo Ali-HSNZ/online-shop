@@ -246,6 +246,7 @@
         width: auto;
         height: auto;
         max-height: 200px;
+        max-width: 200px;
     }
     .productDesc{
         width: 100%;
@@ -383,7 +384,6 @@
     }
     
     
-    
     .productDescribtion{
         width: 100%;
         height: auto;
@@ -394,12 +394,13 @@
     .productDescribtion p:nth-child(1){
         font-family: iranyekanweb;
         font-weight: 700;
+        font-size: 14px;
     }
     .productDescribtion p:nth-child(2){
         font-family: iransansweb;
         margin-top: 20px;
+        font-size: 14px;
     }
-    
     
     
     
@@ -468,6 +469,7 @@
         width: auto;
         height: auto;
         max-height: 200px;
+        max-width: 200px;
     }
     .productDesc{
         width: 100%;
@@ -616,12 +618,13 @@
     .productDescribtion p:nth-child(1){
         font-family: iranyekanweb;
         font-weight: 700;
+        font-size: 14px;
     }
     .productDescribtion p:nth-child(2){
         font-family: iransansweb;
         margin-top: 20px;
+        font-size: 14px;
     }
-    
     
     
     
@@ -690,6 +693,7 @@
         width: auto;
         height: auto;
         max-height: 200px;
+        max-width: 220px;
     }
     .productDesc{
         width: 100%;
@@ -838,12 +842,13 @@
     .productDescribtion p:nth-child(1){
         font-family: iranyekanweb;
         font-weight: 700;
+        font-size: 14px;
     }
     .productDescribtion p:nth-child(2){
         font-family: iransansweb;
         margin-top: 20px;
+        font-size: 14px;
     }
-    
     
     
     
@@ -912,6 +917,7 @@
         width: auto;
         height: auto;
         max-height: 200px;
+        max-width: 220px;
     }
     .productDesc{
         width: 100%;
@@ -1060,12 +1066,13 @@
     .productDescribtion p:nth-child(1){
         font-family: iranyekanweb;
         font-weight: 700;
+        font-size: 14px;
     }
     .productDescribtion p:nth-child(2){
         font-family: iransansweb;
         margin-top: 20px;
+        font-size: 14px;
     }
-    
     
     
     
@@ -1132,7 +1139,7 @@
     .imgParent img{
         width: 100%;
         height: auto;
-        max-height: 80%;
+        max-width: 220px;
     }
     .productDesc{
         width: 100%;
@@ -1262,10 +1269,12 @@
     .productDescribtion p:nth-child(1){
         font-family: iranyekanweb;
         font-weight: 700;
+        font-size: 14px;
     }
     .productDescribtion p:nth-child(2){
         font-family: iransansweb;
         margin-top: 20px;
+        font-size: 14px;
     }
     
     
@@ -1334,7 +1343,7 @@
     .imgParent img{
         width: 100%;
         height: auto;
-        max-height: 80%;
+        max-width: 220px;
     }
     .productDesc{
         width: 100%;
@@ -1464,10 +1473,12 @@
     .productDescribtion p:nth-child(1){
         font-family: iranyekanweb;
         font-weight: 700;
+        font-size: 14px;
     }
     .productDescribtion p:nth-child(2){
         font-family: iransansweb;
         margin-top: 20px;
+        font-size: 14px;
     }
     
     
