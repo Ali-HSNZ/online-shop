@@ -11,16 +11,30 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
 
+import Container from '../../common/Loding/Loding'
+
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './sliderStyles.css'
 
+import {useQuery} from '../../hooks/useQuery'
 SwiperCore.use([Navigation , Pagination])
 
 
-const ProductPage = () => {
+
+const ProductPage = (props) => {
+
+    console.log(props)
+
+    const query = useQuery().get('id');
+    const queryDiscount = useQuery().get('discount');
+    const queryOffPrice = useQuery().get('offPrice');
+
+    console.log("queryDiscount => ",queryDiscount)
+
     const [products , setProducts] = useState(null)
+    const [product , setProduct] = useState(null)
 
 
     useEffect(()=>{
@@ -36,103 +50,122 @@ const ProductPage = () => {
                         }
                         setProducts(cloneProducts)
                     }
-
                 }).catch();
             } catch (error) {
                 setProducts(null)
             }
         }
+        const getOneProducts = async()=>{
+            try {
+                axios.get(`https://fakestoreapi.com/products/${query}`).then(products =>{
+                    if(products.data){
+                      
+                        setProduct(products.data)
+                    }
+                }).catch();
+            } catch (error) {
+                setProducts(null)
+            }
+        }
+        getOneProducts()
         getAllProducts()
     },[])
 
 
     return (  
-        <div className={Styles.parent}>
+        <>
+            {product ? (
+                <div className={Styles.parent}>
 
-            <div className={Styles.product}>
-                
-                <div className={Styles.imgParent}>
-                    <img src={iphoneSrc}/>
-                </div>
 
-                <div className={Styles.productDesc}>
-
-                    <div className={Styles.productTitle}>
-                        <div className={Styles.likeParent}>
-                            <BiHeart size="1.3em" style={{color:'red'}}/>
-                                <p>4.6</p>
-                                <span>(531)</span>
+                <div className={Styles.product}>
+            
+                    <div className={Styles.imgParent}>
+                        <img src={product.image}/>
+                    </div>
+        
+                    <div className={Styles.productDesc}>
+        
+                        <div className={Styles.productTitle}>
+                            <div className={Styles.likeParent}>
+                                <BiHeart size="1.3em" style={{color:'red'}}/>
+                                    <p>{product.rating.rate}</p>
+                                    <span>({product.rating.count})</span>
+                            </div>
+                            <p dir="ltr">{product.title}</p>
                         </div>
-                        <p dir="rtl">WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive</p>
-                    </div>
-
-
-                    <div className={Styles.productCategory}>
-                        <button>
-                            افزودن به علاقه مندی ها
-                            <BiHeart size="1.5em" className={Styles.productCategory_like}/>
-                        </button>
-                        <p dir='rtl'>دسته بندی : طلا و جواهرات</p>
-                    </div>
-
-                    <div className={Styles.productPrice}>
-                        <div className={Styles.productPrice_discount}>
-                            <p dir='rtl' className={Styles.productPrice_Percentage}> (%15)</p>
-                            <p dir='rtl'>تخفیف : 13$</p>
+        
+        
+                        <div className={Styles.productCategory}>
+                            <button>
+                                افزودن به علاقه مندی ها
+                                <BiHeart size="1.5em" className={Styles.productCategory_like}/>
+                            </button>
+                            <p dir='rtl'>دسته بندی :  {product.category}</p>
                         </div>
-                        <p dir='rtl'>قیمت محصول : 50$</p>
+        
+                        <div className={Styles.productPrice}>
+                           
+                            <div className={Styles.productPrice_discount}>
+                                {queryOffPrice.length > 1 && <p dir='rtl' className={Styles.productPrice_Percentage}> (%{queryOffPrice})</p>}
+                                {queryDiscount.length > 1 &&<p dir='rtl'>تخفیف : {queryDiscount}$</p>}
+                            </div>
+                            <p dir='rtl'>قیمت محصول : {product.price}$</p>
+                        </div>
+                        
+                        <div className={Styles.buyProductParent}>
+                            <button classNames={Styles.buyProduct_btn}>خرید محصول</button>
+                        </div>
                     </div>
-                    
-                    <div className={Styles.buyProductParent}>
-                        <button classNames={Styles.buyProduct_btn}>خرید محصول</button>
+        
+                </div>
+        
+                <div className={Styles.productDescribtion}>
+                        <p dir='rtl'>توضیحات محصول : </p>
+                        <p dir='ltr'>{product.description}</p>
+                </div>
+        
+        
+                    <Feature/>
+                    <div className={Styles.Slider_categoryParent}>
+                        <p  className={Styles.Slider_categoryLink} dir="rtl"> 
+                           محصولات پیشنهادی
+                            <BsFillCaretLeftFill className={Styles.Slider_categoryParent_icon}/>
+                        </p>
+                        <div className={Styles.categoryLine_parent}>
+                            <div></div>     <div></div>     <div></div>     <div></div>
+                        </div>
                     </div>
+        
+                    <div className='swiperParent_ProductPage' dir="ltr">
+                        <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
+                            breakpoints= {{
+                                0: {
+                                slidesPerView: 1,
+                                },
+                                630: {
+                                slidesPerView: 2,
+                                },
+                                900: {
+                                slidesPerView: 3,
+                                },
+                                1260: {
+                                    slidesPerView: 4,
+        
+                                }
+                            }}>
+                            {products ? products.slice(Math.floor(5+Math.random()*10)).map(
+                                item=>{return(
+                                    <SwiperSlide>
+                                        <ProductListItem key={item.id} isLink={false} item = {item} offPrice={item.offPrice}/>
+                                    </SwiperSlide>
+                            )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
+                        </Swiper>
+                    </div>
+        
                 </div>
-
-            </div>
-
-            <div className={Styles.productDescribtion}>
-                    <p dir='rtl'>توضیحات محصول : </p>
-                    <p dir='ltr'>USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system</p>
-            </div>
-
-            <Feature/>
-            <div className={Styles.Slider_categoryParent}>
-                <p  className={Styles.Slider_categoryLink} dir="rtl"> 
-                   محصولات پیشنهادی
-                    <BsFillCaretLeftFill className={Styles.Slider_categoryParent_icon}/>
-                </p>
-                <div className={Styles.categoryLine_parent}>
-                    <div></div>     <div></div>     <div></div>     <div></div>
-                </div>
-            </div>
-
-            <div className='swiperParent_ProductPage' dir="ltr">
-                <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
-                    breakpoints= {{
-                        0: {
-                        slidesPerView: 1,
-                        },
-                        630: {
-                        slidesPerView: 2,
-                        },
-                        900: {
-                        slidesPerView: 3,
-                        },
-                        1260: {
-                            slidesPerView: 4,
-                            
-                        }
-                    }}>
-                    {products ? products.slice(Math.floor(5+Math.random()*10)).map(
-                        item=>{return(
-                            <SwiperSlide>
-                                <ProductListItem key={item.id} isLink={false} item = {item} offPrice={item.offPrice}/>
-                            </SwiperSlide>
-                    )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
-                </Swiper>
-            </div>
-
-        </div>
+            ) : (Container())}
+        </>
     );
 }
  

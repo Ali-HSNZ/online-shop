@@ -76,7 +76,7 @@ const CategoryPage = (props) => {
         if(productsAction && productsAction){
             resualt = productsAction.map((item,index) =>{return(
                 <div>
-                    <ProductListItem key={index} item={item}/>
+                    <ProductListItem key={index} isLink={true} item={item}/>
                 </div>
             )})
         }else if(productsAction === null){
