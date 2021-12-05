@@ -15,7 +15,7 @@ const Slider = () => {
       
     
           <div className='sliderSwiperParent'>
-                  <Swiper loop={true} navigation  pagination={{ "dynamicBullets": true}} tag="div" wrapperTag="div" style={{borderRadius:'5px'}} spaceBetween={0} slidesPerView={1}>
+                  <Swiper loop={true} dir='rtl' navigation  pagination={{ "dynamicBullets": true}} tag="div" wrapperTag="div" style={{borderRadius:'5px'}} spaceBetween={0} slidesPerView={1}>
 
                         <SwiperSlide>
                               <Link to="/category?name=electronics">
