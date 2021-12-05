@@ -7,6 +7,7 @@ import { BsFillCaretLeftFill } from "react-icons/bs";
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Banner from "../../common/Banner/Banner";
 
+import PWClicked from './ProductWillClicked.module.css'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -27,7 +28,8 @@ const ProductList = () => {
     const [itemClickData , setItemClickData] = useState(null)
     const [isItemClick , setIsItemClick] = useState(false)
 
-    console.log('setIsItemClick => ',isItemClick)
+    const [ itemParentClick , setIsItemParentClick] = useState(false)
+
 
     useEffect(()=>{
         const getAllProducts = async()=>{
@@ -55,9 +57,6 @@ const ProductList = () => {
                 setCategory(null)
             )
         }
-
-
-
         getAllCategorie()
         getAllProducts()
     },[])
@@ -71,10 +70,7 @@ const ProductList = () => {
     return (  
         <div className={Styles.parent} dir="rtl">
             <div>
-            {isItemClick === true &&<div>{itemClickData.title}</div>}
-
                 {
-               
                     category ? category.map((mapOnCategory,index) => {
                         const filterd = products&&products.filter( e => e.category === mapOnCategory)
 
@@ -115,7 +111,7 @@ const ProductList = () => {
                                                     {filterd ? filterd.map(
                                                         item=>{return(
                                                             <SwiperSlide>
-                                                                <ProductListItem key={item.id} setIsItemClick={setIsItemClick} itemClick={ e =>itemClickHandler(e)} item = {item} offPrice={item.offPrice}/>
+                                                                <ProductListItem key={item.id} isLink={true} item = {item} offPrice={item.offPrice}/>
                                                             </SwiperSlide>
                                                     )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                                                     

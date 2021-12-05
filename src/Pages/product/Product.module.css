@@ -1,0 +1,195 @@
+.parent{
+    padding: 0 20px;
+}
+.product{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: white;
+    min-height: 260px;
+    max-height: 200px;
+}
+.imgParent{
+    width: 200px;
+    height: auto;
+}
+.imgParent img{
+    width: 100%;
+    height: auto;
+}
+.productDesc{
+    width: 100%;
+    height: auto;
+    padding: 0 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+}
+.productTitle{
+    display: flex;
+    justify-content: space-between;
+    /* padding: 0 20; */
+    align-items: center;
+    margin-top: 0;
+}
+.productTitle p{
+    font-family: iransansweb;
+    font-size: 14px;
+
+}
+.likeParent{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 8px 20px;
+    background-color: rgba(255, 83, 83, 0.11);
+    border-radius:20px;
+    opacity: 1;
+    font-family: iransansweb;
+    font-size: 14px;
+}
+.likeParent span{
+    color: rgb(99, 98, 98);
+    margin-left: 5px;
+}
+.likeParent p{
+    margin-left: 3px;
+}
+.item:hover .likeParent{
+    opacity: 1;
+}
+.likeParent div{
+    background-color: transparent;
+
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+.likeParent div:nth-child(1){
+    color: rgb(0, 0, 0);
+}
+
+.productCategory{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.productCategory p{
+    font-family: iransansweb;
+    font-size: 14px;
+}
+.productCategory button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: iransansweb;
+    color: rgb(68, 68, 68);
+}
+.productCategory_like{
+    margin-left: 5px;
+}
+.productPrice{
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    font-family: iransansweb;
+}
+.productPrice_discount{
+    display: flex;
+}
+.productPrice_discount p:nth-child(1){
+    font-size:13px ;
+    margin-right:5px ;
+    color: red;
+}
+.productPrice_discount p:nth-child(2){
+    color: rgb(219, 2, 2);
+}
+.buyProductParent{
+    width: 100%;
+    height: auto;
+}
+.buyProductParent button{
+    padding: 11px 35px;
+    outline: none;
+    border: none;
+    background-color: rgb(182, 2, 2);
+    font-family: iransansweb;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+
+}
+
+
+
+.productDescribtion{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    margin-top: 20px;
+    padding: 20px;
+}
+.productDescribtion p:nth-child(1){
+    font-family: iranyekanweb;
+    font-weight: 700;
+}
+.productDescribtion p:nth-child(2){
+    font-family: iransansweb;
+    margin-top: 20px;
+}
+
+
+
+
+.Slider_categoryParent{
+    margin-top: 20px;
+    
+}
+
+.categoryLine_parent{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+
+    /* margin-bottom: 20px; */
+}
+.categoryLine_parent div{
+    background-color:  red;
+    height: 5px;
+    width: 5px;
+    border-radius: 100%;
+    margin-left: 5px;
+}
+.categoryLine_parent div:last-child{
+    background-color:  red;
+    height: 5px;
+    width: 70px;
+    border-radius: 100px;
+    margin-left: 5px;
+}
+.Slider_categoryLink{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: iransansweb;
+} 
+.Slider_categoryParent_icon{
+    margin-right: 5px;
+}

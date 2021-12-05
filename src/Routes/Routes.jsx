@@ -4,6 +4,7 @@ import Home from '../Pages/Home/Home'
 import Checkout from '../Pages/chackout/Checkout'
 import CategoryPage from '../Pages/ProductsCategory/CategoryPage'
 import Search from '../Pages/search/Search'
+import ProductPage from '../Pages/product/ProductPage'
 
  const Routes = [
     {path : "/" , component : Home , exact : true},
@@ -11,5 +12,6 @@ import Search from '../Pages/search/Search'
     {path : "/checkout",  component : Checkout ,exact : true},
     {path : "/category",  component : CategoryPage ,exact : true},
     {path : "/search",  component : Search ,exact : true},
+    {path : "/product",  component : ProductPage ,exact : true},
 ] 
 export default Routes

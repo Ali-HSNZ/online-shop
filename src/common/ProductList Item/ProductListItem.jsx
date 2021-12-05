@@ -7,7 +7,7 @@ import {AiFillStar} from "react-icons/ai";
 import { useEffect, useState } from 'react';
 
 
-const ProductListItem = ({item , itemClick , setIsItemClick}) => {
+const ProductListItem = ({item , isLink}) => {
     const dispatch = UseCartDispatch()
     const {cart} = UseCart()
 
@@ -25,13 +25,6 @@ const ProductListItem = ({item , itemClick , setIsItemClick}) => {
     const deleteProduct = (product)=> {
         dispatch({type : "DELETE_PRODUCT" , payLoad : product})
     }
-
-    // useEffect(()=>{
-    //     if(isClickedOnProducts===true){
-    //         console.log("true")
-    //     }
-    // },[isClickedOnProducts])
-
     return (  
         <div className={Styles.itemParent}>
             {/* <div className={Styles.itemParent_center}> */}
@@ -52,9 +45,16 @@ const ProductListItem = ({item , itemClick , setIsItemClick}) => {
                         </div>
                     </div>
 
-                    <div className={Styles.imgParent} onClick={()=>{return itemClick(item) ,  setIsItemClick(true)}}>
-                        <img src={item.image} alt={item.title}/>
-                    </div>
+                    {isLink === true ? (
+                        <Link to={`/product?id=${item.id}`} className={Styles.imgParent}>
+                            <img src={item.image} alt={item.title}/>
+                        </Link>
+                    ) : (
+                        <div className={Styles.imgParent}>
+                            <img src={item.image} alt={item.title}/>
+                        </div>
+                    )}
+
 
                     
 
