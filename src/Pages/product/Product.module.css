@@ -6,44 +6,45 @@
     height: auto;
     display: flex;
     justify-content: space-between;
-    flex-direction: row-reverse;
+    flex-direction: column;
     padding: 20px;
     margin-top: 20px;
     background-color: white;
-    min-height: 260px;
-    max-height: 200px;
+    min-height: unset;
+    max-height: unset;
 }
 .imgParent{
-    width: 200px;
+    width: 100%;
     height: auto;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 .imgParent img{
-    width: 100%;
+    width: auto;
     height: auto;
-    max-height: 80%;
+    max-height: 200px;
 }
 .productDesc{
     width: 100%;
     height: auto;
-    padding: 0 20px 0 0;
+    padding: 0 0 0 0;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    
+    margin-top: 20px;
 }
 .productTitle{
     display: flex;
     justify-content: space-between;
     /* padding: 0 20; */
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column-reverse;
     margin-top: 0;
 }
 .productTitle p{
     font-family: iransansweb;
     font-size: 14px;
-
 }
 .likeParent{
     width: auto;
@@ -59,6 +60,8 @@
     opacity: 1;
     font-family: iransansweb;
     font-size: 14px;
+    margin-right: 10px;
+    margin-top: 20px;
 }
 .likeParent span{
     color: rgb(99, 98, 98);
@@ -85,10 +88,18 @@
     height: auto;
     display: flex;
     justify-content: space-between;
+    align-items:center;
+    text-align: right;
+    flex-wrap: wrap;
+    margin: 20px 0 0 0;
+    padding: 0px;
 }
 .productCategory p{
     font-family: iransansweb;
     font-size: 14px;
+    padding-bottom: 20px;
+
+    /* padding: 0px; */
 }
 .productCategory button{
     background-color: transparent;
@@ -100,19 +111,29 @@
     align-items: center;
     font-family: iransansweb;
     color: rgb(68, 68, 68);
+    /* margin-top: 10px; */
+    padding: 0px;
+    margin-bottom: 20px;
+
 }
 .productCategory_like{
     margin-left: 5px;
 }
 .productPrice{
     display: flex;
-    font-size: 14px;
+    margin: 0px;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     font-family: iransansweb;
+    font-size: 14px;
+}
+.priceText{
+    margin:0 0 20px 0;
 }
 .productPrice_discount{
     display: flex;
+    margin:0 0 20px 0;
 }
 .productPrice_discount p:nth-child(1){
     font-size:13px ;
@@ -125,9 +146,10 @@
 .buyProductParent{
     width: 100%;
     height: auto;
+    margin-top: 0px;
 }
 .buyProductParent button{
-    padding: 11px 35px;
+    padding: 9px 25px;
     outline: none;
     border: none;
     background-color: rgb(182, 2, 2);
@@ -197,8 +219,6 @@
     margin-right: 5px;
 }
 
-
-
 @media only screen and (min-width:320px){
     .parent{
         padding: 0 20px;
@@ -230,7 +250,7 @@
     .productDesc{
         width: 100%;
         height: auto;
-        padding: 0 20px 0 0;
+        padding: 0 0 0 0;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
@@ -290,13 +310,18 @@
         height: auto;
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items:center;
+        text-align: right;
         flex-wrap: wrap;
-        margin-top: 20px;
+        margin: 20px 0 0 0;
+        padding: 0px;
     }
     .productCategory p{
         font-family: iransansweb;
         font-size: 14px;
+        padding-bottom: 20px;
+    
+        /* padding: 0px; */
     }
     .productCategory button{
         background-color: transparent;
@@ -308,20 +333,29 @@
         align-items: center;
         font-family: iransansweb;
         color: rgb(68, 68, 68);
+        /* margin-top: 10px; */
+        padding: 0px;
+        margin-bottom: 20px;
+    
     }
     .productCategory_like{
         margin-left: 5px;
     }
     .productPrice{
         display: flex;
-        margin-top: 20px;
+        margin: 0px;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         font-family: iransansweb;
         font-size: 14px;
     }
+    .priceText{
+        margin:0 0 20px 0;
+    }
     .productPrice_discount{
         display: flex;
+        margin:0 0 20px 0;
     }
     .productPrice_discount p:nth-child(1){
         font-size:13px ;
@@ -334,7 +368,7 @@
     .buyProductParent{
         width: 100%;
         height: auto;
-        margin-top: 20px;
+        margin-top: 0px;
     }
     .buyProductParent button{
         padding: 9px 25px;
@@ -438,7 +472,7 @@
     .productDesc{
         width: 100%;
         height: auto;
-        padding: 0 20px 0 0;
+        padding: 0 0 0 0;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
@@ -498,11 +532,18 @@
         height: auto;
         display: flex;
         justify-content: space-between;
-        margin-top: 20px;
+        align-items:center;
+        text-align: right;
+        flex-wrap: wrap;
+        margin: 20px 0 0 0;
+        padding: 0px;
     }
     .productCategory p{
         font-family: iransansweb;
         font-size: 14px;
+        padding-bottom: 20px;
+    
+        /* padding: 0px; */
     }
     .productCategory button{
         background-color: transparent;
@@ -514,20 +555,29 @@
         align-items: center;
         font-family: iransansweb;
         color: rgb(68, 68, 68);
+        /* margin-top: 10px; */
+        padding: 0px;
+        margin-bottom: 20px;
+    
     }
     .productCategory_like{
         margin-left: 5px;
     }
     .productPrice{
         display: flex;
-        margin-top: 20px;
+        margin: 0px;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         font-family: iransansweb;
         font-size: 14px;
     }
+    .priceText{
+        margin:0 0 20px 0;
+    }
     .productPrice_discount{
         display: flex;
+        margin:0 0 20px 0;
     }
     .productPrice_discount p:nth-child(1){
         font-size:13px ;
@@ -540,7 +590,7 @@
     .buyProductParent{
         width: 100%;
         height: auto;
-        margin-top: 20px;
+        margin-top: 0px;
     }
     .buyProductParent button{
         padding: 9px 25px;
@@ -644,7 +694,7 @@
     .productDesc{
         width: 100%;
         height: auto;
-        padding: 0 20px 0 0;
+        padding: 0 0 0 0;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
@@ -654,7 +704,8 @@
         display: flex;
         justify-content: space-between;
         /* padding: 0 20; */
-        align-items: center;
+        align-items: flex-start;
+        flex-direction: column-reverse;
         margin-top: 0;
     }
     .productTitle p{
@@ -676,6 +727,7 @@
         font-family: iransansweb;
         font-size: 14px;
         margin-right: 10px;
+        margin-top: 20px;
     }
     .likeParent span{
         color: rgb(99, 98, 98);
@@ -702,11 +754,18 @@
         height: auto;
         display: flex;
         justify-content: space-between;
-        margin-top: 20px;
+        align-items:center;
+        text-align: right;
+        flex-wrap: wrap;
+        margin: 20px 0 0 0;
+        padding: 0px;
     }
     .productCategory p{
         font-family: iransansweb;
         font-size: 14px;
+        padding-bottom: 20px;
+    
+        /* padding: 0px; */
     }
     .productCategory button{
         background-color: transparent;
@@ -718,20 +777,29 @@
         align-items: center;
         font-family: iransansweb;
         color: rgb(68, 68, 68);
+        /* margin-top: 10px; */
+        padding: 0px;
+        margin-bottom: 20px;
+    
     }
     .productCategory_like{
         margin-left: 5px;
     }
     .productPrice{
         display: flex;
-        margin-top: 20px;
+        margin: 0px;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         font-family: iransansweb;
         font-size: 14px;
     }
+    .priceText{
+        margin:0 0 20px 0;
+    }
     .productPrice_discount{
         display: flex;
+        margin:0 0 20px 0;
     }
     .productPrice_discount p:nth-child(1){
         font-size:13px ;
@@ -744,7 +812,7 @@
     .buyProductParent{
         width: 100%;
         height: auto;
-        margin-top: 20px;
+        margin-top: 0px;
     }
     .buyProductParent button{
         padding: 9px 25px;
@@ -848,7 +916,7 @@
     .productDesc{
         width: 100%;
         height: auto;
-        padding: 0 20px 0 0;
+        padding: 0 0 0 0;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
@@ -858,7 +926,8 @@
         display: flex;
         justify-content: space-between;
         /* padding: 0 20; */
-        align-items: center;
+        align-items: flex-start;
+        flex-direction: column-reverse;
         margin-top: 0;
     }
     .productTitle p{
@@ -880,6 +949,7 @@
         font-family: iransansweb;
         font-size: 14px;
         margin-right: 10px;
+        margin-top: 20px;
     }
     .likeParent span{
         color: rgb(99, 98, 98);
@@ -906,11 +976,18 @@
         height: auto;
         display: flex;
         justify-content: space-between;
-        margin-top: 20px;
+        align-items:center;
+        text-align: right;
+        flex-wrap: wrap;
+        margin: 20px 0 0 0;
+        padding: 0px;
     }
     .productCategory p{
         font-family: iransansweb;
         font-size: 14px;
+        padding-bottom: 20px;
+    
+        /* padding: 0px; */
     }
     .productCategory button{
         background-color: transparent;
@@ -922,20 +999,29 @@
         align-items: center;
         font-family: iransansweb;
         color: rgb(68, 68, 68);
+        /* margin-top: 10px; */
+        padding: 0px;
+        margin-bottom: 20px;
+    
     }
     .productCategory_like{
         margin-left: 5px;
     }
     .productPrice{
         display: flex;
-        margin-top: 20px;
+        margin: 0px;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         font-family: iransansweb;
         font-size: 14px;
     }
+    .priceText{
+        margin:0 0 20px 0;
+    }
     .productPrice_discount{
         display: flex;
+        margin:0 0 20px 0;
     }
     .productPrice_discount p:nth-child(1){
         font-size:13px ;
@@ -948,10 +1034,10 @@
     .buyProductParent{
         width: 100%;
         height: auto;
-        margin-top: 20px;
+        margin-top: 0px;
     }
     .buyProductParent button{
-        padding: 11px 35px;
+        padding: 9px 25px;
         outline: none;
         border: none;
         background-color: rgb(182, 2, 2);
@@ -1055,19 +1141,19 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        
+        margin: 0;
     }
     .productTitle{
         display: flex;
         justify-content: space-between;
         /* padding: 0 20; */
+        flex-direction: row;
         align-items: center;
-        margin-top: 0;
+        margin: 0;
     }
     .productTitle p{
         font-family: iransansweb;
         font-size: 14px;
-    
     }
     .likeParent{
         width: auto;
@@ -1083,6 +1169,7 @@
         opacity: 1;
         font-family: iransansweb;
         font-size: 14px;
+        margin: 0;
     }
     .likeParent span{
         color: rgb(99, 98, 98);
@@ -1256,19 +1343,19 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        
+        margin: 0;
     }
     .productTitle{
         display: flex;
         justify-content: space-between;
         /* padding: 0 20; */
+        flex-direction: row;
         align-items: center;
-        margin-top: 0;
+        margin: 0;
     }
     .productTitle p{
         font-family: iransansweb;
         font-size: 14px;
-    
     }
     .likeParent{
         width: auto;
@@ -1284,6 +1371,7 @@
         opacity: 1;
         font-family: iransansweb;
         font-size: 14px;
+        margin: 0;
     }
     .likeParent span{
         color: rgb(99, 98, 98);
@@ -1422,8 +1510,6 @@
     .Slider_categoryParent_icon{
         margin-right: 5px;
     }
-    
-    
 }
 @media only screen and (min-width:1080px){}
 @media only screen and (min-width:1180px){}

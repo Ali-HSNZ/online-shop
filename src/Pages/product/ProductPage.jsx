@@ -96,21 +96,21 @@ const ProductPage = (props) => {
                         </div>
         
         
-                        <div className={Styles.productCategory}>
-                            <button>
-                                افزودن به علاقه مندی ها
+                        <div className={Styles.productCategory} dir='rtl'>
+                            <p dir='rtl'>دسته بندی :  {product.category}</p>
+                            <button dir='ltr'>
+                                علاقه مندی ها
                                 <BiHeart size="1.5em" className={Styles.productCategory_like}/>
                             </button>
-                            <p dir='rtl'>دسته بندی :  {product.category}</p>
                         </div>
         
-                        <div className={Styles.productPrice}>
+                        <div className={Styles.productPrice}  dir='rtl'>
                            
-                            <div className={Styles.productPrice_discount}>
+                            <p dir='rtl' className={Styles.priceText}>قیمت : {product.price}$</p>
+                            <div className={Styles.productPrice_discount} dir='ltr'>
                                 {queryOffPrice.length > 1 && <p dir='rtl' className={Styles.productPrice_Percentage}> (%{queryOffPrice})</p>}
                                 {queryDiscount.length > 1 &&<p dir='rtl'>تخفیف : {queryDiscount}$</p>}
                             </div>
-                            <p dir='rtl'>قیمت محصول : {product.price}$</p>
                         </div>
                         
                         <div className={Styles.buyProductParent}>

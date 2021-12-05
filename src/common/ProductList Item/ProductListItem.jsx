@@ -46,7 +46,7 @@ const ProductListItem = ({item , isLink}) => {
                     </div>
 
                     {isLink === true ? (
-                        <Link to={{pathname:`/product` , search : `id=${item.id}&discount=${item.discount}&offPrice=${item.offPrice}`}} className={Styles.imgParent}>
+                        <Link to={{pathname:`/product` , search : `id=${item.id}&discount=${item.discount ? item.discount : 0}&offPrice=${item.offPrice ? item.offPrice : 0}`}} className={Styles.imgParent}>
                             <img src={item.image} alt={item.title}/>
                         </Link>
                     ) : (
