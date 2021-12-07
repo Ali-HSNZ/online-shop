@@ -1,0 +1,49 @@
+.FeatureSwiperParent{
+    width: 100%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    padding:  0;
+    position: relative;
+    margin-top: 20px;
+}
+
+.FeatureSwiperParent .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .FeatureSwiperParent .swiper-wrapper{
+    border-radius: 10px;
+  }
+  .FeatureSwiperParent .swiper-button-next , .FeatureSwiperParent  .swiper-button-prev{
+    background-color: rgba(0, 0, 0, 0.445);
+    width: 33px;
+    height: 100%;
+    top: 25%;
+  }
+  .FeatureSwiperParent .swiper-button-next {
+    right: 0;
+    border-radius: 0 10px 10px 0px;
+  }
+  .FeatureSwiperParent .swiper-button-prev {
+    left: 0px;
+    border-radius:  10px 0  0 10px;
+  }
+  .FeatureSwiperParent .swiper-button-next::after,.FeatureSwiperParent   .swiper-button-prev::after { 
+    font-size: 16px;
+    color: white;
+   }
+  
+   .FeatureSwiperParent .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+    padding: 10px 0;
+    height: auto;
+  }
+  
+  .FeatureSwiperParent .swiper-slide img {
+    width: 100%;
+    height: 100%;
+  } 
+  

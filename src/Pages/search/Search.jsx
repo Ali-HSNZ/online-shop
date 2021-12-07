@@ -49,7 +49,7 @@ const Search = () => {
         if(filterProducts && filterProducts.length > 0){
             resualt = filterProducts.map(products => (
                 <div>
-                    <ProductListItem key={products.id} item = {products} offPrice={products.offPrice}/>
+                    <ProductListItem key={products.id} isLink={true} item={products} offPrice={products.offPrice}/>
                 </div>
             ))
 

@@ -4,8 +4,18 @@ import creditCard from '../../image/credit-card.png'
 import headphones from '../../image/headphones.png'
 import truck from '../../image/delivery-truck.png'
 import returnBox from '../../image/return-box.png'
-import Carousel from 'react-multi-carousel'
-import "react-multi-carousel/lib/styles.css";
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import SwiperCore ,{Navigation , Pagination}from 'swiper'
+import 'swiper/swiper-bundle.css'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/navigation/navigation.scss'
+import './featureSlider.css'
+
+SwiperCore.use([Navigation , Pagination])
+
 
 const responsive = {
     superLargeDesktop: {
@@ -26,47 +36,75 @@ const responsive = {
         items: 3
     }
 };
+
+
 const Feature = () => {
     return (
-        <div className={Styles.parent}>
+        <div className='FeatureSwiperParent' dir='ltr'>
             
-            <Carousel  responsive={responsive}  className={Styles.sliders} infinite={true}>
-                <div className={Styles.parent_features}>
-                    <div className={Styles.imgParent}>
-                        <img src={headphones}/>
+            <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
+                    breakpoints= {{
+                        0: {
+                        slidesPerView: 2,
+                        },
+                        600: {
+                        slidesPerView: 3,
+                        },
+                        820: {
+                        slidesPerView: 4,
+                        },
+                        1260: {
+                            slidesPerView: 5,
+                        }
+                    }}>
+                <SwiperSlide>
+                    <div className={Styles.parent_features}>
+                        <div className={Styles.imgParent}>
+                            <img src={headphones}/>
+                        </div>
+                        <p> پشتیبانی </p>
+                    </div> 
+                </SwiperSlide>
+
+
+                <SwiperSlide>
+                    <div className={Styles.parent_features}>
+                        <div className={Styles.imgParent}>
+                            <img src={truck}/>
+                        </div>
+                        <p>تحویل سریع</p>
                     </div>
-                   <p> پشتیبانی </p>
-                </div>
+                </SwiperSlide>
                 
-                <div className={Styles.parent_features}>
-                    <div className={Styles.imgParent}>
-                        <img src={truck}/>
-                    </div>
-                    <p>تحویل سریع</p>
-                </div>
 
-                <div className={Styles.parent_features}>
-                    <div className={Styles.imgParent}>
-                        <img src={creditCard}/>
+                <SwiperSlide>
+                    <div className={Styles.parent_features}>
+                        <div className={Styles.imgParent}>
+                            <img src={creditCard}/>
+                        </div>
+                        <p>پرداخت مطمئن</p>
                     </div>
-                    <p>پرداخت مطمئن</p>
-                </div>
+                </SwiperSlide>
 
-                <div className={Styles.parent_features}>
-                    <div className={Styles.imgParent}>
-                        <img src={guarantee}/>
+                <SwiperSlide>
+                    <div className={Styles.parent_features}>
+                        <div className={Styles.imgParent}>
+                            <img src={guarantee}/>
+                        </div>
+                        <p>ضمانت کیفیت</p>
                     </div>
-                    <p>ضمانت کیفیت</p>
-                </div>
+                </SwiperSlide>
 
-                <div className={Styles.parent_features}>
-                    <div className={Styles.imgParent}>
-                        <img src={returnBox}/>
+                <SwiperSlide>
+                    <div className={Styles.parent_features}>
+                        <div className={Styles.imgParent}>
+                            <img src={returnBox}/>
+                        </div>
+                        <p>بازگشت کالا</p>
                     </div>
-                    <p>بازگشت کالا</p>
-                </div>
+                </SwiperSlide>
 
-            </Carousel>
+            </Swiper>
 
         </div>
     );

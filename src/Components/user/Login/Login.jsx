@@ -37,12 +37,10 @@ const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
 
 
     const onSubmit = async(values) => {
-        // const {email , password} = values
+        const {email , password} = values
 
-        const userData = {
-            email:values.email ,
-            password:values.password
-        }
+        const userData = {email ,password}
+        
 
         setIsLoading(true)
        
@@ -51,6 +49,7 @@ const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
                 setIsLoading(false)
                 toast.success("با موفقیت وارد شدید")
                 dispatchUser(JSON.parse( data.config.data))
+                console.log(data)
 
                 if(data.config.data){
                     setIsUserLogin(false)

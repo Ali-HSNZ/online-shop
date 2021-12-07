@@ -9,4 +9,6 @@ const http = {
     update : axios.put
 }
 
+
+
 export default http

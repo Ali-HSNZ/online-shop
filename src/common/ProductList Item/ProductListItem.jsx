@@ -7,7 +7,7 @@ import {AiFillStar} from "react-icons/ai";
 import { useEffect, useState } from 'react';
 
 
-const ProductListItem = ({item , isLink , goToTop}) => {
+const ProductListItem = ({item , isLink}) => {
     const dispatch = UseCartDispatch()
     const {cart} = UseCart()
 

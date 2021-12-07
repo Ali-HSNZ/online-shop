@@ -6,6 +6,10 @@ import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './styles.css'
 
+import electronicBanner from '../../image/electronic banner.jpg'
+import jeweleryBanner from '../../image/jeweleryBanner.jpg'
+import menBanner from '../../image/man1.jpg'
+import womanBanner from '../../image/woman1.jpg'
 
 SwiperCore.use([Navigation , Pagination])
 
@@ -19,25 +23,25 @@ const Slider = () => {
 
                         <SwiperSlide>
                               <Link to="/category?name=electronics">
-                                    <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/06134291bac9861c0761f34ff61dfc49215a8719_1637762707.jpg"/>
+                                    <img src={electronicBanner} alt="electronics"/>
                               </Link>
                         </SwiperSlide>
 
                         <SwiperSlide>
                               <Link to="/category?name=jewelery">
-                                    <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/06134291bac9861c0761f34ff61dfc49215a8719_1637762707.jpg"/>
+                                    <img src={jeweleryBanner} alt="jewelery"/>
                               </Link>
                         </SwiperSlide>
 
                         <SwiperSlide>
                               <Link to="/category?name=men's clothing">
-                                    <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/02bfa74f0678ff037e7b72c32f00a41420050a9f_1638022430.jpg"/>
+                                    <img src={menBanner} alt="men's clothing"/>
                               </Link>
                         </SwiperSlide>
 
                         <SwiperSlide>
                               <Link to="/category?name=women's clothing">
-                                    <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/02bfa74f0678ff037e7b72c32f00a41420050a9f_1638022430.jpg"/>
+                                    <img src={womanBanner} alt="women's clothing"/>
                               </Link>
                         </SwiperSlide>
 
