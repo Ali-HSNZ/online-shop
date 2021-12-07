@@ -16,10 +16,10 @@
     border-radius: 10px;
   }
   .FeatureSwiperParent .swiper-button-next , .FeatureSwiperParent  .swiper-button-prev{
-    background-color: rgba(0, 0, 0, 0.445);
+    background-color: rgb(121, 121, 121);
     width: 33px;
     height: 100%;
-    top: 25%;
+    top: 20%;
   }
   .FeatureSwiperParent .swiper-button-next {
     right: 0;
@@ -38,7 +38,7 @@
     text-align: center;
     font-size: 18px;
     background: transparent;
-    padding: 10px 0;
+    padding: 20px 0;
     height: auto;
   }
   

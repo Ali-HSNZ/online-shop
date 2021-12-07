@@ -85,6 +85,7 @@ const ProductList = () => {
                                             {category && (
                                                 <div className={Styles.Slider_categoryParent}>
                                                     <Link to={`/category?name=${mapOnCategory}`} className={Styles.Slider_categoryLink}>{mapOnCategory} <BsFillCaretLeftFill/></Link>
+                                                    
                                                     <div className={Styles.categoryLine_parent}>
                                                         <div></div>     <div></div>     <div></div>     <div></div>
                                                     </div>

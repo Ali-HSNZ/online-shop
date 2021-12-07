@@ -5,13 +5,51 @@ import CartItems from '../../common/Cart Item/CartItems';
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import Header from '../../Components/Header/Header';
 import { User ,IsCalledUserLoginDispatch} from '../../Context/userProvider/UserProvider';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore ,{Navigation , Pagination}from 'swiper'
+
+import 'swiper/swiper-bundle.css'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/navigation/navigation.scss'
+import './cartSlider.css'
+import axios from 'axios';
+import ProductListItem from '../../common/ProductList Item/ProductListItem';
+import Feature from '../../Components/Features/Feature';
 
 
 
 const CartPage = () => {
     const productsInCart = UseCart()
+
+    const [products , setProducts] = useState(null)
+
+
+    useEffect(()=>{
+
    
+    const getAllProducts = async()=>{
+        try {
+            axios.get('https://fakestoreapi.com/products').then(products =>{
+                if(products.data){
+                    const cloneProducts = [...products.data]
+                    for(let i = 0 ; i <= Math.floor(cloneProducts.length/3) ; i++){
+                        const index = Math.floor(Math.random()*cloneProducts.length);
+                        cloneProducts[index].offPrice = Math.floor(Math.random()*50) + 1
+                        cloneProducts[index].discount = Math.floor(Math.random()*200) + 1
+                    }
+                    setProducts(cloneProducts)
+                }
+            }).catch();
+        } catch (error) {
+            setProducts(null)
+        }
+    }
+
+    getAllProducts()
+},[])
+
 
     const renderProducts = ()=> {
         var resualt
@@ -30,6 +68,8 @@ const CartPage = () => {
                     </div>
 
 
+
+
                 </div>
         }else{
             resualt= <div className={Styles.alert_product}>
@@ -43,7 +83,56 @@ const CartPage = () => {
         return resualt
 
     }
-    return (  <> { renderProducts()} </>);
+    return (  
+    <> 
+        {renderProducts()}
+
+
+        {productsInCart.cart.length ===0 && (
+            <div className={Styles.allParent}>
+
+        <div style={{padding:'0 20px'}}>
+            <Feature />
+        </div>      
+            
+                <div className={Styles.Slider_categoryParent}>
+                        <p  className={Styles.Slider_categoryLink} dir="rtl"> 
+                           محصولات پیشنهادی
+                        </p>
+                        <div className={Styles.categoryLine_parent}>
+                            <div></div>     <div></div>     <div></div>     <div></div>
+                        </div>
+                </div>
+
+                <div className='swiperParent_CartPage' dir="ltr">
+                    <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
+                        breakpoints= {{
+                            0: {
+                            slidesPerView: 1,
+                            },
+                            630: {
+                            slidesPerView: 2,
+                            },
+                            900: {
+                            slidesPerView: 3,
+                            },
+                            1260: {
+                                slidesPerView: 4,
+    
+                            }
+                        }}>
+                        {products ? products.slice(Math.floor(5+Math.random()*10)).map(
+                            item=>{return(
+                                <SwiperSlide>
+                                    <ProductListItem key={item.id} isLink={true} item={item} offPrice={item.offPrice}/>
+                                </SwiperSlide>
+                        )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
+                    </Swiper>
+                </div>
+            </div>
+        )}
+     </>
+     );
     
 }
  
@@ -53,6 +142,7 @@ export default CartPage;
     const setIsUserLogin =  IsCalledUserLoginDispatch()
     const user = User()
     const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
+
 
 
 
