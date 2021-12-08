@@ -112,7 +112,8 @@
     background-color: #a71e34;
     cursor: pointer;
 
-    padding: 10px 17px;
+    padding: 10px 0px 10px 0;
+    margin-right: 17px;
     border-radius: 5px;
 }
 

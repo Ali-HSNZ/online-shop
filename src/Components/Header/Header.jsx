@@ -161,11 +161,11 @@ const Header = (props) => {
                 
                 <div className={Styles.header_right}>
                     <NavLink activeClassName={Styles.activeLink} to="/" exact   onClick={(e)=>{return setIsUserProfile(false),  setIsSearch(false) ,setIsUserLogin(false) , setIsMenu(false)}} >خانه</NavLink>
-                    <div className={Styles.logoParent}>
+                    {/* <div className={Styles.logoParent}>
                         <Link to="/" className={Styles.link_Logo}>
                             <img className={Styles.logoParent_Img} alt="لوگو" src={Logo}/>
                         </Link>
-                    </div>
+                    </div> */}
 
                     <button className={Styles.menu} onClick={()=>{return setIsMenu(!isMenu) ,setCloseMenu(false) , setIsSearch(false) , setIsUserProfile(false) ,setIsUserLogin(false)}}> <BiMenu size='2.5em'/></button>
 

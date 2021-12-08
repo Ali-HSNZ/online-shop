@@ -1,7 +1,7 @@
 import Styles from './ProductListItem.module.css'
 import { BiHeart} from "react-icons/bi";
 import {UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider'
-import { BiTrashAlt , BiShoppingBag } from "react-icons/bi";
+import { BiTrashAlt,BiCart , BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import {AiFillStar} from "react-icons/ai";
 import { useEffect, useState } from 'react';
@@ -74,7 +74,7 @@ const ProductListItem = ({item , isLink}) => {
                     ) : (
                         <button className={Styles.itemAcrion} onClick={()=> {return addToCartHandler(item)}}>
                             <p>خرید محصول</p>
-                            <BiShoppingBag size="1.5em"/>
+                            <BiCart size="1.5em"/>
                         </button>
                     )
                     }
