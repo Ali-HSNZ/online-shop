@@ -1,6 +1,6 @@
 import Styles from './Header.module.css'
 import Logo from '../../image/logo.png'
-import {BiShoppingBag , BiX , BiUser , BiSearch , BiDotsVerticalRounded} from "react-icons/bi";
+import {BiShoppingBag , BiX , BiUser , BiSearch ,BiMenu, BiDotsVerticalRounded} from "react-icons/bi";
 import  LoginStyles from'../user/LoginStyles.module.css'
 import { Link, NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';
@@ -135,7 +135,6 @@ const Header = (props) => {
         <div className={Styles.parent}>
 
             <div className={Styles.header}>
-                <button className={Styles.menu} onClick={()=>{return setIsMenu(true) ,setCloseMenu(false) , setIsSearch(false) , setIsUserProfile(false) ,setIsUserLogin(false)}}> <BiDotsVerticalRounded size='1.7em'/></button>
 
                 <div className={Styles.header_left}>
 
@@ -167,6 +166,9 @@ const Header = (props) => {
                             <img className={Styles.logoParent_Img} alt="لوگو" src={Logo}/>
                         </Link>
                     </div>
+
+                    <button className={Styles.menu} onClick={()=>{return setIsMenu(!isMenu) ,setCloseMenu(false) , setIsSearch(false) , setIsUserProfile(false) ,setIsUserLogin(false)}}> <BiMenu size='2.5em'/></button>
+
                 </div>
 
 
@@ -174,7 +176,11 @@ const Header = (props) => {
         </div>
             {isUserLogin=== true && <UserPanel />}
             {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
-            {isMenu === true && !closeMenu && <Menu categories={categories} setIsMenu={setIsMenu} setCloseMenu={setCloseMenu}/>}
+            {isMenu === true && !closeMenu && (
+                <div className={Styles.menuParent} dir='rtl'>
+                    <Menu categories={categories} setIsMenu={setIsMenu} setCloseMenu={setCloseMenu}/>
+                </div>
+            )}
             {isSearch === true && !closeSearch && <SearchComponent/>}
           </>
     );

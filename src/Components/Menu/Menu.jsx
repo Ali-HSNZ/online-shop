@@ -13,7 +13,7 @@ const Menu = ({categories , setCloseMenu , setIsMenu}) => {
     return (
        <>
             <div className={LoginStyles.parent} onClick={()=>setIsMenu(false)}></div>
-            <div className={Styles.main} onClick={()=>setIsMenu(true)}>
+            <div className={Styles.main} onClick={()=>setIsMenu(true)} dir='ltr'>
 
                 <div className={Styles.logoParent}>
                     <NavLink to={'/'} onClick={()=> setCloseMenu(true)}>

@@ -91,9 +91,7 @@ const CartPage = () => {
         {productsInCart.cart.length ===0 && (
             <div className={Styles.allParent}>
 
-        <div style={{padding:'0 20px'}}>
-            <Feature />
-        </div>      
+
             
                 <div className={Styles.Slider_categoryParent}>
                         <p  className={Styles.Slider_categoryLink} dir="rtl"> 
@@ -129,6 +127,11 @@ const CartPage = () => {
                         )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                     </Swiper>
                 </div>
+
+                <div style={{padding:'0 20px' , marginBottom:'20px'}}>
+                    <Feature />
+                </div>      
+
             </div>
         )}
      </>

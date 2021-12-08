@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 0 20px 0 0;
+    padding: 0 20px 0 20px;
 }
 .header_right{
     width: 100%;
@@ -220,9 +220,6 @@
     .logoParent{display: none}
     .header_right a {
         margin-right: 0px;
-    }
-    .header{
-        padding: 0 20px 0 0;
     }
     .iconParent_like{
         display: none;

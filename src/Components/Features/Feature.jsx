@@ -17,26 +17,6 @@ import './featureSlider.css'
 SwiperCore.use([Navigation , Pagination])
 
 
-const responsive = {
-    superLargeDesktop: {
-        // the naming can be any, depends on you.
-        breakpoint: { max: 4000, min: 1220 },
-        items:5
-    },
-    desktop: {
-        breakpoint: { max: 1220, min: 1024 },
-        items: 4
-    },
-    tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 4
-    },
-    mobile: {
-        breakpoint: { max: 600, min: 0 },
-        items: 3
-    }
-};
-
 
 const Feature = () => {
     return (
