@@ -31,7 +31,7 @@ const CartPage = () => {
    
     const getAllProducts = async()=>{
         try {
-            axios.get('https://fakestoreapi.com/products').then(products =>{
+             await axios.get('https://fakestoreapi.com/products').then(products =>{
                 if(products.data){
                     const cloneProducts = [...products.data]
                     for(let i = 0 ; i <= Math.floor(cloneProducts.length/3) ; i++){

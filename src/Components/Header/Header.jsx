@@ -139,7 +139,7 @@ const Header = (props) => {
                 <div className={Styles.header_left}>
 
                     <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false), setIsSearch(false) ,setIsUserLogin(false) , setIsMenu(false)}}>
-                        <BiShoppingBag className={Styles.iconStyle} size="1.7em"/>
+                        <BiShoppingBag className={Styles.iconStyle} size="1.59em"/>
                         {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
@@ -148,12 +148,12 @@ const Header = (props) => {
                     </NavLink> */}
                     
                     <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true) :  setIsUserLogin(true) ,   setIsSearch(false) ,setIsMenu(false)}}>
-                        {user ? <FaUserCheck className={Styles.iconStyle} size="2em"/> :  <BiUser  className={Styles.iconStyle} size="2em"/>}
+                        {user ? <FaUserCheck className={Styles.iconStyle} size="1.9em"/> :  <BiUser  className={Styles.iconStyle} size="1.9em"/>}
                     </button>
 
 
                     <button className={Styles.iconParent_Button} onClick={()=> {return setIsSearch(true) , setCloseMenu(false) ,setIsMenu(false), setIsUserProfile(false),setIsUserLogin(false) ,setCloseSearch(false)} }>
-                       <BiSearch className={Styles.iconStyle} size="2em"/>            
+                       <BiSearch className={Styles.iconStyle} size="1.8em"/>            
                     </button>
 
                 </div>
