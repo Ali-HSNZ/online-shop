@@ -29,8 +29,8 @@
 .item_header{
     width: 100%;
     display: flex;
-    justify-content: 
-    flex-end;
+    justify-content: space-between;
+   
 }
 .header_offPrice{
     width: 120px;
@@ -51,8 +51,27 @@
 .header_offPrice p{
     margin-left: 2px;
 }
-
 .likeParent{
+    /* margin: 25px; */
+    position: relative;
+    top: 10px;
+    left: 10px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.likeActive{
+    color: rgb(0, 131, 44);
+}
+.likeNotActive{
+    color: rgb(61, 61, 61);
+}
+.item_header_imgParent{
+    border: 1px solid red;
+    height: auto;
+}
+.rateParent{
     width: auto;
     height: auto;
     display: flex;
@@ -63,27 +82,23 @@
     padding: 5px 12px;
     background-color: rgb(255, 240, 240);
     border-radius: 0 0 0 15px;
-    opacity: 1;
     font-family: iransansweb;
     font-size: 14px;
 }
-.likeParent span{
+.rateParent span{
     color: rgb(99, 98, 98);
     margin-left: 5px;
 }
-.likeParent p{
+.rateParent p{
     margin-left: 3px;
 }
-.item:hover .likeParent{
-    opacity: 1;
-}
-.likeParent div{
+.rateParent div{
     background-color: transparent;
 
     cursor: pointer;
     color: rgb(0, 0, 0);
 }
-.likeParent div:nth-child(1){
+.rateParent div:nth-child(1){
     color: rgb(0, 0, 0);
 }
 .titleParent{

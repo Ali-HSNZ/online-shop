@@ -22,7 +22,7 @@ const Menu = ({categories , setCloseMenu , setIsMenu}) => {
                 </div>
 
                 <div className={Styles.likeParent} >
-                    <NavLink to={`/`} className={Styles.likeParent_link} onClick={()=> setCloseMenu(true)}>
+                    <NavLink to={`/favoriteProducts`} className={Styles.likeParent_link} onClick={()=> setCloseMenu(true)}>
                         <BiHeart className={Styles.iconStyle} size="1.7em"/> 
                         پسندیده ها         
                     </NavLink>

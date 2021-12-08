@@ -16,6 +16,7 @@ import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './sliderStyles.css'
+import { SetLikeState } from "../../Context/likeContext/likeContext";
 
 
 SwiperCore.use([Navigation , Pagination])
@@ -29,6 +30,7 @@ const ProductList = () => {
     const [isItemClick , setIsItemClick] = useState(false)
 
     const [ itemParentClick , setIsItemParentClick] = useState(false)
+
 
 
     useEffect(()=>{

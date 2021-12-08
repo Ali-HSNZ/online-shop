@@ -5,17 +5,30 @@ import { BiTrashAlt,BiCart , BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import {AiFillStar} from "react-icons/ai";
 import { useEffect, useState } from 'react';
-
+import { UseLikeDispatcher , UseLikeState} from '../../Context/likeContext/likeContext';
+import blackHeart from '../../image/heart (5).png'
+import RedHeart from '../../image/heart (6).png'
 
 const ProductListItem = ({item , isLink}) => {
     const dispatch = UseCartDispatch()
     const {cart} = UseCart()
+    const {like} = UseLikeState()
+    const setLike = UseLikeDispatcher()
 
-    const [isClickedOnProducts , setIsClickedOnProducts] = useState(false)
+
+
+    const addToLike = (item) => {
+        setLike({type : 'ADD_TO_LIKE' , payLoad:item})
+    }
 
     const checkProductInCart=  (state , product)=>{
         const item = state.findIndex(item => item.id === product.id)
-        if(item < 0) {return false}else{return true}
+        if(item <= 0) {return false}else{return true}
+    }
+
+    const checkProductInLike = (state , product)=>{
+        const item = state.find(item => item.id === product.id)
+        if(item&&item.like === true){return true}else{return false}
     }
     
     const addToCartHandler = (product)=> {
@@ -25,10 +38,10 @@ const ProductListItem = ({item , isLink}) => {
     const deleteProduct = (product)=> {
         dispatch({type : "DELETE_PRODUCT" , payLoad : product})
     }
+
+
     return (  
         <div className={Styles.itemParent}>
-            {/* <div className={Styles.itemParent_center}> */}
-
                 <div className={Styles.item} dir="ltr">
                     {item.offPrice >=1 ? <div className={`${Styles.header_offPrice} ${Styles.header_offPrice_gold}`}>
                         {item.offPrice >=10  && <AiFillStar/>}
@@ -38,7 +51,13 @@ const ProductListItem = ({item , isLink}) => {
                     
 
                     <div className={Styles.item_header}>
-                        <div className={Styles.likeParent}>
+                        <button  onClick={()=>addToLike(item)} className={Styles.likeParent}>
+                            
+                            <img className={Styles.item_header_img} src={ checkProductInLike(like , item) ? RedHeart : blackHeart  }/>
+                            
+                        </button>
+
+                        <div className={Styles.rateParent}>
                             <BiHeart size="1.3em" style={{color:'red'}}/>
                                 <p>{item.rating.rate}</p>
                                 <span>{item.rating.count}</span>
