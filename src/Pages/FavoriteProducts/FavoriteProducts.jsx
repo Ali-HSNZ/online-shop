@@ -5,10 +5,13 @@ import { UseLikeDispatcher , UseLikeState} from '../../Context/likeContext/likeC
 import Styles from './FavoriteProducts.module.css'
 const FavoriteProducts = () => {
     const {like} = UseLikeState()
+
+    const filterLike = like&&like.filter(e => e.like  === true)
+
     return ( 
         <>
-            {like.length > 0 && <div className={Styles.parent}>
-                {like.length > 0 && like.map(e => {
+            {filterLike.length > 0 && <div className={Styles.parent}>
+                {filterLike.length > 0 && filterLike.map(e => {
                     return(
                         <div>
                             <ProductListItem item={e}/>
@@ -16,7 +19,7 @@ const FavoriteProducts = () => {
                     )
                 })}
             </div>}
-            {like.length === 0 && (
+            {filterLike.length === 0 && (
                 <div className={Styles.alert_product}>
                 <p>میرم</p>
                 <Link to="/">فروشگاه</Link>
