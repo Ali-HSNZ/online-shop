@@ -21,9 +21,9 @@ const ProductListItem = ({item , isLink}) => {
         setLike({type : 'ADD_TO_LIKE' , payLoad:item})
     }
 
-    const checkProductInCart=  (state , product)=>{
-        const item = state.findIndex(item => item.id === product.id)
-        if(item <= 0) {return false}else{return true}
+    const checkProductInCart=  (state , item)=>{
+        const findItem = state.findIndex(e => e.id === item.id)
+        if(findItem < 0) {return false}else{return true}
     }
 
     const checkProductInLike = (state , product)=>{

@@ -13,16 +13,16 @@ function App() {
       return (
             <Router>
                   <UserProvider>
-                              <LikeContext>
                         <CartProvider>
+                              <LikeContext>
                                     <Layout>
                                           <ToastContainer  autoClose={4000} rtl={true} theme={"dark"}/>
                                           <Switch>
                                                 {Routes.map((route,index) =>  <Route key={index} {...route}/>)}
                                           </Switch>
                                     </Layout>
-                        </CartProvider>
                               </LikeContext>
+                        </CartProvider>
                   </UserProvider>
             </Router>
       );
