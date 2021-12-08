@@ -24,7 +24,7 @@
     color: white;
 }
 .header_right a {
-    margin-right: 20px;
+    margin-right: 0px;
     padding: 10px 17px;
     border-radius: 5px;
 }
@@ -113,7 +113,7 @@
     cursor: pointer;
 
     padding: 10px 0px 10px 0;
-    margin-right: 17px;
+    margin-left: 17px;
     border-radius: 5px;
 }
 
@@ -219,9 +219,7 @@
 
 @media only screen and (max-width:499px){
     .logoParent{display: none}
-    .header_right a {
-        margin-right: 0px;
-    }
+
     .iconParent_like{
         display: none;
     }
