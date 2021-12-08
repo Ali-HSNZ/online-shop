@@ -137,13 +137,13 @@
     width: 100%;
     z-index: 99999;
     position: relative;
-    left: 77px;
+    left: 0;
 }
 .centerSearch{
     width: 100%;
     z-index: 99999;
     position: relative;
-    left: 77px;
+    left: 0;
 }
 .main{
     width: 300px;
@@ -166,6 +166,7 @@
     text-align: center;
     position: relative;
     top:-18px;
+    left: 20px;
 }
 .mainSearch{
     width: 300px;
@@ -173,32 +174,16 @@
     background-color: rgb(255, 255, 255);
     z-index: 99999;
     position: fixed;
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 15px 0;
     padding: 0 20px 20px 20px;
-    border: 2px solid #a71e34;
+    border: 3px solid #a71e34;
     border-top: none;
     box-shadow: 0 1px 3px 0 rgb(82, 82, 82);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
-@media only screen and (max-width : 400px){
-    .centerSearch{
-        width: 100%;
-        z-index: 99999;
-        position: relative;
-        left: 20px;
-    }
-    .arrow{
-        width: 100%;
-        height: 0;
-        color: rgb(255, 255, 255);
-        position: relative;
-        top:-18px;
-        text-align: right;
-        right: 55px;
-    }
-}
+
 .submitSearchBtn{
     width: 100%;
     padding: 10px 0;

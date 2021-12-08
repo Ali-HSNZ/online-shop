@@ -11,16 +11,16 @@
     width: 100%;
     z-index: 99999;
     position: relative;
-    left: 7px;
+    left: 0px;
 }
 .main{
     width: 300px;
     height: auto;
     background-color: rgb(255, 255, 255);
 
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 15px 0px;
     padding: 0 20px 20px 20px;
-    border: 2px solid #a71e34;
+    border: 3px solid #a71e34;
     border-top: none;
     box-shadow: 0 1px 3px 0 rgb(82, 82, 82);
     display: flex;
@@ -56,9 +56,9 @@
 .arrow{
     height: 0;
     color: rgb(255, 255, 255);
-    text-align: center;
     position: relative;
     top:-18px;
+    left: 68px;
 }
 .header{
     width: 100%;
@@ -228,20 +228,5 @@
 .userDetails_details{
     font-family: iransansweb;
     font-size: 14px;
-
-}
-
-
-
-
-
-
-
-
-
-@media only screen and (max-width:499px){
-    .main{
-        left: 9px;
-    }
 
 }
