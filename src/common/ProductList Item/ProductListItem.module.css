@@ -29,7 +29,7 @@
 .item_header{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
    
 }
 .header_offPrice{
@@ -51,25 +51,14 @@
 .header_offPrice p{
     margin-left: 2px;
 }
-.likeParent{
-    /* margin: 25px; */
-    position: relative;
-    top: 10px;
-    left: 10px;
-    outline: none;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
 .likeActive{
     color: rgb(0, 131, 44);
 }
 .likeNotActive{
     color: rgb(61, 61, 61);
 }
-.item_header_imgParent{
-    border: 1px solid red;
-    height: auto;
+.item_header_img{
+    margin-right: 2px;
 }
 .rateParent{
     width: auto;
@@ -84,6 +73,9 @@
     border-radius: 0 0 0 15px;
     font-family: iransansweb;
     font-size: 14px;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
 .rateParent span{
     color: rgb(99, 98, 98);

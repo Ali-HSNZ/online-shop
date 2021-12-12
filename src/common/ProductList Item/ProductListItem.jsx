@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import {AiFillStar} from "react-icons/ai";
 import { useEffect, useState } from 'react';
 import { UseLikeDispatcher , UseLikeState} from '../../Context/likeContext/likeContext';
-import blackHeart from '../../image/heart (5).png'
-import RedHeart from '../../image/heart (6).png'
+import blackHeart from '../../image/heart (10).png'
+import RedHeart from '../../image/heart (9).png'
 
 const ProductListItem = ({item , isLink}) => {
     const dispatch = UseCartDispatch()
@@ -51,17 +51,12 @@ const ProductListItem = ({item , isLink}) => {
                     
 
                     <div className={Styles.item_header}>
-                        <button  onClick={()=>addToLike(item)} className={Styles.likeParent}>
+                        <button className={Styles.rateParent} onClick={()=>addToLike(item)}>
                             
                             <img className={Styles.item_header_img} src={ checkProductInLike(like , item) ? RedHeart : blackHeart  }/>
-                            
+                                <p>{ item.rating.rate}</p>
+                                <span>({ checkProductInLike(like , item) ?  item.rating.count + 1 : item.rating.count})</span>
                         </button>
-
-                        <div className={Styles.rateParent}>
-                            <BiHeart size="1.3em" style={{color:'red'}}/>
-                                <p>{item.rating.rate}</p>
-                                <span>{item.rating.count}</span>
-                        </div>
                     </div>
 
                     {isLink === true ? (

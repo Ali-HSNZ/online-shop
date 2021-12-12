@@ -26,7 +26,7 @@ const CartItems = ({product , checkout}) => {
 
             <div className={checkout ? Styles.describrion_route_checkout :  Styles.describrion }>
                 <p className={Styles.describrion_titile}>{product.title}</p>
-                <div className={Styles.describrion_orginalPriceParent}><p>قیمت محصول :</p><p>${(product.price * product.quantity).toFixed(2)}</p></div>
+                <div className={Styles.describrion_orginalPriceParent}><p>قیمت محصول :</p><p>{product.price}</p></div>
             </div>
 
             {!checkout &&(
