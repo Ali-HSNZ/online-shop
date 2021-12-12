@@ -349,6 +349,11 @@
         margin-bottom: 20px;
     
     }
+    .productCategory button img{
+        width: 18px;
+        height: 18px;
+        margin-left: 3px;
+    }
     .productCategory_like{
         margin-left: 5px;
     }

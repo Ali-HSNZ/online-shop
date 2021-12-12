@@ -7,7 +7,7 @@ import { BsFillCaretLeftFill } from "react-icons/bs";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore ,{Navigation , Pagination}from 'swiper'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
 
@@ -22,11 +22,18 @@ import {useQuery} from '../../hooks/useQuery'
 import cartReducer from '../../Context/cartContext/CartReducer';
 import { UseCartDispatch , UseCart } from '../../Context/cartContext/CartProvider';
 import { Link } from 'react-router-dom';
+import { UseLikeDispatcher , UseLikeState} from '../../Context/likeContext/likeContext';
+import blackHeart from '../../image/heart.svg'
+import RedHeart from '../../image/redHeart.svg'
+
 SwiperCore.use([Navigation , Pagination])
 
 
 
 const ProductPage = (props) => {
+
+    const {like} = UseLikeState()
+    const setLike = UseLikeDispatcher()
 
     const cartDispatch = UseCartDispatch()
     const {cart} = UseCart()
@@ -35,6 +42,9 @@ const ProductPage = (props) => {
     const queryDiscount = useQuery().get('discount');
     const queryOffPrice = useQuery().get('offPrice');
 
+    const addToLike = (item) => {
+        setLike({type : 'ADD_TO_LIKE' , payLoad:item})
+    }
 
     const [products , setProducts] = useState(null)
     const [product , setProduct] = useState(null)
@@ -52,18 +62,10 @@ const ProductPage = (props) => {
 
         const getAllProducts = async()=>{
             try {
-                axios.get('https://fakestoreapi.com/products').then(products =>{
+                 await axios.get('https://fakestoreapi.com/products').then(products =>{
                     if(products.data){
-                        const cloneProducts = [...products.data]
-                        for(let i = 0 ; i <= Math.floor(cloneProducts.length/3) ; i++){
-                            const index = Math.floor(Math.random()*cloneProducts.length);
-                            cloneProducts[index].offPrice = Math.floor(Math.random()*50) + 1
-                            cloneProducts[index].discount = Math.floor(Math.random()*200) + 1
-                        }
-                        setProducts(cloneProducts)
-                        if(product){
-                            checkProductInCart(cart , product)
-                        }
+                        setProducts(products.data)
+                        checkProductInCart(cart , product)
                     }
                 }).catch();
             } catch (error) {
@@ -75,10 +77,10 @@ const ProductPage = (props) => {
     },[])
 
     useEffect(()=>{
-            window.scrollTo({
-              top: 0, 
-              behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+             
+              
+           
             setIsLoading(true)
 
 
@@ -106,7 +108,10 @@ const ProductPage = (props) => {
     const addToCart = (product)=>{
         cartDispatch({type : 'ADD_TO_CART' , payLoad : product})
     }
-
+    const checkProductInLike = (state , product)=>{
+        const item = state.find(item => item.id === product.id)
+        if(item&&item.like === true){return true}else{return false}
+    }
 
 
     return (  
@@ -128,7 +133,7 @@ const ProductPage = (props) => {
                             <div className={Styles.likeParent}>
                                 <BiHeart size="1.3em" style={{color:'red'}}/>
                                     <p>{product.rating.rate}</p>
-                                    <span>({product.rating.count})</span>
+                                    <span>({checkProductInLike(like , product) ? product.rating.count + 1 :product.rating.count  })</span>
                             </div>
                             <p dir="ltr">{product.title}</p>
                         </div>
@@ -136,9 +141,9 @@ const ProductPage = (props) => {
         
                         <div className={Styles.productCategory} dir='rtl'>
                             <p dir='rtl'>دسته بندی :  {product.category}</p>
-                            <button dir='ltr'>
+                            <button dir='ltr' onClick={()=> addToLike(product)}>
                                 علاقه مندی ها
-                                <BiHeart size="1.5em" className={Styles.productCategory_like}/>
+                                <img src={checkProductInLike(like , product) ? RedHeart : blackHeart}/>
                             </button>
                         </div>
         
