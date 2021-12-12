@@ -7,8 +7,8 @@ const Home = () => {
         <div className={Styles.parent}>
             <div className={Styles.parentProduct}>
                 <Slider/>
-                <Feature/>
                 <ProductList/>
+                <Feature/>
             </div>
         </div>
     );

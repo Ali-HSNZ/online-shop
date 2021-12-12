@@ -30,7 +30,10 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-   
+}
+.item_header img{
+    width: 18px;
+    height: 18px;
 }
 .header_offPrice{
     width: 120px;
@@ -56,9 +59,6 @@
 }
 .likeNotActive{
     color: rgb(61, 61, 61);
-}
-.item_header_img{
-    margin-right: 2px;
 }
 .rateParent{
     width: auto;
@@ -102,9 +102,6 @@
 .title{
     text-align: left;
     font-size: 14px;
-}
-.parent img{
-    pointer-events: none;
 }
 .parent a {
     width: 100%;
