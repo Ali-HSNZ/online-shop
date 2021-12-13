@@ -24,8 +24,6 @@ const CartPage = () => {
     const productsInCart = UseCart()
 
     const [products , setProducts] = useState(null)
-
-
     useEffect(()=>{
 
    
