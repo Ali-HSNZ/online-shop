@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {Link} from 'react-router-dom'
-import SwiperCore ,{Navigation , Pagination}from 'swiper'
+import SwiperCore ,{Autoplay, Navigation , Pagination}from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
@@ -11,7 +11,7 @@ import jeweleryBanner from '../../image/jeweleryBanner.jpg'
 import menBanner from '../../image/man1.jpg'
 import womanBanner from '../../image/woman1.jpg'
 
-SwiperCore.use([Navigation , Pagination])
+SwiperCore.use([Navigation , Pagination , Autoplay])
 
 const Slider = () => {
 
@@ -19,7 +19,7 @@ const Slider = () => {
       
     
           <div className='sliderSwiperParent'>
-                  <Swiper loop={true} dir='rtl' navigation  pagination={{ "dynamicBullets": true}} tag="div" wrapperTag="div" style={{borderRadius:'5px'}} spaceBetween={0} slidesPerView={1}>
+                  <Swiper loop={true} dir='rtl' navigation  pagination={{ "dynamicBullets": true}} tag="div" wrapperTag="div" style={{borderRadius:'5px'}} spaceBetween={0} slidesPerView={1} autoplay={{delay:2100}}>
 
                         <SwiperSlide>
                               <Link to="/category?name=electronics">
