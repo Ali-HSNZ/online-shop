@@ -1,7 +1,6 @@
 import Styles from './Product.module.css'
 import { BiHeart} from "react-icons/bi";
 
-import iphoneSrc from '../../image/iphone.png'
 import Feature from '../../Components/Features/Feature';
 import { BsFillCaretLeftFill } from "react-icons/bs";
 
@@ -19,7 +18,6 @@ import 'swiper/components/navigation/navigation.scss'
 import './sliderStyles.css'
 
 import {useQuery} from '../../hooks/useQuery'
-import cartReducer from '../../Context/cartContext/CartReducer';
 import { UseCartDispatch , UseCart } from '../../Context/cartContext/CartProvider';
 import { Link } from 'react-router-dom';
 import { UseLikeDispatcher , UseLikeState} from '../../Context/likeContext/likeContext';
@@ -57,22 +55,18 @@ const ProductPage = (props) => {
         return cart&&cart.find(item => item.id === product.id)
     }
  
-    useEffect(()=>{
-
-
-        const getAllProducts = async()=>{
-            try {
-                 await axios.get('https://fakestoreapi.com/products').then(products =>{
-                    if(products.data){
-                        setProducts(products.data)
-                        checkProductInCart(cart , product)
-                    }
-                }).catch();
-            } catch (error) {
-                setProducts(null)
-            }
+    const getAllProducts = async()=>{
+        try {
+             await axios.get('https://fakestoreapi.com/products').then(products =>{
+                setProducts(products.data)
+                checkProductInCart(cart , product)
+            }).catch();
+        } catch (error) {
+            setProducts(null)
         }
+    }
 
+    useEffect(()=>{
         getAllProducts()
     },[])
 
@@ -101,6 +95,7 @@ const ProductPage = (props) => {
             
         }
         getOneProducts()
+        
     },[query])
 
 
