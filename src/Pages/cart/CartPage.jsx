@@ -154,11 +154,6 @@ export default CartPage;
 
     const totalDiscount = cart.length ? cart.reduce((acc , product) => acc + product.quantity * product.discount , 0) : 0
 
-    // console.log("total ==> ",total)
-    console.log("totalDiscount ==> ",totalDiscount)
-    
-
-
     return(
         <div className={Styles.checkOut_Fixed}>
         <div className={Styles.checkout_header}>
@@ -170,12 +165,8 @@ export default CartPage;
         
         </div>
         <div className={Styles.price}>
-            <p dir="rtl">جمع سبد خرید : {originalTotalPrice.toFixed(2)}$ </p>
+            <p dir="rtl">جمع سبد خرید : {originalTotalPrice - totalDiscount.toFixed(2)}$ </p>
         </div>
-
-        {/* <button onClick={()=>!user && checkUser(true)}  className={Styles.checkout_submit}>
-            پرداخت سبد خرید
-        </button> */}
             {user ? (
                 <Link className={Styles.checkout_submit} to="/checkout"> پرداخت سبد خرید</Link>
             ) : (
