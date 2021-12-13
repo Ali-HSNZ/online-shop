@@ -8,7 +8,7 @@ import { User ,IsCalledUserLoginDispatch} from '../../Context/userProvider/UserP
 import { useEffect, useState } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore ,{Navigation , Pagination}from 'swiper'
+import SwiperCore ,{Navigation , Pagination , Autoplay}from 'swiper'
 
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
@@ -19,7 +19,7 @@ import ProductListItem from '../../common/ProductList Item/ProductListItem';
 import Feature from '../../Components/Features/Feature';
 
 
-
+SwiperCore.use([Autoplay]);
 const CartPage = () => {
     const productsInCart = UseCart()
 
@@ -116,7 +116,15 @@ const CartPage = () => {
                                 slidesPerView: 4,
     
                             }
-                        }}>
+
+                            
+                        }}
+                        
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false
+                        }}
+                        >
                         {products ? products.slice(Math.floor(5+Math.random()*10)).map(
                             item=>{return(
                                 <SwiperSlide>

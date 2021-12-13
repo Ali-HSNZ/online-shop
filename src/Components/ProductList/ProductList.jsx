@@ -11,14 +11,14 @@ import PWClicked from './ProductWillClicked.module.css'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import SwiperCore ,{Navigation , Pagination}from 'swiper'
+import SwiperCore ,{Autoplay, Navigation , Pagination}from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './sliderStyles.css'
 
 
-SwiperCore.use([Navigation , Pagination])
+SwiperCore.use([Navigation , Pagination , Autoplay])
 
 const ProductList = () => {
 
@@ -97,7 +97,14 @@ const ProductList = () => {
                                                         1260: {
                                                             slidesPerView: 4,
                                                         }
-                                                    }}>
+                                                    }}
+                                                    
+                                                    autoplay={{
+                                                        delay: 2000+ Math.random()*1000,
+                                                        disableOnInteraction: false
+                                                    }}
+                                                    
+                                                    >
                                             
 
                                                     {filterd ? filterd.map(
