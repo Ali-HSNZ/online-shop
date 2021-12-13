@@ -165,7 +165,7 @@ export default CartPage;
         
         </div>
         <div className={Styles.price}>
-            <p dir="rtl">جمع سبد خرید : {originalTotalPrice - totalDiscount.toFixed(2)}$ </p>
+            <p dir="rtl">جمع سبد خرید : {totalDiscount ? originalTotalPrice - totalDiscount.toFixed(2) : originalTotalPrice}$ </p>
         </div>
             {user ? (
                 <Link className={Styles.checkout_submit} to="/checkout"> پرداخت سبد خرید</Link>
