@@ -47,13 +47,14 @@ const CartItems = ({product , checkout}) => {
                         <img src={product.image} alt="product img"/>
                     </div>
 
-                    <div className={checkout ? Styles.describrion_route_checkout :  Styles.describrion }>
+                    <div className={Styles.describrion }>
                         <p className={Styles.describrion_title}>{product.title}</p>
                         <div className={Styles.describrion_priceParent}>
                             {product.discount &&  <div className={Styles.describrion_offPrice}><p>تخفیف  : {product.discount}$</p></div>}
                             <div className={Styles.describrion_orgPrice}><p>قیمت : {product.price}$</p></div>
                         </div>
                     </div>
+
 
                     {!checkout &&(
                         <div className={Styles.productAction}>

@@ -139,12 +139,12 @@ const CartPage = () => {
  
 export default CartPage;
 
- const Checkout = ({cart})=>{
+ const Checkout = ({cart , total})=>{
     const setIsUserLogin =  IsCalledUserLoginDispatch()
     const user = User()
     const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
 
-
+    console.log("total ==> ",total)
 
 
 
@@ -155,7 +155,7 @@ export default CartPage;
         </div>
         <div className={Styles.Allprice}>
             <div> <p dir="rtl"> ${originalTotalPrice.toFixed(2)}  </p><p dir="rtl">قیمت کالاها  : </p></div>
-            <div> <p dir="rtl">$0 </p><p dir="rtl">تخفیف کالاها : </p></div>
+            <div> <p dir="rtl">${originalTotalPrice - total} </p><p dir="rtl">تخفیف کالاها : </p></div>
         
         </div>
         <div className={Styles.price}>
