@@ -150,9 +150,15 @@ export default CartPage;
  const Checkout = ({cart , total})=>{
     const setIsUserLogin =  IsCalledUserLoginDispatch()
     const user = User()
+
     const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
 
-    const totalDiscount = cart.length ? cart.reduce((acc , product) => acc + product.quantity * product.discount , 0) : 0
+    const cartDiscount = cart.filter(product => product.discount > 0)
+
+    const totalDiscount = cartDiscount.length ? cartDiscount.reduce((acc , product) => acc + product.quantity * product.discount , 0) : 0
+
+    console.log("cart===> ",cart)
+
 
     return(
         <div className={Styles.checkOut_Fixed}>
@@ -165,7 +171,7 @@ export default CartPage;
         
         </div>
         <div className={Styles.price}>
-            <p dir="rtl">جمع سبد خرید : {totalDiscount ? originalTotalPrice - totalDiscount.toFixed(2) : originalTotalPrice.toFixed(2)}$ </p>
+            <p dir="rtl">جمع سبد خرید : {totalDiscount ? (originalTotalPrice - totalDiscount).toFixed(2).replace('-','') : originalTotalPrice.toFixed(2)}$ </p>
         </div>
             {user ? (
                 <Link className={Styles.checkout_submit} to="/checkout"> پرداخت سبد خرید</Link>
