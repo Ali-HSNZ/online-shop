@@ -14,7 +14,7 @@ const cartReducer = (state , action) =>{
                 cloneItem.quantity++;
                 const  cloneCart = [...state.cart]
                 cloneCart[findItemIndex] = cloneItem;
-                return {...state , cart : cloneCart}
+                return {...state , cart : cloneCart , total : action.payLoad.discount}
             }
            return {...state , cart : cloneState , total : action.payLoad.discount}
         }

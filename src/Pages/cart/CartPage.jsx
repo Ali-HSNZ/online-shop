@@ -144,8 +144,11 @@ export default CartPage;
     const user = User()
     const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
 
-    console.log("total ==> ",total)
+    const totalDiscount = cart.length ? cart.reduce((acc , product) => acc + product.quantity * product.discount , 0) : 0
 
+    // console.log("total ==> ",total)
+    console.log("totalDiscount ==> ",totalDiscount)
+    
 
 
     return(
@@ -155,7 +158,7 @@ export default CartPage;
         </div>
         <div className={Styles.Allprice}>
             <div> <p dir="rtl"> ${originalTotalPrice.toFixed(2)}  </p><p dir="rtl">قیمت کالاها  : </p></div>
-            <div> <p dir="rtl">${ total ? (originalTotalPrice - total).toFixed(2).replace('-','') : 0} </p><p dir="rtl">تخفیف کالاها : </p></div>
+            <div> <p dir="rtl">${totalDiscount ?  totalDiscount.toFixed(2).replace('-','') : 0} </p><p dir="rtl">تخفیف کالاها : </p></div>
         
         </div>
         <div className={Styles.price}>
