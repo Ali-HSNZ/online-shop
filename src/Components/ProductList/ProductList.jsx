@@ -34,7 +34,7 @@ const ProductList = () => {
                         const cloneProducts = [...products.data]
                         for(let i = 0 ; i <= Math.floor(cloneProducts.length/3) ; i++){
                             const index = Math.floor(Math.random()*cloneProducts.length);
-                            cloneProducts[index].offPrice = Math.floor(Math.random()*50) + 1
+                            cloneProducts[index].offPrice = Math.floor(Math.random()*19) + 1
                             cloneProducts[index].discount = Math.floor(Math.random()*100) + 1
                         }
                         setProducts(cloneProducts)
