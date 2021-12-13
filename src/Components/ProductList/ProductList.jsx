@@ -16,7 +16,6 @@ import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './sliderStyles.css'
-import { SetLikeState } from "../../Context/likeContext/likeContext";
 
 
 SwiperCore.use([Navigation , Pagination])
@@ -25,12 +24,6 @@ const ProductList = () => {
 
     const [products , setProducts] = useState(null)
     const [category , setCategory] = useState(null)
-
-    const [itemClickData , setItemClickData] = useState(null)
-    const [isItemClick , setIsItemClick] = useState(false)
-
-    const [ itemParentClick , setIsItemParentClick] = useState(false)
-
 
 
     useEffect(()=>{
@@ -42,7 +35,7 @@ const ProductList = () => {
                         for(let i = 0 ; i <= Math.floor(cloneProducts.length/3) ; i++){
                             const index = Math.floor(Math.random()*cloneProducts.length);
                             cloneProducts[index].offPrice = Math.floor(Math.random()*50) + 1
-                            cloneProducts[index].discount = Math.floor(Math.random()*200) + 1
+                            cloneProducts[index].discount = Math.floor(Math.random()*100) + 1
                         }
                         setProducts(cloneProducts)
                     }
@@ -62,10 +55,6 @@ const ProductList = () => {
         getAllCategorie()
         getAllProducts()
     },[])
-
-    const itemClickHandler = (productData) =>{
-        setItemClickData(productData)
-    }
 
 
 
