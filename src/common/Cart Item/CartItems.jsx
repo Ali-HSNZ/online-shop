@@ -49,9 +49,12 @@ const CartItems = ({product , checkout}) => {
 
                     <div className={Styles.describrion }>
                         <p className={Styles.describrion_title}>{product.title}</p>
-                        <div className={Styles.describrion_priceParent}>
-                            {product.discount &&  <div className={Styles.describrion_offPrice}><p>تخفیف  : {product.discount}$</p></div>}
-                            <div className={Styles.describrion_orgPrice}><p>قیمت : {product.price}$</p></div>
+                        <div className={Styles.price_quantityParent}>
+                            <div>
+                                {product.discount &&  <div className={Styles.describrion_offPrice}><p>تخفیف  : {product.discount}$</p></div>}
+                                <div className={Styles.describrion_orgPrice}><p>قیمت : {product.price}$</p></div>
+                            </div>
+                           {checkout === true &&  <p className={Styles.describrion_quantity}>تعداد : {product.quantity}</p>}
                         </div>
                     </div>
 

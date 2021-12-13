@@ -93,14 +93,19 @@
     font-size: 14px;
 }
 
-.describrion_priceParent{
+.price_quantityParent{
     font-family: iransansweb;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.price_quantityParent div{
     display: flex;
     flex-direction: column;
 }
-.describrion_priceParent div{
-    display: flex;
-    flex-direction: row;
+.describrion_quantity{
+    font-size: 14px;
 }
 .describrion_orgPrice{
     font-size: 14px;
@@ -307,15 +312,20 @@
         font-size: 14px;
     }
     
-    .describrion_priceParent{
+    .price_quantityParent{
         font-family: iransansweb;
         display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-    }
-    .describrion_priceParent div{
-        display: flex;
         flex-direction: row;
+        margin-top: 20px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .price_quantityParent div{
+        display: flex;
+        flex-direction: column;
+    }
+    .describrion_quantity{
+        font-size: 14px;
     }
     .describrion_orgPrice{
         font-size: 14px;
@@ -528,16 +538,20 @@
         font-size: 14px;
     }
     
-    .describrion_priceParent{
+    .price_quantityParent{
         font-family: iransansweb;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         margin-top: 20px;
-    
+        align-items: center;
+        justify-content: space-between;
     }
-    .describrion_orgPrice{
+    .price_quantityParent div{
+        display: flex;
+        flex-direction: column;
+    }
+    .describrion_quantity{
         font-size: 14px;
-    
     }
     .describrion_offPrice{
         font-size: 13px;
@@ -746,15 +760,20 @@
         font-size: 14px;
     }
     
-    .describrion_priceParent{
+    .price_quantityParent{
         font-family: iransansweb;
-        display: flex;
-        flex-direction: column;
         margin-top: 20px;
-    }
-    .describrion_priceParent div{
         display: flex;
         flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .price_quantityParent div{
+        display: flex;
+        flex-direction: column;
+    }
+    .describrion_quantity{
+        font-size: 14px;
     }
     .describrion_orgPrice{
         font-size: 14px;
@@ -967,15 +986,20 @@
         font-size: 14px;
     }
     
-    .describrion_priceParent{
+    .price_quantityParent{
         font-family: iransansweb;
         display: flex;
-        flex-direction: column;
         margin-top: 20px;
-    }
-    .describrion_priceParent div{
-        display: flex;
         flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .price_quantityParent div{
+        display: flex;
+        flex-direction: column;
+    }
+    .describrion_quantity{
+        font-size: 14px;
     }
     .describrion_orgPrice{
         font-size: 14px;
@@ -1187,16 +1211,20 @@
         font-family: iransansweb;
         font-size: 14px;
     }
-    
-    .describrion_priceParent{
+    .price_quantityParent{
         font-family: iransansweb;
         display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-    }
-    .describrion_priceParent div{
-        display: flex;
         flex-direction: row;
+        margin-top: 20px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .price_quantityParent div{
+        display: flex;
+        flex-direction: column;
+    }
+    .describrion_quantity{
+        font-size: 14px;
     }
     .describrion_orgPrice{
         font-size: 14px;
@@ -1407,14 +1435,20 @@
         font-size: 14px;
     }
     
-    .describrion_priceParent{
+    .price_quantityParent{
         font-family: iransansweb;
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .price_quantityParent div{
         display: flex;
         flex-direction: column;
     }
-    .describrion_priceParent div{
-        display: flex;
-        flex-direction: row;
+    .describrion_quantity{
+        font-size: 14px;
     }
     .describrion_orgPrice{
         font-size: 14px;
@@ -1620,14 +1654,20 @@
         font-size: 14px;
     }
     
-    .describrion_priceParent{
+    .price_quantityParent{
         font-family: iransansweb;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 20px;
+        justify-content: space-between;
+    }
+    .price_quantityParent div{
         display: flex;
         flex-direction: column;
     }
-    .describrion_priceParent div{
-        display: flex;
-        flex-direction: row;
+    .describrion_quantity{
+        font-size: 14px;
     }
     .describrion_orgPrice{
         font-size: 14px;
