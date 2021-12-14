@@ -1,10 +1,9 @@
 import Styles from './CartItems.module.css'
 import {UseCartDispatch } from '../../Context/cartContext/CartProvider';
-import { BiTrash , BiMinus  ,BiPlus , BiChevronLeft } from "react-icons/bi";
+import { BiMinus  ,BiPlus , BiChevronLeft } from "react-icons/bi";
 import {AiFillStar} from "react-icons/ai";
 import { FiTrash2 } from "react-icons/fi";
 import { useState } from 'react';
-import { AiFillCaretUp ,AiFillCaretLeft} from "react-icons/ai";
 
 const CartItems = ({product , checkout}) => {
 

@@ -54,7 +54,7 @@ const ProductPage = (props) => {
     const checkProductInCart = (cart , product)=>{
         return cart&&cart.find(item => item.id === product.id)
     }
- 
+    useEffect(()=>{
     const getAllProducts = async()=>{
         try {
              await axios.get('https://fakestoreapi.com/products').then(products =>{
@@ -66,9 +66,9 @@ const ProductPage = (props) => {
         }
     }
 
-    useEffect(()=>{
+
         getAllProducts()
-    },[])
+    },[cart , product])
 
     useEffect(()=>{
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -96,7 +96,7 @@ const ProductPage = (props) => {
         }
         getOneProducts()
         
-    },[query])
+    },[query , cart])
 
 
 
@@ -119,7 +119,7 @@ const ProductPage = (props) => {
                 <div className={Styles.product}>
             
                     <div className={Styles.imgParent}>
-                        <img src={product.image}/>
+                        <img src={product.image} alt={product.title}/>
                     </div>
         
                     <div className={Styles.productDesc}>
@@ -138,7 +138,7 @@ const ProductPage = (props) => {
                             <p dir='rtl'>دسته بندی :  {product.category}</p>
                             <button dir='ltr' onClick={()=> addToLike(product)}>
                                 علاقه مندی ها
-                                <img src={checkProductInLike(like , product) ? RedHeart : blackHeart}/>
+                                <img src={checkProductInLike(like , product) ? RedHeart : blackHeart} alt='like'/>
                             </button>
                         </div>
         
@@ -199,8 +199,8 @@ const ProductPage = (props) => {
                             }}>
                             {products ? products.slice(Math.floor(5+Math.random()*10)).map(
                                 item=>{return(
-                                    <SwiperSlide>
-                                        <ProductListItem key={item.id} isLink={true} item={item} offPrice={item.offPrice}/>
+                                    <SwiperSlide key={item.id}>
+                                        <ProductListItem isLink={true} item={item} offPrice={item.offPrice}/>
                                     </SwiperSlide>
                             )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                         </Swiper>

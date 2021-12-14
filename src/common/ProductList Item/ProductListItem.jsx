@@ -1,10 +1,8 @@
 import Styles from './ProductListItem.module.css'
-import { BiHeart} from "react-icons/bi";
 import {UseCart, UseCartDispatch } from '../../Context/cartContext/CartProvider'
-import { BiTrashAlt,BiCart , BiShoppingBag } from "react-icons/bi";
+import {BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import {AiFillStar} from "react-icons/ai";
-import { useEffect, useState } from 'react';
 import { UseLikeDispatcher , UseLikeState} from '../../Context/likeContext/likeContext';
 import blackHeart from '../../image/heart.svg'
 import RedHeart from '../../image/redHeart.svg'
@@ -35,9 +33,9 @@ const ProductListItem = ({item , isLink}) => {
         dispatch({type : "ADD_TO_CART" , payLoad : product})
     }
 
-    const deleteProduct = (product)=> {
-        dispatch({type : "DELETE_PRODUCT" , payLoad : product})
-    }
+    // const deleteProduct = (product)=> {
+    //     dispatch({type : "DELETE_PRODUCT" , payLoad : product})
+    // }
 
 
     return (  
@@ -53,7 +51,7 @@ const ProductListItem = ({item , isLink}) => {
                     <div className={Styles.item_header}>
                         <button className={Styles.rateParent} onClick={()=>addToLike(item)}>
                             
-                         <img className={Styles.item_header_img} src={ checkProductInLike(like , item)? RedHeart : blackHeart }/>
+                         <img className={Styles.item_header_img} src={ checkProductInLike(like , item)? RedHeart : blackHeart } alt='like'/>
                                 <p>{ item.rating.rate}</p>
                                 <span>({ checkProductInLike(like , item) ?  item.rating.count + 1 : item.rating.count})</span>
                         </button>

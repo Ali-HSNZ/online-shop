@@ -3,12 +3,11 @@ import { UseCart } from '../../Context/cartContext/CartProvider';
 import { Link } from 'react-router-dom';
 import CartItems from '../../common/Cart Item/CartItems';
 import { BsFillCaretLeftFill } from "react-icons/bs";
-import Header from '../../Components/Header/Header';
 import { User ,IsCalledUserLoginDispatch} from '../../Context/userProvider/UserProvider';
 import { useEffect, useState } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore ,{Navigation , Pagination , Autoplay}from 'swiper'
+import SwiperCore ,{Navigation , Autoplay}from 'swiper'
 
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
@@ -19,7 +18,7 @@ import ProductListItem from '../../common/ProductList Item/ProductListItem';
 import Feature from '../../Components/Features/Feature';
 
 
-SwiperCore.use([Autoplay]);
+SwiperCore.use([Autoplay , Navigation]);
 const CartPage = () => {
     const productsInCart = UseCart()
 
@@ -127,8 +126,8 @@ const CartPage = () => {
                         >
                         {products ? products.slice(Math.floor(5+Math.random()*10)).map(
                             item=>{return(
-                                <SwiperSlide>
-                                    <ProductListItem key={item.id} isLink={true} item={item} offPrice={item.offPrice}/>
+                                <SwiperSlide key={item.id} >
+                                    <ProductListItem isLink={true} item={item} offPrice={item.offPrice}/>
                                 </SwiperSlide>
                         )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                     </Swiper>
@@ -151,12 +150,12 @@ export default CartPage;
 
     const TotalPriceHandler = (originalTotalPrice)=>{
         var price = originalTotalPrice;    
-        var dplaces = price == parseInt(price, 10) ? 0 : 2;
+        var dplaces = price=== parseInt(price, 10) ? 0 : 2;
         return price = '$' + price.toFixed(dplaces);
     } 
     const TotalDiscountHandler = (totalDiscount)=>{
         var price = totalDiscount;    
-        var dplaces = price == parseInt(price, 10) ? 0 : 2;
+        var dplaces = price === parseInt(price, 10) ? 0 : 2;
         return price = '$' + price.toFixed(dplaces);
     } 
     const totalCartHandler = (totalPrice , totalDiscount)=>{
@@ -171,7 +170,7 @@ export default CartPage;
         }else{price = totalPrice}
             
         
-        var dplaces = price == parseInt(price, 10) ? 0 : 2;
+        var dplaces = price === parseInt(price, 10) ? 0 : 2;
         return price = '$' + price.toFixed(dplaces);
     } 
     

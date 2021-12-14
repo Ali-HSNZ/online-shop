@@ -39,7 +39,7 @@ const Header = (props) => {
     const [isSearch , setIsSearch] = useState(false)
 
 
- 
+    console.log("closeMenu : ",closeMenu ," ||| ", "isMenu : ",isMenu )
 
 
     useEffect(()=>{
@@ -76,12 +76,10 @@ const Header = (props) => {
         const searchInputRef = useRef()
 
 
-        const [searchValue , setSearchValue] = useState(null)
-
+        const [searchValue , setSearchValue] = useState("")
 
         useEffect(()=>{
             searchInputRef.current.focus()
-
         },[])
 
         return(
@@ -134,17 +132,17 @@ const Header = (props) => {
 
                 <div className={Styles.header_left}>
 
-                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false) && setIsSearch(false) && setIsUserLogin(false) &&  setIsMenu(false)}}>
+                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false) & setIsSearch(false) & setIsUserLogin(false) & setCloseMenu(false) & setIsMenu(false)}}>
                         <BiShoppingBag className={Styles.iconStyle} size="1.59em"/>
                         {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
-                    <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true) :  setIsUserLogin(true) &&  setIsSearch(false) && setIsMenu(false)}}>
+                    <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true) :  setIsUserLogin(true) &  setIsSearch(false) &  setCloseMenu(false) & setIsMenu(false)}}>
                         {user ? <FaUserCheck className={Styles.iconStyle} size="1.9em"/> :  <BiUser  className={Styles.iconStyle} size="1.9em"/>}
                     </button>
 
 
-                    <button className={Styles.iconParent_Button} onClick={()=> {return setIsSearch(true) && setCloseMenu(false) && setIsMenu(false) && setIsUserProfile(false) && setIsUserLogin(false) && setCloseSearch(false)} }>
+                    <button className={Styles.iconParent_Button} onClick={()=> {return setIsSearch(true) & setCloseMenu(false) & setIsMenu(false) & setIsUserProfile(false) & setIsUserLogin(false) & setCloseSearch(false)} }>
                        <BiSearch className={Styles.iconStyle} size="1.8em"/>            
                     </button>
 
@@ -152,9 +150,9 @@ const Header = (props) => {
 
                 
                 <div className={Styles.header_right}>
-                    <NavLink activeClassName={Styles.activeLink} to="/" exact   onClick={(e)=>{return setIsUserProfile(false) &&  setIsSearch(false) && setIsUserLogin(false) && setIsMenu(false)}} >خانه</NavLink>
+                    <NavLink activeClassName={Styles.activeLink} to="/" exact   onClick={(e)=>{return setIsUserProfile(false) &  setIsSearch(false) & setIsUserLogin(false) & setIsMenu(false)}} >خانه</NavLink>
 
-                    <button className={Styles.menu} onClick={()=>{return setIsMenu(!isMenu) && setCloseMenu(false) &&  setIsSearch(false) && setIsUserProfile(false) && setIsUserLogin(false)}}> <BiMenu size='2.5em'/></button>
+                    <button className={Styles.menu} onClick={()=>{return setIsMenu(!isMenu) & setCloseMenu(false) &  setIsSearch(false) & setIsUserProfile(false) & setIsUserLogin(false)}}> <BiMenu size='2.5em'/></button>
 
                 </div>
 
@@ -165,7 +163,7 @@ const Header = (props) => {
             {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
             {isMenu === true && !closeMenu && (
                 <div className={Styles.menuParent} dir='rtl'>
-                    <Menu categories={categories} setIsMenu={setIsMenu} setCloseMenu={setCloseMenu}/>
+                    <Menu categories={categories} setIsMenu={setIsMenu} closeMenu={closeMenu} isMenu={isMenu} setCloseMenu={setCloseMenu}/>
                 </div>
             )}
             {isSearch === true && !closeSearch && <SearchComponent/>}

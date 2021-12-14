@@ -8,21 +8,21 @@ import Styles from './Menu.module.css'
 import logoBrown from '../../image/logoBrown.png'
 
 
-const Menu = ({categories , setCloseMenu , setIsMenu}) => {
+const Menu = ({categories , setCloseMenu , setIsMenu , isMenu}) => {
     const filteredCategories = categories&&categories.filter( e => e !== "men's clothing")
     return (
        <>
             <div className={LoginStyles.parent} onClick={()=>setIsMenu(false)}></div>
-            <div className={Styles.main} onClick={()=>setIsMenu(true)} dir='ltr'>
+            <div className={Styles.main} onClick={()=>setCloseMenu(true)} dir='ltr'>
 
                 <div className={Styles.logoParent}>
-                    <NavLink to={'/'} onClick={()=> setCloseMenu(true)}>
+                    <NavLink to={'/'} onClick={()=> setIsMenu(false)}>
                         <img className={Styles.logoParent_Img} alt="لوگو" src={logoBrown}/>
                     </NavLink>
                 </div>
 
                 <div className={Styles.likeParent} >
-                    <NavLink to={`/favoriteProducts`} className={Styles.likeParent_link} onClick={()=> setCloseMenu(true)}>
+                    <NavLink to={`/favoriteProducts`} className={Styles.likeParent_link} onClick={()=> setIsMenu(false)}>
                         <BiHeart className={Styles.iconStyle} size="1.7em"/> 
                         پسندیده ها         
                     </NavLink>
@@ -33,14 +33,14 @@ const Menu = ({categories , setCloseMenu , setIsMenu}) => {
                          {!filteredCategories && <SmallLoading color='red'/>}
                        <p dir="rtl" className={Styles.categoryTitle}>دسته بندی ها : </p>
                     </div>
-                    {filteredCategories && filteredCategories.map(categories => (
-                        <Link to={`/category?name=${categories}`}  onClick={()=> setCloseMenu(true)} className={Styles.category}>{categories}</Link>
+                    {filteredCategories && filteredCategories.map((categories , index) => (
+                        <Link to={`/category?name=${categories}`}  onClick={()=> setIsMenu(false)} key={index} className={Styles.category}>{categories}</Link>
                     )) }
                 </div>
 
                 <div className={Styles.specialSaleParent}>
                     
-                    <Link to={{pathname : `/category` , search:"name=men's clothing" , name:"specialSale"}}  onClick={()=> setCloseMenu(true)} className={Styles.specialSale}>
+                    <Link to={{pathname : `/category` , search:"name=men's clothing" , name:"specialSale"}} onClick={()=> setIsMenu(false)} className={Styles.specialSale}>
                         <AiFillStar className={Styles.specialSaleIcon} size="1.5em"/> 
                         محصولات ویژه
                     </Link>

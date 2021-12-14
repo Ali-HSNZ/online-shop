@@ -31,7 +31,6 @@ const Search = () => {
     },[])
 
 
-    const [isProduct , setIsProduct] = useState(false)
 
     if(products){
 
@@ -48,8 +47,8 @@ const Search = () => {
 
         if(filterProducts && filterProducts.length > 0){
             resualt = filterProducts.map(products => (
-                <div>
-                    <ProductListItem key={products.id} isLink={true} item={products} offPrice={products.offPrice}/>
+                <div  key={products.id}>
+                    <ProductListItem isLink={true} item={products} offPrice={products.offPrice}/>
                 </div>
             ))
 

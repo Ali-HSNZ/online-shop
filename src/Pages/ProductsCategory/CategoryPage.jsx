@@ -54,8 +54,8 @@ const CategoryPage = (props) => {
 
         if(productsAction && productsAction){
             resualt = productsAction.map((item,index) =>{return(
-                <div>
-                    <ProductListItem key={index} isLink={true} item={item}/>
+                <div key={index}>
+                    <ProductListItem  isLink={true} item={item}/>
                 </div>
             )})
         }else if(productsAction === null){
@@ -107,7 +107,7 @@ const CategoryPage = (props) => {
 
         }
         // setProducts(item)
-    },[searchData , products])
+    },[searchData])
 
 
     return ( 
@@ -163,11 +163,11 @@ const CategoryPage = (props) => {
 
             {isProductsOnSearched === true && (
                 <div className={Styles.noDataOnSearched}>
-                    <p className={Styles.noDataOnSearched_text} dir='rtl'>
+                    <div className={Styles.noDataOnSearched_text} dir='rtl'>
                         محصولی با اسم 
-                        <p style={{color:'black'}}>{inputSearchRef.current.value}</p>
-                         پیدا نشد
-                    </p>
+                        <p style={{color:'black'}}> hello </p>
+                        پیدا نشد
+                    </div>
                 </div>
             )}
             <div className={Styles.parent}>
