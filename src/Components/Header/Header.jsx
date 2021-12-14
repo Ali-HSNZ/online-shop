@@ -1,21 +1,18 @@
 import Styles from './Header.module.css'
-import Logo from '../../image/logo.png'
-import {BiShoppingBag , BiX , BiUser , BiSearch ,BiMenu, BiDotsVerticalRounded} from "react-icons/bi";
+import {BiShoppingBag , BiX , BiUser , BiSearch ,BiMenu} from "react-icons/bi";
 import  LoginStyles from'../user/LoginStyles.module.css'
-import { Link, NavLink } from 'react-router-dom';
+import {NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';
-import { User , UserDispatch , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../Context/userProvider/UserProvider';
+import { User , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../Context/userProvider/UserProvider';
 import { withRouter } from 'react-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { FiAlertTriangle } from "react-icons/fi";
 import Login from '../user/Login/Login';
 import Signup from '../user/Signup/Signup';
 import { FaUserCheck } from "react-icons/fa";
-import { AiFillCaretUp ,AiFillCaretLeft , AiFillStar} from "react-icons/ai";
+import { AiFillCaretUp ,AiFillCaretLeft } from "react-icons/ai";
 // import MenuStyles from '../MenuStyles.module.css'
 import UserProfile from '../user/panel/Panel'
 import axios from 'axios';
-import SmallLoading from '../../common/small Loding/SmallLoading';
 import Menu from '../Menu/Menu'
 
 import { BsInfoCircleFill } from "react-icons/bs";
@@ -27,7 +24,6 @@ const Header = (props) => {
 
 
     const user = User()
-    const userDispatch = UserDispatch()
     const {cart} = UseCart()
 
     const isUserLogin = IsCalledUserLogin()
@@ -138,21 +134,17 @@ const Header = (props) => {
 
                 <div className={Styles.header_left}>
 
-                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false), setIsSearch(false) ,setIsUserLogin(false) , setIsMenu(false)}}>
+                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false) && setIsSearch(false) && setIsUserLogin(false) &&  setIsMenu(false)}}>
                         <BiShoppingBag className={Styles.iconStyle} size="1.59em"/>
                         {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
-                    {/* <NavLink activeClassName={Styles.activeLink} className={`${Styles.iconParent} ${Styles.iconParent_like}`} to={`/user-like`} exact   onClick={(e)=>{return setIsUserProfile(false) ,setIsUserLogin(false) , setIsMenu(false)}}>
-                        <BiHeart className={Styles.iconStyle} size="1.7em"/>            
-                    </NavLink> */}
-                    
-                    <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true) :  setIsUserLogin(true) ,   setIsSearch(false) ,setIsMenu(false)}}>
+                    <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true) :  setIsUserLogin(true) &&  setIsSearch(false) && setIsMenu(false)}}>
                         {user ? <FaUserCheck className={Styles.iconStyle} size="1.9em"/> :  <BiUser  className={Styles.iconStyle} size="1.9em"/>}
                     </button>
 
 
-                    <button className={Styles.iconParent_Button} onClick={()=> {return setIsSearch(true) , setCloseMenu(false) ,setIsMenu(false), setIsUserProfile(false),setIsUserLogin(false) ,setCloseSearch(false)} }>
+                    <button className={Styles.iconParent_Button} onClick={()=> {return setIsSearch(true) && setCloseMenu(false) && setIsMenu(false) && setIsUserProfile(false) && setIsUserLogin(false) && setCloseSearch(false)} }>
                        <BiSearch className={Styles.iconStyle} size="1.8em"/>            
                     </button>
 
@@ -160,14 +152,9 @@ const Header = (props) => {
 
                 
                 <div className={Styles.header_right}>
-                    <NavLink activeClassName={Styles.activeLink} to="/" exact   onClick={(e)=>{return setIsUserProfile(false),  setIsSearch(false) ,setIsUserLogin(false) , setIsMenu(false)}} >خانه</NavLink>
-                    {/* <div className={Styles.logoParent}>
-                        <Link to="/" className={Styles.link_Logo}>
-                            <img className={Styles.logoParent_Img} alt="لوگو" src={Logo}/>
-                        </Link>
-                    </div> */}
+                    <NavLink activeClassName={Styles.activeLink} to="/" exact   onClick={(e)=>{return setIsUserProfile(false) &&  setIsSearch(false) && setIsUserLogin(false) && setIsMenu(false)}} >خانه</NavLink>
 
-                    <button className={Styles.menu} onClick={()=>{return setIsMenu(!isMenu) ,setCloseMenu(false) , setIsSearch(false) , setIsUserProfile(false) ,setIsUserLogin(false)}}> <BiMenu size='2.5em'/></button>
+                    <button className={Styles.menu} onClick={()=>{return setIsMenu(!isMenu) && setCloseMenu(false) &&  setIsSearch(false) && setIsUserProfile(false) && setIsUserLogin(false)}}> <BiMenu size='2.5em'/></button>
 
                 </div>
 

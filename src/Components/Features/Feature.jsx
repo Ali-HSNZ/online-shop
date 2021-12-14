@@ -46,7 +46,7 @@ const Feature = () => {
                 <SwiperSlide>
                     <div className={Styles.parent_features}>
                         <div className={Styles.imgParent}>
-                            <img src={headphones}/>
+                            <img alt="پشتیبانی" src={headphones}/>
                         </div>
                         <p> پشتیبانی </p>
                     </div> 
@@ -56,7 +56,7 @@ const Feature = () => {
                 <SwiperSlide>
                     <div className={Styles.parent_features}>
                         <div className={Styles.imgParent}>
-                            <img src={truck}/>
+                            <img alt="تحویل سریع" src={truck}/>
                         </div>
                         <p>تحویل سریع</p>
                     </div>
@@ -66,7 +66,7 @@ const Feature = () => {
                 <SwiperSlide>
                     <div className={Styles.parent_features}>
                         <div className={Styles.imgParent}>
-                            <img src={creditCard}/>
+                            <img alt="پرداخت مطمئن" src={creditCard}/>
                         </div>
                         <p>پرداخت مطمئن</p>
                     </div>
@@ -75,7 +75,7 @@ const Feature = () => {
                 <SwiperSlide>
                     <div className={Styles.parent_features}>
                         <div className={Styles.imgParent}>
-                            <img src={guarantee}/>
+                            <img alt="ضمانت کیفیت" src={guarantee}/>
                         </div>
                         <p>ضمانت کیفیت</p>
                     </div>
@@ -84,7 +84,7 @@ const Feature = () => {
                 <SwiperSlide>
                     <div className={Styles.parent_features}>
                         <div className={Styles.imgParent}>
-                            <img src={returnBox}/>
+                            <img alt="بازگشت کالا" src={returnBox}/>
                         </div>
                         <p>بازگشت کالا</p>
                     </div>

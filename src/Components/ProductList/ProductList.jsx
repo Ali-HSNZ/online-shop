@@ -106,8 +106,8 @@ const ProductList = () => {
 
                                                     {filterd ? filterd.map(
                                                         item=>{return(
-                                                            <SwiperSlide>
-                                                                <ProductListItem key={item.id} isLink={true} item = {item} offPrice={item.offPrice}/>
+                                                            <SwiperSlide key={item.id}>
+                                                                <ProductListItem  isLink={true} item = {item} offPrice={item.offPrice}/>
                                                             </SwiperSlide>
                                                     )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
                                                     
