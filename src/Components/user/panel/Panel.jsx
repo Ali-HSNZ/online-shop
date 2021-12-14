@@ -15,7 +15,7 @@ const UserProfile = ({setIsUserProfile})=> {
             <div className={LoginStyles.center}>
             <div className={`${LoginStyles.main} ${LoginStyles.main_userProfile}`}>
 
-                <div className={LoginStyles.arrow}>
+                <div className={LoginStyles.arrowProfile}>
                     <AiFillCaretUp size="2em"/>
                 </div>
 
