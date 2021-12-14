@@ -4,7 +4,6 @@ import { useQuery } from "../../hooks/useQuery";
 import Styles from './CategoryPage.module.css'
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Container from '../../common/Loding/Loding'
-import Line from "../../common/line/Line";
 
 import _ from "lodash"
 
@@ -14,25 +13,8 @@ const CategoryPage = (props) => {
     
     const query = useQuery().get('name');
     const isSpecialSale = props.location.name === "specialSale";
-    const [searchValue , setSearchValue] = useState("")
     const [isProductsOnSearched , setIsProductsOnSearched] = useState(false)
     
-    // if(query === "men's clothing" && isSpecialSale){
-    //     if(products&&products.length>0){
-    //         for(let i = 0 ; i < products.length ; i++){
-    //         products[i].offPrice = Math.floor(50 +Math.random()*40) + 1
-    //         products[i].discount = Math.floor(20+Math.random()*200) + 1
-    //         }
-    //     }
-    // }else{
-    //     if(products&&products.length>0){
-    //         for(let i = 0 ; i <= 5 ; i++){
-    //             const index = Math.floor(Math.random()*4);
-    //             products[index].offPrice = Math.floor(Math.random()*18) + 1
-    //             products[index].discount = Math.floor(Math.random()*200) + 1
-    //         }
-    //     }
-    // }
 
     const inputSearchRef = useRef()
 
@@ -41,7 +23,6 @@ const CategoryPage = (props) => {
         const getProducts = async() => {
             if(query !== "" && query.length >0){
                 await axios.get(`https://fakestoreapi.com/products/category/${query}`).then(products => {
-                    // return products.data.length > 0 ? setProducts(products.data) :  setProducts('')
 
                     if(products.data){
                         const newProucts = [...products.data]
@@ -62,9 +43,7 @@ const CategoryPage = (props) => {
                     }
 
                 }).catch()
-            }else{
-                
-            }
+            }else{}
         }
         getProducts()
     },[query])
@@ -128,7 +107,7 @@ const CategoryPage = (props) => {
 
         }
         // setProducts(item)
-    },[searchData])
+    },[searchData , products])
 
 
     return ( 
