@@ -39,26 +39,24 @@ const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
         const {email , password} = values
 
         const userData = {email ,password}
-        
 
         setIsLoading(true)
        
-            try {
-                const data = await userLogin(userData)     
-                setIsLoading(false)
-                toast.success("با موفقیت وارد شدید")
-                dispatchUser(JSON.parse( data.config.data))
-                console.log(data)
+        try {
+            const data = await userLogin(userData)     
+            setIsLoading(false)
+            toast.success("با موفقیت وارد شدید")
+            dispatchUser(JSON.parse( data.config.data))
+            console.log(data)
 
-                if(data.config.data){
-                    setIsUserLogin(false)
-                }
-            } catch (e) {
-                toast.error(e.response.data.message)
-                console.log(e.response.data)
-                setIsLoading(false)
-
+            if(data.config.data){
+                setIsUserLogin(false)
             }
+        } catch (e) {
+            toast.error(e.response.data.message)
+            console.log(e.response.data)
+            setIsLoading(false)
+        }
     }
 
 
@@ -127,8 +125,8 @@ const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
                     {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                 </button>
             </div>
-                <button onClick={()=> setIsUserSignup(true)} className={UserStyles.linkToSignup}>!ثبت نام نکرده اید؟</button>
-           
+
+            <button onClick={()=> setIsUserSignup(true)} className={UserStyles.linkToSignup}>!ثبت نام نکرده اید؟</button>
           
         </form>
     );

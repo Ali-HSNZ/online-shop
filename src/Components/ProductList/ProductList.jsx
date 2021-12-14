@@ -95,13 +95,9 @@ const ProductList = () => {
                                                             slidesPerView: 4,
                                                         }
                                                     }}
-                                                    
                                                     autoplay={{
                                                         delay: 2000+ Math.random()*1000,
                                                     }}>
-                                                    
-                                                    
-                                            
 
                                                     {filterd ? filterd.map(
                                                         item=>{return(
