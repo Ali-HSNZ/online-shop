@@ -101,10 +101,9 @@ const ProductList = () => {
                                                     
                                                     autoplay={{
                                                         delay: 2000+ Math.random()*1000,
-                                                        disableOnInteraction: false
-                                                    }}
+                                                    }}>
                                                     
-                                                    >
+                                                    
                                             
 
                                                     {filterd ? filterd.map(
