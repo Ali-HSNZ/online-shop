@@ -39,7 +39,6 @@ const Header = (props) => {
     const [isSearch , setIsSearch] = useState(false)
 
 
-    console.log("closeMenu : ",closeMenu ," ||| ", "isMenu : ",isMenu )
 
 
     useEffect(()=>{
