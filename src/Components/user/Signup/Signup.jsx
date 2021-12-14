@@ -1,4 +1,4 @@
-import { AiFillCaretUp ,AiFillCaretLeft} from "react-icons/ai";
+import { AiFillCaretLeft} from "react-icons/ai";
 import  LoginStyles from '../LoginStyles.module.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
@@ -10,7 +10,6 @@ import SmallLoading from '../../../common/small Loding/SmallLoading'
 import {BiHide , BiShow , BiX , BiUser} from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import { userSignup } from "../../../services/signupService";
 
 
@@ -94,7 +93,7 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
                         </div>
                     </div>
                 </div>
-                <input type="text" style={formik.errors.name ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='name' type='text' placeholder="نام کاربری خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
+                <input type="text" style={formik.errors.name ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='name'  placeholder="نام کاربری خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
                 <div className={LoginStyles.inputIcon}> <BiUser size="1.2em"/> </div>
                 {formik.errors.name && formik.touched.name && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.name}</p>}
             </div>
@@ -111,7 +110,7 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
                         </div>
                     </div>
                 </div>
-                <input type="text" style={formik.errors.email ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='email' type='text' placeholder="ایمیل خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
+                <input type="text" style={formik.errors.email ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='email' placeholder="ایمیل خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
                 <div className={LoginStyles.inputIcon}> <IoAt size="1.2em"/> </div>
                 {formik.errors.email && formik.touched.email && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.email}</p>}
             </div>
@@ -130,9 +129,9 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
                 </div>
                 <input type={isShowPass ? "text" : "password"} style={formik.errors.password ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='password'  placeholder="رمز ورود خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl"/>
                 
-                <a className={`${LoginStyles.inputIcon} ${LoginStyles.inputIcon_btn} `} onClick={()=>setIsShowPass(!isShowPass)}>                          
+                <button className={`${LoginStyles.inputIcon} ${LoginStyles.inputIcon_btn} `} onClick={()=>setIsShowPass(!isShowPass)}>                          
                     {isShowPass ? <BiShow size="1.4em"/> :  <BiHide size="1.4em"/>}
-                </a>
+                </button>
 
                 {formik.errors.password && formik.touched.password && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.password}</p>}
             </div>

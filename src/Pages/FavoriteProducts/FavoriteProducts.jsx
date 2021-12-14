@@ -1,7 +1,7 @@
 import { BsFillCaretLeftFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
-import { UseLikeDispatcher , UseLikeState} from '../../Context/likeContext/likeContext';
+import {UseLikeState} from '../../Context/likeContext/likeContext';
 import Styles from './FavoriteProducts.module.css'
 const FavoriteProducts = () => {
     const {like} = UseLikeState()

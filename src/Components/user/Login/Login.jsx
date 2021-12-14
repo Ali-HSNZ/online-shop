@@ -1,4 +1,4 @@
-import { AiFillCaretUp ,AiFillCaretLeft} from "react-icons/ai";
+import {AiFillCaretLeft} from "react-icons/ai";
 import  LoginStyles from '../LoginStyles.module.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
@@ -11,7 +11,6 @@ import SmallLoading from '../../../common/small Loding/SmallLoading'
 import {BiHide , BiShow , BiX } from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
-import { Link } from "react-router-dom";
 
 
 
@@ -92,7 +91,7 @@ const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
                         </div>
                     </div>
                 </div>
-                <input type="text" style={formik.errors.email ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='email' type='text' placeholder="ایمیل خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
+                <input type="text" style={formik.errors.email ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='email' placeholder="ایمیل خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
                 <div className={LoginStyles.inputIcon}> <IoAt size="1.2em"/> </div>
                 {formik.errors.email && formik.touched.email && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.email}</p>}
             </div>

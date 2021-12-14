@@ -2,8 +2,8 @@
 import {BiX} from "react-icons/bi";
 import  LoginStyles from'../LoginStyles.module.css'
 import { User , UserDispatch} from '../../../Context/userProvider/UserProvider';
-import React, { useState } from 'react';
-import { AiFillCaretUp ,AiFillCaretLeft} from "react-icons/ai";
+import React from 'react';
+import { AiFillCaretUp} from "react-icons/ai";
 import { toast } from 'react-toastify';
 
 const UserProfile = ({setIsUserProfile})=> {
@@ -31,7 +31,7 @@ const UserProfile = ({setIsUserProfile})=> {
                     <p className={LoginStyles.userDetails_title}> : ایمیل</p>
                 </div>
 
-            <button onClick={()=> {return userDispatch(null) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
+            <button onClick={()=> {return userDispatch(null) && setIsUserProfile(false) && toast.warning("از حساب خود خارج شده اید")}} className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
 
 
             </div>
