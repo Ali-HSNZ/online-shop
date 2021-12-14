@@ -108,7 +108,7 @@ const ProductList = () => {
                                                             <SwiperSlide key={item.id}>
                                                                 <ProductListItem  isLink={true} item = {item} offPrice={item.offPrice}/>
                                                             </SwiperSlide>
-                                                    )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
+                                                    )}) : <p className={Styles.isNotProductText} dir="rtl">در حال بارگیری محصولات ...</p>}
                                                     
                                                
                                                 </Swiper>
@@ -120,7 +120,7 @@ const ProductList = () => {
                                     }
                                 </div>
                             )
-                    }) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}> در حال بارگیری دسته بندی ها و محصولات ...</p>
+                    }) : <p className={Styles.isNotProductText} dir="rtl"> در حال بارگیری دسته بندی ها و محصولات ...</p>
                 }
             </div>
         </div>

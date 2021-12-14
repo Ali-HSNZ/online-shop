@@ -22,7 +22,6 @@ const Feature = () => {
     return (
         <div className='FeatureSwiperParent' dir='ltr'>
             
-            {/* <Swiper loop={true} navigation pagination  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4} */}
             <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={5}
 
                     breakpoints= {{

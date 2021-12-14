@@ -3,7 +3,6 @@ import { UseCart } from '../../Context/cartContext/CartProvider';
 import { Link } from 'react-router-dom';
 import CartItems from '../../common/Cart Item/CartItems';
 import { BsFillCaretLeftFill } from "react-icons/bs";
-import { User ,IsCalledUserLoginDispatch} from '../../Context/userProvider/UserProvider';
 import { useEffect, useState } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,6 +15,7 @@ import './cartSlider.css'
 import axios from 'axios';
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
 import Feature from '../../Components/Features/Feature';
+import Checkout from './Checkout';
 
 
 SwiperCore.use([Autoplay , Navigation]);
@@ -113,15 +113,12 @@ const CartPage = () => {
                             },
                             1260: {
                                 slidesPerView: 4,
-    
                             }
-
                             
                         }}
                         
                         autoplay={{
                             delay: 2500,
-                            disableOnInteraction: false
                         }}
                         >
                         {products ? products.slice(Math.floor(5+Math.random()*10)).map(
@@ -129,7 +126,7 @@ const CartPage = () => {
                                 <SwiperSlide key={item.id} >
                                     <ProductListItem isLink={true} item={item} offPrice={item.offPrice}/>
                                 </SwiperSlide>
-                        )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
+                        )}) : <p className={Styles.isNotProductText} dir='rtl'>در حال بارگیری محصولات ...</p>}
                     </Swiper>
                 </div>
 
@@ -146,68 +143,3 @@ const CartPage = () => {
  
 export default CartPage;
 
- const Checkout = ({cart})=>{
-
-    const TotalPriceHandler = (originalTotalPrice)=>{
-        var price = originalTotalPrice;    
-        var dplaces = price=== parseInt(price, 10) ? 0 : 2;
-        return price = '$' + price.toFixed(dplaces);
-    } 
-    const TotalDiscountHandler = (totalDiscount)=>{
-        var price = totalDiscount;    
-        var dplaces = price === parseInt(price, 10) ? 0 : 2;
-        return price = '$' + price.toFixed(dplaces);
-    } 
-    const totalCartHandler = (totalPrice , totalDiscount)=>{
-        let price = null;
-
-        if(totalDiscount){
-            if(totalPrice > totalDiscount )  {
-                price = totalPrice - totalDiscount; 
-            }else if(totalDiscount > totalPrice){
-                price = totalDiscount - totalPrice; 
-            }
-        }else{price = totalPrice}
-            
-        
-        var dplaces = price === parseInt(price, 10) ? 0 : 2;
-        return price = '$' + price.toFixed(dplaces);
-    } 
-    
-
-    const setIsUserLogin =  IsCalledUserLoginDispatch()
-    const user = User()
-
-    const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
-
-    const cartDiscount = cart.filter(product => product.discount > 0)
-
-    const totalDiscount = cartDiscount.length ? cartDiscount.reduce((acc , product) => acc + product.quantity * product.discount , 0) : 0
-
-
-
-    return(
-        <div className={Styles.checkOut_Fixed}>
-
-            <div className={Styles.checkout_header}>
-                <p>خلاصه سبد خرید</p>
-            </div>
-
-            <div className={Styles.Allprice}>
-                <div> <p dir="rtl"> {TotalPriceHandler(originalTotalPrice)} </p><p dir="rtl">قیمت کالاها  : </p></div>
-                <div> <p dir="rtl">{TotalDiscountHandler(totalDiscount)}</p><p dir="rtl">تخفیف کالاها : </p></div>
-            </div>
-
-            <div className={Styles.price}>
-                <p dir="rtl">جمع سبد خرید : {totalCartHandler(originalTotalPrice , totalDiscount)} </p>
-            </div>
-
-            {user ? (
-                <Link className={Styles.checkout_submit} to="/checkout"> پرداخت سبد خرید</Link>
-            ) : (
-                <button onClick={()=> setIsUserLogin(true)} className={Styles.checkout_submit}> پرداخت سبد خرید</button>
-            )}
-
-        </div>
-    )
-}
