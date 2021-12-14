@@ -147,7 +147,35 @@ const CartPage = () => {
  
 export default CartPage;
 
- const Checkout = ({cart , total})=>{
+ const Checkout = ({cart})=>{
+
+    const TotalPriceHandler = (originalTotalPrice)=>{
+        var price = originalTotalPrice;    
+        var dplaces = price == parseInt(price, 10) ? 0 : 2;
+        return price = '$' + price.toFixed(dplaces);
+    } 
+    const TotalDiscountHandler = (totalDiscount)=>{
+        var price = totalDiscount;    
+        var dplaces = price == parseInt(price, 10) ? 0 : 2;
+        return price = '$' + price.toFixed(dplaces);
+    } 
+    const totalCartHandler = (totalPrice , totalDiscount)=>{
+        let price = null;
+
+        if(totalDiscount){
+            if(totalPrice > totalDiscount )  {
+                price = totalPrice - totalDiscount; 
+            }else if(totalDiscount > totalPrice){
+                price = totalDiscount - totalPrice; 
+            }
+        }else{price = totalPrice}
+            
+        
+        var dplaces = price == parseInt(price, 10) ? 0 : 2;
+        return price = '$' + price.toFixed(dplaces);
+    } 
+    
+
     const setIsUserLogin =  IsCalledUserLoginDispatch()
     const user = User()
 
@@ -157,35 +185,30 @@ export default CartPage;
 
     const totalDiscount = cartDiscount.length ? cartDiscount.reduce((acc , product) => acc + product.quantity * product.discount , 0) : 0
 
-    console.log("cart===> ",cart)
 
 
     return(
         <div className={Styles.checkOut_Fixed}>
-        <div className={Styles.checkout_header}>
-            <p>خلاصه سبد خرید</p>
-        </div>
-        <div className={Styles.Allprice}>
-            <div> <p dir="rtl"> ${originalTotalPrice.toFixed(2)}  </p><p dir="rtl">قیمت کالاها  : </p></div>
-            <div> <p dir="rtl">${totalDiscount ?  totalDiscount.toFixed(2).replace('-','') : 0} </p><p dir="rtl">تخفیف کالاها : </p></div>
-        
-        </div>
-        <div className={Styles.price}>
-            <p dir="rtl">جمع سبد خرید : {totalDiscount ? (originalTotalPrice - totalDiscount).toFixed(2).replace('-','') : originalTotalPrice.toFixed(2)}$ </p>
-        </div>
+
+            <div className={Styles.checkout_header}>
+                <p>خلاصه سبد خرید</p>
+            </div>
+
+            <div className={Styles.Allprice}>
+                <div> <p dir="rtl"> {TotalPriceHandler(originalTotalPrice)} </p><p dir="rtl">قیمت کالاها  : </p></div>
+                <div> <p dir="rtl">{TotalDiscountHandler(totalDiscount)}</p><p dir="rtl">تخفیف کالاها : </p></div>
+            </div>
+
+            <div className={Styles.price}>
+                <p dir="rtl">جمع سبد خرید : {totalCartHandler(originalTotalPrice , totalDiscount)} </p>
+            </div>
+
             {user ? (
                 <Link className={Styles.checkout_submit} to="/checkout"> پرداخت سبد خرید</Link>
             ) : (
                 <button onClick={()=> setIsUserLogin(true)} className={Styles.checkout_submit}> پرداخت سبد خرید</button>
             )}
-          
-        
 
-
-        
-        
-        {/* {user ? :  } */}
-
-    </div>
+        </div>
     )
 }

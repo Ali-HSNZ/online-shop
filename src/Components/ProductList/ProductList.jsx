@@ -7,8 +7,6 @@ import { BsFillCaretLeftFill } from "react-icons/bs";
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Banner from "../../common/Banner/Banner";
 
-import PWClicked from './ProductWillClicked.module.css'
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import SwiperCore ,{Autoplay, Navigation , Pagination}from 'swiper'
