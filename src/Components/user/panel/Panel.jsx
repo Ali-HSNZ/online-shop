@@ -1,43 +1,27 @@
-
-import {BiX} from "react-icons/bi";
-import  LoginStyles from'../LoginStyles.module.css'
-import { User , UserDispatch} from '../../../Context/userProvider/UserProvider';
+import  LoginStyles from '../LoginStyles.module.css'
 import React from 'react';
-import { AiFillCaretUp} from "react-icons/ai";
-import { toast } from 'react-toastify';
+import Login from "../Login/Login"
+import Signup from '../Signup/Signup';
+import { AiFillCaretUp } from "react-icons/ai";
 
-const UserProfile = ({setIsUserProfile  })=> {
-    const user = User()
-    const userDispatch = UserDispatch()
+const UserPanel = ({setIsUserLogin , isUserLogin , isUserSignup , setIsUserSignup})=>{
     return(
         <React.Fragment>
-            <div className={LoginStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
-            <div className={LoginStyles.center}>
-                                <div className={`${LoginStyles.main} ${LoginStyles.main_userProfile}`}>
-
-                                <div className={LoginStyles.arrowProfile}>
+            <div className={LoginStyles.parent} onClick={()=>setIsUserLogin(false)}></div>
+                    <div className={LoginStyles.center}>
+                        <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
+                                <div className={LoginStyles.arrow}>
                                     <AiFillCaretUp size="2em"/>
                                 </div>
-                
-                                <div className={LoginStyles.header}>
-                                    <button onClick={()=>setIsUserProfile(false)}>
-                                        <BiX size="2em"/>
-                                    </button>
-                                    <p className={LoginStyles.title}>پنل کاربری</p>   
-                                </div> 
-                
-                                <div className={LoginStyles.userProfile_userDetails}>
-                                    <p className={LoginStyles.userDetails_details}>{user.email}</p>
-                                    <p className={LoginStyles.userDetails_title}> : ایمیل</p>
-                                </div>
-                
-                            <button onClick={()=> {return userDispatch(null) & setIsUserProfile(false) & toast.warning("از حساب خود خارج شده اید")}} className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
-                
-                
-                            </div>
-            </div>
+                                {isUserLogin === true && isUserSignup === false ?(
+                                    <Login setIsUserLogin={setIsUserLogin} setIsUserSignup={setIsUserSignup}/> 
+                                ) : (
+                                    <Signup setIsUserSignup={setIsUserSignup} setIsUserLogin={setIsUserLogin}/>
+                                )}
+                        </div>
+                   
+               </div>
         </React.Fragment>
     )
 }
- 
-export default UserProfile;
+export default UserPanel

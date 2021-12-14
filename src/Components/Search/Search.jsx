@@ -7,12 +7,9 @@ import { BsInfoCircleFill } from "react-icons/bs";
 
 
 
-
-
-const SearchComponent = ({setIsSearch , setIsMenu})=>{
+const SearchComponent = ({setIsSearch})=>{
 
     const searchInputRef = useRef()
-
 
     const [searchValue , setSearchValue] = useState("")
 
@@ -24,7 +21,7 @@ const SearchComponent = ({setIsSearch , setIsMenu})=>{
         <>
             <div className={Styles.parent} onClick={()=>setIsSearch(false)}></div>
             <div className={Styles.centerSearch}>
-            <div className={Styles.mainSearch} onClick={()=>setIsSearch(true)}>
+            <div className={Styles.mainSearch}>
 
             <div className={Styles.arrow}>
                 <AiFillCaretUp size="2em"/>
@@ -52,7 +49,7 @@ const SearchComponent = ({setIsSearch , setIsMenu})=>{
             <div className={Styles.inputIcon}> <BiSearch size="1.2em"/> </div>
         </div>
 
-        <NavLink to={`/search?productName=${searchValue}`} className={Styles.submitSearchBtn} onClick={()=> setIsMenu(false)}>جستجو</NavLink>
+        <NavLink to={`/search?productName=${searchValue}`} className={Styles.submitSearchBtn} onClick={()=> setIsSearch(false)}>جستجو</NavLink>
         
             </div>
         </div>

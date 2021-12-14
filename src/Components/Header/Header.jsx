@@ -1,28 +1,20 @@
 import Styles from './Header.module.css'
-import {BiShoppingBag , BiX , BiUser , BiSearch ,BiMenu} from "react-icons/bi";
-import  LoginStyles from'../user/LoginStyles.module.css'
+import {BiShoppingBag , BiUser , BiSearch ,BiMenu} from "react-icons/bi";
 import {NavLink } from 'react-router-dom';
 import { UseCart } from '../../Context/cartContext/CartProvider';
 import { User , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../Context/userProvider/UserProvider';
-import { withRouter } from 'react-router';
-import React, { useEffect, useRef, useState } from 'react';
-import Login from '../user/Login/Login';
-import Signup from '../user/Signup/Signup';
+import React, { useEffect, useState } from 'react';
 import { FaUserCheck } from "react-icons/fa";
-import { AiFillCaretUp ,AiFillCaretLeft } from "react-icons/ai";
-// import MenuStyles from '../MenuStyles.module.css'
-import UserProfile from '../user/panel/Panel'
+import UserProfile from '../user/Profile/Profile'
 import axios from 'axios';
 import Menu from '../Menu/Menu'
 
 import SearchComponent from '../Search/Search';
+import UserPanel from '../user/Panel/Panel';
 
 
 
-const Header = (props) => {
-
-
-
+const Header = () => {
     const user = User()
     const {cart} = UseCart()
 
@@ -48,26 +40,7 @@ const Header = (props) => {
 
 
 
-    const UserPanel = ()=>{
-        return(
-            <React.Fragment>
-                <div className={LoginStyles.parent} onClick={()=>setIsUserLogin(false)}></div>
-                        <div className={LoginStyles.center}>
-                            <div className={LoginStyles.main} onClick={()=>setIsUserLogin(true)}>
-                                    <div className={LoginStyles.arrow}>
-                                        <AiFillCaretUp size="2em"/>
-                                    </div>
-                                    {isUserLogin === true && isUserSignup === false ?(
-                                        <Login setIsUserLogin={setIsUserLogin} setIsUserSignup={setIsUserSignup}/> 
-                                    ) : (
-                                        <Signup setIsUserSignup={setIsUserSignup} setIsUserLogin={setIsUserLogin}/>
-                                    )}
-                            </div>
-                       
-                   </div>
-            </React.Fragment>
-        )
-    }
+
 
 
 
@@ -108,7 +81,7 @@ const Header = (props) => {
 
             </div> 
         </div>
-            {isUserLogin=== true && <UserPanel />}
+            {isUserLogin=== true && <UserPanel setIsUserLogin={setIsUserLogin} isUserLogin={isUserLogin} isUserSignup={isUserSignup} setIsUserSignup={setIsUserSignup}/>}
             {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
             {isMenu === true && !closeMenu && (
                 <div className={Styles.menuParent} dir='rtl'>
@@ -120,4 +93,4 @@ const Header = (props) => {
     );
   };
 
-  export default withRouter(Header);
+  export default Header;
