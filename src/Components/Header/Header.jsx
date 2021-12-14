@@ -15,7 +15,7 @@ import UserProfile from '../user/panel/Panel'
 import axios from 'axios';
 import Menu from '../Menu/Menu'
 
-import { BsInfoCircleFill } from "react-icons/bs";
+import SearchComponent from '../Search/Search';
 
 
 
@@ -70,56 +70,7 @@ const Header = (props) => {
     }
 
 
-    const SearchComponent = ()=>{
 
-        const searchInputRef = useRef()
-
-
-        const [searchValue , setSearchValue] = useState("")
-
-        useEffect(()=>{
-            searchInputRef.current.focus()
-        },[])
-
-        return(
-            <>
-                <div className={LoginStyles.parent} onClick={()=>setIsSearch(false)}></div>
-                <div className={Styles.centerSearch}>
-                <div className={Styles.mainSearch} onClick={()=>setIsSearch(true)}>
-
-                <div className={Styles.arrow}>
-                    <AiFillCaretUp size="2em"/>
-                </div>
-
-                    <div className={LoginStyles.header}>
-                        <button onMouseUp={()=>setIsSearch(false)}>
-                            <BiX size="2em"/>
-                        </button>
-                        <p className={LoginStyles.title}>جستجو محصول</p>   
-                    </div> 
-
-            <div className={LoginStyles.group}>
-                <div className={LoginStyles.inputName} dir="rtl">
-                    <p className={LoginStyles.groupName} dir="rtl">نام محصول : </p> 
-                    <div className={LoginStyles.infoParent}>
-                        <BsInfoCircleFill className={LoginStyles.info} size="1.1em"/>
-                        <div className={LoginStyles.infoTextParent}>
-                            <p className={LoginStyles.infoText} >نام محصولی که دنبال آن میگردید را وارد کنید. </p>
-                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow}/>
-                        </div>
-                    </div>
-                </div>
-                <input type="text" ref={searchInputRef} style={{border:'1px solid gray'}} value={searchValue} placeholder="جستجو محصول..." dir="rtl" onChange={ e => setSearchValue(e.target.value)}/>
-                <div className={LoginStyles.inputIcon}> <BiSearch size="1.2em"/> </div>
-            </div>
-
-            <NavLink to={`/search?productName=${searchValue}`} className={Styles.submitSearchBtn} onClick={()=> setCloseSearch(true)}>جستجو</NavLink>
-            
-                </div>
-            </div>
-            </>
-        )
-    }
 
     
 
@@ -155,7 +106,6 @@ const Header = (props) => {
 
                 </div>
 
-
             </div> 
         </div>
             {isUserLogin=== true && <UserPanel />}
@@ -165,7 +115,7 @@ const Header = (props) => {
                     <Menu categories={categories} setIsMenu={setIsMenu} closeMenu={closeMenu} isMenu={isMenu} setCloseMenu={setCloseMenu}/>
                 </div>
             )}
-            {isSearch === true && !closeSearch && <SearchComponent/>}
+            {isSearch === true && !closeSearch && <SearchComponent setIsSearch={setIsSearch} setIsMenu={setIsMenu}/>}
           </>
     );
   };

@@ -139,12 +139,7 @@
     position: relative;
     left: 0;
 }
-.centerSearch{
-    width: 100%;
-    z-index: 99999;
-    position: relative;
-    left: 0;
-}
+
 .main{
     width: 300px;
     height: auto;
@@ -168,36 +163,8 @@
     top:-18px;
     left: 20px;
 }
-.mainSearch{
-    width: 300px;
-    height: auto;
-    background-color: rgb(255, 255, 255);
-    z-index: 99999;
-    position: fixed;
-    border-radius: 0 0 15px 0;
-    padding: 0 20px 20px 20px;
-    border: 3px solid #a71e34;
-    border-top: none;
-    box-shadow: 0 1px 3px 0 rgb(82, 82, 82);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
 
-.submitSearchBtn{
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 5px;
-    font-family: iransansweb;
-    color: white;
-    box-shadow: 0 0 2px 0 rgb(0, 0, 0);
-    margin-top: 20px;
-    background-color: brown;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-}
+
 
 
 /* --------------------------------------------------------------------------------------------------------------------------------- */
