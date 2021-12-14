@@ -6,7 +6,7 @@ import React from 'react';
 import { AiFillCaretUp} from "react-icons/ai";
 import { toast } from 'react-toastify';
 
-const UserProfile = ({setIsUserProfile})=> {
+const UserProfile = ({setIsUserProfile  })=> {
     const user = User()
     const userDispatch = UserDispatch()
     return(
