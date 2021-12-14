@@ -8,7 +8,6 @@ import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Banner from "../../common/Banner/Banner";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import SwiperCore ,{Autoplay, Navigation , Pagination}from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'

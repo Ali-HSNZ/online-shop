@@ -1,6 +1,6 @@
 
 import {BiX} from "react-icons/bi";
-import  LoginStyles from'../LoginStyles.module.css'
+import  UserStyles from'../User.module.css'
 import { User , UserDispatch} from '../../../Context/userProvider/UserProvider';
 import React from 'react';
 import { AiFillCaretUp} from "react-icons/ai";
@@ -11,27 +11,27 @@ const UserProfile = ({setIsUserProfile  })=> {
     const userDispatch = UserDispatch()
     return(
         <React.Fragment>
-            <div className={LoginStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
-            <div className={LoginStyles.center}>
-                                <div className={`${LoginStyles.main} ${LoginStyles.main_userProfile}`}>
+            <div className={UserStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
+            <div className={UserStyles.center}>
+                                <div className={`${UserStyles.main} ${UserStyles.main_userProfile}`}>
 
-                                <div className={LoginStyles.arrowProfile}>
+                                <div className={UserStyles.arrowProfile}>
                                     <AiFillCaretUp size="2em"/>
                                 </div>
                 
-                                <div className={LoginStyles.header}>
+                                <div className={UserStyles.header}>
                                     <button onClick={()=>setIsUserProfile(false)}>
                                         <BiX size="2em"/>
                                     </button>
-                                    <p className={LoginStyles.title}>پنل کاربری</p>   
+                                    <p className={UserStyles.title}>پنل کاربری</p>   
                                 </div> 
                 
-                                <div className={LoginStyles.userProfile_userDetails}>
-                                    <p className={LoginStyles.userDetails_details}>{user.email}</p>
-                                    <p className={LoginStyles.userDetails_title}> : ایمیل</p>
+                                <div className={UserStyles.userProfile_userDetails}>
+                                    <p className={UserStyles.userDetails_details}>{user.email}</p>
+                                    <p className={UserStyles.userDetails_title}> : ایمیل</p>
                                 </div>
                 
-                            <button onClick={()=> {return userDispatch(null) & setIsUserProfile(false) & toast.warning("از حساب خود خارج شده اید")}} className={`${LoginStyles.submitBtn} ${LoginStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
+                            <button onClick={()=> {return userDispatch(null) & setIsUserProfile(false) & toast.warning("از حساب خود خارج شده اید")}} className={`${UserStyles.submitBtn} ${UserStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
                 
                 
                             </div>

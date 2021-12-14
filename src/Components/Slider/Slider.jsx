@@ -4,6 +4,7 @@ import SwiperCore ,{Autoplay, Navigation , Pagination}from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
+
 import './styles.css'
 
 import electronicBanner from '../../image/electronic banner.jpg'

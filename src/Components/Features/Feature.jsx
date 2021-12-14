@@ -8,13 +8,13 @@ import returnBox from '../../image/return-box.png'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import SwiperCore ,{Autoplay, Navigation , Pagination}from 'swiper'
+import SwiperCore ,{Autoplay, Navigation}from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './featureSlider.css'
 
-SwiperCore.use([Navigation , Pagination , Autoplay])
+SwiperCore.use([Navigation  , Autoplay])
 
 
 

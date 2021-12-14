@@ -1,5 +1,5 @@
 import { AiFillCaretLeft} from "react-icons/ai";
-import  LoginStyles from '../LoginStyles.module.css'
+import  UserStyles from '../User.module.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
@@ -75,65 +75,65 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
     return (
         <form  onSubmit={formik.handleSubmit}>
             
-            <div className={LoginStyles.header}>
+            <div className={UserStyles.header}>
                 <button onMouseUp={()=>setIsUserLogin(false)}>
                     <BiX size="2em"/>
                 </button>
-                <p className={LoginStyles.title}>ثبت نام در سایت</p>   
+                <p className={UserStyles.title}>ثبت نام در سایت</p>   
             </div> 
 
-            <div className={LoginStyles.group}>
-                <div className={LoginStyles.inputName} dir="rtl">
-                    <p className={LoginStyles.groupName} dir="rtl">نام کاربری : </p> 
-                    <div className={LoginStyles.infoParent}>
-                        <BsInfoCircleFill className={LoginStyles.info} size="1.1em"/>
-                        <div className={LoginStyles.infoTextParent}>
-                            <p className={LoginStyles.infoText} >نام را به فارسی وارد کنید (6 تا 15 حرف) </p>
-                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow}/>
+            <div className={UserStyles.group}>
+                <div className={UserStyles.inputName} dir="rtl">
+                    <p className={UserStyles.groupName} dir="rtl">نام کاربری : </p> 
+                    <div className={UserStyles.infoParent}>
+                        <BsInfoCircleFill className={UserStyles.info} size="1.1em"/>
+                        <div className={UserStyles.infoTextParent}>
+                            <p className={UserStyles.infoText} >نام را به فارسی وارد کنید (6 تا 15 حرف) </p>
+                            <AiFillCaretLeft size="1.4em" className={UserStyles.iconArrow}/>
                         </div>
                     </div>
                 </div>
                 <input type="text" style={formik.errors.name ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='name'  placeholder="نام کاربری خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
-                <div className={LoginStyles.inputIcon}> <BiUser size="1.2em"/> </div>
-                {formik.errors.name && formik.touched.name && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.name}</p>}
+                <div className={UserStyles.inputIcon}> <BiUser size="1.2em"/> </div>
+                {formik.errors.name && formik.touched.name && <p className={UserStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.name}</p>}
             </div>
 
 
-            <div className={LoginStyles.group}>
-                <div className={LoginStyles.inputName} dir="rtl">
-                    <p className={LoginStyles.groupName} dir="rtl">ایمیل : </p> 
-                    <div className={LoginStyles.infoParent}>
-                        <BsInfoCircleFill className={LoginStyles.info} size="1.1em"/>
-                        <div className={LoginStyles.infoTextParent}>
-                            <p className={LoginStyles.infoText} >ایمیل باید شامل '.' و '@' و معتبر باشد </p>
-                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow}/>
+            <div className={UserStyles.group}>
+                <div className={UserStyles.inputName} dir="rtl">
+                    <p className={UserStyles.groupName} dir="rtl">ایمیل : </p> 
+                    <div className={UserStyles.infoParent}>
+                        <BsInfoCircleFill className={UserStyles.info} size="1.1em"/>
+                        <div className={UserStyles.infoTextParent}>
+                            <p className={UserStyles.infoText} >ایمیل باید شامل '.' و '@' و معتبر باشد </p>
+                            <AiFillCaretLeft size="1.4em" className={UserStyles.iconArrow}/>
                         </div>
                     </div>
                 </div>
                 <input type="text" style={formik.errors.email ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='email' placeholder="ایمیل خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
-                <div className={LoginStyles.inputIcon}> <IoAt size="1.2em"/> </div>
-                {formik.errors.email && formik.touched.email && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.email}</p>}
+                <div className={UserStyles.inputIcon}> <IoAt size="1.2em"/> </div>
+                {formik.errors.email && formik.touched.email && <p className={UserStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.email}</p>}
             </div>
 
 
-            <div className={LoginStyles.group}>
-                <div className={LoginStyles.inputName} dir="rtl">
-                    <p className={LoginStyles.groupName} dir="rtl">رمز ورود : </p> 
-                    <div className={LoginStyles.infoParent}>
-                        <BsInfoCircleFill className={LoginStyles.info} size="1.1em"/>
-                        <div className={LoginStyles.infoTextParent}>
-                            <p className={LoginStyles.infoText} >رمز ورود باید بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، حرف بزرگ و عدد)</p>
-                            <AiFillCaretLeft size="1.4em" className={LoginStyles.iconArrow_pass}/>
+            <div className={UserStyles.group}>
+                <div className={UserStyles.inputName} dir="rtl">
+                    <p className={UserStyles.groupName} dir="rtl">رمز ورود : </p> 
+                    <div className={UserStyles.infoParent}>
+                        <BsInfoCircleFill className={UserStyles.info} size="1.1em"/>
+                        <div className={UserStyles.infoTextParent}>
+                            <p className={UserStyles.infoText} >رمز ورود باید بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، حرف بزرگ و عدد)</p>
+                            <AiFillCaretLeft size="1.4em" className={UserStyles.iconArrow_pass}/>
                         </div>
                     </div>
                 </div>
                 <input type={isShowPass ? "text" : "password"} style={formik.errors.password ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='password'  placeholder="رمز ورود خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl"/>
                 
-                <button className={`${LoginStyles.inputIcon} ${LoginStyles.inputIcon_btn} `} onClick={()=>setIsShowPass(!isShowPass)}>                          
+                <button className={`${UserStyles.inputIcon} ${UserStyles.inputIcon_btn} `} onClick={()=>setIsShowPass(!isShowPass)}>                          
                     {isShowPass ? <BiShow size="1.4em"/> :  <BiHide size="1.4em"/>}
                 </button>
 
-                {formik.errors.password && formik.touched.password && <p className={LoginStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.password}</p>}
+                {formik.errors.password && formik.touched.password && <p className={UserStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.password}</p>}
             </div>
                     
 
@@ -141,13 +141,13 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
                 <button 
                     type="submit" 
                     disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
-                    className={`${LoginStyles.submitBtn} ${formik.isValid ? LoginStyles.submitBtn_active : LoginStyles.submitBtn_notActive}`}>
+                    className={`${UserStyles.submitBtn} ${formik.isValid ? UserStyles.submitBtn_active : UserStyles.submitBtn_notActive}`}>
                     
                     {isLoading ? <SmallLoading/> : "ثبت نام"}
                     {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                 </button>
             </div>
-           <button onClick={()=> setIsUserSignup(false)} className={LoginStyles.linkToSignup}>!از قبل ثبت نام کرده اید؟</button>
+           <button onClick={()=> setIsUserSignup(false)} className={UserStyles.linkToSignup}>!از قبل ثبت نام کرده اید؟</button>
         </form>
     );
 }
