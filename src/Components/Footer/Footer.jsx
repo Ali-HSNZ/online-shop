@@ -4,6 +4,7 @@ const Footer = () => {
         <div className={Styles.parent}>
             <p>Made with ♥ by Ali Hassanzadeh</p>
         </div>
+        
     );
 }
  
