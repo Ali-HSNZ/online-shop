@@ -1,0 +1,13 @@
+.parent{
+    width: 100%;
+    height: 50px;
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    color: white;
+}
+.parent p {
+    font-family: iransansweb;
+    font-size: 14px;
+}
