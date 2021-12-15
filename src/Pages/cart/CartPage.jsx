@@ -1,4 +1,5 @@
 import Styles from './CartPage.module.css'
+
 import { UseCart } from '../../Context/cartContext/CartProvider';
 import { Link } from 'react-router-dom';
 import CartItems from '../../common/Cart Item/CartItems';
@@ -7,11 +8,11 @@ import { useEffect, useState } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore ,{Navigation , Autoplay}from 'swiper'
-
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './cartSlider.css'
+
 import axios from 'axios';
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
 import Feature from '../../Components/Features/Feature';
@@ -19,13 +20,12 @@ import Checkout from './Checkout';
 
 
 SwiperCore.use([Autoplay , Navigation]);
+
 const CartPage = () => {
-    const productsInCart = UseCart()
+    const {cart} = UseCart()
 
     const [products , setProducts] = useState(null)
     useEffect(()=>{
-
-   
     const getAllProducts = async()=>{
         try {
              await axios.get('https://fakestoreapi.com/products').then(products =>{
@@ -43,7 +43,6 @@ const CartPage = () => {
             setProducts(null)
         }
     }
-
     getAllProducts()
 },[])
 
@@ -51,23 +50,20 @@ const CartPage = () => {
     const renderProducts = ()=> {
         var resualt
 
-        if(productsInCart.cart && productsInCart.cart.length > 0){
+        if(cart && cart.length > 0){
            
-               resualt =  <div className={Styles.parent}>
-
+            resualt = (
+                <div className={Styles.parent}>
                     <div className={Styles.cartParent}>
-                        {productsInCart.cart.map((product,index) => {return (
-                                <CartItems key={index} product={product}/>
+                        {cart.map((product,index) => {return (
+                            <CartItems key={index} product={product}/>
                         )})}
                     </div>
                     <div className={Styles.checkoutParent}>
-                           <Checkout cart ={productsInCart.cart} total={ productsInCart.total}/>
+                        <Checkout/>
                     </div>
-
-
-
-
                 </div>
+            )
         }else{
             resualt= <div className={Styles.alert_product}>
                 <p>میرم</p>
@@ -85,11 +81,9 @@ const CartPage = () => {
         {renderProducts()}
 
 
-        {productsInCart.cart.length ===0 && (
+        {cart.length ===0 && (
             <div className={Styles.allParent}>
 
-
-            
                 <div className={Styles.Slider_categoryParent}>
                         <p  className={Styles.Slider_categoryLink} dir="rtl"> 
                            محصولات پیشنهادی

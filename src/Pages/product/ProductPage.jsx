@@ -71,13 +71,8 @@ const ProductPage = (props) => {
     },[cart , product])
 
     useEffect(()=>{
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-             
-              
-           
-            setIsLoading(true)
-
-
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setIsLoading(true)
         const getOneProducts = async()=>{
 
             try {
@@ -89,10 +84,7 @@ const ProductPage = (props) => {
                         setIsLoading(false)
                     }
                 }).catch();
-
-            
-        } catch (error) {setIsLoading(false)}
-            
+            } catch (error) {setIsLoading(false)}
         }
         getOneProducts()
         
@@ -156,7 +148,6 @@ const ProductPage = (props) => {
                                 <Link className={`${Styles.buyProduct_btn} ${Styles.buyProduct_Link}`} to='/cart'>سبد خرید</Link>
                                 ) : (
                                     <button className={`${Styles.buyProduct_btn} ${Styles.buyProduct_buy}`} onClick={()=>addToCart(product)}>خرید محصول</button>
-                            
                             )}
                         </div>
                     </div>

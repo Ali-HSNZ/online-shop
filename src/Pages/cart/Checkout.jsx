@@ -1,12 +1,12 @@
 import { User ,IsCalledUserLoginDispatch} from '../../Context/userProvider/UserProvider';
 import Styles from './CartPage.module.css'
 import { Link } from 'react-router-dom';
+import { UseCart } from '../../Context/cartContext/CartProvider';
 
 
+const Checkout = ()=>{
 
-
-
-const Checkout = ({cart})=>{
+    const {cart} = UseCart()
 
     const TotalPriceHandler = (originalTotalPrice)=>{
         var price = originalTotalPrice;    
@@ -19,7 +19,7 @@ const Checkout = ({cart})=>{
         return price = '$' + price.toFixed(dplaces);
     } 
     const totalCartHandler = (totalPrice , totalDiscount)=>{
-        let price = null;
+        let price = 0;
 
         if(totalDiscount){
             if(totalPrice > totalDiscount )  {

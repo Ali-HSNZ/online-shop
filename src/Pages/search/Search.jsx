@@ -21,11 +21,10 @@ const Search = () => {
 
     useEffect(()=>{
         const getAllProducts = async()=>{
-                await axios.get('https://fakestoreapi.com/products').then(product =>{
-                    return product.data.length > 0 ? setProducts(product.data) : setProducts('')
-                }).catch();
+            await axios.get('https://fakestoreapi.com/products').then(product =>{
+                return product.data.length > 0 ? setProducts(product.data) : setProducts('')
+            }).catch();
         }
-
 
         getAllProducts()
     },[])
@@ -33,7 +32,6 @@ const Search = () => {
 
 
     if(products){
-
         for(let i = 0 ; i <= Math.floor(products.length/2) ; i++){
             const index = Math.floor(Math.random()*products.length);
             products[index].offPrice = Math.floor(Math.random()*50) + 1
@@ -51,19 +49,12 @@ const Search = () => {
                     <ProductListItem isLink={true} item={products} offPrice={products.offPrice}/>
                 </div>
             ))
-
         }
         else if(products === null){
             resualt = Container()
         }
-          
-        
-
         return resualt
     }
-
-    // console.log(isProduct)
-
     return ( 
         <>
             {filterProducts&&filterProducts.length === 0 && (
@@ -77,7 +68,6 @@ const Search = () => {
             )}
             <div className={Styles.parent}>
                 {renderProduct()}
-                
             </div>
         </>
      );

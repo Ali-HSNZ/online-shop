@@ -4,8 +4,8 @@ import { useQuery } from "../../hooks/useQuery";
 import Styles from './CategoryPage.module.css'
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Container from '../../common/Loding/Loding'
-
 import _ from "lodash"
+
 
 const CategoryPage = (props) => {
     const [products,setProducts] = useState(null)
@@ -37,13 +37,11 @@ const CategoryPage = (props) => {
                             newProucts[index].offPrice = Math.floor(Math.random()*18) + 1
                             newProucts[index].discount = Math.floor(Math.random()*200) + 1
                         }
-
                         setProducts(newProucts)
                         setProductsAction(newProucts)
                     }
-
                 }).catch()
-            }else{}
+            }
         }
         getProducts()
     },[query])
@@ -85,7 +83,6 @@ const CategoryPage = (props) => {
             const cloneProducts = [...products]
             const s = cloneProducts&&cloneProducts.filter(e => e.offPrice !== 0)
             setProductsAction(s)
-
         }
     }
 
@@ -106,60 +103,56 @@ const CategoryPage = (props) => {
             setIsProductsOnSearched(false)
 
         }
-        // setProducts(item)
     },[searchData])
-
 
     return ( 
         <>
-        {products && (
-                    <div className={Styles.filterParent}>
-                        <div className={Styles.btnAmazingProducts_parent}>
-                            <div>
-                                <button className={Styles.shegefthAngiz} onClick={()=> sortHandler("filterShegefthAngiz")}> محصولات شگفت انگیز</button>
-                                <button className={Styles.shegefthAngiz} onClick={()=> sortHandler("highestOffPrice")}>بیشترین تخفیف</button>
-                                <p>  : محصولات ویژه </p>
-                            </div>
-
-                            <div>
-                                <button onClick={()=>sortHandler("highest")} className={Styles.sortBtn}>بیشترین</button>
-                                <button onClick={()=>sortHandler("lowest")} className={Styles.sortBtn}>کمترین</button>
-                                <p> : فیلتر قیمت</p>
-                            </div>
-
+            {products && (
+                <div className={Styles.filterParent}>
+                    <div className={Styles.btnAmazingProducts_parent}>
+                        <div>
+                            <button className={Styles.shegefthAngiz} onClick={()=> sortHandler("filterShegefthAngiz")}> محصولات شگفت انگیز</button>
+                            <button className={Styles.shegefthAngiz} onClick={()=> sortHandler("highestOffPrice")}>بیشترین تخفیف</button>
+                            <p>  : محصولات ویژه </p>
                         </div>
-                        <div className={Styles.searchParent}>
-                            <input placeholder=" جستجو بین همه محصولات" ref={inputSearchRef} dir='rtl' onChange={e=>setSearchData(e.target.value)}/>
-                            <p className={Styles.searchText}> : جستجو</p>
+
+                        <div>
+                            <button onClick={()=>sortHandler("highest")} className={Styles.sortBtn}>بیشترین</button>
+                            <button onClick={()=>sortHandler("lowest")} className={Styles.sortBtn}>کمترین</button>
+                            <p> : فیلتر قیمت</p>
                         </div>
+
                     </div>
-        )}
-
-        {query=== "men's clothing" && isSpecialSale ? (
-            <>
-             {renderProducts().length > 0 && (
-                <div className={Styles.categoryStyle}>
-                <p>محصولات شگفت انگیز</p>
-                    <div className={Styles.categoryLine_parent}>
-                        <div></div>     <div></div>     <div></div>     <div></div>
+                    <div className={Styles.searchParent}>
+                        <input placeholder=" جستجو بین همه محصولات" ref={inputSearchRef} dir='rtl' onChange={e=>setSearchData(e.target.value)}/>
+                        <p className={Styles.searchText}> : جستجو</p>
                     </div>
                 </div>
-             )}
-            </>
-        ) : (
-            <>
-                {renderProducts().length > 0 && (
-                    <div className={Styles.categoryStyle}>
-                    <p>{query}</p>
-                        <div className={Styles.categoryLine_parent}>
-                            <div></div>     <div></div>     <div></div>     <div></div>
+            )}
+
+            {query=== "men's clothing" && isSpecialSale ? (
+                <>
+                    {renderProducts().length > 0 && (
+                        <div className={Styles.categoryStyle}>
+                        <p>محصولات شگفت انگیز</p>
+                            <div className={Styles.categoryLine_parent}>
+                                <div></div>     <div></div>     <div></div>     <div></div>
+                            </div>
                         </div>
-                    </div>
-                )}
-            </>
-        )
-        }
-        
+                    )}
+                </>
+            ) : (
+                <>
+                    {renderProducts().length > 0 && (
+                        <div className={Styles.categoryStyle}>
+                        <p>{query}</p>
+                            <div className={Styles.categoryLine_parent}>
+                                <div></div>     <div></div>     <div></div>     <div></div>
+                            </div>
+                        </div>
+                    )}
+                </>
+            )}
 
             {isProductsOnSearched === true && (
                 <div className={Styles.noDataOnSearched}>
@@ -170,11 +163,9 @@ const CategoryPage = (props) => {
                     </div>
                 </div>
             )}
-            <div className={Styles.parent}>
-                {
-                   renderProducts()
-                }
-            </div>
+
+            <div className={Styles.parent}>{renderProducts()}</div>
+        
         </>
     );
 }
