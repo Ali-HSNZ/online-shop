@@ -1,5 +1,4 @@
 import {BiHeart} from "react-icons/bi";
-import  LoginStyles from'../user/LoginStyles.module.css'
 import { Link, NavLink } from 'react-router-dom';
 import React from 'react';
 import {AiFillStar} from "react-icons/ai";
@@ -8,12 +7,12 @@ import Styles from './Menu.module.css'
 import logoBrown from '../../image/logoBrown.png'
 
 
-const Menu = ({categories , setCloseMenu , setIsMenu , isMenu}) => {
+const Menu = ({categories , setIsMenu}) => {
     const filteredCategories = categories&&categories.filter( e => e !== "men's clothing")
     return (
        <>
-            <div className={LoginStyles.parent} onClick={()=>setIsMenu(false)}></div>
-            <div className={Styles.main} onClick={()=>setCloseMenu(true)} dir='ltr'>
+            <div className={Styles.parent} onClick={()=>setIsMenu(false)}></div>
+            <div className={Styles.main} dir='ltr'>
 
                 <div className={Styles.logoParent}>
                     <NavLink to={'/'} onClick={()=> setIsMenu(false)}>

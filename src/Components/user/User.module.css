@@ -1,0 +1,239 @@
+.parent{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.438);
+    z-index: 9999;    
+}
+.center{
+    width: 100%;
+    z-index: 99999;
+    position: relative;
+    left: 0px;
+}
+.main{
+    width: 300px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+
+    border-radius: 0 0 15px 0px;
+    padding: 0 20px 20px 20px;
+    border: 3px solid #a71e34;
+    border-top: none;
+    box-shadow: 0 1px 3px 0 rgb(82, 82, 82);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    position: fixed;
+}
+.main_search{
+    width: 250px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+
+    border-radius: 0 0 15px 15px;
+    padding: 0 20px 20px 20px;
+    border: 2px solid #a71e34;
+    border-top: none;
+    box-shadow: 0 1px 3px 0 rgb(82, 82, 82);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    position: fixed;
+
+}
+.main_userProfile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.arrow{
+    height: 0;
+    color: rgb(255, 255, 255);
+    position: relative;
+    top:-18px;
+    left: 68px;
+}
+.arrowProfile{
+    height: 0;
+    color: rgb(255, 255, 255);
+    position: relative;
+    top:-18px;
+    right: 45px;
+}
+
+.header{
+    width: 100%;
+    border-bottom: 1px solid rgba(160, 31, 31, 0.384);
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.header button{
+    border: none;
+    outline: none;
+    color: brown;
+    background-color: transparent;    
+    cursor: pointer;
+}
+.title{
+    font-family: iranyekanweb;
+    text-align: center;
+    font-weight: 700;
+}
+.group{
+    margin-top: 15px;
+    position: relative;
+}
+.groupName{
+    text-align: right;
+    font-family: iranyekanweb;
+    font-size: 14px;
+}
+
+.group input{
+    width: 100%;
+    height: 35px;
+    outline: none;
+    padding: 0 10px 0 32px;
+    font-family: iransansweb;
+    font-size: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.inputName{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.infoTextParent{
+    width: 200px;
+    right: 0;
+    background-color: rgb(161, 175, 255);
+    border-radius: 8px;
+    position: absolute;
+    padding: 10px;
+    display: none;
+  
+}
+.infoText{
+    font-size: 13px;
+    font-family:  iransansweb;
+}
+.iconArrow{
+    position: absolute;
+    left: -14px;
+    top: 32%;
+    color: rgb(161, 175, 255);
+}
+.iconArrow_pass{
+    position: absolute;
+    left: -14px;
+    top: 38%;
+    color: rgb(161, 175, 255);
+}
+.infoParent{
+    width: 20px;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 100%;
+}
+.info{
+    color: rgb(0, 0, 194);
+    border-radius: 100%;
+}
+.infoParent:hover .infoTextParent{
+    display: block;
+    cursor: pointer;
+}
+.inputIcon{
+    position: absolute;
+    top: 37px;
+    left: 10px;
+    color: gray;
+    display: flex;
+    align-items: center;
+}
+.inputIcon_btn{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.errorText{
+    font-size: 12px;
+    text-align: right;
+    color: red;
+    margin-top: 10px;
+    line-height: 20px;
+    font-family: iransansweb;
+
+}
+.submitBtn{
+    /* margin-left: 20px; */
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-family: iransansweb;
+    color: white;
+    box-shadow: 0 0 2px 0 rgb(0, 0, 0);
+    /* margin-bottom: 20px; */
+    border: none;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    outline: none;
+    margin-top: 20px;
+}
+.submitBtn_active{
+    background-color: brown;
+    cursor: pointer;
+}
+.submitBtn_notActive{
+    background-color: rgb(44, 44, 44);
+
+}
+
+.linkToSignup{
+    width: 100%;
+    height:40px;
+    background-color: #fdf0f2;
+    border: 1px solid #a71e34;
+    color: #911a2d;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-family: iranyekanweb;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.userProfile_userDetails{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.userDetails_title{
+    font-family: iranyekanweb;
+    font-size: 14px;
+}
+.userDetails_details{
+    font-family: iransansweb;
+    font-size: 14px;
+
+}

@@ -8,7 +8,6 @@ import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Banner from "../../common/Banner/Banner";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import SwiperCore ,{Autoplay, Navigation , Pagination}from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
@@ -96,20 +95,16 @@ const ProductList = () => {
                                                             slidesPerView: 4,
                                                         }
                                                     }}
-                                                    
                                                     autoplay={{
                                                         delay: 2000+ Math.random()*1000,
                                                     }}>
-                                                    
-                                                    
-                                            
 
                                                     {filterd ? filterd.map(
                                                         item=>{return(
                                                             <SwiperSlide key={item.id}>
                                                                 <ProductListItem  isLink={true} item = {item} offPrice={item.offPrice}/>
                                                             </SwiperSlide>
-                                                    )}) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}>در حال بارگیری محصولات ...</p>}
+                                                    )}) : <p className={Styles.isNotProductText} dir="rtl">در حال بارگیری محصولات ...</p>}
                                                     
                                                
                                                 </Swiper>
@@ -121,7 +116,7 @@ const ProductList = () => {
                                     }
                                 </div>
                             )
-                    }) : <p style={{color:'green' , marginTop:'20px',fontFamily:'iransansweb',fontWeight:'700'}}> در حال بارگیری دسته بندی ها و محصولات ...</p>
+                    }) : <p className={Styles.isNotProductText} dir="rtl"> در حال بارگیری دسته بندی ها و محصولات ...</p>
                 }
             </div>
         </div>

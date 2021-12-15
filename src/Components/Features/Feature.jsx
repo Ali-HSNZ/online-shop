@@ -8,13 +8,13 @@ import returnBox from '../../image/return-box.png'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import SwiperCore ,{Autoplay, Navigation , Pagination}from 'swiper'
+import SwiperCore ,{Autoplay, Navigation}from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './featureSlider.css'
 
-SwiperCore.use([Navigation , Pagination , Autoplay])
+SwiperCore.use([Navigation  , Autoplay])
 
 
 
@@ -22,7 +22,6 @@ const Feature = () => {
     return (
         <div className='FeatureSwiperParent' dir='ltr'>
             
-            {/* <Swiper loop={true} navigation pagination  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4} */}
             <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={5}
 
                     breakpoints= {{
