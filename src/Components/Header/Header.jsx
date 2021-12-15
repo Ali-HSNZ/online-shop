@@ -31,7 +31,6 @@ const Header = () => {
     const [isUserProfile , setIsUserProfile] = useState(false)
     const [isSearch , setIsSearch] = useState(false)
 
-        const [closeMenu , setCloseMenu] = useState(false)
 
     useEffect(()=>{
         axios.get("https://fakestoreapi.com/products/categories").then(e => setCategories(e.data)).catch();
@@ -74,7 +73,7 @@ const Header = () => {
         </div>
             {isUserLogin=== true && <UserPanel/>}
             {isUserProfile === true && <Profile setIsUserProfile={setIsUserProfile}/>}
-            {isMenu === true && !closeMenu && (
+            {isMenu === true && (
                 <div className={Styles.menuParent} dir='rtl'>
                     <Menu categories={categories} setIsMenu={setIsMenu} isMenu={isMenu}/>
                 </div>
