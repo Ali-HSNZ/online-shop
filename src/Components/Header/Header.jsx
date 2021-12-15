@@ -23,11 +23,13 @@ const Header = () => {
     const [closeSearch , setCloseSearch] = useState(false)
     const [categories , setCategories] = useState(null)
 
-
     const [isUserSignup , setIsUserSignup] = useState(false)
+
     const setIsUserLogin = IsCalledUserLoginDispatch()
     const isUserLogin = IsCalledUserLogin()
     const [isMenu , setIsMenu] = useState(false)
+
+
     const [isUserProfile , setIsUserProfile] = useState(false)
     const [isSearch , setIsSearch] = useState(false)
 
@@ -71,7 +73,7 @@ const Header = () => {
 
             </div> 
         </div>
-            {isUserLogin=== true && <UserPanel/>}
+            {isUserLogin=== true && <UserPanel setIsUserLogin={setIsUserLogin} isUserLogin={isUserLogin}  isUserSignup ={isUserSignup} setIsUserSignup={setIsUserSignup} />}
             {isUserProfile === true && <Profile setIsUserProfile={setIsUserProfile}/>}
             {isMenu === true && (
                 <div className={Styles.menuParent} dir='rtl'>

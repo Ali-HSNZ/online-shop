@@ -10,7 +10,7 @@ const UserPanel = ({setIsUserLogin , isUserLogin , isUserSignup , setIsUserSignu
             <div className={UserStyles.parent} onClick={()=>setIsUserLogin(false)}></div>
 
             <div className={UserStyles.center}>
-                <div className={UserStyles.main} onClick={()=>setIsUserLogin(true)}>
+                <div className={UserStyles.main} >
                         <div className={UserStyles.arrow}>
                             <AiFillCaretUp size="2em"/>
                         </div>
