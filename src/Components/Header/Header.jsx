@@ -11,7 +11,7 @@ import Signup from '../user/Signup/Signup';
 import { FaUserCheck } from "react-icons/fa";
 import { AiFillCaretUp ,AiFillCaretLeft } from "react-icons/ai";
 // import MenuStyles from '../MenuStyles.module.css'
-import UserProfile from '../user/panel/Panel'
+import Profile from '../user/Profile/Profile'
 import axios from 'axios';
 import Menu from '../Menu/Menu'
 
@@ -159,7 +159,7 @@ const Header = (props) => {
             </div> 
         </div>
             {isUserLogin=== true && <UserPanel />}
-            {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
+            {isUserProfile === true && <Profile setIsUserProfile={setIsUserProfile}/>}
             {isMenu === true && !closeMenu && (
                 <div className={Styles.menuParent} dir='rtl'>
                     <Menu categories={categories} setIsMenu={setIsMenu} closeMenu={closeMenu} isMenu={isMenu} setCloseMenu={setCloseMenu}/>
