@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { FaUserCheck } from "react-icons/fa";
 import { AiFillCaretUp ,AiFillCaretLeft } from "react-icons/ai";
 // import MenuStyles from '../MenuStyles.module.css'
-import Profile from '../user/Profile/Profile'
+import UserProfile from '../user/Profile/Profile'
 import axios from 'axios';
 import Menu from '../Menu/Menu'
 
@@ -74,7 +74,7 @@ const Header = () => {
             </div> 
         </div>
             {isUserLogin=== true && <UserPanel setIsUserLogin={setIsUserLogin} isUserLogin={isUserLogin}  isUserSignup ={isUserSignup} setIsUserSignup={setIsUserSignup} />}
-            {isUserProfile === true && <Profile setIsUserProfile={setIsUserProfile}/>}
+            {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
             {isMenu === true && (
                 <div className={Styles.menuParent} dir='rtl'>
                     <Menu categories={categories} setIsMenu={setIsMenu} isMenu={isMenu}/>
