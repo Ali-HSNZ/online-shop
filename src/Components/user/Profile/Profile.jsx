@@ -10,34 +10,30 @@ const UserProfile = ({setIsUserProfile  })=> {
     
     return(
         <React.Fragment>
-            {user && (
-                <>
-                    <div className={UserStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
-                        <div className={UserStyles.center}>
-                                <div className={`${UserStyles.main} ${UserStyles.main_userProfile}`}>
+            <div className={UserStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
+                <div className={UserStyles.center}>
+                        <div className={`${UserStyles.main} ${UserStyles.main_userProfile}`}>
 
-                                <div className={UserStyles.arrowProfile}>
-                                    <AiFillCaretUp size="2em"/>
-                                </div>
-
-                                <div className={UserStyles.header}>
-                                    <button onClick={()=>setIsUserProfile(false)}>
-                                        <BiX size="2em"/>
-                                    </button>
-                                    <p className={UserStyles.title}>پنل کاربری</p>   
-                                </div> 
-
-                                <div className={UserStyles.userProfile_userDetails}>
-                                    <p className={UserStyles.userDetails_details}>{user.email}</p>
-                                    <p className={UserStyles.userDetails_title}> : ایمیل</p>
-                                </div>
-
-                            <button onClick={()=> {return userDispatch(null) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${UserStyles.submitBtn} ${UserStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
-
+                        <div className={UserStyles.arrowProfile}>
+                            <AiFillCaretUp size="2em"/>
                         </div>
-                    </div>
-                </>
-            )}
+
+                        <div className={UserStyles.header}>
+                            <button onClick={()=>setIsUserProfile(false)}>
+                                <BiX size="2em"/>
+                            </button>
+                            <p className={UserStyles.title}>پنل کاربری</p>   
+                        </div> 
+
+                        <div className={UserStyles.userProfile_userDetails}>
+                            <p className={UserStyles.userDetails_details}>{user.email}</p>
+                            <p className={UserStyles.userDetails_title}> : ایمیل</p>
+                        </div>
+
+                    <button onClick={()=> {return userDispatch(null) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${UserStyles.submitBtn} ${UserStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
+
+                </div>
+            </div>
         </React.Fragment>
     )
 }

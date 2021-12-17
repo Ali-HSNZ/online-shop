@@ -89,7 +89,7 @@ const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
                         </div>
                     </div>
                 </div>
-                <input type="text" style={formik.errors.email ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='email' placeholder="ایمیل خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
+                <input type="email" style={formik.errors.email ? {border:'1px solid brown'} : {border:'1px solid green'}} onChange={formik.handleChange} name='email' placeholder="ایمیل خود را وارد کنید..." onBlur={formik.handleBlur} dir="rtl" />
                 <div className={UserStyles.inputIcon}> <IoAt size="1.2em"/> </div>
                 {formik.errors.email && formik.touched.email && <p className={UserStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.email}</p>}
             </div>
