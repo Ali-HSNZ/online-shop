@@ -12,7 +12,8 @@ import axios from 'axios';
 import Menu from '../Menu/Menu'
 
 import SearchComponent from '../Search/Search';
-import UserPanel from '../user/Profile/Profile';
+import UserPanel from '../user/Panel/UserPanel';
+
 
 
 

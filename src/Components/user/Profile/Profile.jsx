@@ -10,8 +10,10 @@ const UserProfile = ({setIsUserProfile  })=> {
     
     return(
         <React.Fragment>
-            <div className={UserStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
-            <div className={UserStyles.center}>
+            {user && (
+                <>
+                    <div className={UserStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
+                        <div className={UserStyles.center}>
                                 <div className={`${UserStyles.main} ${UserStyles.main_userProfile}`}>
 
                                 <div className={UserStyles.arrowProfile}>
@@ -32,9 +34,10 @@ const UserProfile = ({setIsUserProfile  })=> {
 
                             <button onClick={()=> {return userDispatch(null) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${UserStyles.submitBtn} ${UserStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
 
-
-                            </div>
-            </div>
+                        </div>
+                    </div>
+                </>
+            )}
         </React.Fragment>
     )
 }

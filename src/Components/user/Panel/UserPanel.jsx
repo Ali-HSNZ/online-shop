@@ -5,6 +5,9 @@ import Signup from '../Signup/Signup';
 import { AiFillCaretUp } from "react-icons/ai";
 
 const UserPanel = ({setIsUserLogin , isUserLogin , isUserSignup , setIsUserSignup})=>{
+
+    console.log("isUserLogin => ",isUserLogin ," | ", "isUserSignup => ",isUserSignup)
+
     return(
         <React.Fragment>
             <div className={UserStyles.parent} onClick={()=>setIsUserLogin(false)}></div>
