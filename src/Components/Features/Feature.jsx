@@ -5,6 +5,7 @@ import headphones from '../../image/headphones.png'
 import truck from '../../image/delivery-truck.png'
 import returnBox from '../../image/return-box.png'
 
+import React from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -17,9 +18,9 @@ import './featureSlider.css'
 SwiperCore.use([Navigation  , Autoplay])
 
 
-
-const Feature = () => {
-    return (
+class Feature extends React.Component{
+    render(){
+        return(
         <div className='FeatureSwiperParent' dir='ltr'>
             
             <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={5}
@@ -92,8 +93,7 @@ const Feature = () => {
             </Swiper>
 
         </div>
-    );
+        )
+    }
 }
-export default Feature;
-
-
+export default Feature
