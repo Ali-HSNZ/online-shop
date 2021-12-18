@@ -17,10 +17,8 @@ import './featureSlider.css'
 
 SwiperCore.use([Navigation  , Autoplay])
 
-
-class Feature extends React.Component{
-    render(){
-        return(
+const Feature = ()=> {
+    return(
         <div className='FeatureSwiperParent' dir='ltr'>
             
             <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={5}
@@ -93,7 +91,7 @@ class Feature extends React.Component{
             </Swiper>
 
         </div>
-        )
-    }
+    )
 }
+
 export default Feature
