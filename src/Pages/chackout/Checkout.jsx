@@ -1,10 +1,11 @@
 import Styles from './Checkout.module.css'
 import {User} from '../../Context/userProvider/UserProvider'
 import CartItems from '../../common/Cart Item/CartItems'
+import { useSelector } from 'react-redux'
 
 const Checkout = (props) => {
     const user = User()
-    const cart = []
+    const cart = useSelector(state => state.cart.cart)
     return (  
         <div className={Styles.parent}>
             

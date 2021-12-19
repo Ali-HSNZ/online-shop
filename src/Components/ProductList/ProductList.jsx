@@ -13,35 +13,24 @@ import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './sliderStyles.css'
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "../../redux/products/ProductsActions";
+import { useSelector } from "react-redux";
 
 
 SwiperCore.use([Navigation , Pagination , Autoplay])
 
 const ProductList = () => {
+    const dispatchProducts = useDispatch()
 
-    const [products , setProducts] = useState(null)
+    const productsData = useSelector(state => state.products.data)
+
     const [category , setCategory] = useState(null)
 
-
     useEffect(()=>{
-        const getAllProducts = async()=>{
-            try {
-                axios.get('https://fakestoreapi.com/products').then(products =>{
-                    if(products.data){
-                        const cloneProducts = [...products.data]
-                        for(let i = 0 ; i <= Math.floor(cloneProducts.length/3) ; i++){
-                            const index = Math.floor(Math.random()*cloneProducts.length);
-                            cloneProducts[index].offPrice = Math.floor(Math.random()*19) + 1
-                            cloneProducts[index].discount = Math.floor(Math.random()*100) + 1
-                        }
-                        setProducts(cloneProducts)
-                    }
 
-                }).catch();
-            } catch (error) {
-                setProducts(null)
-            }
-        }
+        dispatchProducts(fetchProducts())
+
         const getAllCategorie = async()=>{
             axios.get("https://fakestoreapi.com/products/categories").then((categore)=>{
                 setCategory(categore.data)
@@ -50,9 +39,7 @@ const ProductList = () => {
             )
         }
         getAllCategorie()
-        getAllProducts()
     },[])
-
 
 
     return (  
@@ -60,7 +47,7 @@ const ProductList = () => {
             <div>
                 {
                     category ? category.map((mapOnCategory,index) => {
-                        const filterd = products&&products.filter( e => e.category === mapOnCategory)
+                        const filterd = productsData&&productsData.filter( e => e.category === mapOnCategory)
 
                             
                             return(
