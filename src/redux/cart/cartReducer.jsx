@@ -3,6 +3,7 @@ import { toast } from "react-toastify"
 import {
     ADD_TO_CART,
     DECRIMENT_TO_CART,
+    DELETE_ALL_PRODUCT,
     DELETE_PRODUCT
 } from './cartTypes'
 
@@ -47,6 +48,9 @@ const cartReducer = (state = initialState , action) =>{
 
             const filterdProduct = cloneState.filter(product => product.id !== action.payLoad.id)
             return {...state , cart : filterdProduct , total : action.payLoad.discount}
+        }
+        case DELETE_ALL_PRODUCT : {
+            return { cart : []}
         }
         default: return state
     }

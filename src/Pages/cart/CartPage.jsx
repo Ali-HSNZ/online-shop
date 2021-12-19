@@ -20,6 +20,10 @@ import Feature from '../../Components/Features/Feature';
 import Checkout from './Checkout';
 import { useSelector } from 'react-redux';
 
+import { FiTrash2 } from "react-icons/fi";
+import { useDispatch } from 'react-redux';
+import { deleteAllProduct } from '../../redux/cart/cartActions';
+
 
 SwiperCore.use([Autoplay , Navigation]);
 
@@ -27,6 +31,8 @@ const CartPage = () => {
     const cart = useSelector(state => state.cart.cart)
 
     const [products , setProducts] = useState(null)
+    const dispatch = useDispatch()
+
     useEffect(()=>{
     const getAllProducts = async()=>{
         try {
@@ -57,10 +63,17 @@ const CartPage = () => {
             resualt = (
                 <div className={Styles.parent}>
                     <div className={Styles.cartParent}>
+
+                        <button className={Styles.deleteAllProduct} onClick={()=> dispatch(deleteAllProduct())}>
+                            حذف همه محصولات از سبد خرید
+                            <FiTrash2 className={Styles.deleteAllProduct_icon} size={'1.2em'}/>
+                        </button>
+
                         {cart.map((product,index) => {return (
                             <CartItems key={index} product={product}/>
                         )})}
                     </div>
+
                     <div className={Styles.checkoutParent}>
                         <Checkout/>
                     </div>

@@ -8,6 +8,23 @@
         margin-top: 20px;
     
     }
+    .deleteAllProduct{
+        padding: 5px 10px;
+        height: auto;
+        font-family: iransansweb;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid brown;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        color: brown;
+        cursor: pointer;
+    }
+    .deleteAllProduct_icon{
+        color: brown;
+        margin-left: 3px;
+    }
     .cartParent{
         width: 100%;
         margin-right: 20px;
