@@ -1,7 +1,6 @@
 import Styles from  "./ProductList.module.css"
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "react-multi-carousel/lib/styles.css";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
@@ -16,29 +15,20 @@ import './sliderStyles.css'
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/products/ProductsActions";
 import { useSelector } from "react-redux";
+import { fetchingCategories } from "../../redux/categories/categoryActions";
 
 
 SwiperCore.use([Navigation , Pagination , Autoplay])
 
 const ProductList = () => {
-    const dispatchProducts = useDispatch()
+    const dispatch = useDispatch()
 
     const productsData = useSelector(state => state.products.data)
-
-    const [category , setCategory] = useState(null)
+    const categoriesData = useSelector(state => state.categories.data)
 
     useEffect(()=>{
-
-        dispatchProducts(fetchProducts())
-
-        const getAllCategorie = async()=>{
-            axios.get("https://fakestoreapi.com/products/categories").then((categore)=>{
-                setCategory(categore.data)
-            }).catch(
-                setCategory(null)
-            )
-        }
-        getAllCategorie()
+        dispatch(fetchProducts())
+        dispatch(fetchingCategories())
     },[])
 
 
@@ -46,7 +36,7 @@ const ProductList = () => {
         <div className={Styles.parent} dir="rtl">
             <div>
                 {
-                    category ? category.map((mapOnCategory,index) => {
+                    categoriesData.length > 0 ? categoriesData.map((mapOnCategory,index) => {
                         const filterd = productsData&&productsData.filter( e => e.category === mapOnCategory)
 
                             
@@ -57,7 +47,7 @@ const ProductList = () => {
                                     
                                         <div dir="rtl" className={Styles.sliderParent} key={index}>
                                             
-                                            {category && (
+                                            {categoriesData && (
                                                 <div className={Styles.Slider_categoryParent}>
                                                     <Link to={`/category?name=${mapOnCategory}`} className={Styles.Slider_categoryLink}>{mapOnCategory} <BsFillCaretLeftFill/></Link>
                                                     
