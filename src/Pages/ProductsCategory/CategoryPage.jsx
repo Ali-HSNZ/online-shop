@@ -7,12 +7,12 @@ import Container from '../../common/Loding/Loding'
 import _ from "lodash"
 
 
-const CategoryPage = (props) => {
+const CategoryPage = ({location}) => {
     const [products,setProducts] = useState(null)
     const [productsAction , setProductsAction] = useState(null)
     
     const query = useQuery().get('name');
-    const isSpecialSale = props.location.name === "specialSale";
+    const isSpecialSale = location.name === "specialSale";
     const [isProductsOnSearched , setIsProductsOnSearched] = useState(false)
     
 

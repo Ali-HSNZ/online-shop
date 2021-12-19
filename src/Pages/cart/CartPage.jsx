@@ -1,8 +1,6 @@
 import Styles from './CartPage.module.css'
 
-import { UseCart } from '../../Context/cartContext/CartProvider';
 import { Link } from 'react-router-dom';
-import CartItems from '../../common/Cart Item/CartItems';
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import { useEffect, useState } from 'react';
 
@@ -14,15 +12,19 @@ import 'swiper/components/navigation/navigation.scss'
 import './cartSlider.css'
 
 import axios from 'axios';
+
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
+import CartItems from '../../common/Cart Item/CartItems';
+
 import Feature from '../../Components/Features/Feature';
 import Checkout from './Checkout';
+import { useSelector } from 'react-redux';
 
 
 SwiperCore.use([Autoplay , Navigation]);
 
 const CartPage = () => {
-    const {cart} = UseCart()
+    const cart = useSelector(state => state.cart.cart)
 
     const [products , setProducts] = useState(null)
     useEffect(()=>{
@@ -48,7 +50,7 @@ const CartPage = () => {
 
 
     const renderProducts = ()=> {
-        var resualt
+        var resualt;
 
         if(cart && cart.length > 0){
            

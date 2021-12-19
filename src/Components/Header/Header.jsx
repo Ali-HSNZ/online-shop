@@ -1,25 +1,27 @@
 import Styles from './Header.module.css'
 import {BiShoppingBag , BiUser , BiSearch ,BiMenu} from "react-icons/bi";
 import {NavLink } from 'react-router-dom';
-import { UseCart } from '../../Context/cartContext/CartProvider';
+
 import { User , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../Context/userProvider/UserProvider';
 import React, { useEffect, useState } from 'react';
 import { FaUserCheck } from "react-icons/fa";
-import { AiFillCaretUp ,AiFillCaretLeft } from "react-icons/ai";
-// import MenuStyles from '../MenuStyles.module.css'
+
 import UserProfile from '../user/Profile/Profile'
 import axios from 'axios';
 import Menu from '../Menu/Menu'
 
 import SearchComponent from '../Search/Search';
 import UserPanel from '../user/Panel/UserPanel';
+import { useSelector } from 'react-redux';
 
 
 
 
 const Header = () => {
     const user = User()
-    const {cart} = UseCart()
+
+    const cart = useSelector(state => state.cart.cart)
+
 
     const [closeSearch , setCloseSearch] = useState(false)
     const [categories , setCategories] = useState(null)
@@ -50,7 +52,7 @@ const Header = () => {
 
                     <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false) & setIsSearch(false) & setIsUserLogin(false) & setIsMenu(false)}}>
                         <BiShoppingBag className={Styles.iconStyle} size="1.59em"/>
-                        {cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
+                        {cart && cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
                     <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true)  & setIsSearch(false) &  setIsMenu(false):  setIsUserLogin(true) &  setIsSearch(false) & setIsMenu(false)}}>

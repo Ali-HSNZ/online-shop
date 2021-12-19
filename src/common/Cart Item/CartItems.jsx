@@ -1,26 +1,18 @@
 import Styles from './CartItems.module.css'
-import {UseCartDispatch } from '../../Context/cartContext/CartProvider';
+
 import { BiMinus  ,BiPlus , BiChevronLeft } from "react-icons/bi";
 import {AiFillStar} from "react-icons/ai";
 import { FiTrash2 } from "react-icons/fi";
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { AddQuantity, DecrimentQuantity, deleteProduct } from '../../redux/cart/cartActions';
 
 const CartItems = ({product , checkout}) => {
 
-    const dispatch = UseCartDispatch()
+    
+    const dispatch = useDispatch()
 
     const [isDescribtion , setIsDescribtion] = useState(false)
-    
-    const AddQuantity = (product)=> {
-        dispatch({type : "ADD_TO_CART" , payLoad : product})
-    }
-    const DecrimentQuantity = (product)=> {
-        dispatch({type : "DECRIMENT_TO_CART" , payLoad : product})
-    }
-    const deleteProduct = (product)=>{
-        dispatch({type : "DELETE_PRODUCT" , payLoad : product})
-    }
-
 
 
     return (  
@@ -62,13 +54,13 @@ const CartItems = ({product , checkout}) => {
                         <div className={Styles.productAction}>
                         
                                 <div className={Styles.addProductInCart}>
-                                    <button onClick={()=> AddQuantity(product)}><BiPlus size="1.2em"/></button>
+                                    <button onClick={()=> dispatch(AddQuantity(product))}><BiPlus size="1.2em"/></button>
                                     <p>{product.quantity}</p>
-                                    <button onClick={()=> DecrimentQuantity(product)}>{product.quantity === 1 ? <FiTrash2 size="1rem"/> : <BiMinus size="1.2em"/> }</button>
+                                    <button onClick={()=> dispatch(DecrimentQuantity(product))}>{product.quantity === 1 ? <FiTrash2 size="1rem"/> : <BiMinus size="1.2em"/> }</button>
                                 </div>
 
                                 <div className={Styles.deleteProductParent}>
-                                    <button onClick={()=> deleteProduct(product)}><FiTrash2 style={{marginLeft:'3px'}} size="1rem"/> حذف محصول</button>
+                                    <button onClick={()=> dispatch(deleteProduct(product))}><FiTrash2 style={{marginLeft:'3px'}} size="1rem"/> حذف محصول</button>
                                 </div>
                         </div>
                     )}

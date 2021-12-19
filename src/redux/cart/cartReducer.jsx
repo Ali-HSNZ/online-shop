@@ -1,9 +1,19 @@
-// import toast from "react-hot-toast"
 import { toast } from "react-toastify"
 
-const cartReducer = (state , action) =>{
+import {
+    ADD_TO_CART,
+    DECRIMENT_TO_CART,
+    DELETE_PRODUCT
+} from './cartTypes'
+
+const initialState = {
+    cart : [],
+    total : 0
+}
+
+const cartReducer = (state = initialState , action) =>{
     switch (action.type) {
-        case "ADD_TO_CART": {
+        case ADD_TO_CART: {
             const cloneState = [...state.cart] 
             const findItemIndex  = cloneState.findIndex(product => product.id === action.payLoad.id)
             if(findItemIndex < 0){
@@ -18,7 +28,7 @@ const cartReducer = (state , action) =>{
             }
            return {...state , cart : cloneState , total : action.payLoad.discount}
         }
-        case "DECRIMENT_TO_CART" :{
+        case DECRIMENT_TO_CART :{
             const cloneState = [...state.cart] 
             const findItem_index = cloneState.findIndex(product => product.id === action.payLoad.id)
             if(action.payLoad.quantity >1){
@@ -32,14 +42,12 @@ const cartReducer = (state , action) =>{
             }
             return {...state , cart : cloneState , total : action.payLoad.discount}
         }
-        case "DELETE_PRODUCT" :{
+        case DELETE_PRODUCT :{
             const cloneState = [...state.cart] 
 
             const filterdProduct = cloneState.filter(product => product.id !== action.payLoad.id)
             return {...state , cart : filterdProduct , total : action.payLoad.discount}
         }
-            
-    
         default: return state
     }
 }

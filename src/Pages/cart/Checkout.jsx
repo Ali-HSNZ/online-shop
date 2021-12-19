@@ -1,23 +1,25 @@
 import { User ,IsCalledUserLoginDispatch} from '../../Context/userProvider/UserProvider';
 import Styles from './CartPage.module.css'
 import { Link } from 'react-router-dom';
-import { UseCart } from '../../Context/cartContext/CartProvider';
+import { useSelector } from 'react-redux';
 
 
 const Checkout = ()=>{
 
-    const {cart} = UseCart()
+    const cart = useSelector(state => state.cart.cart)
 
     const TotalPriceHandler = (originalTotalPrice)=>{
         var price = originalTotalPrice;    
         var dplaces = price=== parseInt(price, 10) ? 0 : 2;
         return price = '$' + price.toFixed(dplaces);
     } 
+
     const TotalDiscountHandler = (totalDiscount)=>{
         var price = totalDiscount;    
         var dplaces = price === parseInt(price, 10) ? 0 : 2;
         return price = '$' + price.toFixed(dplaces);
     } 
+    
     const totalCartHandler = (totalPrice , totalDiscount)=>{
         let price = 0;
 

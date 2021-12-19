@@ -1,6 +1,13 @@
-const likeReducer = (state , action) => {
+import { ADD_TO_LIKE } from "./likeTypes";
+
+const initialState = {
+    like : []
+}
+
+
+const likeReducer = (state = initialState , action) => {
     switch (action.type) {
-        case "ADD_TO_LIKE":{
+        case ADD_TO_LIKE:{
             const cloneLikeState = [...state.like];
             const findProduct = cloneLikeState.findIndex(e => e.id === action.payLoad.id)
             if(findProduct < 0){
@@ -9,15 +16,13 @@ const likeReducer = (state , action) => {
                 
                 const cloneLike = [...state.like]
                 const product = cloneLike[findProduct]
-
+ 
                 if(product.like === true) product.like = false; else product.like = true;
                 
                 return {...state , like: cloneLike}
             }
             return {...state , like: cloneLikeState}
         }
-
-
             default: return state
     }
 }

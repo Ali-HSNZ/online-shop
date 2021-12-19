@@ -15,7 +15,7 @@ const Search = () => {
 
     const query = useQuery().get("productName");
 
-    const filterProducts = products&&products.filter(product => product.title.toLowerCase().includes(query.toLowerCase()) )
+    const filterdProducts = products && products.filter(product => product.title.toLowerCase().includes(query.toLowerCase()) )
 
 
 
@@ -43,8 +43,8 @@ const Search = () => {
     const renderProduct = ()=>{
         let resualt = null;
 
-        if(filterProducts && filterProducts.length > 0){
-            resualt = filterProducts.map(products => (
+        if(filterdProducts && filterdProducts.length > 0){
+            resualt = filterdProducts.map(products => (
                 <div  key={products.id}>
                     <ProductListItem isLink={true} item={products} offPrice={products.offPrice}/>
                 </div>
@@ -57,7 +57,7 @@ const Search = () => {
     }
     return ( 
         <>
-            {filterProducts&&filterProducts.length === 0 && (
+            {filterdProducts&&filterdProducts.length === 0 && (
                 <div className={Styles.alert_product}>
                 <p>میرم</p>
                 <Link to="/">فروشگاه</Link>

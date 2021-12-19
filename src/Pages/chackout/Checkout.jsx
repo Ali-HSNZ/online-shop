@@ -1,13 +1,10 @@
 import Styles from './Checkout.module.css'
 import {User} from '../../Context/userProvider/UserProvider'
-import {UseCart} from '../../Context/cartContext/CartProvider'
 import CartItems from '../../common/Cart Item/CartItems'
-
-
 
 const Checkout = (props) => {
     const user = User()
-    const {cart} = UseCart()
+    const cart = []
     return (  
         <div className={Styles.parent}>
             
@@ -28,7 +25,6 @@ const Checkout = (props) => {
                         {cart.length ? cart.map(product =>  <CartItems checkout={true} product={product}/> ) : <p>محصولی در سبد خرید شما نیست</p>}
                 </div>
             </>
-        // ) : <h1>لطفا ثبت نام | ورود به سایت را انجام دهید تا صفحه چک اوت نمایش داده شود</h1>}
         ) : props.history.push("/")}
         </div>
     );

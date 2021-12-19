@@ -18,31 +18,34 @@ import 'swiper/components/navigation/navigation.scss'
 import './sliderStyles.css'
 
 import {useQuery} from '../../hooks/useQuery'
-import { UseCartDispatch , UseCart } from '../../Context/cartContext/CartProvider';
 import { Link } from 'react-router-dom';
-import { UseLikeDispatcher , UseLikeState} from '../../Context/likeContext/likeContext';
+
 import blackHeart from '../../image/heart.svg'
 import RedHeart from '../../image/redHeart.svg'
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+import {AddQuantity} from '../../redux/cart/cartActions'
+import {addToLike} from '../../redux/like/likeActions'
+
+
+
 
 SwiperCore.use([Navigation , Pagination])
 
+const ProductPage = () => {
 
+    const like = useSelector(state => state.like.like)
 
-const ProductPage = (props) => {
+    const dispatch = useDispatch()
 
-    const {like} = UseLikeState()
-    const setLike = UseLikeDispatcher()
-
-    const cartDispatch = UseCartDispatch()
-    const {cart} = UseCart()
+    const cart = useSelector(state => state.cart.cart)
 
     const query = useQuery().get('id');
     const queryDiscount = useQuery().get('discount');
     const queryOffPrice = useQuery().get('offPrice');
 
-    const addToLike = (item) => {
-        setLike({type : 'ADD_TO_LIKE' , payLoad:item})
-    }
+
 
     const [products , setProducts] = useState(null)
     const [product , setProduct] = useState(null)
@@ -54,6 +57,8 @@ const ProductPage = (props) => {
     const checkProductInCart = (cart , product)=>{
         return cart&&cart.find(item => item.id === product.id)
     }
+
+
     useEffect(()=>{
     const getAllProducts = async()=>{
         try {
@@ -91,10 +96,6 @@ const ProductPage = (props) => {
     },[query , cart])
 
 
-
-    const addToCart = (product)=>{
-        cartDispatch({type : 'ADD_TO_CART' , payLoad : product})
-    }
     const checkProductInLike = (state , product)=>{
         const item = state.find(item => item.id === product.id)
         if(item&&item.like === true){return true}else{return false}
@@ -128,7 +129,7 @@ const ProductPage = (props) => {
         
                         <div className={Styles.productCategory} dir='rtl'>
                             <p dir='rtl'>دسته بندی :  {product.category}</p>
-                            <button dir='ltr' onClick={()=> addToLike(product)}>
+                            <button dir='ltr' onClick={()=> dispatch(addToLike(product))}>
                                 علاقه مندی ها
                                 <img src={checkProductInLike(like , product) ? RedHeart : blackHeart} alt='like'/>
                             </button>
@@ -147,7 +148,7 @@ const ProductPage = (props) => {
                             {checkProductInCart(cart , product)? (
                                 <Link className={`${Styles.buyProduct_btn} ${Styles.buyProduct_Link}`} to='/cart'>سبد خرید</Link>
                                 ) : (
-                                    <button className={`${Styles.buyProduct_btn} ${Styles.buyProduct_buy}`} onClick={()=>addToCart(product)}>خرید محصول</button>
+                                    <button className={`${Styles.buyProduct_btn} ${Styles.buyProduct_buy}`} onClick={()=>dispatch(AddQuantity(product))}>خرید محصول</button>
                             )}
                         </div>
                     </div>
