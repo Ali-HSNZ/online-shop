@@ -189,7 +189,7 @@ const ProductPage = () => {
         
                                 }
                             }}>
-                            {products ? products.slice(Math.floor(5+Math.random()*10)).map(
+                            {products ? products.slice(10).map(
                                 item=>{return(
                                     <SwiperSlide key={item.id}>
                                         <ProductListItem isLink={true} item={item} offPrice={item.offPrice}/>

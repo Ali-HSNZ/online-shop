@@ -5,6 +5,7 @@ import {
 
 const initialState = {
     data : [],
+    error: ""
 }
 
 const productsReducer = (state = initialState , action) => {

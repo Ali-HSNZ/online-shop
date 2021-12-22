@@ -4,16 +4,15 @@ import {
     FETCH_PRODUCTS_SUCCESS 
 } from "./ProductsTypes"
 
-export const fetchDataFailed = (error) => {
+ const fetchDataFailed = (error) => {
     return {type : FETCH_PRODUCTS_FAILD , payLoad : error}
 }
 
-export const fetchDataSuccess = (products) => {
+ const fetchDataSuccess = (products) => {
     return {type : FETCH_PRODUCTS_SUCCESS , payLoad : products}
 }
 
-export const fetchProducts = () => {
-   
+export const fetchProducts = () => {    
     return function (dispatch){
         axios.get('https://fakestoreapi.com/products')
         .then(products => {
@@ -29,3 +28,13 @@ export const fetchProducts = () => {
         .catch(error => {dispatch(fetchDataFailed(error))})
     }
 }
+
+// export const fetchOneProduct = (id) => {
+//     return function (dispatch){
+//         axios.get(`https://fakestoreapi.com/products/${id}`)
+//         .then(product => {
+//             dispatch(fetchDataSuccess(product))   
+//         })
+//         .catch(error => {dispatch(fetchDataFailed(error))})
+//     }
+// }

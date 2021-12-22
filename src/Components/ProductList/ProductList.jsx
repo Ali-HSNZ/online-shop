@@ -13,10 +13,10 @@ import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './sliderStyles.css'
 import { useDispatch } from "react-redux";
-import { fetchProducts } from "../../redux/products/ProductsActions";
 import { useSelector } from "react-redux";
-import { fetchingCategories } from "../../redux/categories/categoryActions";
 
+import { fetchProducts } from "../../redux/products/ProductsActions";
+import { fetchingCategories } from "../../redux/categories/categoryActions";
 
 SwiperCore.use([Navigation , Pagination , Autoplay])
 
@@ -38,8 +38,6 @@ const ProductList = () => {
                 {
                     categoriesData.length > 0 ? categoriesData.map((mapOnCategory,index) => {
                         const filterd = productsData&&productsData.filter( e => e.category === mapOnCategory)
-
-                            
                             return(
                                 <div key={index}>
                                     {mapOnCategory === "jewelery" && <Banner category={mapOnCategory}/> || mapOnCategory === "women's clothing" ? <Banner category={mapOnCategory}/> : 
@@ -73,7 +71,7 @@ const ProductList = () => {
                                                         }
                                                     }}
                                                     autoplay={{
-                                                        delay: 2000+ Math.random()*1000,
+                                                        delay: 2000 + Math.random()*1000,
                                                     }}>
 
                                                     {filterd ? filterd.map(
