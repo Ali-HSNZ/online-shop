@@ -29,6 +29,12 @@ import {AddQuantity} from '../../redux/cart/cartActions'
 import {addToLike} from '../../redux/like/likeActions'
 
 
+import {fetchProducts} from '../../redux/products/ProductsActions'
+import { fetchOneProduct } from '../../redux/one Product/oneProductActions';
+
+
+
+//================================
 
 
 SwiperCore.use([Navigation , Pagination])
@@ -36,108 +42,85 @@ SwiperCore.use([Navigation , Pagination])
 const ProductPage = () => {
 
     const like = useSelector(state => state.like.like)
+    const product = useSelector(state => state.oneProduct)
+    const cart = useSelector(state => state.cart.cart)
+    const products = useSelector(state => state.products.data)
 
     const dispatch = useDispatch()
-
-    const cart = useSelector(state => state.cart.cart)
 
     const query = useQuery().get('id');
     const queryDiscount = useQuery().get('discount');
     const queryOffPrice = useQuery().get('offPrice');
 
-
-
-    const [products , setProducts] = useState(null)
-    const [product , setProduct] = useState(null)
-
     const [isLoading , setIsLoading] = useState(false)
 
-
+//================================
 
     const checkProductInCart = (cart , product)=>{
         return cart&&cart.find(item => item.id === product.id)
     }
-
-
-    useEffect(()=>{
-    const getAllProducts = async()=>{
-        try {
-             await axios.get('https://fakestoreapi.com/products').then(products =>{
-                setProducts(products.data)
-                checkProductInCart(cart , product)
-            }).catch();
-        } catch (error) {
-            setProducts(null)
-        }
-    }
-
-
-        getAllProducts()
-    },[cart , product])
-
-    useEffect(()=>{
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setIsLoading(true)
-        const getOneProducts = async()=>{
-
-            try {
-                axios.get(`https://fakestoreapi.com/products/${query}`).then(products =>{
-                    if(products.data){
-                        setProduct(products.data)
-
-                        checkProductInCart(cart , products.data)
-                        setIsLoading(false)
-                    }
-                }).catch();
-            } catch (error) {setIsLoading(false)}
-        }
-        getOneProducts()
-        
-    },[query , cart])
-
 
     const checkProductInLike = (state , product)=>{
         const item = state.find(item => item.id === product.id)
         if(item&&item.like === true){return true}else{return false}
     }
 
+//================================
+
+    useEffect(()=>{
+        checkProductInCart(cart , product)
+        dispatch(fetchProducts())
+        product.loading === true ? setIsLoading(true) : setIsLoading(false)
+    },[cart , product])
+
+    useEffect(()=>{
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        dispatch(fetchOneProduct(query))
+    },[query , cart])
+
+//================================
+
 
     return (  
         <>
          {isLoading === true && Container()}
-            {product ? (
+            {product.data? (
                 <div className={Styles.parent}>
 
 
                 <div className={Styles.product}>
             
                     <div className={Styles.imgParent}>
-                        <img src={product.image} alt={product.title}/>
+                        <img src={product.data.image} alt={product.data.title}/>
                     </div>
         
                     <div className={Styles.productDesc}>
         
                         <div className={Styles.productTitle}>
                             <div className={Styles.likeParent}>
-                                <BiHeart size="1.3em" style={{color:'red'}}/>
-                                    <p>{product.rating.rate}</p>
-                                    <span>({checkProductInLike(like , product) ? product.rating.count + 1 :product.rating.count  })</span>
+                                {product.data.rating && (
+                                    <>
+                                        <BiHeart size="1.3em" style={{color:'red'}}/>
+                                        <p>{product.data.rating.rate}</p>
+                                        <span>({checkProductInLike(like , product.data) ? product.data.rating.count + 1 :product.data.rating.count  })</span>
+                                    </>
+                                )}
                             </div>
-                            <p dir="ltr">{product.title}</p>
+                            <p dir="ltr">{product.data.title}</p>
                         </div>
         
         
                         <div className={Styles.productCategory} dir='rtl'>
-                            <p dir='rtl'>دسته بندی :  {product.category}</p>
-                            <button dir='ltr' onClick={()=> dispatch(addToLike(product))}>
+                            <p dir='rtl'>دسته بندی :  {product.data.category}</p>
+                            <button dir='ltr' onClick={()=> dispatch(addToLike(product.data))}>
                                 علاقه مندی ها
-                                <img src={checkProductInLike(like , product) ? RedHeart : blackHeart} alt='like'/>
+                                <img src={checkProductInLike(like , product.data) ? RedHeart : blackHeart} alt='like'/>
                             </button>
                         </div>
         
                         <div className={Styles.productPrice}  dir='rtl'>
                            
-                            <p dir='rtl' className={Styles.priceText}>قیمت : {product.price}$</p>
+                            <p dir='rtl' className={Styles.priceText}>قیمت : {product.data.price}$</p>
                             <div className={Styles.productPrice_discount} dir='ltr'>
                                 {queryOffPrice.length > 1 && <p dir='rtl' className={Styles.productPrice_Percentage}> (%{queryOffPrice})</p>}
                                 {queryDiscount.length > 1 &&<p dir='rtl'>تخفیف : {queryDiscount}$</p>}
@@ -157,7 +140,7 @@ const ProductPage = () => {
         
                 <div className={Styles.productDescribtion}>
                         <p dir='rtl'>توضیحات محصول : </p>
-                        <p dir='ltr'>{product.description}</p>
+                        <p dir='ltr'>{product.data.description}</p>
                 </div>
         
         
