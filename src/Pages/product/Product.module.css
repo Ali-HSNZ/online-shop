@@ -24,6 +24,7 @@
     width: auto;
     height: auto;
     max-height: 200px;
+    max-width: 200px;
 }
 .productDesc{
     width: 100%;
@@ -43,6 +44,11 @@
     margin-top: 0;
 }
 .productTitle p{
+    font-family: iransansweb;
+    font-size: 14px;
+}
+.productTitle_text{
+    display: flex;
     font-family: iransansweb;
     font-size: 14px;
 }
@@ -94,12 +100,14 @@
     margin: 20px 0 0 0;
     padding: 0px;
 }
-.productCategory p{
+.productCategory_text{
     font-family: iransansweb;
     font-size: 14px;
     padding-bottom: 20px;
-
-    /* padding: 0px; */
+    display: flex;
+}
+.productCategory_text div{
+    margin-right: 2px;
 }
 .productCategory button{
     background-color: transparent;
@@ -116,6 +124,11 @@
     margin-bottom: 20px;
 
 }
+.productCategory button img{
+    width: 18px;
+    height: 18px;
+    margin-left: 3px;
+}
 .productCategory_like{
     margin-left: 5px;
 }
@@ -130,6 +143,10 @@
 }
 .priceText{
     margin:0 0 20px 0;
+    display: flex;
+}
+.priceText div{
+    margin-right: 2px;
 }
 .productPrice_discount{
     display: flex;
@@ -171,7 +188,6 @@
 }
 
 
-
 .productDescribtion{
     width: 100%;
     height: auto;
@@ -182,12 +198,19 @@
 .productDescribtion p:nth-child(1){
     font-family: iranyekanweb;
     font-weight: 700;
+    font-size: 14px;
 }
 .productDescribtion p:nth-child(2){
     font-family: iransansweb;
     margin-top: 20px;
+    font-size: 14px;
 }
-
+.productDescribtion_loading{
+    display: flex;
+}
+.productDescribtion_loading p {
+    margin-left: 2px;
+}
 
 
 
@@ -228,7 +251,6 @@
 .Slider_categoryParent_icon{
     margin-right: 5px;
 }
-
 @media only screen and (min-width:320px){
     .parent{
         padding: 0 20px;
@@ -276,6 +298,11 @@
         margin-top: 0;
     }
     .productTitle p{
+        font-family: iransansweb;
+        font-size: 14px;
+    }
+    .productTitle_text{
+        display: flex;
         font-family: iransansweb;
         font-size: 14px;
     }
@@ -327,12 +354,14 @@
         margin: 20px 0 0 0;
         padding: 0px;
     }
-    .productCategory p{
+    .productCategory_text{
         font-family: iransansweb;
         font-size: 14px;
         padding-bottom: 20px;
-    
-        /* padding: 0px; */
+        display: flex;
+    }
+    .productCategory_text div{
+        margin-right: 2px;
     }
     .productCategory button{
         background-color: transparent;
@@ -368,6 +397,10 @@
     }
     .priceText{
         margin:0 0 20px 0;
+        display: flex;
+    }
+    .priceText div{
+        margin-right: 2px;
     }
     .productPrice_discount{
         display: flex;
@@ -425,6 +458,12 @@
         font-family: iransansweb;
         margin-top: 20px;
         font-size: 14px;
+    }
+    .productDescribtion_loading{
+        display: flex;
+    }
+    .productDescribtion_loading p {
+        margin-left: 2px;
     }
     
     
@@ -517,6 +556,11 @@
         font-family: iransansweb;
         font-size: 14px;
     }
+    .productTitle_text{
+        display: flex;
+        font-family: iransansweb;
+        font-size: 14px;
+    }
     .likeParent{
         width: auto;
         height: auto;
@@ -565,12 +609,14 @@
         margin: 20px 0 0 0;
         padding: 0px;
     }
-    .productCategory p{
+    .productCategory_text{
         font-family: iransansweb;
         font-size: 14px;
         padding-bottom: 20px;
-    
-        /* padding: 0px; */
+        display: flex;
+    }
+    .productCategory_text div{
+        margin-right: 2px;
     }
     .productCategory button{
         background-color: transparent;
@@ -601,6 +647,10 @@
     }
     .priceText{
         margin:0 0 20px 0;
+        display: flex;
+    }
+    .priceText div{
+        margin-right: 2px;
     }
     .productPrice_discount{
         display: flex;
@@ -658,6 +708,12 @@
         font-family: iransansweb;
         margin-top: 20px;
         font-size: 14px;
+    }
+    .productDescribtion_loading{
+        display: flex;
+    }
+    .productDescribtion_loading p {
+        margin-left: 2px;
     }
     
     
@@ -750,6 +806,11 @@
         font-family: iransansweb;
         font-size: 14px;
     }
+    .productTitle_text{
+        display: flex;
+        font-family: iransansweb;
+        font-size: 14px;
+    }
     .likeParent{
         width: auto;
         height: auto;
@@ -798,12 +859,14 @@
         margin: 20px 0 0 0;
         padding: 0px;
     }
-    .productCategory p{
+    .productCategory_text{
         font-family: iransansweb;
         font-size: 14px;
         padding-bottom: 20px;
-    
-        /* padding: 0px; */
+        display: flex;
+    }
+    .productCategory_text div{
+        margin-right: 2px;
     }
     .productCategory button{
         background-color: transparent;
@@ -834,6 +897,10 @@
     }
     .priceText{
         margin:0 0 20px 0;
+        display: flex;
+    }
+    .priceText div{
+        margin-right: 2px;
     }
     .productPrice_discount{
         display: flex;
@@ -892,6 +959,12 @@
         font-family: iransansweb;
         margin-top: 20px;
         font-size: 14px;
+    }
+    .productDescribtion_loading{
+        display: flex;
+    }
+    .productDescribtion_loading p {
+        margin-left: 2px;
     }
     
     
@@ -984,6 +1057,12 @@
         font-family: iransansweb;
         font-size: 14px;
     }
+    .productTitle_text{
+        display: flex;
+        font-family: iransansweb;
+        font-size: 14px;
+        text-align: right;
+    }
     .likeParent{
         width: auto;
         height: auto;
@@ -1032,12 +1111,14 @@
         margin: 20px 0 0 0;
         padding: 0px;
     }
-    .productCategory p{
+    .productCategory_text{
         font-family: iransansweb;
         font-size: 14px;
         padding-bottom: 20px;
-    
-        /* padding: 0px; */
+        display: flex;
+    }
+    .productCategory_text div{
+        margin-right: 2px;
     }
     .productCategory button{
         background-color: transparent;
@@ -1068,6 +1149,10 @@
     }
     .priceText{
         margin:0 0 20px 0;
+        display: flex;
+    }
+    .priceText div{
+        margin-right: 2px;
     }
     .productPrice_discount{
         display: flex;
@@ -1125,6 +1210,12 @@
         font-family: iransansweb;
         margin-top: 20px;
         font-size: 14px;
+    }
+    .productDescribtion_loading{
+        display: flex;
+    }
+    .productDescribtion_loading p {
+        margin-left: 2px;
     }
     
     
@@ -1215,6 +1306,11 @@
         font-family: iransansweb;
         font-size: 14px;
     }
+    .productTitle_text{
+        display: flex;
+        font-family: iransansweb;
+        font-size: 14px;
+    }
     .likeParent{
         width: auto;
         height: auto;
@@ -1257,9 +1353,14 @@
         display: flex;
         justify-content: space-between;
     }
-    .productCategory p{
+    .productCategory_text{
         font-family: iransansweb;
         font-size: 14px;
+        padding-bottom: 20px;
+        display: flex;
+    }
+    .productCategory_text div{
+        margin-right: 2px;
     }
     .productCategory button{
         background-color: transparent;
@@ -1337,6 +1438,12 @@
         font-family: iransansweb;
         margin-top: 20px;
         font-size: 14px;
+    }
+    .productDescribtion_loading{
+        display: flex;
+    }
+    .productDescribtion_loading p {
+        margin-left: 2px;
     }
     
     
@@ -1428,6 +1535,11 @@
         font-family: iransansweb;
         font-size: 14px;
     }
+    .productTitle_text{
+        display: flex;
+        font-family: iransansweb;
+        font-size: 14px;
+    }
     .likeParent{
         width: auto;
         height: auto;
@@ -1470,9 +1582,14 @@
         display: flex;
         justify-content: space-between;
     }
-    .productCategory p{
+    .productCategory_text{
         font-family: iransansweb;
         font-size: 14px;
+        padding-bottom: 20px;
+        display: flex;
+    }
+    .productCategory_text div{
+        margin-right: 2px;
     }
     .productCategory button{
         background-color: transparent;
@@ -1549,6 +1666,12 @@
         font-family: iransansweb;
         margin-top: 20px;
         font-size: 14px;
+    }
+    .productDescribtion_loading{
+        display: flex;
+    }
+    .productDescribtion_loading p {
+        margin-left: 2px;
     }
     
     

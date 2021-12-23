@@ -24,6 +24,7 @@ const UserProvider = ({children}) => {
         localStorage.setItem('user',userData)
     },[user])
     
+    
     return (  
         <UserContext.Provider value={user}>
             <UserContextDispatch.Provider value={setUser}>

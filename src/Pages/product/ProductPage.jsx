@@ -7,10 +7,10 @@ import { BsFillCaretLeftFill } from "react-icons/bs";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore ,{Navigation , Pagination}from 'swiper'
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
 
 import Container from '../../common/Loding/Loding'
+import SmallLoading from '../../common/small Loding/SmallLoading'
 
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.scss'
@@ -76,85 +76,118 @@ const ProductPage = () => {
     useEffect(()=>{
         window.scrollTo({ top: 0, behavior: 'smooth' });
         dispatch(fetchOneProduct(query))
-    },[query , cart])
+    },[query])
 
 //================================
 
 
     return (  
         <>
-         {isLoading === true && Container()}
-            {product.data? (
+            {product.data && (
                 <div className={Styles.parent}>
 
 
-                <div className={Styles.product}>
+                    <div className={Styles.product}>
+                
+                        <div className={Styles.imgParent}>
+                            <img src={product.data.image} alt={product.data.title}/>
+                        </div>
             
-                    <div className={Styles.imgParent}>
-                        <img src={product.data.image} alt={product.data.title}/>
-                    </div>
-        
-                    <div className={Styles.productDesc}>
-        
-                        <div className={Styles.productTitle}>
-                            <div className={Styles.likeParent}>
-                                {product.data.rating && (
-                                    <>
-                                        <BiHeart size="1.3em" style={{color:'red'}}/>
-                                        <p>{product.data.rating.rate}</p>
-                                        <span>({checkProductInLike(like , product.data) ? product.data.rating.count + 1 :product.data.rating.count  })</span>
-                                    </>
+                        <div className={Styles.productDesc}>
+            
+                            <div className={Styles.productTitle}>
+                                <div className={Styles.likeParent}>
+                                    {product.data.rating ? (
+                                        <>
+                                            <BiHeart size="1.3em" style={{color:'red'}}/>
+                                            <p>{product.data.rating.rate}</p>
+                                            <span>({checkProductInLike(like , product.data) ? product.data.rating.count + 1 :product.data.rating.count  })</span>
+                                        </>
+                                    ) : (
+                                        <SmallLoading color="red"/>
+                                    )}
+                                </div>
+                                {product.data.title ? (
+                                    <p dir="rtl">{product.data.title}</p>
+                                ) : (
+                                    <div className={Styles.productTitle_text} dir="rtl">
+                                        نام محصول : 
+                                        <SmallLoading color="red"/>
+                                    </div>
                                 )}
                             </div>
-                            <p dir="ltr">{product.data.title}</p>
-                        </div>
-        
-        
-                        <div className={Styles.productCategory} dir='rtl'>
-                            <p dir='rtl'>دسته بندی :  {product.data.category}</p>
-                            <button dir='ltr' onClick={()=> dispatch(addToLike(product.data))}>
-                                علاقه مندی ها
-                                <img src={checkProductInLike(like , product.data) ? RedHeart : blackHeart} alt='like'/>
-                            </button>
-                        </div>
-        
-                        <div className={Styles.productPrice}  dir='rtl'>
-                           
-                            <p dir='rtl' className={Styles.priceText}>قیمت : {product.data.price}$</p>
-                            <div className={Styles.productPrice_discount} dir='ltr'>
-                                {queryOffPrice.length > 1 && <p dir='rtl' className={Styles.productPrice_Percentage}> (%{queryOffPrice})</p>}
-                                {queryDiscount.length > 1 &&<p dir='rtl'>تخفیف : {queryDiscount}$</p>}
+            
+            
+                            <div className={Styles.productCategory} dir='rtl'>
+                                {product.data.category ? (
+                                    <p className={Styles.productCategory_text} dir='rtl'>دسته بندی :  {product.data.category}</p>
+                                ) : (
+                                    <div className={Styles.productCategory_text} dir='rtl'>
+                                        دسته بندی :  
+                                        <SmallLoading color="red"/> 
+                                    </div>
+                                )}
+                            
+                                <button dir='ltr' onClick={()=> dispatch(addToLike(product.data))}>
+                                    علاقه مندی ها
+                                    <img src={checkProductInLike(like , product.data) ? RedHeart : blackHeart} alt='like'/>
+                                </button>
+                            </div>
+            
+                            <div className={Styles.productPrice}  dir='rtl'>
+                                {product.data.price ? (
+                                    <p dir='rtl' className={Styles.priceText}>قیمت : {product.data.price}$</p>
+                                ) : (
+                                    <div dir='rtl' className={Styles.priceText}>
+                                        قیمت : 
+                                        <SmallLoading color="red"/>
+                                    </div>
+                                )}
+                                <div className={Styles.productPrice_discount} dir='ltr'>
+                                    {queryOffPrice.length > 1 && <p dir='rtl' className={Styles.productPrice_Percentage}> (%{queryOffPrice})</p>}
+                                    {queryDiscount.length > 1 &&<p dir='rtl'>تخفیف : {queryDiscount}$</p>}
+                                </div>
+                            </div>
+                            
+                            <div className={Styles.buyProductParent}>
+                                {checkProductInCart(cart , product.data)? (
+                                    <Link className={`${Styles.buyProduct_btn} ${Styles.buyProduct_Link}`} to='/cart'>سبد خرید</Link>
+                                    ) : (
+                                        <button className={`${Styles.buyProduct_btn} ${Styles.buyProduct_buy}`} onClick={()=>dispatch(AddQuantity(product.data))}>خرید محصول</button>
+                                    )
+                                }
                             </div>
                         </div>
-                        
-                        <div className={Styles.buyProductParent}>
-                            {checkProductInCart(cart , product)? (
-                                <Link className={`${Styles.buyProduct_btn} ${Styles.buyProduct_Link}`} to='/cart'>سبد خرید</Link>
-                                ) : (
-                                    <button className={`${Styles.buyProduct_btn} ${Styles.buyProduct_buy}`} onClick={()=>dispatch(AddQuantity(product))}>خرید محصول</button>
-                            )}
-                        </div>
+            
                     </div>
         
-                </div>
-        
-                <div className={Styles.productDescribtion}>
-                        <p dir='rtl'>توضیحات محصول : </p>
-                        <p dir='ltr'>{product.data.description}</p>
-                </div>
-        
-        
+                    <div className={Styles.productDescribtion}>
+                        {product.data.description ? (
+                            <>
+                                <p dir='rtl'>توضیحات محصول : </p>
+                                <p dir='ltr'>{product.data.description}</p>
+                            </>
+                        ) : (
+                            <div dir='rtl' className={Styles.productDescribtion_loading}>
+                                <p>توضیحات محصول : </p>
+                                <SmallLoading color='red'/>
+                            </div>
+                        )}
+                           
+                    </div>
+            
                     <Feature/>
+
                     <div className={Styles.Slider_categoryParent}>
                         <p  className={Styles.Slider_categoryLink} dir="rtl"> 
-                           محصولات پیشنهادی
+                            محصولات پیشنهادی
                             <BsFillCaretLeftFill className={Styles.Slider_categoryParent_icon}/>
                         </p>
                         <div className={Styles.categoryLine_parent}>
                             <div></div>     <div></div>     <div></div>     <div></div>
                         </div>
                     </div>
-        
+            
                     <div className='swiperParent_ProductPage' dir="ltr">
                         <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
                             breakpoints= {{
@@ -182,7 +215,7 @@ const ProductPage = () => {
                     </div>
         
                 </div>
-            ) : (Container())}
+            )}
 
            
         </>
