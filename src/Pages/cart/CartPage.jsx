@@ -64,7 +64,7 @@ const CartPage = () => {
                 </div>
             )
         }else{
-            resualt= <div className={Styles.alert_product}>
+            resualt = <div className={Styles.alert_product}>
                 <p>میرم</p>
                 <Link to="/">فروشگاه</Link>
                 <p>به</p>
@@ -80,7 +80,7 @@ const CartPage = () => {
         {renderProducts()}
 
 
-        {cart.length ===0 && (
+        {cart.length === 0 && (
             <div className={Styles.allParent}>
 
                 <div className={Styles.Slider_categoryParent}>
@@ -94,24 +94,12 @@ const CartPage = () => {
 
                 <div className='swiperParent_CartPage' dir="ltr">
                     <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
-                        breakpoints= {{
-                            0: {
-                            slidesPerView: 1,
-                            },
-                            630: {
-                            slidesPerView: 2,
-                            },
-                            900: {
-                            slidesPerView: 3,
-                            },
-                            1260: {
-                                slidesPerView: 4,
-                            }
-                            
-                        }} autoplay={{delay: 2500}}>
+                        breakpoints= {{ 0: { slidesPerView: 1},630: {slidesPerView: 2,},900: {slidesPerView: 3,},1260: { slidesPerView: 4,}}}
+                        autoplay={{delay: 2500}}>
+                    
                             
                         
-                        {products ? products.slice(10).map(
+                        {products.length > 0 ? products.slice(10).map(
                             item=>{return(
                                 <SwiperSlide key={item.id} >
                                     <ProductListItem isLink={true} item={item} offPrice={item.offPrice}/>
