@@ -1,66 +1,63 @@
-import axios from "axios";
-import { useEffect, useState , useRef } from "react";
+
+import React,{ useEffect, useState , useRef } from "react";
 import { useQuery } from "../../hooks/useQuery";
 import Styles from './CategoryPage.module.css'
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Container from '../../common/Loding/Loding'
 import _ from "lodash"
+import { useDispatch } from "react-redux";
+import { fetchProductsCategory } from "../../redux/products category/productsCategoryActions";
+import { useSelector } from "react-redux";
 
 
 const CategoryPage = ({location}) => {
-    const [products,setProducts] = useState(null)
-    const [productsAction , setProductsAction] = useState(null)
+    const products = useSelector(state => state.productsCategory)
+    
     
     const query = useQuery().get('name');
     const isSpecialSale = location.name === "specialSale";
-    const [isProductsOnSearched , setIsProductsOnSearched] = useState(false)
     
+    
+    const [productsAction , setProductsAction] = useState(products.data)
+    const [isProductsOnSearched , setIsProductsOnSearched] = useState(false)
+    const  [searchData , setSearchData] = useState(null)
+
+
+
+    const dispatch = useDispatch()
 
     const inputSearchRef = useRef()
 
 
     useEffect(()=>{
-        const getProducts = async() => {
-            if(query !== "" && query.length >0){
-                await axios.get(`https://fakestoreapi.com/products/category/${query}`).then(products => {
-
-                    if(products.data){
-                        const newProucts = [...products.data]
-
-                        for(let i = 0 ; i < newProucts.length ; i++){
-                            newProucts[i].offPrice = 0
-                            newProucts[i].discount = 0
-                        }
-
-                        for(let i = 0 ; i <= Math.floor(newProucts.length/2) ; i++){
-                            const index = Math.floor(Math.random()*newProucts.length);
-                            newProucts[index].offPrice = Math.floor(Math.random()*18) + 1
-                            newProucts[index].discount = Math.floor(Math.random()*200) + 1
-                        }
-                        setProducts(newProucts)
-                        setProductsAction(newProucts)
-                    }
-                }).catch()
-            }
-        }
-        getProducts()
+        dispatch(fetchProductsCategory(query))
     },[query])
 
+    useEffect(()=>{
+        const item = products.data ? products.data.filter(e => e.title.toLowerCase().includes(searchData && searchData.toLowerCase())) : []
+       
+        if(searchData&&searchData.length > 0){
+            item.length === 0 ? setIsProductsOnSearched(true)  : setIsProductsOnSearched(false)
+            setProductsAction(item)
+        }else{
+            setProductsAction(products.data)
+            setIsProductsOnSearched(false)
+        }
+    },[searchData , products])
 
     const renderProducts = ()=>{
         let resualt = null;
 
-        if(productsAction && productsAction){
-            resualt = productsAction.map((item,index) =>{return(
-                <div key={index}>
-                    <ProductListItem  isLink={true} item={item}/>
-                </div>
-            )})
-        }else if(productsAction === null){
+        if(productsAction.length > 0){
+            resualt = productsAction.map((item,index) =>{
+                return(
+                    <div key={index}>
+                        <ProductListItem  isLink={true} item={item}/>
+                    </div>
+                )
+            })
+        }else{
             resualt = Container()
-        }            
-        if(productsAction === ""){
-            resualt = <p>محصولی در این دسته بندی ثبت نشده است</p>
         }
 
         return resualt;
@@ -68,42 +65,24 @@ const CategoryPage = ({location}) => {
 
     const sortHandler = (e)=>{
         if(e === "highest"){
-            setProductsAction(_.orderBy(products,"price",'desc'))
+            setProductsAction(_.orderBy(products.data,"price",'desc'))
         }
         else if(e === "lowest"){
-            setProductsAction(_.orderBy(products,"price",'asc'))
+            setProductsAction(_.orderBy(products.data,"price",'asc'))
         }
-        else if(e === "highestOffPrice"){
-            const cloneProducts = [...products]
-            const s = cloneProducts&&cloneProducts.filter(e => e.discount >= 0)
-            const p = _.orderBy(s,"discount",'desc')
-            setProductsAction(p)
+        else if(e === "highestDiscount"){
+            const filterProducts = products.data && products.data.filter(product => product.discount >= 0)
+            const sortProducts = _.orderBy(filterProducts,"discount",'desc')
+            setProductsAction(sortProducts)
         }
-        else if(e === "filterShegefthAngiz"){
-            const cloneProducts = [...products]
-            const s = cloneProducts&&cloneProducts.filter(e => e.offPrice !== 0)
-            setProductsAction(s)
+        else if(e === "amazing"){
+            const sortAmazing = products.data && products.data.filter(product => product.offPrice !== 0)
+            setProductsAction(sortAmazing)
         }
     }
 
-    const  [searchData , setSearchData] = useState(null)
 
-    useEffect(()=>{
-        const item = products&&products.filter(item => item.title.toLowerCase().includes(searchData.toLowerCase()))
 
-        if(searchData&&searchData.length > 0){
-            if(item.length === 0){
-                setIsProductsOnSearched(true)
-            }else{
-                setIsProductsOnSearched(false)
-            }
-            setProductsAction(item)
-        }else{
-            setProductsAction(products)
-            setIsProductsOnSearched(false)
-
-        }
-    },[searchData])
 
     return ( 
         <>
@@ -111,8 +90,8 @@ const CategoryPage = ({location}) => {
                 <div className={Styles.filterParent}>
                     <div className={Styles.btnAmazingProducts_parent}>
                         <div>
-                            <button className={Styles.shegefthAngiz} onClick={()=> sortHandler("filterShegefthAngiz")}> محصولات شگفت انگیز</button>
-                            <button className={Styles.shegefthAngiz} onClick={()=> sortHandler("highestOffPrice")}>بیشترین تخفیف</button>
+                            <button className={Styles.shegefthAngiz} onClick={()=> sortHandler("amazing")}> محصولات شگفت انگیز</button>
+                            <button className={Styles.shegefthAngiz} onClick={()=> sortHandler("highestDiscount")}>بیشترین تخفیف</button>
                             <p>  : محصولات ویژه </p>
                         </div>
 
@@ -170,4 +149,4 @@ const CategoryPage = ({location}) => {
     );
 }
  
-export default CategoryPage;
+export default React.memo(CategoryPage);

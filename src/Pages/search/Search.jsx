@@ -7,11 +7,14 @@ import Container from '../../common/Loding/Loding'
 import { Link } from "react-router-dom";
 
 import { BsFillCaretLeftFill } from "react-icons/bs";
+import { useDispatch ,useSelector } from "react-redux";
+import { fetchProducts } from "../../redux/products/ProductsActions";
 
 const Search = () => {
 
+    const dispatch = useDispatch()
 
-    const [products , setProducts] = useState(null)
+    const products = useSelector(state => state.products.data)
 
     const query = useQuery().get("productName");
 
@@ -20,24 +23,9 @@ const Search = () => {
 
 
     useEffect(()=>{
-        const getAllProducts = async()=>{
-            await axios.get('https://fakestoreapi.com/products').then(product =>{
-                return product.data.length > 0 ? setProducts(product.data) : setProducts('')
-            }).catch();
-        }
-
-        getAllProducts()
+        dispatch(fetchProducts())
     },[])
 
-
-
-    if(products){
-        for(let i = 0 ; i <= Math.floor(products.length/2) ; i++){
-            const index = Math.floor(Math.random()*products.length);
-            products[index].offPrice = Math.floor(Math.random()*50) + 1
-            products[index].discount = Math.floor(Math.random()*200) + 1
-        }
-    }
 
 
     const renderProduct = ()=>{

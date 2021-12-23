@@ -150,9 +150,10 @@ const ProductPage = () => {
                             </div>
                             
                             <div className={Styles.buyProductParent}>
-                                {checkProductInCart(cart , product.data)? (
-                                    <Link className={`${Styles.buyProduct_btn} ${Styles.buyProduct_Link}`} to='/cart'>سبد خرید</Link>
-                                    ) : (
+                                {
+                                    checkProductInCart(cart , product.data) ? (
+                                        <Link className={`${Styles.buyProduct_btn} ${Styles.buyProduct_Link}`} to='/cart'>سبد خرید</Link>
+                                        ) : (
                                         <button className={`${Styles.buyProduct_btn} ${Styles.buyProduct_buy}`} onClick={()=>dispatch(AddQuantity(product.data))}>خرید محصول</button>
                                     )
                                 }
