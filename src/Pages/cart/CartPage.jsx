@@ -2,7 +2,9 @@ import Styles from './CartPage.module.css'
 
 import { Link } from 'react-router-dom';
 import { BsFillCaretLeftFill } from "react-icons/bs";
-import { useEffect, useState } from 'react';
+import { FiTrash2 } from "react-icons/fi";
+
+import { useEffect } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore ,{Navigation , Autoplay}from 'swiper'
@@ -11,18 +13,17 @@ import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/navigation/navigation.scss'
 import './cartSlider.css'
 
-import axios from 'axios';
 
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
 import CartItems from '../../common/Cart Item/CartItems';
 
 import Feature from '../../Components/Features/Feature';
 import Checkout from './Checkout';
-import { useSelector } from 'react-redux';
 
-import { FiTrash2 } from "react-icons/fi";
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { deleteAllProduct } from '../../redux/cart/cartActions';
+import { fetchProducts } from '../../redux/products/ProductsActions';
 
 
 SwiperCore.use([Autoplay , Navigation]);
@@ -30,29 +31,12 @@ SwiperCore.use([Autoplay , Navigation]);
 const CartPage = () => {
     const cart = useSelector(state => state.cart.cart)
 
-    const [products , setProducts] = useState(null)
+    const products = useSelector(state => state.products.data)
     const dispatch = useDispatch()
 
     useEffect(()=>{
-    const getAllProducts = async()=>{
-        try {
-             await axios.get('https://fakestoreapi.com/products').then(products =>{
-                if(products.data){
-                    const cloneProducts = [...products.data]
-                    for(let i = 0 ; i <= Math.floor(cloneProducts.length/3) ; i++){
-                        const index = Math.floor(Math.random()*cloneProducts.length);
-                        cloneProducts[index].offPrice = Math.floor(Math.random()*50) + 1
-                        cloneProducts[index].discount = Math.floor(Math.random()*200) + 1
-                    }
-                    setProducts(cloneProducts)
-                }
-            }).catch();
-        } catch (error) {
-            setProducts(null)
-        }
-    }
-    getAllProducts()
-},[])
+        dispatch(fetchProducts())
+    },[])
 
 
     const renderProducts = ()=> {
@@ -124,13 +108,10 @@ const CartPage = () => {
                                 slidesPerView: 4,
                             }
                             
-                        }}
+                        }} autoplay={{delay: 2500}}>
+                            
                         
-                        autoplay={{
-                            delay: 2500,
-                        }}
-                        >
-                        {products ? products.slice(Math.floor(5+Math.random()*10)).map(
+                        {products ? products.slice(10).map(
                             item=>{return(
                                 <SwiperSlide key={item.id} >
                                     <ProductListItem isLink={true} item={item} offPrice={item.offPrice}/>
