@@ -108,7 +108,7 @@ const ProductPage = () => {
                                     )}
                                 </div>
                                 {product.data.title ? (
-                                    <p dir="rtl">{product.data.title}</p>
+                                    <p dir="ltr">{product.data.title}</p>
                                 ) : (
                                     <div className={Styles.productTitle_text} dir="rtl">
                                         نام محصول : 
