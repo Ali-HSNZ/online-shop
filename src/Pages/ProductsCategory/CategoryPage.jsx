@@ -137,7 +137,7 @@ const CategoryPage = ({location}) => {
                 <div className={Styles.noDataOnSearched}>
                     <div className={Styles.noDataOnSearched_text} dir='rtl'>
                         محصولی با اسم 
-                        <p style={{color:'black'}}> hello </p>
+                        <p style={{color:'black'}}>{inputSearchRef.current.value}</p>
                         پیدا نشد
                     </div>
                 </div>
