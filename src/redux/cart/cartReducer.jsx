@@ -19,7 +19,6 @@ const cartReducer = (state = initialState , action) =>{
             const findItemIndex  = cloneState.findIndex(product => product.id === action.payLoad.id)
             if(findItemIndex < 0){
                 cloneState.push({...action.payLoad ,  quantity : 1})
-                toast.success("این محصول به سبد خرید شما اضافه شد")
             }else{
                 const cloneItem = {...state.cart[findItemIndex]};
                 cloneItem.quantity++;
