@@ -11,10 +11,26 @@
     padding: 0 20px;
     
     text-align: center;
+    
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.parent p {
+.parent p{
     font-family: iransansweb;
     font-size: 12px;
     color: white;
-    padding: 7px 0;
+    padding: 10px 0;
+    margin-right: 5px;
+
+}
+.parent p:nth-child(1){
+    color: rgb(255, 255, 255);
+    font-family: iransansweb;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.158);
+    padding: 4px 10px;
+    border-radius: 10px;
 }

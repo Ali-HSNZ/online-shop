@@ -4,9 +4,10 @@ import Styles from './Footer.module.css'
 class Footer extends React.Component{
   render(){
     return (  
-        <div className={Styles.parent}>
-            <p>Contact Us : Aliatraby@gmail.com</p>
-        </div>
+        <a className={Styles.parent} href = "mailto:Aliatraby@gmail.com">
+            <p> ارسال </p>
+            <p>Aliatraby@gmail.com : تماس با ما  </p>
+        </a>
     );
   }
 }
