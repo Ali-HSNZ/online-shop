@@ -34,7 +34,7 @@ const Search = () => {
         if(filterdProducts.length > 0){
             resualt = filterdProducts.map(products => (
                 <div  key={products.id}>
-                    <ProductListItem isLink={true} item={products} offPrice={products.offPrice}/>
+                    <ProductListItem item={products} offPrice={products.offPrice}/>
                 </div>
             ))
         }

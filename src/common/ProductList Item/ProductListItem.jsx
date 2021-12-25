@@ -14,7 +14,7 @@ import { addToLike } from '../../redux/like/likeActions';
 import { AddQuantity } from '../../redux/cart/cartActions';
 
 
-const ProductListItem = ({item , isLink}) => {
+const ProductListItem = ({item}) => {
 
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart.cart)
@@ -53,15 +53,10 @@ const ProductListItem = ({item , isLink}) => {
                     </button>
                 </div>
 
-                {isLink === true ? (
-                    <Link to={{pathname:`/product` , search : `id=${item.id}&discount=${item.discount ? item.discount : 0}&offPrice=${item.offPrice ? item.offPrice : 0}`}} className={Styles.imgParent}>
-                        <img src={item.image} alt={item.title}/>
-                    </Link>
-                ) : (
-                    <div className={Styles.imgParent}>
-                        <img src={item.image} alt={item.title}/>
-                    </div>
-                )}
+                <Link to={{pathname:`/product` , search : `id=${item.id}&discount=${item.discount ? item.discount : 0}&offPrice=${item.offPrice ? item.offPrice : 0}`}} className={Styles.imgParent}>
+                    <img src={item.image} alt={item.title}/>
+                </Link>
+
 
 
                     

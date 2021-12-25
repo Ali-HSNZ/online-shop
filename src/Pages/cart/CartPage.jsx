@@ -102,7 +102,7 @@ const CartPage = () => {
                         {products.length > 0 ? products.slice(10).map(
                             item=>{return(
                                 <SwiperSlide key={item.id} >
-                                    <ProductListItem isLink={true} item={item} offPrice={item.offPrice}/>
+                                    <ProductListItem item={item} offPrice={item.offPrice}/>
                                 </SwiperSlide>
                         )}) : <p className={Styles.isNotProductText} dir='rtl'>در حال بارگیری محصولات ...</p>}
                     </Swiper>

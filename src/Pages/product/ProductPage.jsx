@@ -52,7 +52,6 @@ const ProductPage = () => {
     const queryDiscount = useQuery().get('discount');
     const queryOffPrice = useQuery().get('offPrice');
 
-    const [isLoading , setIsLoading] = useState(false)
 
 //================================
 
@@ -70,7 +69,6 @@ const ProductPage = () => {
     useEffect(()=>{
         checkProductInCart(cart , product)
         dispatch(fetchProducts())
-        product.loading === true ? setIsLoading(true) : setIsLoading(false)
     },[cart , product])
 
     useEffect(()=>{

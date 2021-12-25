@@ -16,7 +16,7 @@ const FavoriteProducts = () => {
                         {filterLike.map((product , index) => {
                             return(
                                 <div key={index}>
-                                    <ProductListItem isLink={true} item={product}/>
+                                    <ProductListItem  item={product}/>
                                 </div>
                             )
                         })}

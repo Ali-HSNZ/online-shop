@@ -52,7 +52,7 @@ const CategoryPage = ({location}) => {
             resualt = productsAction.map((item,index) =>{
                 return(
                     <div key={index}>
-                        <ProductListItem  isLink={true} item={item}/>
+                        <ProductListItem item={item}/>
                     </div>
                 )
             })
