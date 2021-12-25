@@ -36,7 +36,7 @@ const CategoryPage = ({location}) => {
     useEffect(()=>{
         const item = products.data ? products.data.filter(e => e.title.toLowerCase().includes(searchData && searchData.toLowerCase())) : []
        
-        if(searchData&&searchData.length > 0){
+        if(searchData && searchData.length > 0){
             item.length === 0 ? setIsProductsOnSearched(true)  : setIsProductsOnSearched(false)
             setProductsAction(item)
         }else{
@@ -48,7 +48,7 @@ const CategoryPage = ({location}) => {
     const renderProducts = ()=>{
         let resualt = null;
 
-        if(productsAction && productsAction.length > 0){
+        if(productsAction.length > 0 && products){
             resualt = productsAction.map((item,index) =>{
                 return(
                     <div key={index}>
@@ -56,7 +56,8 @@ const CategoryPage = ({location}) => {
                     </div>
                 )
             })
-        }else{
+        }
+        else if (isProductsOnSearched === false){
             resualt = Container()
         }
 
@@ -122,7 +123,7 @@ const CategoryPage = ({location}) => {
                 </>
             ) : (
                 <>
-                    {renderProducts().length > 0 && (
+                    {productsAction.length > 0 && (
                         <div className={Styles.categoryStyle}>
                         <p>{query}</p>
                             <div className={Styles.categoryLine_parent}>

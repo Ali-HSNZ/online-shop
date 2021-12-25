@@ -6,17 +6,14 @@ import {
 } from './productsCategoryTypes'
 
 const fetchProductsCategoryRequest = () => {
-    console.log("fetchProductsCategoryRequest")
     return {type : FETCH_PRODUCTS_CATEGORY_REQUEST}
 }
 
 const fetchProductsCategorySuccess = (products) => {
-    console.log("fetchProductsCategorySuccess")
     return {type : FETCH_PRODUCTS_CATEGORY_SUCCESS , payLoad : products}
 }
 
 const fetchProductsCategoryFailure = (error) => {
-    console.log("fetchProductsCategoryFailure")
     return {type : FETCH_PRODUCTS_CATEGORY_FAILURE , payLoad : error}
 }
 
