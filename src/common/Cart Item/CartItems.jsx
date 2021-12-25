@@ -6,6 +6,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddQuantity, DecrimentQuantity, deleteProduct } from '../../redux/cart/cartActions';
+import { Link } from 'react-router-dom';
 
 const CartItems = ({product , checkout}) => {
 
@@ -38,8 +39,8 @@ const CartItems = ({product , checkout}) => {
                         <img src={product.image} alt="product img"/>
                     </div>
 
-                    <div className={Styles.describrion }>
-                        <p className={Styles.describrion_title}>{product.title}</p>
+                    <div className={Styles.describrion}>
+                        <Link className={Styles.describrion_title} to={{pathname:"/product" , search:`id=${product.id}&discount=${product.discount ? product.discount : 0}&offPrice=${product.offPrice ? product.offPrice : 0}`}}>{product.title}</Link>
                         <div className={Styles.price_quantityParent}>
                             <div>
                                 {product.discount &&  <div className={Styles.describrion_offPrice}><p>تخفیف  : {product.discount}$</p></div>}
