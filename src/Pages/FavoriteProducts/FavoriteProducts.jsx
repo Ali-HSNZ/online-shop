@@ -10,15 +10,19 @@ const FavoriteProducts = () => {
 
     return ( 
         <>
-            {filterLike.length > 0 && <div className={Styles.parent}>
-                {filterLike.length > 0 && filterLike.map((product , index) => {
-                    return(
-                        <div key={index}>
-                            <ProductListItem isLink={true} item={product}/>
-                        </div>
-                    )
-                })}
-            </div>}
+            {
+                filterLike.length > 0 && (
+                    <div className={Styles.parent}>
+                        {filterLike.map((product , index) => {
+                            return(
+                                <div key={index}>
+                                    <ProductListItem isLink={true} item={product}/>
+                                </div>
+                            )
+                        })}
+                    </div>
+                )
+            }
             {filterLike.length === 0 && (
                 <div className={Styles.alert_product}>
                 <p>میرم</p>
