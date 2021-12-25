@@ -31,29 +31,30 @@ const Search = () => {
     const renderProduct = ()=>{
         let resualt = null;
 
-        if(filterdProducts && filterdProducts.length > 0){
+        if(filterdProducts.length > 0){
             resualt = filterdProducts.map(products => (
                 <div  key={products.id}>
                     <ProductListItem isLink={true} item={products} offPrice={products.offPrice}/>
                 </div>
             ))
         }
-        else if(products === null){
+        else if(products.length < 1){
             resualt = Container()
         }
         return resualt
     }
     return ( 
         <>
-            {filterdProducts&&filterdProducts.length === 0 && (
+            {filterdProducts.length === 0 && products.length > 0 && (
                 <div className={Styles.alert_product}>
-                <p>میرم</p>
-                <Link to="/">فروشگاه</Link>
-                <p>به</p>
-                <BsFillCaretLeftFill/>
-               <p> محصولی با این اسم پیدا نشد</p>
-            </div>
+                    <p>میرم</p>
+                    <Link to="/">فروشگاه</Link>
+                    <p>به</p>
+                    <BsFillCaretLeftFill/>
+                    <p> محصولی با این اسم پیدا نشد</p>
+                </div>
             )}
+        
             <div className={Styles.parent}>
                 {renderProduct()}
             </div>

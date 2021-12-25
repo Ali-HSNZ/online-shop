@@ -48,7 +48,7 @@ const CategoryPage = ({location}) => {
     const renderProducts = ()=>{
         let resualt = null;
 
-        if(productsAction.length > 0){
+        if(productsAction && productsAction.length > 0){
             resualt = productsAction.map((item,index) =>{
                 return(
                     <div key={index}>
