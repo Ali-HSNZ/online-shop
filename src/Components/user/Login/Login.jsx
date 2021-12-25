@@ -4,20 +4,26 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
 import { useState } from 'react';
-import { userLogin } from '../../../services/loginService';
 import { toast } from 'react-toastify';
-import { UserDispatch} from '../../../Context/userProvider/UserProvider';
 import SmallLoading from '../../../common/small Loding/SmallLoading'
 import {BiHide , BiShow , BiX } from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { fetchUserLogin } from "../../../redux/user/userActions";
+
+import { User , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../../Context/userProvider/UserProvider';
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
+const NewUserLogin = ({setIsUserSignup}) => {
 
-const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
-
-    const dispatchUser = UserDispatch()
+    const setIsUserLogin = IsCalledUserLoginDispatch()
     
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.userLogin.data)
+
     const [isLoading , setIsLoading] = useState(false)
     const [isShowPass , setIsShowPass] =  useState(false)
 
@@ -35,29 +41,25 @@ const NewUserLogin = ({setIsUserLogin , setIsUserSignup}) => {
     })
 
 
-    const onSubmit = async(values) => {
-        const {email , password} = values
-
-        const userData = {email ,password}
-
-        setIsLoading(true)
-       
-        try {
-            const data = await userLogin(userData)     
-            setIsLoading(false)
-            toast.success("با موفقیت وارد شدید")
-            dispatchUser(JSON.parse( data.config.data))
-            console.log(data)
-
-            if(data.config.data){
-                setIsUserLogin(false)
-            }
-        } catch (e) {
-            toast.error(e.response.data.message)
-            console.log(e.response.data)
-            setIsLoading(false)
-        }
+    const onSubmit = (values) => {
+        // setIsLoading(true)
+        // try {
+        //     const data = await userLogin(values)     
+        //     setIsLoading(false)
+        //     toast.success("با موفقیت وارد شدید")
+        //     dispatchUser(JSON.parse( data.config.data))
+        //     if(data.config.data){
+        //         setIsUserLogin(false)
+        //     }
+        // } catch (e) {
+        //     toast.error(e.response.data.message)
+        //     setIsLoading(false)
+        // }
+        dispatch(fetchUserLogin(values))
     }
+    useEffect(()=>{
+        if(user) setIsUserLogin(false)
+    },[user])
 
 
 

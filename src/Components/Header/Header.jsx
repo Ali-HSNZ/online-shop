@@ -18,10 +18,10 @@ import { useSelector } from 'react-redux';
 
 
 const Header = () => {
-    const user = User()
+    // const user = User()
 
     const cart = useSelector(state => state.cart.cart)
-
+    const user = useSelector(state => state.userLogin.data)
 
     const [closeSearch , setCloseSearch] = useState(false)
     const [categories , setCategories] = useState(null)
@@ -41,6 +41,7 @@ const Header = () => {
         axios.get("https://fakestoreapi.com/products/categories").then(e => setCategories(e.data)).catch();
     },[])
 
+    console.log("user : ",user)
 
     return (
         <>
@@ -55,8 +56,8 @@ const Header = () => {
                         {cart && cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
-                    <button className={Styles.iconParent_Button} onClick={()=> {return user ?  setIsUserProfile(true)  & setIsSearch(false) &  setIsMenu(false):  setIsUserLogin(true) &  setIsSearch(false) & setIsMenu(false)}}>
-                        {user ? <FaUserCheck className={Styles.iconStyle} size="1.9em"/> :  <BiUser  className={Styles.iconStyle} size="1.9em"/>}
+                    <button className={Styles.iconParent_Button} onClick={()=> {return  user ? setIsUserProfile(true)  & setIsSearch(false) &  setIsMenu(false):  setIsUserLogin(true) &  setIsSearch(false) & setIsMenu(false)}}>
+                        { user ? <FaUserCheck className={Styles.iconStyle} size="1.9em"/> :  <BiUser  className={Styles.iconStyle} size="1.9em"/>}
                     </button>
 
 

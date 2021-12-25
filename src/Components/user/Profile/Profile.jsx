@@ -1,12 +1,18 @@
 import {BiX} from "react-icons/bi";
 import  UserStyles from'../User.module.css'
-import { User , UserDispatch} from '../../../Context/userProvider/UserProvider';
+
 import React from 'react';
 import { AiFillCaretUp} from "react-icons/ai";
 import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from "react-redux";
+import { userLogout } from "../../../redux/user/userActions";
+
+
 const UserProfile = ({setIsUserProfile  })=> {
-    const user = User()
-    const userDispatch = UserDispatch()
+
+    const user = useSelector(state => state.userLogin.data)
+
+    const dispatch = useDispatch()
     
     return(
         <React.Fragment>
@@ -30,7 +36,7 @@ const UserProfile = ({setIsUserProfile  })=> {
                             <p className={UserStyles.userDetails_title}> : ایمیل</p>
                         </div>
 
-                    <button onClick={()=> {return userDispatch(null) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${UserStyles.submitBtn} ${UserStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
+                    <button onClick={()=> {return dispatch(userLogout()) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${UserStyles.submitBtn} ${UserStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
 
                 </div>
             </div>

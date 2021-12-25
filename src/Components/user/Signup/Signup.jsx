@@ -48,7 +48,6 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
         try {
             const data = await userSignup(userData)
             setIsLoading(false)
-            console.log(data)
              toast.success('ثبت نام شما با موفقیت انجام شد')
              dispatchUser(JSON.parse( data.config.data))
              if(data){

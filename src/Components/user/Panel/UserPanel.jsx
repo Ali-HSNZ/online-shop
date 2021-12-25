@@ -6,7 +6,6 @@ import { AiFillCaretUp } from "react-icons/ai";
 
 const UserPanel = ({setIsUserLogin , isUserLogin , isUserSignup , setIsUserSignup})=>{
 
-    console.log("isUserLogin => ",isUserLogin ," | ", "isUserSignup => ",isUserSignup)
 
     return(
         <React.Fragment>

@@ -7,6 +7,12 @@
     padding: 0 20px 20px 0;
     margin-top: 20px;
 }
+.isNotProducts{
+    text-align: center;
+    font-family: iransansweb;
+    color: rgb(194, 0, 0);
+    margin-bottom: 20px;
+}
 .checkoutParent{
     width: 420px;
     height: 100%;

@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 const Checkout = ()=>{
 
     const cart = useSelector(state => state.cart.cart)
+    const user = useSelector(state => state.userLogin.data)
+
 
     const TotalPriceHandler = (originalTotalPrice)=>{
         var price = originalTotalPrice;    
@@ -38,7 +40,6 @@ const Checkout = ()=>{
     
 
     const setIsUserLogin =  IsCalledUserLoginDispatch()
-    const user = User()
 
     const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
 

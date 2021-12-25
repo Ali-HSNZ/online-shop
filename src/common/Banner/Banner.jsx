@@ -12,7 +12,7 @@ const Banner = ({category}) => {
     return (  
         <div className={Styles.parent}>
             <Link to={`/category?name=${category}`}>
-                <img src={categoryImage} alt="product img"/>
+                <img src={categoryImage} alt={category === "jewelery" ? "jewelery" : "womanClouting" }/>
             </Link>
         </div>
     );
