@@ -7,9 +7,15 @@ const Checkout = (props) => {
    const  user = useSelector(state => state.userLogin.data)
     const cart = useSelector(state => state.cart.cart)
 
+    useEffect(()=> {
+        if(!user){
+            props.history.push("/")
+        }
+    },[user])
+
     return (  
         <>
-            {user ?(
+            {user && (
                 <div className={Styles.parent}>
                     <div className={Styles.userInfo}>
     
@@ -23,10 +29,10 @@ const Checkout = (props) => {
                     </div>
     
                     <div className={Styles.cartInfo}>
-                            {cart.length ? cart.map(product =>  <CartItems checkout={true} product={product}/> ) : <p className={Styles.isNotProducts}>محصولی در سبد خرید شما نیست</p>}
+                            {cart.length ? cart.map(product =>  <CartItems checkout={true} key={product.id} product={product}/> ) : <p className={Styles.isNotProducts}>محصولی در سبد خرید شما نیست</p>}
                     </div>
                 </div>
-            ) : props.history.push("/")}
+            )}
         </>
     );
 }

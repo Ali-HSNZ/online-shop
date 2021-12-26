@@ -17,9 +17,7 @@ import { userLoginAutomatic, userLoginSuccess } from '../../redux/user/userActio
 
 
 
-
 const Header = () => {
-    // const user = User()
 
     const cart = useSelector(state => state.cart.cart)
     const user = useSelector(state => state.userLogin.data)
@@ -39,10 +37,6 @@ const Header = () => {
 
     const dispatch = useDispatch()
 
-
-    useEffect(()=>{
-        axios.get("https://fakestoreapi.com/products/categories").then(e => setCategories(e.data)).catch();
-    },[])
 
     useEffect(()=> {
         const userData = JSON.parse(localStorage.getItem("user"))
@@ -90,7 +84,7 @@ const Header = () => {
             {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
             {isMenu === true && (
                 <div className={Styles.menuParent} dir='rtl'>
-                    <Menu categories={categories} setIsMenu={setIsMenu} isMenu={isMenu}/>
+                    <Menu setIsMenu={setIsMenu} isMenu={isMenu}/>
                 </div>
             )}
             {isSearch === true && !closeSearch && <SearchComponent setIsSearch={setIsSearch} setIsMenu={setIsMenu}/>}

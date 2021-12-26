@@ -1,14 +1,29 @@
+import Styles from './Menu.module.css'
+
 import {BiHeart} from "react-icons/bi";
 import { Link, NavLink } from 'react-router-dom';
 import React from 'react';
 import {AiFillStar} from "react-icons/ai";
 import SmallLoading from '../../common/small Loding/SmallLoading';
-import Styles from './Menu.module.css'
 import logoBrown from '../../image/logoBrown.png'
 
+import { useDispatch  , useSelector} from "react-redux";
 
-const Menu = ({categories , setIsMenu}) => {
-    const filteredCategories = categories&&categories.filter( e => e !== "men's clothing")
+import { useEffect } from "react";
+
+import {fetchingCategories} from '../../redux/categories/categoryActions'
+
+
+const Menu = ({setIsMenu}) => {
+
+    const dispatch = useDispatch()
+    const categories = useSelector(state => state.categories.data)
+    const filteredCategories = categories && categories.filter( e => e !== "men's clothing")
+
+    useEffect(()=>{
+        dispatch(fetchingCategories)
+    },[])
+
     return (
        <>
             <div className={Styles.parent} onClick={()=>setIsMenu(false)}></div>
@@ -20,7 +35,7 @@ const Menu = ({categories , setIsMenu}) => {
                     </NavLink>
                 </div>
 
-                <div className={Styles.likeParent} >
+                <div className={Styles.likeParent}>
                     <NavLink to={`/favoriteProducts`} className={Styles.likeParent_link} onClick={()=> setIsMenu(false)}>
                         <BiHeart className={Styles.iconStyle} size="1.7em"/> 
                         پسندیده ها         
@@ -29,7 +44,7 @@ const Menu = ({categories , setIsMenu}) => {
 
                 <div className={Styles.categoryParent}>
                     <div className={Styles.categoryParent_title}>
-                         {!filteredCategories && <SmallLoading color='red'/>}
+                         {categories.length === 0 && <SmallLoading color='red'/>}
                        <p dir="rtl" className={Styles.categoryTitle}>دسته بندی ها : </p>
                     </div>
                     {filteredCategories && filteredCategories.map((categories , index) => (
