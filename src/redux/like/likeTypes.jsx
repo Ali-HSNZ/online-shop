@@ -1,1 +1,1 @@
-export const ADD_TO_LIKE = ()=> "ADD_TO_LIKE"
+export const ADD_TO_LIKE = "ADD_TO_LIKE"

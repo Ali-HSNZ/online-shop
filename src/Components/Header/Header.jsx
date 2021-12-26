@@ -38,9 +38,7 @@ const Header = () => {
 
     useEffect(()=> {
         const userData = JSON.parse(localStorage.getItem("user"))
-        if(userData) {
-            dispatch(userLoginAutomatic(userData))
-        }
+        if(userData) dispatch(userLoginAutomatic(userData))
     },[dispatch])
 
 
