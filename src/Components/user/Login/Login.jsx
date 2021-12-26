@@ -10,7 +10,7 @@ import {BiHide , BiShow , BiX } from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { fetchUserLogin } from "../../../redux/user/userActions";
+import { fetchUserLogin, userLoginSuccess } from "../../../redux/user/userActions";
 
 import { User , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../../Context/userProvider/UserProvider';
 import { useSelector } from "react-redux";
@@ -22,7 +22,7 @@ const NewUserLogin = ({setIsUserSignup}) => {
     const setIsUserLogin = IsCalledUserLoginDispatch()
     
     const dispatch = useDispatch()
-    const user = useSelector(state => state.userLogin.data)
+    const user = useSelector(state => state.userLogin)
 
     const [isLoading , setIsLoading] = useState(false)
     const [isShowPass , setIsShowPass] =  useState(false)
@@ -40,8 +40,16 @@ const NewUserLogin = ({setIsUserSignup}) => {
         password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد )"),
     })
 
+    // useEffect(()=>{
+    //     const userData = JSON.parse(localStorage.getItem("user"))
+    //     if(userData){
+    //         dispatch(userLoginSuccess(userData))
+    //     }
+    // },[])
+
 
     const onSubmit = (values) => {
+
         // setIsLoading(true)
         // try {
         //     const data = await userLogin(values)     
@@ -58,9 +66,21 @@ const NewUserLogin = ({setIsUserSignup}) => {
         dispatch(fetchUserLogin(values))
     }
     useEffect(()=>{
-        if(user) setIsUserLogin(false)
+        if(user.loading === true){
+            setIsLoading(true)
+        }else{
+            if(user.data){
+            setIsUserLogin(false)
+            } 
+            if(user.error){
+                toast.error(user.error)
+            } 
+        }
+        
+
     },[user])
 
+    console.log(user)
 
 
     const formik =useFormik({

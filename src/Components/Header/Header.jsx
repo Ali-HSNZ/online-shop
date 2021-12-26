@@ -12,7 +12,8 @@ import Menu from '../Menu/Menu'
 
 import SearchComponent from '../Search/Search';
 import UserPanel from '../user/Panel/UserPanel';
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch} from 'react-redux';
+import { userLoginAutomatic, userLoginSuccess } from '../../redux/user/userActions';
 
 
 
@@ -36,12 +37,20 @@ const Header = () => {
     const [isUserProfile , setIsUserProfile] = useState(false)
     const [isSearch , setIsSearch] = useState(false)
 
+    const dispatch = useDispatch()
+
 
     useEffect(()=>{
         axios.get("https://fakestoreapi.com/products/categories").then(e => setCategories(e.data)).catch();
     },[])
 
-    console.log("user : ",user)
+    useEffect(()=> {
+        const userData = JSON.parse(localStorage.getItem("user"))
+        if(userData) {
+            dispatch(userLoginAutomatic(userData))
+        }
+    },[])
+
 
     return (
         <>

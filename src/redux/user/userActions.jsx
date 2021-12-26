@@ -1,21 +1,26 @@
-import { useEffect } from "react"
 import { userLogin } from "../../services/loginService"
 import {
     USER_LOGIN_REQUEST, 
     USER_LOGIN_FAILURE, 
     USER_LOGIN_SUCCESS, 
-    USER_LOGOUT
+    USER_LOGOUT,
+    USER_LOGIN_AUTOMATIC
 } from "./userTypes"
 
 const userLoginRequest = () => {
     return {type : USER_LOGIN_REQUEST}
 }
-const userLoginSuccess = (userData)=> {
-    return {type : USER_LOGIN_SUCCESS , payLoad : userData}
+const userLoginSuccess = (data)=> {
+    const userData =  data;
+    const {email} = userData
+    return {type : USER_LOGIN_SUCCESS , payLoad : email}
 }
 
 const userLoginFailur = (error) => {
     return {type : USER_LOGIN_FAILURE , payLoad : error}
+}
+export const userLoginAutomatic = (userData) => {
+    return {type : USER_LOGIN_AUTOMATIC , payLoad : userData}
 }
 export const userLogout = ()=> {
     return {type : USER_LOGOUT}

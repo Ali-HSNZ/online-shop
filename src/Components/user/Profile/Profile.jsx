@@ -32,7 +32,7 @@ const UserProfile = ({setIsUserProfile  })=> {
                         </div> 
 
                         <div className={UserStyles.userProfile_userDetails}>
-                            <p className={UserStyles.userDetails_details}>{user.email}</p>
+                            <p className={UserStyles.userDetails_details}>{user}</p>
                             <p className={UserStyles.userDetails_title}> : ایمیل</p>
                         </div>
 

@@ -14,7 +14,7 @@ const Checkout = (props) => {
                     <div className={Styles.userInfo}>
     
                         <div className={Styles.userInfo_fixed}>
-                            <div className={Styles.userInfo_item}><p>{user.email}</p><p> : ایمیل </p></div> 
+                            <div className={Styles.userInfo_item}><p>{user}</p><p> : ایمیل </p></div> 
                                 
                             <div className={Styles.cartTotalPrice}><CheckPrice cart={cart}/></div>
                             <button className={Styles.cartBtn}>نهایی سازی خرید</button>

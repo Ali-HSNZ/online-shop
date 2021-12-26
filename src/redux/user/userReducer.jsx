@@ -1,4 +1,5 @@
 import { 
+    USER_LOGIN_AUTOMATIC,
     USER_LOGIN_FAILURE, 
     USER_LOGIN_REQUEST, 
     USER_LOGIN_SUCCESS, 
@@ -6,30 +7,30 @@ import {
 } from "./userTypes";
 
 
-const initialState = {
+let initialState = {
     data : null,
-    error : "",
+    error : null,
     loading : false
 }
-const userData = JSON.parse(localStorage.getItem("user"))
-initialState.data = userData
-
 
 const userLoginReducer = (state = initialState , action) => {
     switch (action.type) {
         case USER_LOGIN_REQUEST : {
-            return {data : null , error : "" , loading : true}
+            return {loading : true , data : null , error : null}
         }
         case USER_LOGIN_SUCCESS : {
             localStorage.setItem('user',JSON.stringify(action.payLoad))
-            return {data : action.payLoad, error : "" , loading : false}
+            return {data : action.payLoad, error : null , loading : false}
+        }
+        case USER_LOGIN_AUTOMATIC : {
+            return {data : action.payLoad, error : null , loading : false}
         }
         case USER_LOGIN_FAILURE : {
             return {data : null, error : action.payLoad , loading : false}
         }
         case USER_LOGOUT : {
             localStorage.setItem('user',null)
-            return {data : null, error : "" , loading : false}
+            return {data : null, error : null , loading : false}
         }
         default : return state
     }
