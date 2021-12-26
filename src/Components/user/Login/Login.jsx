@@ -67,20 +67,18 @@ const NewUserLogin = ({setIsUserSignup}) => {
         dispatch(fetchUserLogin(isRemmemberLogin , values))
     }
     useEffect(()=>{
-        if(user.loading === true){
-            setIsLoading(true)
-        }else{
-            if(user.data){
-            setIsUserLogin(false)
-            } 
-            if(user.error){
-                toast.error(user.error)
-            } 
-        }
+        user.loading === true ? setIsLoading(true) : setIsLoading(false)
+            
         
-
+        if(user.data)setIsUserLogin(false)
+        
+        
+        if(user.error) toast.error(user.error)
+           
+        
     },[user])
 
+    console.log(user.loading)
 
 
     const formik =useFormik({
@@ -144,7 +142,7 @@ const NewUserLogin = ({setIsUserSignup}) => {
             <div>
                 <button 
                     type="submit" 
-                    disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
+                    disabled={isLoading === true || !formik.isValid } title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
                     className={`${UserStyles.submitBtn} ${formik.isValid ? UserStyles.submitBtn_active : UserStyles.submitBtn_notActive}`}>
                     
                     {isLoading ? <SmallLoading/> : "ورود"}

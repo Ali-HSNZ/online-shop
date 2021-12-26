@@ -20,10 +20,10 @@ const userLoginReducer = (state = initialState , action) => {
             return {loading : true , data : null , error : null}
         }
         case USER_LOGIN_SUCCESS : {
-            localStorage.setItem('user',JSON.stringify(action.payLoad))
             return {data : action.payLoad, error : null , loading : false}
         }
         case USER_LOGIN_REMMEMBER : {
+            localStorage.setItem('user',JSON.stringify(action.payLoad))
             return {data : action.payLoad, error : null , loading : false}
         }
         case USER_LOGIN_AUTOMATIC : {
