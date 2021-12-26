@@ -2,18 +2,17 @@ import Styles from './Header.module.css'
 import {BiShoppingBag , BiUser , BiSearch ,BiMenu} from "react-icons/bi";
 import {NavLink } from 'react-router-dom';
 
-import { User , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../Context/userProvider/UserProvider';
+import { IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../Context/userProvider/UserProvider';
 import React, { useEffect, useState } from 'react';
 import { FaUserCheck } from "react-icons/fa";
 
 import UserProfile from '../user/Profile/Profile'
-import axios from 'axios';
 import Menu from '../Menu/Menu'
 
 import SearchComponent from '../Search/Search';
 import UserPanel from '../user/Panel/UserPanel';
 import { useSelector , useDispatch} from 'react-redux';
-import { userLoginAutomatic, userLoginSuccess } from '../../redux/user/userActions';
+import { userLoginAutomatic} from '../../redux/user/userActions';
 
 
 
@@ -23,7 +22,6 @@ const Header = () => {
     const user = useSelector(state => state.userLogin.data)
 
     const [closeSearch , setCloseSearch] = useState(false)
-    const [categories , setCategories] = useState(null)
 
     const [isUserSignup , setIsUserSignup] = useState(false)
 
@@ -43,7 +41,7 @@ const Header = () => {
         if(userData) {
             dispatch(userLoginAutomatic(userData))
         }
-    },[])
+    },[dispatch])
 
 
     return (

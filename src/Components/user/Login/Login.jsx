@@ -27,6 +27,7 @@ const NewUserLogin = ({setIsUserSignup}) => {
     const [isLoading , setIsLoading] = useState(false)
     const [isShowPass , setIsShowPass] =  useState(false)
 
+    const [isRemmemberLogin , setIsRemmemberLogin] = useState(false)
 
     const initialValues = {
         email : '',
@@ -63,7 +64,7 @@ const NewUserLogin = ({setIsUserSignup}) => {
         //     toast.error(e.response.data.message)
         //     setIsLoading(false)
         // }
-        dispatch(fetchUserLogin(values))
+        dispatch(fetchUserLogin(isRemmemberLogin , values))
     }
     useEffect(()=>{
         if(user.loading === true){
@@ -80,7 +81,6 @@ const NewUserLogin = ({setIsUserSignup}) => {
 
     },[user])
 
-    console.log(user)
 
 
     const formik =useFormik({
@@ -136,6 +136,10 @@ const NewUserLogin = ({setIsUserSignup}) => {
                 {formik.errors.password && formik.touched.password && <p className={UserStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.password}</p>}
             </div>
                     
+            <div className={UserStyles.rememberMeParent}>
+                <label htmlFor="checkBox">من را به خاطر بسپار</label>
+                <input type={"checkbox"} id="checkBox" onChange={e => setIsRemmemberLogin(e.target.checked)}/>
+            </div>
 
             <div>
                 <button 

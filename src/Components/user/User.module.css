@@ -13,6 +13,21 @@
     position: relative;
     left: 0px;
 }
+.rememberMeParent{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    font-family: iranyekanweb;
+    font-size: 14px;
+}
+.rememberMeParent input{
+    cursor: pointer;
+}
+.rememberMeParent label {
+    cursor: pointer;
+    margin-right: 5px;
+}
 .main{
     width: 300px;
     height: auto;

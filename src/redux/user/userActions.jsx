@@ -4,6 +4,7 @@ import {
     USER_LOGIN_FAILURE, 
     USER_LOGIN_SUCCESS, 
     USER_LOGOUT,
+    USER_LOGIN_REMMEMBER,
     USER_LOGIN_AUTOMATIC
 } from "./userTypes"
 
@@ -14,6 +15,11 @@ const userLoginSuccess = (data)=> {
     const userData =  data;
     const {email} = userData
     return {type : USER_LOGIN_SUCCESS , payLoad : email}
+}
+const userLoginRemmember = (data)=> {
+    const userData =  data;
+    const {email} = userData
+    return {type : USER_LOGIN_REMMEMBER , payLoad : email}
 }
 
 const userLoginFailur = (error) => {
@@ -26,11 +32,11 @@ export const userLogout = ()=> {
     return {type : USER_LOGOUT}
 }
 
-export const fetchUserLogin = (userData) => {
+export const fetchUserLogin = (isRemmemberLogin,userData) => {
     return (dispatch)=>{
         dispatch(userLoginRequest)
         userLogin(userData)
-        .then(user => dispatch(userLoginSuccess(JSON.parse(user.config.data))))
+        .then(user => isRemmemberLogin === true ?  dispatch(userLoginSuccess(JSON.parse(user.config.data))) : dispatch(userLoginRemmember(JSON.parse(user.config.data))))
         .catch(error => dispatch(userLoginFailur(error.response.data.message))) 
     }
 }

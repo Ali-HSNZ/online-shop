@@ -3,6 +3,7 @@ import {
     USER_LOGIN_FAILURE, 
     USER_LOGIN_REQUEST, 
     USER_LOGIN_SUCCESS, 
+    USER_LOGIN_REMMEMBER,
     USER_LOGOUT
 } from "./userTypes";
 
@@ -20,6 +21,9 @@ const userLoginReducer = (state = initialState , action) => {
         }
         case USER_LOGIN_SUCCESS : {
             localStorage.setItem('user',JSON.stringify(action.payLoad))
+            return {data : action.payLoad, error : null , loading : false}
+        }
+        case USER_LOGIN_REMMEMBER : {
             return {data : action.payLoad, error : null , loading : false}
         }
         case USER_LOGIN_AUTOMATIC : {
