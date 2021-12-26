@@ -4,15 +4,14 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
 import { useState } from 'react';
-import { toast } from 'react-toastify';
 import SmallLoading from '../../../common/small Loding/SmallLoading'
 import {BiHide , BiShow , BiX } from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { fetchUserLogin, userLoginSuccess } from "../../../redux/user/userActions";
+import { fetchUserLogin } from "../../../redux/user/userActions";
 
-import { User , IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../../Context/userProvider/UserProvider';
+import {IsCalledUserLoginDispatch} from '../../../Context/userProvider/UserProvider';
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -41,44 +40,13 @@ const NewUserLogin = ({setIsUserSignup}) => {
         password : Yup.string().required("رمز عبور خود را وارد کنید").matches(passwordRegExp , "رمز بیشتر از 8 کاراکتر باشد ( انگلیسی : حرف کوچک، بزرگ و عدد )"),
     })
 
-    // useEffect(()=>{
-    //     const userData = JSON.parse(localStorage.getItem("user"))
-    //     if(userData){
-    //         dispatch(userLoginSuccess(userData))
-    //     }
-    // },[])
-
-
     const onSubmit = (values) => {
-
-        // setIsLoading(true)
-        // try {
-        //     const data = await userLogin(values)     
-        //     setIsLoading(false)
-        //     toast.success("با موفقیت وارد شدید")
-        //     dispatchUser(JSON.parse( data.config.data))
-        //     if(data.config.data){
-        //         setIsUserLogin(false)
-        //     }
-        // } catch (e) {
-        //     toast.error(e.response.data.message)
-        //     setIsLoading(false)
-        // }
         dispatch(fetchUserLogin(isRemmemberLogin , values))
     }
     useEffect(()=>{
         user.loading === true ? setIsLoading(true) : setIsLoading(false)
-            
-        
-        if(user.data)setIsUserLogin(false)
-        
-        
-        if(user.error) toast.error(user.error)
-           
-        
+        if(user.data) setIsUserLogin(false)
     },[user])
-
-    console.log(user.loading)
 
 
     const formik =useFormik({

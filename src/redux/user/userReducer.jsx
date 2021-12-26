@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { 
     USER_LOGIN_AUTOMATIC,
     USER_LOGIN_FAILURE, 
@@ -20,9 +21,11 @@ const userLoginReducer = (state = initialState , action) => {
             return {loading : true , data : null , error : null}
         }
         case USER_LOGIN_SUCCESS : {
+            toast.success("با موفقیت وارد شدید!")
             return {data : action.payLoad, error : null , loading : false}
         }
         case USER_LOGIN_REMMEMBER : {
+            toast.success("با موفقیت وارد شدید!")
             localStorage.setItem('user',JSON.stringify(action.payLoad))
             return {data : action.payLoad, error : null , loading : false}
         }
@@ -30,6 +33,7 @@ const userLoginReducer = (state = initialState , action) => {
             return {data : action.payLoad, error : null , loading : false}
         }
         case USER_LOGIN_FAILURE : {
+            toast.error(action.payLoad)
             return {data : null, error : action.payLoad , loading : false}
         }
         case USER_LOGOUT : {
