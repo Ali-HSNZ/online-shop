@@ -28,19 +28,19 @@ const windowReducer = (state = initialState , action) => {
         }
         case WINDOW_USER :{
             if(action.payLoad){
-                return {...state , isUserProfile : true , isSearch:false , isMenu :  false}
+                return {...state , isUserProfile : !state.isUserProfile , isSearch:false , isMenu :  false}
             }else{
-                return {...state , isUserLogin : true , isSearch:false , isMenu :  false}
+                return {...state , isUserLogin : !state.isUserLogin , isSearch:false , isMenu :  false}
             }
         } 
         case WINDOW_SEARCH : {
-            return {...state , isSearch : true , isMenu : false , isUserProfile : false , isUserLogin : false}
+            return {...state , isSearch : !state.isSearch , isMenu : false , isUserProfile : false , isUserLogin : false}
         }
         case WINDOW_HOME : {
             return {...state , isUserProfile : false , isSearch : false , isUserLogin : false , isMenu : false }
         }
         case WINDOW_MENU : {
-            return {...state , isMenu : true , isSearch : false , isUserProfile : false , isUserLogin : false}
+            return {...state , isMenu : !state.isMenu , isSearch : false , isUserProfile : false , isUserLogin : false}
         } 
         case WINDOW_IS_USER_SIGNUP : {
             return {...state , isUserSignup : action.payLoad}

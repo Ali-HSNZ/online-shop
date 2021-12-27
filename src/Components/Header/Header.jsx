@@ -1,5 +1,5 @@
 import Styles from './Header.module.css'
-import {BiShoppingBag , BiUser , BiSearch ,BiMenu} from "react-icons/bi";
+import {BiShoppingBag , BiUser , BiSearch ,BiMenu , BiX} from "react-icons/bi";
 import {NavLink } from 'react-router-dom';
 
 import React, { useEffect, useState } from 'react';
@@ -65,7 +65,7 @@ const Header = () => {
                 <div className={Styles.header_right}>
                     <NavLink activeClassName={Styles.activeLink} to="/" exact  onClick={()=> dispatch(windowHome())} >خانه</NavLink>
 
-                    <button className={Styles.menu} onClick={()=> dispatch(windowMenu())}> <BiMenu size='2.5em'/></button>
+                    <button className={Styles.menu} onClick={()=> dispatch(windowMenu())}>{window.isMenu ? <BiX size='2.5em'/> : <BiMenu size='2.5em'/>}</button>
 
                 </div>
 
