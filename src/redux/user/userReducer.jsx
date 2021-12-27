@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 import { 
-    USER_LOGIN_AUTOMATIC,
-    USER_LOGIN_FAILURE, 
-    USER_LOGIN_REQUEST, 
-    USER_LOGIN_SUCCESS, 
-    USER_LOGIN_REMMEMBER,
+    USER_AUTOMATIC,
+    USER_FAILURE, 
+    USER_REQUEST, 
+    USER_SUCCESS, 
+    USER_REMMEMBER,
     USER_LOGOUT
 } from "./userTypes";
 
@@ -17,22 +17,22 @@ let initialState = {
 
 const userLoginReducer = (state = initialState , action) => {
     switch (action.type) {
-        case USER_LOGIN_REQUEST : {
+        case USER_REQUEST : {
             return {loading : true , data : null , error : null}
         }
-        case USER_LOGIN_SUCCESS : {
+        case USER_SUCCESS : {
             toast.success("با موفقیت وارد شدید!")
             return {data : action.payLoad, error : null , loading : false}
         }
-        case USER_LOGIN_REMMEMBER : {
+        case USER_REMMEMBER : {
             toast.success("با موفقیت وارد شدید!")
             localStorage.setItem('user',JSON.stringify(action.payLoad))
             return {data : action.payLoad, error : null , loading : false}
         }
-        case USER_LOGIN_AUTOMATIC : {
+        case USER_AUTOMATIC : {
             return {data : action.payLoad, error : null , loading : false}
         }
-        case USER_LOGIN_FAILURE : {
+        case USER_FAILURE : {
             toast.error(action.payLoad)
             return {data : null, error : action.payLoad , loading : false}
         }

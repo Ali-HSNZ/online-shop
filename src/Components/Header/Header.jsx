@@ -11,7 +11,7 @@ import Menu from '../Menu/Menu'
 import SearchComponent from '../Search/Search';
 import UserPanel from '../user/Panel/UserPanel';
 import { useSelector , useDispatch} from 'react-redux';
-import { userLoginAutomatic} from '../../redux/user/userActions';
+import { userAutomatic} from '../../redux/user/userActions';
 
 import { 
     windowCart,
@@ -33,7 +33,7 @@ const Header = () => {
 
     useEffect(()=> {
         const userData = JSON.parse(localStorage.getItem("user"))
-        if(userData) dispatch(userLoginAutomatic(userData))
+        if(userData) dispatch(userAutomatic(userData))
     },[dispatch])
 
 

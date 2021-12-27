@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
     oneProduct : oneProductReducer,
     productsCategory : productsCategoryReducer,
     userLogin : userLoginReducer,
-    window : windowReducer
+    window : windowReducer,
 })
 
 export default rootReducer

@@ -1,46 +1,58 @@
 import { userLogin } from "../../services/loginService"
+import { userSignup } from "../../services/signupService"
 import {
-    USER_LOGIN_REQUEST, 
-    USER_LOGIN_FAILURE, 
-    USER_LOGIN_SUCCESS, 
+    USER_REQUEST, 
+    USER_FAILURE, 
+    USER_SUCCESS, 
     USER_LOGOUT,
-    USER_LOGIN_REMMEMBER,
-    USER_LOGIN_AUTOMATIC
+    USER_REMMEMBER,
+    USER_AUTOMATIC
 } from "./userTypes"
 
-const userLoginRequest = () => {
-    return {type : USER_LOGIN_REQUEST}
+const userRequest = () => {
+    return {type : USER_REQUEST}
 }
 
-const userLoginSuccess = (data)=> {
+export const userSuccess = (data)=> {
     const userData =  data;
     const {email} = userData
-    return {type : USER_LOGIN_SUCCESS , payLoad : email}
+    return {type : USER_SUCCESS , payLoad : email}
 }
 
-const userLoginRemmemberMe = (data)=> {
+const userRemmemberMe = (data)=> {
     const userData =  data;
     const {email} = userData
-    return {type : USER_LOGIN_REMMEMBER , payLoad : email}
+    return {type : USER_REMMEMBER , payLoad : email}
 }
 
-const userLoginFailur = (error) => {
-    return {type : USER_LOGIN_FAILURE , payLoad : error}
+export const userFailur = (error) => {
+    return {type : USER_FAILURE , payLoad : error}
 }
 
-export const userLoginAutomatic = (userData) => {
-    return {type : USER_LOGIN_AUTOMATIC , payLoad : userData}
+export const userAutomatic = (userData) => {
+    return {type : USER_AUTOMATIC , payLoad : userData}
 }
 
 export const userLogout = ()=> {
     return {type : USER_LOGOUT}
 }
 
+// user Login
 export const fetchUserLogin = (isRemmemberLogin,userData) => {
     return (dispatch)=>{
-        dispatch(userLoginRequest())
+        dispatch(userRequest())
         userLogin(userData)
-        .then(user => isRemmemberLogin === true ?  dispatch(userLoginRemmemberMe(JSON.parse(user.config.data))) : dispatch(userLoginSuccess(JSON.parse(user.config.data))))
-        .catch(error => dispatch(userLoginFailur(error.response.data.message))) 
+        .then(user => isRemmemberLogin === true ?  dispatch(userRemmemberMe(JSON.parse(user.config.data))) : dispatch(userSuccess(JSON.parse(user.config.data))))
+        .catch(error => dispatch(userFailur(error.response.data.message))) 
     }
 }
+
+// user Signup
+export const fetchUserSignup = (isRemmemberSignup,data)=>{
+    return function (dispatch){
+        dispatch(userRequest())
+        userSignup(data)
+        .then(user => isRemmemberSignup === true ?  dispatch(userRemmemberMe(JSON.parse(user.config.data))) : dispatch(userSuccess(JSON.parse(user.config.data))))
+        .catch(error => dispatch(userFailur(error.response.data.message)))
+    }
+} 

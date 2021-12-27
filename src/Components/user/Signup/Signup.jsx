@@ -3,27 +3,28 @@ import  UserStyles from '../User.module.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
-import { useState } from 'react';
-import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
 import SmallLoading from '../../../common/small Loding/SmallLoading'
 import {BiHide , BiShow , BiX , BiUser} from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
-import { userSignup } from "../../../services/signupService";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { windowIsUserLogin, windowIsUserSignup } from "../../../redux/window/windowActions";
+import { fetchUserSignup } from "../../../redux/user/userActions";
 
 
 
 const Signup = () => {
    
-   
+    const user = useSelector(state => state.userLogin)
 
     const dispatch = useDispatch()
 
     const [isLoading , setIsLoading] = useState(false)
 
     const [isShowPass , setIsShowPass] =  useState(false)
+
+    const [isRemmemberSignup , setIsRemmemberSignup] = useState(false)
 
 
     const initialValues = {
@@ -43,24 +44,13 @@ const Signup = () => {
 
 
 
-     const onSubmit = async(values) => {
-        setIsLoading(true)
-        const {name , email , password} = values;
-        const userData = {name , email , password}
-        try {
-            const data = await userSignup(userData)
-            setIsLoading(false)
-             toast.success('ثبت نام شما با موفقیت انجام شد')
-            //  dispatchUser(JSON.parse( data.config.data))
-                dispatch(windowIsUserLogin(false))
-             console.log(data)
-        } catch (error) {
-             setIsLoading(false)
-             toast.error(error.response.data.message)
-
-        }
-   }
-
+    const onSubmit = (values) => {
+        dispatch(fetchUserSignup(isRemmemberSignup,values))
+    }
+    useEffect(()=>{
+        user.loading === true ? setIsLoading(true) : setIsLoading(false)
+        if(user.data) dispatch(windowIsUserLogin(false))
+    },[user])
 
 
 
@@ -134,12 +124,17 @@ const Signup = () => {
 
                 {formik.errors.password && formik.touched.password && <p className={UserStyles.errorText} style={{fontSize:'12px'}}>{formik.errors.password}</p>}
             </div>
+
+            <div className={UserStyles.rememberMeParent}>
+                <label htmlFor="checkBox">من را به خاطر بسپار</label>
+                <input type={"checkbox"} id="checkBox" onChange={e => setIsRemmemberSignup(e.target.checked)}/>
+            </div>
                     
 
             <div>
                 <button 
                     type="submit" 
-                    disabled={!formik.isValid} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
+                    disabled={!formik.isValid || isLoading === true} title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
                     className={`${UserStyles.submitBtn} ${formik.isValid ? UserStyles.submitBtn_active : UserStyles.submitBtn_notActive}`}>
                     
                     {isLoading ? <SmallLoading/> : "ثبت نام"}
