@@ -6,17 +6,24 @@ import { AiFillCaretUp} from "react-icons/ai";
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../../redux/user/userActions";
+import { windowIsUserProfile } from "../../../redux/window/windowActions";
 
 
-const UserProfile = ({setIsUserProfile  })=> {
+const UserProfile = ()=> {
 
     const user = useSelector(state => state.userLogin.data)
 
     const dispatch = useDispatch()
-    
+
+
+    const logoutHandler = () => {
+        dispatch(userLogout())
+        dispatch(windowIsUserProfile(false))
+        toast.warning("از حساب خود خارج شده اید")
+    }
     return(
         <React.Fragment>
-            <div className={UserStyles.parent} onClick={()=>setIsUserProfile(false)}></div>
+            <div className={UserStyles.parent} onClick={()=>dispatch(windowIsUserProfile(false))}></div>
                 <div className={UserStyles.center}>
                         <div className={`${UserStyles.main} ${UserStyles.main_userProfile}`}>
 
@@ -25,7 +32,7 @@ const UserProfile = ({setIsUserProfile  })=> {
                         </div>
 
                         <div className={UserStyles.header}>
-                            <button onClick={()=>setIsUserProfile(false)}>
+                            <button onClick={()=>dispatch(windowIsUserProfile(false))}>
                                 <BiX size="2em"/>
                             </button>
                             <p className={UserStyles.title}>پنل کاربری</p>   
@@ -36,7 +43,7 @@ const UserProfile = ({setIsUserProfile  })=> {
                             <p className={UserStyles.userDetails_title}> : ایمیل</p>
                         </div>
 
-                    <button onClick={()=> {return dispatch(userLogout()) , setIsUserProfile(false) , toast.warning("از حساب خود خارج شده اید")}} className={`${UserStyles.submitBtn} ${UserStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
+                    <button onClick={()=> logoutHandler()} className={`${UserStyles.submitBtn} ${UserStyles.submitBtn_active}`}>خروج از حساب کاربری</button>
 
                 </div>
             </div>

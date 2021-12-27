@@ -1,7 +1,9 @@
-import { User ,IsCalledUserLoginDispatch} from '../../Context/userProvider/UserProvider';
+
 import Styles from './CartPage.module.css'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { windowIsUserLogin } from '../../redux/window/windowActions';
 
 
 const Checkout = ()=>{
@@ -9,6 +11,7 @@ const Checkout = ()=>{
     const cart = useSelector(state => state.cart.cart)
     const user = useSelector(state => state.userLogin.data)
 
+    const dispatch = useDispatch() 
 
     const TotalPriceHandler = (originalTotalPrice)=>{
         var price = originalTotalPrice;    
@@ -39,7 +42,6 @@ const Checkout = ()=>{
     } 
     
 
-    const setIsUserLogin =  IsCalledUserLoginDispatch()
 
     const originalTotalPrice =cart.length ? cart.reduce((acc , product)=>{ return acc + product.quantity * product.price} , 0) : 0
 
@@ -68,7 +70,7 @@ const Checkout = ()=>{
             {user ? (
                 <Link className={Styles.checkout_submit} to="/checkout"> پرداخت سبد خرید</Link>
             ) : (
-                <button onClick={()=> setIsUserLogin(true)} className={Styles.checkout_submit}> پرداخت سبد خرید</button>
+                <button onClick={()=> dispatch(windowIsUserLogin(true))} className={Styles.checkout_submit}> پرداخت سبد خرید</button>
             )}
 
         </div>

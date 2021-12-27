@@ -7,6 +7,7 @@ import oneProductReducer from './one Product/oneProductReducer'
 import productsReducer from './products/ProductsReducer'
 import productsCategoryReducer from './products category/productsCategoryReducer'
 import userLoginReducer from './user/userReducer'
+import windowReducer from './window/windowReducer'
 
 const rootReducer = combineReducers({
     cart : cartReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     categories : categoryReducer,
     oneProduct : oneProductReducer,
     productsCategory : productsCategoryReducer,
-    userLogin : userLoginReducer 
+    userLogin : userLoginReducer,
+    window : windowReducer
 })
 
 export default rootReducer

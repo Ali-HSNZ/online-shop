@@ -11,14 +11,13 @@ import { IoAt } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { fetchUserLogin } from "../../../redux/user/userActions";
 
-import {IsCalledUserLoginDispatch} from '../../../Context/userProvider/UserProvider';
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { windowIsUserLogin, windowIsUserSignup } from "../../../redux/window/windowActions";
 
 
-const NewUserLogin = ({setIsUserSignup}) => {
+const NewUserLogin = () => {
 
-    const setIsUserLogin = IsCalledUserLoginDispatch()
     
     const dispatch = useDispatch()
     const user = useSelector(state => state.userLogin)
@@ -45,7 +44,7 @@ const NewUserLogin = ({setIsUserSignup}) => {
     }
     useEffect(()=>{
         user.loading === true ? setIsLoading(true) : setIsLoading(false)
-        if(user.data) setIsUserLogin(false)
+        if(user.data) dispatch(windowIsUserLogin(false))
     },[user])
 
 
@@ -60,7 +59,7 @@ const NewUserLogin = ({setIsUserSignup}) => {
         <form  onSubmit={formik.handleSubmit}>
             
             <div className={UserStyles.header}>
-                <button onMouseUp={()=>setIsUserLogin(false)}>
+                <button onMouseUp={()=> dispatch(windowIsUserLogin(false))}>
                     <BiX size="2em"/>
                 </button>
                 <p className={UserStyles.title}>ورود به سایت</p>   
@@ -107,18 +106,16 @@ const NewUserLogin = ({setIsUserSignup}) => {
                 <input type={"checkbox"} id="checkBox" onChange={e => setIsRemmemberLogin(e.target.checked)}/>
             </div>
 
-            <div>
-                <button 
-                    type="submit" 
-                    disabled={isLoading === true || !formik.isValid } title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
-                    className={`${UserStyles.submitBtn} ${formik.isValid ? UserStyles.submitBtn_active : UserStyles.submitBtn_notActive}`}>
-                    
-                    {isLoading ? <SmallLoading/> : "ورود"}
-                    {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
-                </button>
-            </div>
+            <button 
+                type="submit" 
+                disabled={isLoading === true || !formik.isValid } title={!formik.isValid ? "لطفا مقادیر خواسته شده را وارد کنید" : ""}
+                className={`${UserStyles.submitBtn} ${formik.isValid ? UserStyles.submitBtn_active : UserStyles.submitBtn_notActive}`}>
+                
+                {isLoading ? <SmallLoading/> : "ورود"}
+                {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
+            </button>
 
-            <button onClick={()=> setIsUserSignup(true)} className={UserStyles.linkToSignup}>!ثبت نام نکرده اید؟</button>
+            <button onClick={()=> dispatch(windowIsUserSignup(true))} className={UserStyles.linkToSignup}>!ثبت نام نکرده اید؟</button>
           
         </form>
     );

@@ -4,11 +4,15 @@ import {NavLink } from 'react-router-dom';
 import React, { useEffect, useRef, useState } from 'react';
 import { AiFillCaretUp ,AiFillCaretLeft } from "react-icons/ai";
 import { BsInfoCircleFill } from "react-icons/bs";
+import { windowIsSearch } from '../../redux/window/windowActions';
+import { useDispatch } from 'react-redux';
 
 
 
-const SearchComponent = ({setIsSearch})=>{
+const SearchComponent = ()=>{
 
+    const dispatch = useDispatch()
+    
     const searchInputRef = useRef()
 
     const [searchValue , setSearchValue] = useState("")
@@ -19,7 +23,7 @@ const SearchComponent = ({setIsSearch})=>{
 
     return(
         <>
-            <div className={Styles.parent} onClick={()=>setIsSearch(false)}></div>
+            <div className={Styles.parent} onClick={()=>dispatch(windowIsSearch(false))}></div>
             <div className={Styles.centerSearch}>
                 <div className={Styles.mainSearch}>
 
@@ -28,7 +32,7 @@ const SearchComponent = ({setIsSearch})=>{
                 </div>
 
                     <div className={Styles.header}>
-                        <button onMouseUp={()=>setIsSearch(false)}>
+                        <button onMouseUp={()=>dispatch(windowIsSearch(false))}>
                             <BiX size="2em"/>
                         </button>
                         <p className={Styles.title}>جستجو محصول</p>   
@@ -49,7 +53,7 @@ const SearchComponent = ({setIsSearch})=>{
                         <div className={Styles.inputIcon}> <BiSearch size="1.2em"/> </div>
                     </div>
 
-                    <NavLink to={`/search?productName=${searchValue}`} className={Styles.submitSearchBtn} onClick={()=> setIsSearch(false)}>جستجو</NavLink>
+                    <NavLink to={`/search?productName=${searchValue}`} className={Styles.submitSearchBtn} onClick={()=> dispatch(windowIsSearch(false))}>جستجو</NavLink>
             
                 </div>
             </div>

@@ -2,7 +2,6 @@ import Styles from './Header.module.css'
 import {BiShoppingBag , BiUser , BiSearch ,BiMenu} from "react-icons/bi";
 import {NavLink } from 'react-router-dom';
 
-import { IsCalledUserLoginDispatch , IsCalledUserLogin} from '../../Context/userProvider/UserProvider';
 import React, { useEffect, useState } from 'react';
 import { FaUserCheck } from "react-icons/fa";
 
@@ -14,25 +13,21 @@ import UserPanel from '../user/Panel/UserPanel';
 import { useSelector , useDispatch} from 'react-redux';
 import { userLoginAutomatic} from '../../redux/user/userActions';
 
+import { 
+    windowCart,
+    windowHome,
+    windowMenu,
+    windowSearch,
+    windowUser 
+} from '../../redux/window/windowActions';
+
 
 
 const Header = () => {
 
     const cart = useSelector(state => state.cart.cart)
     const user = useSelector(state => state.userLogin.data)
-
-    const [closeSearch , setCloseSearch] = useState(false)
-
-    const [isUserSignup , setIsUserSignup] = useState(false)
-
-    const setIsUserLogin = IsCalledUserLoginDispatch()
-    const isUserLogin = IsCalledUserLogin()
-    const [isMenu , setIsMenu] = useState(false)
-
-
-    const [isUserProfile , setIsUserProfile] = useState(false)
-    const [isSearch , setIsSearch] = useState(false)
-
+    const window = useSelector(state => state.window)
     const dispatch = useDispatch()
 
 
@@ -50,17 +45,17 @@ const Header = () => {
 
                 <div className={Styles.header_left}>
 
-                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent}  onClick={(e)=>{return setIsUserProfile(false) & setIsSearch(false) & setIsUserLogin(false) & setIsMenu(false)}}>
+                    <NavLink activeClassName={Styles.activeLink} to="/cart"  className={Styles.iconParent} onClick={()=>dispatch(windowCart())}>
                         <BiShoppingBag className={Styles.iconStyle} size="1.59em"/>
                         {cart && cart.length > 0 && <p className={Styles.cartCount}> {cart.length}</p>}
                     </NavLink>
 
-                    <button className={Styles.iconParent_Button} onClick={()=> {return  user ? setIsUserProfile(true)  & setIsSearch(false) &  setIsMenu(false):  setIsUserLogin(true) &  setIsSearch(false) & setIsMenu(false)}}>
+                    <button className={Styles.iconParent_Button} onClick={()=> dispatch(windowUser(user))}>
                         { user ? <FaUserCheck className={Styles.iconStyle} size="1.9em"/> :  <BiUser  className={Styles.iconStyle} size="1.9em"/>}
                     </button>
 
 
-                    <button className={Styles.iconParent_Button} onClick={()=> {return setIsSearch(true) & setIsMenu(false) & setIsUserProfile(false) & setIsUserLogin(false) & setCloseSearch(false)} }>
+                    <button className={Styles.iconParent_Button} onClick={()=> dispatch(windowSearch())}>
                        <BiSearch className={Styles.iconStyle} size="1.8em"/>            
                     </button>
 
@@ -68,24 +63,20 @@ const Header = () => {
 
                 
                 <div className={Styles.header_right}>
-                    <NavLink activeClassName={Styles.activeLink} to="/" exact   onClick={(e)=>{return setIsUserProfile(false) &  setIsSearch(false) & setIsUserLogin(false) & setIsMenu(false)}} >خانه</NavLink>
+                    <NavLink activeClassName={Styles.activeLink} to="/" exact  onClick={()=> dispatch(windowHome())} >خانه</NavLink>
 
-                    <button className={Styles.menu} onClick={()=>{return setIsMenu(!isMenu)  &  setIsSearch(false) & setIsUserProfile(false) & setIsUserLogin(false)}}> <BiMenu size='2.5em'/></button>
+                    <button className={Styles.menu} onClick={()=> dispatch(windowMenu())}> <BiMenu size='2.5em'/></button>
 
                 </div>
 
             </div> 
         </div>
-            {isUserLogin=== true && <UserPanel setIsUserLogin={setIsUserLogin} isUserLogin={isUserLogin}  isUserSignup ={isUserSignup} setIsUserSignup={setIsUserSignup} />}
-            {isUserProfile === true && <UserProfile setIsUserProfile={setIsUserProfile}/>}
-            {isMenu === true && (
-                <div className={Styles.menuParent} dir='rtl'>
-                    <Menu setIsMenu={setIsMenu} isMenu={isMenu}/>
-                </div>
-            )}
-            {isSearch === true && !closeSearch && <SearchComponent setIsSearch={setIsSearch} setIsMenu={setIsMenu}/>}
-          </>
+        {window.isUserLogin=== true && <UserPanel/>}
+        {window.isUserProfile === true && <UserProfile/>}
+        {window.isMenu === true && <div className={Styles.menuParent} dir='rtl'> <Menu/> </div>}
+        {window.isSearch && <SearchComponent/>}
+        </>
     );
-  };
+};
 
   export default Header;

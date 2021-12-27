@@ -5,19 +5,21 @@ import * as Yup from 'yup';
 import { FiAlertTriangle } from "react-icons/fi";
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { UserDispatch} from '../../../Context/userProvider/UserProvider';
 import SmallLoading from '../../../common/small Loding/SmallLoading'
 import {BiHide , BiShow , BiX , BiUser} from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
 import { userSignup } from "../../../services/signupService";
+import { useDispatch } from "react-redux";
+import { windowIsUserLogin, windowIsUserSignup } from "../../../redux/window/windowActions";
 
 
 
-const Signup = ({setIsUserLogin , setIsUserSignup}) => {
+const Signup = () => {
    
    
-    const dispatchUser = UserDispatch()
+
+    const dispatch = useDispatch()
 
     const [isLoading , setIsLoading] = useState(false)
 
@@ -49,11 +51,9 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
             const data = await userSignup(userData)
             setIsLoading(false)
              toast.success('ثبت نام شما با موفقیت انجام شد')
-             dispatchUser(JSON.parse( data.config.data))
-             if(data){
-                setIsUserSignup(false)
-                setIsUserLogin(false)
-             }
+            //  dispatchUser(JSON.parse( data.config.data))
+                dispatch(windowIsUserLogin(false))
+             console.log(data)
         } catch (error) {
              setIsLoading(false)
              toast.error(error.response.data.message)
@@ -75,7 +75,7 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
         <form  onSubmit={formik.handleSubmit}>
             
             <div className={UserStyles.header}>
-                <button onMouseUp={()=>setIsUserLogin(false)}>
+                <button onMouseUp={()=>dispatch(windowIsUserLogin(false))}>
                     <BiX size="2em"/>
                 </button>
                 <p className={UserStyles.title}>ثبت نام در سایت</p>   
@@ -146,7 +146,7 @@ const Signup = ({setIsUserLogin , setIsUserSignup}) => {
                     {!isLoading && !formik.isValid &&  <FiAlertTriangle size="1.3rem" style={{marginLeft:"8px" , color:'#ff6969'}}/>}
                 </button>
             </div>
-           <button onClick={()=> setIsUserSignup(false)} className={UserStyles.linkToSignup}>!از قبل ثبت نام کرده اید؟</button>
+           <button onClick={()=>dispatch(windowIsUserSignup(false))} className={UserStyles.linkToSignup}>!از قبل ثبت نام کرده اید؟</button>
         </form>
     );
 }
