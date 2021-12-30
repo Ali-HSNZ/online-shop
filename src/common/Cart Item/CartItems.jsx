@@ -1,4 +1,5 @@
 import Styles from './CartItems.module.css'
+import React from 'react';
 
 import { BiMinus  ,BiPlus , BiChevronLeft } from "react-icons/bi";
 import {AiFillStar} from "react-icons/ai";
@@ -94,4 +95,4 @@ const CartItems = ({product , checkout}) => {
     );
 }
  
-export default CartItems;
+export default React.memo(CartItems);

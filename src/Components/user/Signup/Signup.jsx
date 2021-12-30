@@ -47,6 +47,7 @@ const Signup = () => {
     const onSubmit = (values) => {
         dispatch(fetchUserSignup(isRemmemberSignup,values))
     }
+    
     useEffect(()=>{
         user.loading === true ? setIsLoading(true) : setIsLoading(false)
         if(user.data) dispatch(windowIsUserLogin(false))

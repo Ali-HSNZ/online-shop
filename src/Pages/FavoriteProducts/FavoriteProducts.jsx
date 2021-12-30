@@ -3,17 +3,19 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
 import Styles from './FavoriteProducts.module.css'
-const FavoriteProducts = () => {
-    const like = useSelector(state => state.like.like)
 
-    const filterLike = like&&like.filter(e => e.like  === true)
+
+const FavoriteProducts = () => {
+
+    const like = useSelector(state => state.like.like)
+    const availableProducts = like && like.filter(e => e.like  === true)
 
     return ( 
         <>
             {
-                filterLike.length > 0 && (
+                availableProducts.length > 0 && (
                     <div className={Styles.parent}>
-                        {filterLike.map((product , index) => {
+                        {availableProducts.map((product , index) => {
                             return(
                                 <div key={index}>
                                     <ProductListItem  item={product}/>
@@ -23,7 +25,7 @@ const FavoriteProducts = () => {
                     </div>
                 )
             }
-            {filterLike.length === 0 && (
+            {availableProducts.length === 0 && (
                 <div className={Styles.alert_product}>
                 <p>میرم</p>
                 <Link to="/">فروشگاه</Link>

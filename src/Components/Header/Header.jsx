@@ -28,6 +28,7 @@ const Header = () => {
     const cart = useSelector(state => state.cart.cart)
     const user = useSelector(state => state.userLogin.data)
     const window = useSelector(state => state.window)
+    
     const dispatch = useDispatch()
 
 

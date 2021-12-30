@@ -17,7 +17,7 @@ const Search = () => {
 
     const query = useQuery().get("productName") || "";
 
-    const filterdProducts = products && products.filter(product => product.title.toLowerCase().includes(query.toLowerCase()) )
+    const availableProducts = products && products.filter(product => product.title.toLowerCase().includes(query.toLowerCase()) )
 
 
     useEffect(()=>{
@@ -29,8 +29,8 @@ const Search = () => {
     const renderProduct = ()=>{
         let resualt = null;
 
-        if(filterdProducts.length > 0){
-            resualt = filterdProducts.map(products => (
+        if(availableProducts.length > 0){
+            resualt = availableProducts.map(products => (
                 <div  key={products.id}>
                     <ProductListItem item={products} offPrice={products.offPrice}/>
                 </div>
@@ -43,7 +43,7 @@ const Search = () => {
     }
     return ( 
         <>
-            {filterdProducts.length === 0 && products.length > 0 && (
+            {availableProducts.length === 0 && products.length > 0 && (
                 <div className={Styles.alert_product}>
                     <p>میرم</p>
                     <Link to="/">فروشگاه</Link>

@@ -23,6 +23,7 @@ const ProductListItem = ({item}) => {
     const like = useSelector(state => state.like.like)
     
 
+
     const checkProductInCart=  (state , item)=>{
         const findItem = state.findIndex(e => e.id === item.id)
         if(findItem < 0) {return false}else{return true}

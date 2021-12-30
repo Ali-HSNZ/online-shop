@@ -21,6 +21,7 @@ const UserProfile = ()=> {
         dispatch(windowIsUserProfile(false))
         toast.warning("از حساب خود خارج شده اید")
     }
+    
     return(
         <React.Fragment>
             <div className={UserStyles.parent} onClick={()=>dispatch(windowIsUserProfile(false))}></div>
