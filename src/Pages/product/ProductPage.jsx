@@ -6,10 +6,9 @@ import { BsFillCaretLeftFill } from "react-icons/bs";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore ,{Navigation , Pagination}from 'swiper'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ProductListItem from '../../common/ProductList Item/ProductListItem';
 
-import Container from '../../common/Loding/Loding'
 import SmallLoading from '../../common/small Loding/SmallLoading'
 
 import 'swiper/swiper-bundle.css'
@@ -69,12 +68,12 @@ const ProductPage = () => {
     useEffect(()=>{
         checkProductInCart(cart , product)
         dispatch(fetchProducts())
-    },[cart , product])
+    },[cart , product , dispatch])
 
     useEffect(()=>{
         window.scrollTo({ top: 0, behavior: 'smooth' });
         dispatch(fetchOneProduct(query))
-    },[query])
+    },[query , dispatch])
 
 //================================
 

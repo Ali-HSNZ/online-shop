@@ -11,7 +11,7 @@ const Checkout = (props) => {
         if(!user){
             props.history.push("/")
         }
-    },[user])
+    },[user , props.history])
 
     return (  
         <>

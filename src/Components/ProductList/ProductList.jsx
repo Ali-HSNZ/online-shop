@@ -1,5 +1,5 @@
 import Styles from  "./ProductList.module.css"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "react-multi-carousel/lib/styles.css";
 import { BsFillCaretLeftFill } from "react-icons/bs";
@@ -29,42 +29,43 @@ const ProductList = () => {
     useEffect(()=>{
         dispatch(fetchProducts())
         dispatch(fetchingCategories())
-    },[])
+    },[dispatch])
 
 
     return (  
         <div className={Styles.parent} dir="rtl">
             <div>
                 {
-                    categoriesData.length > 0 ? categoriesData.map((mapOnCategory,index) => {
-                        const filterd = productsData&&productsData.filter( e => e.category === mapOnCategory)
+                    categoriesData.length > 0 ? categoriesData.map((category,index) => {
+                        const productsCategory = productsData&&productsData.filter( e => e.category === category)
                             return(
                                 <div key={index}>
-                                    {mapOnCategory === "jewelery" && <Banner category={mapOnCategory}/> || mapOnCategory === "women's clothing" ? <Banner category={mapOnCategory}/> : 
+                                    {category === "jewelery" && <Banner category={category}/> || category === "women's clothing" ? <Banner category={category}/> : 
 
                                     
                                         <div dir="rtl" className={Styles.sliderParent} key={index}>
                                             
                                             {categoriesData && (
                                                 <div className={Styles.Slider_categoryParent}>
-                                                    <Link to={`/category?name=${mapOnCategory}`} className={Styles.Slider_categoryLink}>{mapOnCategory} <BsFillCaretLeftFill/></Link>
+                                                    <Link to={`/category?name=${category}`} className={Styles.Slider_categoryLink}>{category} <BsFillCaretLeftFill/></Link>
                                                     
                                                     <div className={Styles.categoryLine_parent}>
                                                         <div></div>     <div></div>     <div></div>     <div></div>
                                                     </div>
                                                 </div>
                                             ) }
+
                                             <div className='swiperParent' dir="ltr" key={index}>
                                                 <Swiper loop={true} navigation  tag="div" wrapperTag="div" spaceBetween={0} slidesPerView={4}
                                                     breakpoints= {{
                                                         0: {
-                                                        slidesPerView: 1,
+                                                            slidesPerView: 1,
                                                         },
                                                         630: {
-                                                        slidesPerView: 2,
+                                                            slidesPerView: 2,
                                                         },
                                                         900: {
-                                                        slidesPerView: 3,
+                                                            slidesPerView: 3,
                                                         },
                                                         1260: {
                                                             slidesPerView: 4,
@@ -74,7 +75,7 @@ const ProductList = () => {
                                                         delay: 2000 + Math.random()*1000,
                                                     }}>
 
-                                                    {filterd ? filterd.map(
+                                                    {productsCategory ? productsCategory.map(
                                                         item=>{return(
                                                             <SwiperSlide key={item.id}>
                                                                 <ProductListItem item = {item}/>

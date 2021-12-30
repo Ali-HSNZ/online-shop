@@ -36,7 +36,7 @@ const CartPage = () => {
 
     useEffect(()=>{
         dispatch(fetchProducts())
-    },[])
+    },[dispatch])
 
 
     const renderProducts = ()=> {

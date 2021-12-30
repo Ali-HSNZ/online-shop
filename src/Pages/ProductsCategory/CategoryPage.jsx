@@ -31,7 +31,7 @@ const CategoryPage = ({location}) => {
 
     useEffect(()=>{
         dispatch(fetchProductsCategory(query))
-    },[query])
+    },[query , dispatch])
 
     useEffect(()=>{
         const item = products.data ? products.data.filter(e => e.title.toLowerCase().includes(searchData && searchData.toLowerCase())) : []

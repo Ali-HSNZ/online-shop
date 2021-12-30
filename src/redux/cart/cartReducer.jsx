@@ -1,5 +1,3 @@
-import { toast } from "react-toastify"
-
 import {
     ADD_TO_CART,
     DECRIMENT_TO_CART,

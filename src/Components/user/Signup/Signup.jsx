@@ -50,7 +50,7 @@ const Signup = () => {
     useEffect(()=>{
         user.loading === true ? setIsLoading(true) : setIsLoading(false)
         if(user.data) dispatch(windowIsUserLogin(false))
-    },[user])
+    },[user , dispatch])
 
 
 

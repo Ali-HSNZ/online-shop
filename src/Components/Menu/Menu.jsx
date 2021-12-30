@@ -23,7 +23,7 @@ const Menu = () => {
 
     useEffect(()=>{
         dispatch(fetchingCategories)
-    },[])
+    },[dispatch])
 
     return (
        <>

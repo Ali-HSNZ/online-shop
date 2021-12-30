@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {useQuery} from '../../hooks/useQuery'
 import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Styles from './Search.module.css'
@@ -16,15 +15,14 @@ const Search = () => {
 
     const products = useSelector(state => state.products.data)
 
-    const query = useQuery().get("productName");
+    const query = useQuery().get("productName") || "";
 
     const filterdProducts = products && products.filter(product => product.title.toLowerCase().includes(query.toLowerCase()) )
 
 
-
     useEffect(()=>{
         dispatch(fetchProducts())
-    },[])
+    },[dispatch])
 
 
 

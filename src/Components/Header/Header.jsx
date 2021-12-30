@@ -2,7 +2,7 @@ import Styles from './Header.module.css'
 import {BiShoppingBag , BiUser , BiSearch ,BiMenu , BiX} from "react-icons/bi";
 import {NavLink } from 'react-router-dom';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { FaUserCheck } from "react-icons/fa";
 
 import UserProfile from '../user/Profile/Profile'

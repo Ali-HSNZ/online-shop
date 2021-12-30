@@ -17,7 +17,7 @@ function App() {
                         <Layout>
                               <ToastContainer  autoClose={4000} rtl={true} theme={"dark"}/>
                               <Switch>
-                                    {Routes.map((route,index) =>  <Route key={index} {...route}/>)}
+                                    {Routes.map((route) =>  <Route key={route.id} {...route}/>)}
                               </Switch>
                         </Layout>
                  </Provider>

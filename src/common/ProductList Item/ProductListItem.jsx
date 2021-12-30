@@ -1,5 +1,7 @@
 import Styles from './ProductListItem.module.css'
 
+import React from 'react';
+
 import {BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import {AiFillStar} from "react-icons/ai";
@@ -20,7 +22,6 @@ const ProductListItem = ({item}) => {
     const cart = useSelector(state => state.cart.cart)
     const like = useSelector(state => state.like.like)
     
-
 
     const checkProductInCart=  (state , item)=>{
         const findItem = state.findIndex(e => e.id === item.id)
@@ -57,10 +58,6 @@ const ProductListItem = ({item}) => {
                     <img src={item.image} alt={item.title}/>
                 </Link>
 
-
-
-                    
-
                 <div className={Styles.titleParent}>
                     <p className={Styles.title} title={item.title}>{item.title.length >= 20 ? item.title.substring(0,20)+'...' : item.title}</p>
                 </div>
@@ -88,4 +85,4 @@ const ProductListItem = ({item}) => {
     );
 }
  
-export default ProductListItem;
+export default React.memo(ProductListItem);
