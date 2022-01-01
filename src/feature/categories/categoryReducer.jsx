@@ -6,7 +6,7 @@ export const fetchingCategories = createAsyncThunk( "category/fetchingCategories
         const response = await axios.get("https://fakestoreapi.com/products/categories")
         return response.data
     } catch (error) {
-        return rejectWithValue( [] , error.message)
+        return rejectWithValue(error.message)
     }
 })
 
@@ -21,7 +21,7 @@ const categoryReducer = createSlice({
             return {...state , data : action.payload , error : "", loading : false}
         },
         [fetchingCategories.rejected] : (state , action)=>{
-            return {...state , data : action.payload , error : "", loading : false}
+            return {...state , data : [] , error : action.payload, loading : false}
         }
     }
 })
