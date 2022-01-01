@@ -29,15 +29,15 @@ const ProductOnCategoryReducer = createSlice({
     initialState : {data : [], error : "",loading : false},
     extraReducers : {
         [fetchProductsOnCategory.pending] : (state) => {
-            return {...state , data : [] , loading : true}
+            return {...state , data : [] , loading : true , error : ""}
         },
         
         [fetchProductsOnCategory.fulfilled] : (state , action) => {
-            return {...state , data : action.payload , loading : false}
+            return {...state , data : action.payload , loading : false , error : ""}
         },
         
         [fetchProductsOnCategory.rejected] : (state , action) => {
-            return {...state , data : action.payload , loading : false}
+            return {...state , data : [] , error : action.payload , loading : false}
         },
     }
 })
