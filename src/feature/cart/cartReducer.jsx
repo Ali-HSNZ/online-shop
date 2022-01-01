@@ -10,12 +10,8 @@ const cartReducer =  createSlice({
             if(findItemIndex < 0){
                 state.cart.push({...action.payload ,  quantity : 1})
             }else{
-                const cloneItem = {...state.cart[findItemIndex]};
-                cloneItem.quantity++;
-                const  cloneCart = [...state.cart]
-                cloneCart[findItemIndex] = cloneItem;
-                state.cart = cloneCart 
-                state.total =  action.payload.discount
+                const product = state.cart[findItemIndex]
+                product.quantity++;
             }
         },
         
