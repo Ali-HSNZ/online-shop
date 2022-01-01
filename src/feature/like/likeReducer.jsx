@@ -5,14 +5,12 @@ const likeReducer = createSlice({
     initialState : {data : []},
     reducers : {
         addToLike : (state , action)=>{
-            const findProduct = state.data.findIndex(product => product.id === action.payload.id)
-            if(findProduct < 0){
+            const findProductIndex = state.data.findIndex(product => product.id === action.payload.id)
+            if(findProductIndex < 0){
                 state.data.push({...action.payload , like : true})
             }else{
-                const cloneLike = [...state.data]
-                const product = cloneLike[findProduct]
-                if(product.like === true) product.like = false; else product.like = true;
-                state.data = cloneLike
+                const product = state.data[findProductIndex]
+                product.like === true ?  product.like = false : product.like = true;
             }
         }
     }
