@@ -78,7 +78,7 @@ const userReducer = createSlice({
         [fetchingUserSignup.rejected] : (state , action)=>{
             toast.error(action.payload)
             state.data = null
-            state.error = ""
+            state.error = action.payload
             state.loading = false
         },
 
@@ -106,7 +106,7 @@ const userReducer = createSlice({
     [fetchingUserLogin.rejected] : (state , action)=>{
         toast.error(action.payload)
         state.data = null
-        state.error = ""
+        state.error = action.payload
         state.loading = false
     },
 
