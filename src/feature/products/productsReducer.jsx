@@ -37,7 +37,7 @@ const productsReducer =  createSlice({
         [fetchProducts.rejected] : (state , action) => {
             state.data = []
             state.loading = true
-            state.error = ""
+            state.error = action.payload
         },
     }
 })
