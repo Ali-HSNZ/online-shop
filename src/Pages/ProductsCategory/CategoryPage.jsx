@@ -13,7 +13,6 @@ import { fetchProductsOnCategory } from "../../feature/productsOnCategory/produc
 const CategoryPage = ({location}) => {
     const products = useSelector(state => state.productsOnCategory.data)
     
-    console.log("*products : ",products ) 
     
     const query = useQuery().get('name');
     const isSpecialSale = location.name === "specialSale";

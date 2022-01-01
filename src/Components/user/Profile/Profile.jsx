@@ -3,7 +3,6 @@ import  UserStyles from'../User.module.css'
 
 import React from 'react';
 import { AiFillCaretUp} from "react-icons/ai";
-import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../../feature/user/userReducer";
 import { windowIsUserProfile } from "../../../feature/window/windowReducer";

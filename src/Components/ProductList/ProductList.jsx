@@ -41,7 +41,9 @@ const ProductList = () => {
                         const productsCategory = productsData&&productsData.filter( e => e.category === category)
                             return(
                                 <div key={index}>
-                                    {category === "jewelery" && <Banner category={category}/> || category === "women's clothing" ? <Banner category={category}/> : 
+                                    {
+                                        category === "jewelery" ? <Banner category={category}/> : 
+                                        category === "women's clothing" ? <Banner category={category}/> : 
 
                                     
                                         <div dir="rtl" className={Styles.sliderParent} key={index}>
