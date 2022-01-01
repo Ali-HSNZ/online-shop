@@ -6,21 +6,18 @@ const cartReducer =  createSlice({
     reducers : {
         
         AddQuantity : (state , action) => {
-            const findItemIndex  = state.cart.findIndex(product => product.id === action.payload.id)
-            if(findItemIndex < 0){
+            const productIndex  = state.cart.findIndex(product => product.id === action.payload.id)
+            if(productIndex < 0){
                 state.cart.push({...action.payload ,  quantity : 1})
             }else{
-                const product = state.cart[findItemIndex]
-                product.quantity++;
+               state.cart[productIndex].quantity++;
             }
         },
         
         DecrimentQuantity : (state , action) => {
-            const findItem_index = state.cart.findIndex(product => product.id === action.payload.id)
+            const productIndex = state.cart.findIndex(product => product.id === action.payload.id)
             if(action.payload.quantity >1){
-                const cloneItem = {...state.cart[findItem_index]}
-                cloneItem.quantity--;
-                state.cart[findItem_index] = cloneItem;
+                state.cart[productIndex].quantity--
             }else{
                 const hideProducts = state.cart.filter(product => product.id !== action.payload.id)
                 state.cart = hideProducts
@@ -28,15 +25,12 @@ const cartReducer =  createSlice({
         },
         
         deleteProduct : (state , action) => {
-            const findProduct = state.cart.filter(product => product.id !== action.payload.id)
-            state.cart = findProduct
-            state.total = action.payload.discount
+            const newCart = state.cart.filter(product => product.id !== action.payload.id)
+            state.cart = newCart
         },
         
-        deleteAllProduct : (state) => {
-            state.cart = [] 
-            state.total = 0
-        },
+        deleteAllProduct : (state) => { state.cart = [] ; state.total = 0 }
+            
     }
     
 })
