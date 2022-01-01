@@ -19,18 +19,15 @@ const cartReducer =  createSlice({
             if(action.payload.quantity >1){
                 state.cart[productIndex].quantity--
             }else{
-                const hideProducts = state.cart.filter(product => product.id !== action.payload.id)
-                state.cart = hideProducts
+                state.cart = state.cart.filter(product => product.id !== action.payload.id)
             }
         },
         
         deleteProduct : (state , action) => {
-            const newCart = state.cart.filter(product => product.id !== action.payload.id)
-            state.cart = newCart
+            state.cart = state.cart.filter(product => product.id !== action.payload.id)
         },
         
-        deleteAllProduct : (state) => { state.cart = [] ; state.total = 0 }
-            
+        deleteAllProduct : (state) => { state.cart = [] }
     }
     
 })
