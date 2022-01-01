@@ -5,7 +5,7 @@ import Signup from '../Signup/Signup';
 import { AiFillCaretUp } from "react-icons/ai";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { windowIsUserLogin } from '../../../redux/window/windowActions';
+import { windowIsUserLogin } from '../../../feature/window/windowReducer';
 
 const UserPanel = ()=>{
 

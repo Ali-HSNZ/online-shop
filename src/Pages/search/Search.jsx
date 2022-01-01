@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import { useDispatch ,useSelector } from "react-redux";
-import { fetchProducts } from "../../redux/products/ProductsActions";
+import { fetchProducts } from "../../feature/products/productsReducer";
 
 const Search = () => {
 

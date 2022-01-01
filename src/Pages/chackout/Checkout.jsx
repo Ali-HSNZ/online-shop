@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
 const Checkout = (props) => {
-   const  user = useSelector(state => state.userLogin.data)
+   const  user = useSelector(state => state.user.data)
     const cart = useSelector(state => state.cart.cart)
 
     useEffect(()=> {
@@ -40,6 +40,11 @@ const Checkout = (props) => {
 export default Checkout;
 
 const CheckPrice = ({cart})=> {
-    const originalTotalPrice =cart.reduce((acc , product)=> acc + product.quantity * product.price , 0).toFixed(2)
-    return <p>قیمت نهایی  : {originalTotalPrice}</p>
+    const originalTotalPrice =cart.reduce((acc , product)=> acc + product.quantity * product.price , 0)
+
+    let price = originalTotalPrice;    
+    let dplaces = price=== parseInt(price, 10) ? 0 : 2;
+    price = '$' + price.toFixed(dplaces);
+
+    return <p>قیمت نهایی  : {price}</p>
 }

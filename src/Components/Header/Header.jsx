@@ -11,7 +11,7 @@ import Menu from '../Menu/Menu'
 import SearchComponent from '../Search/Search';
 import UserPanel from '../user/Panel/UserPanel';
 import { useSelector , useDispatch} from 'react-redux';
-import { userAutomatic} from '../../redux/user/userActions';
+import { userAutomatic} from '../../feature/user/userReducer';
 
 import { 
     windowCart,
@@ -19,14 +19,14 @@ import {
     windowMenu,
     windowSearch,
     windowUser 
-} from '../../redux/window/windowActions';
+} from '../../feature/window/windowReducer';
 
 
 
 const Header = () => {
 
     const cart = useSelector(state => state.cart.cart)
-    const user = useSelector(state => state.userLogin.data)
+    const user = useSelector(state => state.user.data)
     const window = useSelector(state => state.window)
     
     const dispatch = useDispatch()

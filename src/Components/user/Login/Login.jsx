@@ -9,18 +9,18 @@ import {BiHide , BiShow , BiX } from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { fetchUserLogin } from "../../../redux/user/userActions";
+import { fetchingUserLogin } from "../../../feature/user/userReducer";
 
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { windowIsUserLogin, windowIsUserSignup } from "../../../redux/window/windowActions";
+import { windowIsUserLogin, windowIsUserSignup } from "../../../feature/window/windowReducer";
 
 
 const NewUserLogin = () => {
 
     
     const dispatch = useDispatch()
-    const user = useSelector(state => state.userLogin)
+    const user = useSelector(state => state.user)
 
     const [isLoading , setIsLoading] = useState(false)
     const [isShowPass , setIsShowPass] =  useState(false)
@@ -40,7 +40,7 @@ const NewUserLogin = () => {
     })
 
     const onSubmit = (values) => {
-        dispatch(fetchUserLogin(isRemmemberLogin , values))
+        dispatch(fetchingUserLogin({data : values , isRemmember :  isRemmemberLogin}))
     }
     useEffect(()=>{
         user.loading === true ? setIsLoading(true) : setIsLoading(false)

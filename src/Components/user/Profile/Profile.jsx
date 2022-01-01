@@ -5,13 +5,13 @@ import React from 'react';
 import { AiFillCaretUp} from "react-icons/ai";
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
-import { userLogout } from "../../../redux/user/userActions";
-import { windowIsUserProfile } from "../../../redux/window/windowActions";
+import { userLogout } from "../../../feature/user/userReducer";
+import { windowIsUserProfile } from "../../../feature/window/windowReducer";
 
 
 const UserProfile = ()=> {
 
-    const user = useSelector(state => state.userLogin.data)
+    const user = useSelector(state => state.user.data)
 
     const dispatch = useDispatch()
 
@@ -19,7 +19,6 @@ const UserProfile = ()=> {
     const logoutHandler = () => {
         dispatch(userLogout())
         dispatch(windowIsUserProfile(false))
-        toast.warning("از حساب خود خارج شده اید")
     }
     
     return(

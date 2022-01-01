@@ -12,21 +12,23 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
 
-import { addToLike } from '../../redux/like/likeActions';
-import { AddQuantity } from '../../redux/cart/cartActions';
+import { addToLike } from '../../feature/like/likeReducer';
+import { AddQuantity } from '../../feature/cart/cartReducer';
 
 
 const ProductListItem = ({item}) => {
 
+
     const dispatch = useDispatch()
+
     const cart = useSelector(state => state.cart.cart)
-    const like = useSelector(state => state.like.like)
+    const like = useSelector(state => state.like.data)
     
 
 
     const checkProductInCart=  (state , item)=>{
-        const findItem = state.findIndex(e => e.id === item.id)
-        if(findItem < 0) {return false}else{return true}
+        const availableInCart = state.findIndex(e => e.id === item.id)
+        if(availableInCart < 0) {return false}else{return true}
     }
 
     const checkProductInLike = (state , product)=>{
@@ -70,7 +72,7 @@ const ProductListItem = ({item}) => {
 
 
                 <div className={Styles.itemActionParent}>
-                    {checkProductInCart(cart , item) === true ? (
+                    {checkProductInCart(cart , item) ? (
                         <Link to="/cart" className={Styles.itemAcrionActive}>سبد خرید</Link>
                     ) : (
                         <button className={Styles.itemAcrion} onClick={()=> dispatch(AddQuantity(item))}>

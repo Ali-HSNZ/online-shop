@@ -15,8 +15,8 @@ import './sliderStyles.css'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-import { fetchProducts } from "../../redux/products/ProductsActions";
-import { fetchingCategories } from "../../redux/categories/categoryActions";
+import { fetchProducts } from "../../feature/products/productsReducer";
+import { fetchingCategories } from "../../feature/categories/categoryReducer";
 
 SwiperCore.use([Navigation , Pagination , Autoplay])
 
@@ -26,6 +26,7 @@ const ProductList = () => {
     const productsData = useSelector(state => state.products.data)
     const categoriesData = useSelector(state => state.categories.data)
 
+    
     useEffect(()=>{
         dispatch(fetchProducts())
         dispatch(fetchingCategories())

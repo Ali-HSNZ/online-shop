@@ -11,8 +11,8 @@ import { useDispatch  , useSelector} from "react-redux";
 
 import { useEffect } from "react";
 
-import {fetchingCategories} from '../../redux/categories/categoryActions'
-import { windowIsMenu } from '../../redux/window/windowActions';
+import {fetchingCategories} from '../../feature/categories/categoryReducer'
+import { windowIsMenu } from '../../feature/window/windowReducer'
 
 
 const Menu = () => {

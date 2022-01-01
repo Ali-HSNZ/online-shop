@@ -9,14 +9,14 @@ import {BiHide , BiShow , BiX , BiUser} from "react-icons/bi";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { IoAt } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { windowIsUserLogin, windowIsUserSignup } from "../../../redux/window/windowActions";
-import { fetchUserSignup } from "../../../redux/user/userActions";
+import { windowIsUserLogin, windowIsUserSignup } from "../../../feature/window/windowReducer";
+import { fetchingUserSignup } from "../../../feature/user/userReducer";
 
 
 
 const Signup = () => {
    
-    const user = useSelector(state => state.userLogin)
+    const user = useSelector(state => state.user)
 
     const dispatch = useDispatch()
 
@@ -45,7 +45,7 @@ const Signup = () => {
 
 
     const onSubmit = (values) => {
-        dispatch(fetchUserSignup(isRemmemberSignup,values))
+        dispatch(fetchingUserSignup({data : values , isRemmember :  isRemmemberSignup}))
     }
     
     useEffect(()=>{

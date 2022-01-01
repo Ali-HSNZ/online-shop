@@ -6,19 +6,20 @@ import ProductListItem from "../../common/ProductList Item/ProductListItem";
 import Container from '../../common/Loding/Loding'
 import _ from "lodash"
 import { useDispatch } from "react-redux";
-import { fetchProductsCategory } from "../../redux/products category/productsCategoryActions";
 import { useSelector } from "react-redux";
+import { fetchProductsOnCategory } from "../../feature/productsOnCategory/productsOnCategory";
 
 
 const CategoryPage = ({location}) => {
-    const products = useSelector(state => state.productsCategory)
+    const products = useSelector(state => state.productsOnCategory.data)
     
+    console.log("*products : ",products ) 
     
     const query = useQuery().get('name');
     const isSpecialSale = location.name === "specialSale";
     
     
-    const [productsAction , setProductsAction] = useState(products.data)
+    const [productsAction , setProductsAction] = useState(products)
     const [isProductsOnSearched , setIsProductsOnSearched] = useState(false)
     const  [searchData , setSearchData] = useState(null)
 
@@ -30,17 +31,17 @@ const CategoryPage = ({location}) => {
 
 
     useEffect(()=>{
-        dispatch(fetchProductsCategory(query))
+        dispatch(fetchProductsOnCategory(query))
     },[query , dispatch])
 
     useEffect(()=>{
-        const item = products.data ? products.data.filter(e => e.title.toLowerCase().includes(searchData && searchData.toLowerCase())) : []
+        const item = products ? products.filter(e => e.title.toLowerCase().includes(searchData && searchData.toLowerCase())) : []
        
         if(searchData && searchData.length > 0){
             item.length === 0 ? setIsProductsOnSearched(true)  : setIsProductsOnSearched(false)
             setProductsAction(item)
         }else{
-            setProductsAction(products.data)
+            setProductsAction(products)
             setIsProductsOnSearched(false)
         }
     },[searchData , products])
@@ -66,18 +67,18 @@ const CategoryPage = ({location}) => {
 
     const sortHandler = (e)=>{
         if(e === "highest"){
-            setProductsAction(_.orderBy(products.data,"price",'desc'))
+            setProductsAction(_.orderBy(products,"price",'desc'))
         }
         else if(e === "lowest"){
-            setProductsAction(_.orderBy(products.data,"price",'asc'))
+            setProductsAction(_.orderBy(products,"price",'asc'))
         }
         else if(e === "highestDiscount"){
-            const filterProducts = products.data && products.data.filter(product => product.discount >= 0)
+            const filterProducts = products && products.filter(product => product.discount >= 0)
             const sortProducts = _.orderBy(filterProducts,"discount",'desc')
             setProductsAction(sortProducts)
         }
         else if(e === "amazing"){
-            const sortAmazing = products.data && products.data.filter(product => product.offPrice !== 0)
+            const sortAmazing = products && products.filter(product => product.offPrice !== 0)
             setProductsAction(sortAmazing)
         }
     }

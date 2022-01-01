@@ -6,7 +6,7 @@ import {AiFillStar} from "react-icons/ai";
 import { FiTrash2 } from "react-icons/fi";
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { AddQuantity, DecrimentQuantity, deleteProduct } from '../../redux/cart/cartActions';
+import { AddQuantity, DecrimentQuantity, deleteProduct } from '../../feature/cart/cartReducer';
 import { Link } from 'react-router-dom';
 
 const CartItems = ({product , checkout}) => {

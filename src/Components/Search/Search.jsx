@@ -4,7 +4,7 @@ import {NavLink } from 'react-router-dom';
 import React, { useEffect, useRef, useState } from 'react';
 import { AiFillCaretUp ,AiFillCaretLeft } from "react-icons/ai";
 import { BsInfoCircleFill } from "react-icons/bs";
-import { windowIsSearch } from '../../redux/window/windowActions';
+import { windowIsSearch } from '../../feature/window/windowReducer';
 import { useDispatch } from 'react-redux';
 
 

@@ -3,13 +3,13 @@ import Styles from './CartPage.module.css'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { windowIsUserLogin } from '../../redux/window/windowActions';
+import { windowIsUserLogin } from '../../feature/window/windowReducer';
 
 
 const Checkout = ()=>{
 
     const cart = useSelector(state => state.cart.cart)
-    const user = useSelector(state => state.userLogin.data)
+    const user = useSelector(state => state.user.data)
 
     const dispatch = useDispatch() 
 

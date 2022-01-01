@@ -7,7 +7,7 @@ import Styles from './FavoriteProducts.module.css'
 
 const FavoriteProducts = () => {
 
-    const like = useSelector(state => state.like.like)
+    const like = useSelector(state => state.like.data)
     const availableProducts = like && like.filter(e => e.like  === true)
 
     return ( 

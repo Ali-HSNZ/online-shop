@@ -8,20 +8,20 @@ import './App.css'
 
 import { Provider } from 'react-redux';
 
-import store from '../redux/store';
+import store from '../feature/store';
 
 function App() {
       return (
-            <Router>
-                 <Provider store={store}>
+            <Provider store={store}>
+                  <Router>
                         <Layout>
                               <ToastContainer  autoClose={4000} rtl={true} theme={"dark"}/>
                               <Switch>
                                     {Routes.map((route) =>  <Route key={route.id} {...route}/>)}
                               </Switch>
                         </Layout>
-                 </Provider>
-            </Router>
+                  </Router>
+            </Provider>
       );
 }
 

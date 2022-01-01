@@ -24,12 +24,12 @@ import RedHeart from '../../image/redHeart.svg'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import {AddQuantity} from '../../redux/cart/cartActions'
-import {addToLike} from '../../redux/like/likeActions'
+import {AddQuantity} from '../../feature/cart/cartReducer'
+import {addToLike} from '../../feature/like/likeReducer'
 
 
-import {fetchProducts} from '../../redux/products/ProductsActions'
-import { fetchOneProduct } from '../../redux/one Product/oneProductActions';
+import {fetchProducts} from '../../feature/products/productsReducer'
+import { fetchOneProduct } from '../../feature/oneProduct/oneProductReducer';
 
 
 
@@ -40,7 +40,7 @@ SwiperCore.use([Navigation , Pagination])
 
 const ProductPage = () => {
 
-    const like = useSelector(state => state.like.like)
+    const like = useSelector(state => state.like.data)
     const product = useSelector(state => state.oneProduct)
     const cart = useSelector(state => state.cart.cart)
     const products = useSelector(state => state.products.data)

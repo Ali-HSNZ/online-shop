@@ -22,8 +22,8 @@ import Checkout from './Checkout';
 
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { deleteAllProduct } from '../../redux/cart/cartActions';
-import { fetchProducts } from '../../redux/products/ProductsActions';
+import { deleteAllProduct } from '../../feature/cart/cartReducer';
+import { fetchProducts } from '../../feature/products/productsReducer';
 
 
 SwiperCore.use([Autoplay , Navigation]);
